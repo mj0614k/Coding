@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML 기초</title>
+    <title>CSS 단위</title>
     <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
     <style>
         *{
@@ -69,11 +69,6 @@
             font-weight: normal;
             margin-bottom: 10px;
         }
-        .article h3{
-            font-weight: normal;
-            margin-bottom: 10px;
-            padding-top:30px;
-        }
         .article p{
             margin-bottom: 10px;
             color:#666;
@@ -123,7 +118,7 @@
 </head>
 <body>
     <header id="header">
-        <h1>HTML</h1>
+        <h1>CSS</h1>
         <nav>
             <ul>
                 <li><a href="#">기초</a></li>
@@ -135,30 +130,31 @@
     <section id="contents">
         <nav class="menu">
             <ul>
-                <li><a href="basic.html">기본 문서</a></li>
-                <li><a href="markup.html">기본 규칙</a></li>
-                <li><a href=#>W3C validator</a></li>
-                <li><a href="SemanticMarkup.html">시멘틱 마크업</a></li>
-                <li><a href="BlockInline.html">블록/인라인요소</a></li>
+                <li><a href="unit.html">단위</a></li>
             </ul>
         </nav>
         <article class="article">
-            <h2>시멘틱 마크업(Semantic markup)</h2>
-            <p>시멘틱(semantic)의 사전적 의미는 '의미론적인' 정도로 해석할 수 있습니다. 이것은 마크업을 할 때 의미에 부합하는 태그를 사용하라는 뜻입니다.</p>
-            <p>HTML 문서는 보통 시각적인 방법으로 정보를 전달하지만, 모든 사람들이 정보를 동일하게 받아들일 수 있는 환경이 아닐 수 있기 때문에, 전달하려는 태그의 의미가 적절해야 합니다.</p>
-            <pre><div class="box">&lt;!DOCTYPE html&gt;
-&lt;html lang="ko"&gt;
-&lt;head&gt;
-         &lt;meta charset="UTF-8"&gt;
-         &lt;title&gt;시멘틱 마크업&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-         &lt;h1&gt;반응형웹&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</div> </pre>
-        <p>만약 '반응형웹'이 HTML 문서에서 제목으로 사용된다고 가정할 경우, 예시처럼 마크업을 하면 스크린 리더(음성낭독프로그램)에서 '반응형웹' 헤딩 일이라고 읽어줄 것입니다. 시각장애인들도 그것이 제목인지 알 수 있게 됩니다.</p>
-    </article>
+            <h2>CSS 단위</h2>
+            <p>CSS에서 유용하게 사용하는 단위에는 다음과 같은 것들이 있습니다. 글자 크기는 명시하지 않을 경우 16px이 기본값입니다.</p>        
+            <h3 style="font-weight:normal; margin-top:20px;">px</h3>
+            <p>해상도에 따라 상대적으로 달라지는 기본 단위로서, 다음과 같이 표현합니다.</p>
+            <div class="box">font-size: 12px;</div>
+            <h3 style="font-weight:normal; margin-top:20px;">%</h3>
+            <p>부모 요소의 글자 크기를 100% 기준으로 계산한 % 단위로서, 다음과 같이 표현합니다.</p>
+            <div class="box">font-size: 150%;</div>
+            <p style="margin-top:10px;">특별한 설정이 없다면 16px이 100%가 되므로, 150%는 24px이 됩니다. 만약 부모 요소가 10px이었다면 150%는 15px이 될 것입니다.</p>
+
+            <h3 style="font-weight:normal; margin-top:20px;">em</h3>
+            <p>부모 요소의 글자 크기를 100% 기준으로 계산한 100분의 1 단위로서, 다음과 같이 표현합니다.</p>
+            <div class="box">font-size: 1.5em;</div>
+            <p style="margin-top:10px;">특별한 설정이 없다면 16px이 1em이 됩니다. 만약 부모 요소가 10px이었다면 1.5em은 15px이 될 것입니다.</p>
+            <h3 style="font-weight:normal; margin-top:20px;">rem</h3>
+            <p>rem은 em과 비슷하지만 부모 요소가 아닌 최상위 요소의 크기를 100% 기준으로 계산합니다. rem의 r은 root 즉, html 요소를 뜻하므로, html 요소에서 지정한 글자 크기가 1rem이 됩니다.</p>
+            <div class="box">font-size: 1.5rem;</div>
+            <h3 style="font-weight:normal; margin-top:20px;">vw, vh</h3>
+            <p>vw는 뷰포트 너비값의 100분의 1 단위, vh는 뷰포트 높이값의 100분의 1 단위이며, 다음과 같이 표현합니다.</p>
+            <div class="box">font-size: 10vw;</div>
+        </article>
     </section>
 </body>
 </html>
