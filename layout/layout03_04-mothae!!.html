@@ -30,31 +30,33 @@
             width:25%;
             height:780px;
             background-color: rgb(255, 154, 154);
-            float:left;
         }
         #section{
-            width:75%;
+            width:900px;
             height:260px;
-            float:left;
             background-color: rgb(255, 134, 134);
         }
         #section2{
-            width:75%;
+            width:900px;
             height:260px;
-            float:left;
             background-color: rgb(255, 118, 118);
         }
         #section3{
-            width:75%;
+            width:900px;
             height:260px;
-            float:left;
             background-color: rgb(253, 94, 94);
         }
         #footer{
             width:100%;
             height:100px;
             background-color: rgb(255, 63, 63);
-            clear:both;
+        }
+        .contents{
+            display:flex;
+        }
+        .contents_child{
+            flex-wrap:wrap;
+            flex-direction:column;
         }
 
         @media(max-width:1300px){
@@ -62,18 +64,22 @@
                 width:96%;
             }
             #aside{
-                width:20%;
+                width:25%;
             }
             #section{
-                width:80%;
+                width:75%;
+                height:260px;
             }
             #section2{
-                width:40%;
+                width:37.5%;
                 height:520px;
             }
             #section3{
-                width:40%;
+                width:37.5%;
                 height:520px;
+            }
+            .contents_child_child{
+                flex-direction:column;
             }
         }
         @media(max-width:768px){
@@ -111,10 +117,16 @@
     <div id="wrap">
         <div id="header"></div>
         <div id="nav"></div>
-        <div id="aside"></div>
-        <div id="section"></div>
-        <div id="section2"></div>
-        <div id="section3"></div>
+        <div class="contents">
+            <div id="aside"></div>
+            <div class="contents_child">
+                <div id="section"></div>
+                <div class="contents_child_child">
+                    <div id="section2"></div>
+                    <div id="section3"></div>
+                </div>
+            </div>
+        </div>
         <div id="footer"></div>
     </div>
 </body>
