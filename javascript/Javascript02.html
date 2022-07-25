@@ -73,7 +73,7 @@
                         변수에 저장된 데이터 값을 불러올 수 있습니다.
                     </p>
                     <div class="script"></div>
-    <pre><code>let x = 100;
+<pre><code class="language-js">let x = 100;
 let y = 200;
 let z = "javascript"
 
@@ -98,7 +98,7 @@ document.write(z);
                     <h3>02. 상수 : 데이터 불러오기</h3>
                     <p>상수에 저장된 데이터 값을 불러올 수 있습니다. 상수는 const로 표기합니다.</p>
                     <div class="script"></div>
-    <pre><code>const x = 100,
+    <pre><code class="language-js">const x = 100,
 y = 200,
 z = "javascript";
 
@@ -118,7 +118,7 @@ document.write(z);</code></pre>
                     <h3>03. 배열 : 데이터 불러오기</h3>
                     <p>배열에 저장된 데이터 값을 불러올 수 있습니다.</p>
                     <div class="script"></div>
-    <pre><code>const arr = [100, 200, "javascript"];
+    <pre><code class="language-js">const arr = [100, 200, "javascript"];
 
 document.write(arr[0]);
 document.write(arr[1]);
@@ -137,7 +137,7 @@ document.write(arr[2]);
                     <h3>04. 배열 : 데이터 불러오기 : 2차 배열</h3>
                     <p>2차 배열은 배열 내에 배열을 저장하는 방법입니다.</p>
                     <div class="script"></div>
-    <pre><code>const arr = [100, 200, ["javascript", "jquery"]];
+    <pre><code class="language-js">const arr = [100, 200, ["javascript", "jquery"]];
 
 document.write(arr[0]);
 document.write(arr[1]);
@@ -157,7 +157,7 @@ document.write(arr[2][1])</code></pre>
                     <h3>05. 배열 : 데이터 불러오기 : 갯수 구하기</h3>
                     <p>배열 내에 저장된 값의 갯수를 구할 수 있습니다.</p>
                     <div class="script"></div>
-<pre><code>const arr = [100, 200, "javascript"];
+<pre><code class="language-js">const arr = [100, 200, "javascript"];
 
 document.write(arr.length);
 </code></pre>
@@ -173,7 +173,7 @@ document.write(arr.length);
                     <h3>06. 배열 : 데이터 불러오기 : for()문</h3>
                     <p>자바스크립트는 배열이나 객체를 쉽게 다룰 수 있도록 반복문을 제공합니다. for문은 그 반복문 중 하나입니다. </p>
                     <div class="script"></div>
-    <pre><code>const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+    <pre><code class="language-js">const arr = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 document.write(arr[0]);
 document.write(arr[1]);
@@ -197,7 +197,7 @@ for(let i = 0; i&lt;length; i++){
                 <div id="sample07" class="sample">
                     <h3>07. 배열 : 데이터 불러오기 : forEach()</h3>
                     <p>forEach() 메서드는 주어진 함수를 배열 요소 각각에 대해 반복하여 실행합니다.</p>
-<pre><code>const num = [100, 200, 300, 400, 500];
+<pre><code class="language-js">const num = [100, 200, 300, 400, 500];
 
 //for문을 이용해서 출력
 for(let i = 0; i&lt;num.length; i++){
@@ -234,7 +234,7 @@ document.write(array);
                 <div id="sample08" class="sample">
                     <h3>08. 배열 : 데이터 불러오기 : for of</h3>
                     <p>for()문에서 몇 가지 방법을 생략하여 for of 반복문을 사용할 수 있습니다.</p>
-<pre><code>const arr = [100, 200, 300, 400, 500];
+<pre><code class="language-js">const arr = [100, 200, 300, 400, 500];
 
 for(let i of arr){             //for()문에서 생략된 방법
     document.write(i);
@@ -252,7 +252,7 @@ for(let i of arr){             //for()문에서 생략된 방법
                 <div id="sample09" class="sample">
                     <h3>09. 배열 : 데이터 불러오기 : for in</h3>
                     <p>for()문에서 몇 가지 방법을 생략하여 for in 반복문을 사용할 수 있습니다.</p>
-<pre><code>const arr = [100, 200, 300, 400, 500];
+<pre><code class="language-js">const arr = [100, 200, 300, 400, 500];
 
 for(let i in arr){        
     document.write(i);
@@ -271,7 +271,7 @@ for(let i in arr){
                 <div id="sample10" class="sample">
                     <h3>10. 배열 : 데이터 불러오기 : map()</h3>
                     <p>map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.</p>
-<pre><code>const arr = [100, 200, 300, 400, 500];
+<pre><code class="language-js">const arr = [100, 200, 300, 400, 500];
 
 //forEach와 같은 값을 얻을 수 있음
 arr.map(function(el){
