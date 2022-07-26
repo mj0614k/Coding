@@ -163,7 +163,12 @@ document.write(func());
                     화살표 함수를 이용하면 함수 표현식보다 단순하고 간결한 문법으로 함수를 선언할 수 있습니다.
                 </p>
                 <div class="script"></div>
-<pre><code class="language-js">func = () => {  //함수 function을 화살표 기호로 생략
+<pre><code class="language-js">/* function func(){     //선언적 함수
+    document.write("함수가 실행되었습니다.5")
+}
+func(); */
+    
+func = () => {  //함수 function을 화살표 기호로 생략
     document.write("함수가 실행되었습니다.5")
 }
 func();
@@ -186,7 +191,12 @@ func();
                     화살표 함수를 이용하여 익명 함수를 보다 간략한 방법으로 선언할 수 있습니다.
                 </p>
                 <div class="script"></div>
-<pre><code class="language-js">const func = () => document.write("함수가 실행되었습니다.6<br>");
+<pre><code class="language-js">/* const func = function(){
+    document.write("함수가 실행되었습니다.6");
+}
+func(); */
+    
+const func = () => document.write("함수가 실행되었습니다.6<br>");
 func();
 </code></pre>
                 <div class="result">
@@ -204,7 +214,12 @@ func();
                     화살표 함수를 이용하여 매개변수 함수를 보다 간략한 방법으로 선언할 수 있습니다.
                 </p>
                 <div class="script"></div>
-<pre><code class="language-js">func = (str) => document.write("함수가 실행되었습니다.7")
+<pre><code class="language-js">/* function func(str){           //str=변수, func의 값을 전달받았다는 의미
+    document.write(str)
+}
+func("함수가 실행되었습니다.7"); */
+
+func = (str) => document.write("함수가 실행되었습니다.7")
 func();
 
 func = str => document.write("함수가 실행되었습니다.7")  //변수가 하나이면 괄호 생략 가능
@@ -225,8 +240,14 @@ func();
                     화살표 함수를 이용하여 리턴값 함수를 보다 간략한 방법으로 선언할 수 있습니다.
                 </p>
                 <div class="script"></div>
-<pre><code class="language-js">func = () => {             //리턴함수는 function만 생략 가능
-    const str = "함수가 실행되었습니다.8<br>";
+<pre><code class="language-js">/* function func(){
+    const str = "함수가 실행되었습니다.8";
+    return str;
+}
+document.write(func()); */
+    
+func = () => {          
+    const str = "함수가 실행되었습니다.8";
     return str;
 }
 document.write(func());
@@ -284,10 +305,10 @@ document.write(func());
         // //ECMAscript6(es6) 화살표 함수, let, const
         // //05. 화살표 함수(<--선언적 함수)
         // {
-        //     // function func(){     //선언적 함수
-        //     //     document.write("함수가 실행되었습니다.1<br>")
-        //     // }
-        //     // func();
+            // function func(){     //선언적 함수
+            //     document.write("함수가 실행되었습니다.1<br>")
+            // }
+            // func();
 
         //     // func = () => {          //함수 function을 기호로 생략
         //     //     document.write("함수가 실행되었습니다.5<br>")
