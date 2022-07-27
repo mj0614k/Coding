@@ -1,7 +1,100 @@
-<div id="wrap">
-    <header id="header"></header>
-    <nav id="nav"></nav>
-    <aside id="aside"></aside>
-    <section id="section"></section>
-    <footer id="footer"></footer>
-</div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testpage</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #wrap{
+            width:1200px;
+            margin: 0 auto;
+        }
+        #header{
+            height:100px;
+            background-color: #C8E6C9;
+        }
+        #nav{
+            height: 100px;
+            background-color: #A5D6A7;
+        }
+        #aside{
+            width:25%;
+            height: 780px;
+            background-color: #81C784;
+        }
+        #section{
+            width: 50%;
+            height: 780px;
+            background-color: #66BB6A;
+        }
+        #section2{
+            width: 25%;
+            height: 780px;
+            background-color: #4CAF50;
+        }
+        #footer{
+            height: 100px;
+            background-color: #43A047;
+        }
+        #wrap .contents{
+            display:flex;
+            flex-wrap: wrap;
+        }
+
+        @media(max-width:1300px){
+            #wrap{
+                width:96%;
+            }
+        }
+        @media(max-width:768px){
+            #wrap{
+                width:100%;
+            }
+            #aside{
+                width:30%;
+                height:630px;
+            }
+            #section{
+                width:70%;
+                height: 630px;
+            }
+            #section2{
+                width:100%;
+                height:100px;
+            }
+        }
+        @media(max-width:480px){
+            #aside{
+                width:100%;
+                height:200px;
+            }
+            #section{
+                width:100%;
+                height: 430px;
+            }
+            #section2{
+                width:100%;
+                height:150px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header"></div>
+        <div id="nav"></div>
+        <div class="contents">
+            <div id="aside"></div>
+            <div id="section"></div>
+            <div id="section2"></div>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>
