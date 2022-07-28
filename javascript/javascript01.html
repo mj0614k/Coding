@@ -379,14 +379,17 @@ document.write(obj.c);
             <div id="sample14" class="sample">
                 <h3>14. 객체 : 여러 개의 데이터 저장(키와 값) : 표현 방법5</h3>
                 <p>
-                    객체는 키와 값으로 구성된 데이터 값을 저장합니다. 객체를 표현하는 다섯번째 방법입니다.
+                    객체는 키와 값으로 구성된 데이터 값을 저장합니다. 객체를 표현하는 다섯번째 방법으로, 객체 안에 배열을 저장할 수 있습니다.
                 </p>
                 <div class="script"></div>
-<pre><code>const obj = {a:100, b:200, c:"javascript"};
+<pre><code>const obj = [
+    {a:100, b:200},
+    {c:"javascript"}
+];
 
-document.write(obj.a);
-document.write(obj.b);
-document.write(obj.c);
+document.write(obj[0].a);
+document.write(obj[0].b);
+document.write(obj[1].c);
 </code></pre>
                 <div class="result">
                     <details>
