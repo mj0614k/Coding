@@ -34,6 +34,7 @@
                 <li><a href="study/if.html">조건문</a></li>
                 <li><a href="study/type.html">데이터 타입</a></li>
                 <li><a href="study/function.html">함수</a></li>
+                <li><a href="study/var.html">전역변수/지역변수</a></li>
             </ul>
         </nav>
     </header>
@@ -63,14 +64,22 @@
                     if문은 조건식의 참(true), 거짓(false)을 판단하여 값을 출력합니다.
                 </p>
 <pre><code class="language-js">//true, 1, "0", "n", 1&lt;10, [], {} --> true
-//false, 0, undefined, null --> false
+//false, 0, undefined, nul, "" --> false
 
-if(조건식){
+//if(조건식){
+//    document.write("실행되었습니다(true).");
+//} else {
+//    document.write("실행되었습니다(false).");
+//}
+//document.write(i) -->
+
+if(0){
     document.write("실행되었습니다(true).");
 } else {
     document.write("실행되었습니다(false).");
 }
-document.write(i)
+document.write(i);
+}
 </code></pre>
                 <div class="result">
                     <details>
@@ -329,6 +338,60 @@ for( let i=0; i&lt;num.length; i++ ){
                     </details>
                 </div>
             </div>
+            <!-- //sample10 -->
+            <div id="sample11" class="sample">
+                <h3>11. break문</h3>
+                <p>
+                    break문은 해당 문이 배치된 지점에서 가장 가까이에 있는
+                    do, for, switch 또는 while문의 실행을 종료합니다.
+                    현재로서는 자주 쓰이는 문법은 아닙니다.
+                </p>
+<pre><code class="language-js">let num = 1;
+while(num &lt;=20){
+    document.write(num);
+    num++;
+    break;                 //while문의 반복을 종료         
+}
+    
+for(let i=1; i&lt;=20; i++){
+    document.write(i);
+    if(i==10){
+        break;            //i의 값이 10이 되었을 때, 실행을 종료          
+    }
+}
+</code></pre>
+                <div class="result">
+                    <details>
+                        <summary>결과보기</summary>
+                        <div class="sample11_result">
+                            1<br>1 2 3 4 5 6 7 8 9 10
+                        </div>
+                    </details>
+                </div>
+            </div>
+            <div id="sample12" class="sample">
+                <h3>12. continue문</h3>
+                <p>
+                    continue문은 반복문이 실행될 때 어떠한 조건을 제외하고
+                    다음 반복으로 건너뛰는 역할을 합니다. break문과 마찬가지로,
+                    현재는 자주 쓰이지 않습니다.
+                </p>
+<pre><code class="language-js">for(let i=1; i&lt;=20; i++){
+    if(i==10){
+        continue;             //i의 값이 10이 되었을 때, 건너뛰고 반복을 진행
+    }
+    document.write(i);      
+}
+</code></pre>
+                <div class="result">
+                    <details>
+                        <summary>결과보기</summary>
+                        <div class="sample12_result">
+                            1 2 3 4 5 6 7 8 9 11 12 13 14 15 16 17 18 19 20
+                        </div>
+                    </details>
+                </div>
+            </div>
         </div>
     </main>
     <!-- //main -->
@@ -479,6 +542,40 @@ for( let i=0; i&lt;num.length; i++ ){
             //         document.write(j + "실행");
             //     }
             // }
+        // }
+
+        //11. break문       continue랑 같이 죽은 문법
+        //while문을 이용해서 1부터 20까지 출력
+        // {
+        //     let num = 1;
+
+        //     while(num <=20){
+        //         document.write(num);
+        //         num++;
+        //         break;
+        //     }
+        //     document.write("<br>")
+        // }
+        // //for문 이용
+        // {
+        //     for(let i=1; i<=20; i++){
+        //         document.write(i);
+        //         if(i==10){
+        //             break;          
+        //         }
+        //     }
+        // }
+
+        //12. continue문
+
+        //for문 이용
+        // {
+        //     for(let i=1; i<=20; i++){
+        //         if(i==10){
+        //             continue;
+        //         }
+        //         document.write(i);      //10 안나옴
+        //     }
         // }
     </script>
     <script src="assets/js/highlight.min.js"></script>

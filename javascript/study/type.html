@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dracula.css">
 </head>
+
 <body>
     <header id="header">
         <h1><a href="../index.html">Javascript</a></h1>
@@ -35,6 +37,7 @@
                 <li><a href="if.html">조건문</a></li>
                 <li><a href="type.html">데이터 타입</a></li>
                 <li><a href="function.html">함수</a></li>
+                <li><a href="var.html">전역변수/지역변수</a></li>
             </ul>
         </nav>
     </header>
@@ -51,7 +54,8 @@
             <h3 class="t_tit2">number(숫자) 데이터</h3>
             <p class="t_desc">number 데이터는 정수, 소수점, 지수를 표현할 수 있습니다.</p>
             <div class="t_box">
-                var num1 = 10; <br> var num2 = 10.5; <br> var num3 = le+2;<br> console.log(num1); &nbsp;&nbsp;&nbsp;&nbsp;//10<br>
+                var num1 = 10; <br> var num2 = 10.5; <br> var num3 = le+2;<br> console.log(num1);
+                &nbsp;&nbsp;&nbsp;&nbsp;//10<br>
                 console.log(num2); &nbsp;&nbsp;&nbsp;&nbsp;//10.5<br>console.log(num3); &nbsp;&nbsp;&nbsp;&nbsp;//100
             </div>
             <h3 class="t_tit2">string(문자) 데이터</h3>
@@ -63,10 +67,13 @@
                 <br>console.log(str3); &nbsp;&nbsp;&nbsp;&nbsp; //문자 안에 "문자"
             </div>
             <h3 class="t_tit2">boolean(논리) 데이터</h3>
-            <p class="t_desc">boolean 데이터는 true(참)와 false(거짓)의 값을 표현합니다. 즉, boolean 명령어는 변수의 값을 true나 false로 변환시켜주는 명령어입니다.</p>
+            <p class="t_desc">boolean 데이터는 true(참)와 false(거짓)의 값을 표현합니다. 즉, boolean 명령어는 변수의 값을 true나 false로 변환시켜주는
+                명령어입니다.</p>
             <div class="t_box">
                 var temp1 = ( 5 &lt; 4 );<br>
-                var temp2 = 0; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //0의 boolean은 false를, 1의 boolean은 true를 의미합니다.<br>
+                var temp2 = 0;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //0의 boolean은
+                false를, 1의 boolean은 true를 의미합니다.<br>
                 console.log(temp1); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //true<br>
                 console.log(Boolean(temp2)); &nbsp;&nbsp;&nbsp;&nbsp; //false
             </div>
@@ -106,4 +113,5 @@
         hljs.highlightAll();
     </script>
 </body>
+
 </html>
