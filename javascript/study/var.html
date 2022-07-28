@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dracula.css">
 </head>
+
 <body>
     <header id="header">
         <h1><a href="../index.html">Javascript</a></h1>
@@ -117,6 +119,9 @@
                 }<br>
                 document.write(num);&nbsp;&nbsp;&nbsp;&nbsp;//20
             </div>
+            <p class="t_desc">위 예시에 나타난 것처럼, 블록{} 안에서 let과 const로 선언된 변수는
+                블록 {}의 지역 변수로 인식합니다.</p>
+            <br>
             <div class="t_box">
                 <i>//함수의 전역 변수</i><br>
                 var sum1 = 10;<br>
@@ -150,6 +155,33 @@
                 }<br>
                 document.write('전역' + num2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//전역70
             </div>
+            <h3 class="t_tit2">var, let, const 비교 정리</h3>
+            <table class="t_table">
+                <thead>
+                    <tr>
+                        <th>변수 범위</td>
+                        <th>변수 선언</td>
+                        <th>특징</td>
+                    </tr>
+                    <tr>
+                        <td class="ce">함수 레벨 스코프</td>
+                        <td class="ce">var</td>
+                        <td>변수를 중복해서 선언할 수 있습니다.<br>
+                        함수 블록{} 내에서만 지역 변수가 존재합니다.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="ce">블록 레벨 스코프</td>
+                        <td class="ce">let</td>
+                        <td>var와 같지만 같은 블록{}에서는 이미 선언한 변수를 중복해서 선언할 수 없습니다.<br>
+                        블록{}, 제어문 블록{}에서도 지역 변수가 존재합니다.</td>
+                    </tr>
+                    <tr>
+                        <td class="ce">const</td>
+                        <td>같은 블록{}에서는 이미 선언한 변수를 중복해서 선언할 수 없고 저장된 값을 변경할 수도 없습니다.<br>
+                        블록{}, 제어문 블록{}에서도 지역 변수가 존재합니다.</td>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </main>
     <!-- //main -->
