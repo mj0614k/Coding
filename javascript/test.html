@@ -1,100 +1,94 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testpage</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        #wrap{
-            width:1200px;
-            margin: 0 auto;
-        }
-        #header{
-            height:100px;
-            background-color: #C8E6C9;
-        }
-        #nav{
-            height: 100px;
-            background-color: #A5D6A7;
-        }
-        #aside{
-            width:25%;
-            height: 780px;
-            background-color: #81C784;
-        }
-        #section{
-            width: 50%;
-            height: 780px;
-            background-color: #66BB6A;
-        }
-        #section2{
-            width: 25%;
-            height: 780px;
-            background-color: #4CAF50;
-        }
-        #footer{
-            height: 100px;
-            background-color: #43A047;
-        }
-        #wrap .contents{
-            display:flex;
-            flex-wrap: wrap;
-        }
-
-        @media(max-width:1300px){
-            #wrap{
-                width:96%;
-            }
-        }
-        @media(max-width:768px){
-            #wrap{
-                width:100%;
-            }
-            #aside{
-                width:30%;
-                height:630px;
-            }
-            #section{
-                width:70%;
-                height: 630px;
-            }
-            #section2{
-                width:100%;
-                height:100px;
-            }
-        }
-        @media(max-width:480px){
-            #aside{
-                width:100%;
-                height:200px;
-            }
-            #section{
-                width:100%;
-                height: 430px;
-            }
-            #section2{
-                width:100%;
-                height:150px;
-            }
-        }
-
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div id="wrap">
-        <div id="header"></div>
-        <div id="nav"></div>
-        <div class="contents">
-            <div id="aside"></div>
-            <div id="section"></div>
-            <div id="section2"></div>
-        </div>
-        <div id="footer"></div>
-    </div>
+    <script>
+        //01. 선언적 함수
+        {
+            function func(){
+                document.write("출력1");
+            }
+            func();
+        }
+        //02. 익명 함수
+        {
+            const func = function(){
+                document.write("출력2");
+            }
+            func();
+        }
+        //03. 매개변수 함수
+        {
+            function func(str){
+                document.write(str);
+            }
+            func("출력3");
+        }
+        //04. 리턴값 함수
+        {
+            function func(){
+                const str=("출력4");
+                return str;
+            }
+            document.write(func());
+        }
+        //05. 선언적 함수->화살표 함수
+        {
+            // function func(){
+            //     document.write("출력5");
+            // }
+            // func();
+
+            func=()=>document.write("출력5");
+            func();
+        }
+        //06. 익명 함수->화살표 함수
+        {
+            // const func = function(){
+            //     document.write("출력6");
+            // }
+            // func();
+            
+            const func=()=>document.write("출력6");
+            func();
+        }
+        //07. 매개변수 함수->화살표 함수
+        {
+            // function func(str){
+            //     document.write(str);
+            // }
+            // func("출력7");
+
+            func=str=>document.write("출력7")
+            func();
+        }
+        //08. 리턴값 함수->화살표 함수
+        {
+            // function func(){
+            //     const str=("출력8");
+            //     return str;
+            // }
+            // document.write(func());
+
+            func=()=>{
+                const str=("출력8<br>");
+                return str;
+            }
+            document.write(func());
+        }
+
+        {
+            for(i=1; i<=10; i++){
+                document.write("<span style='color:red'>"+i+"</span>")
+            } for(i=2; i<=10; i+=2){
+                document.write("<span style='color:blue'>"+i+"</span>")
+            }
+        }
+    </script>
 </body>
 </html>
