@@ -53,16 +53,15 @@
             </p>
             <hr>
             <h3 class="t_tit2">전역 변수와 지역 변수 선언 위치</h3>
-            <div class="t_box">
-                <i>var kor = 90;</i><br>
-                function getScore() {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<i>kor = 100;</i>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //전역 변수
-                <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;document.write(kor); &nbsp;&nbsp;&nbsp;&nbsp; //100 <br>
-                }<br>
-                getScore();<br>
-                document.write(kor); &nbsp;&nbsp;&nbsp;&nbsp; //100
+            <div class="t_code">
+                <pre><code class="language-js">var kor = 90;
+function getScore() {
+    kor = 100;              //전역 변수
+    document.write(kor);     //100 
+}
+getScore();
+document.write(kor);         //100
+</code></pre>
             </div>
             <div class="t_desc">
                 위의 예시에서 함수 블록{} 안에 있는 kor 변수는 전역 변수입니다.
@@ -70,15 +69,14 @@
                 바뀌게 됩니다.
             </div>
             <br>
-            <div class="t_box">
-                <i>var kor = 90;</i><br>
-                function getScore() {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<i>var kor = 100;</i>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//지역 변수 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;document.write(kor); &nbsp;&nbsp;&nbsp;&nbsp; //100 <br>
-                }<br>
-                getScore();<br>
-                document.write(kor); &nbsp;&nbsp;&nbsp;&nbsp; //100
+            <div class="t_code">
+                <pre><code class="language-js">var kor = 90;
+function getScore() {
+    var kor = 100;            //지역 변수
+    document.write(kor);      //100
+}
+getScore();
+document.write(kor);      //100</code></pre>
             </div>
             <div class="t_desc">
                 위의 예시에서는 함수 블록{} 안의 kor 변수를 var로 정의했습니다. 함수 블록{} 안에서
@@ -92,69 +90,64 @@
                 존재하지 않습니다. ECMAScript 2015(ES6)에서 새로 추가된 <i>let</i>과 <i>const</i>는 블록{}이나
                 제어문 블록{}에서도 지역 변수를 선언할 수 있습니다.
             </div>
-            <div class="t_box">
-                <i>var num = 10;</i><br>
-                {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;var num =
-                20;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//num은 전역 변수<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;document.write(num);&nbsp;&nbsp;&nbsp;&nbsp;//20<br>
-                }<br>
-                document.write(num);&nbsp;&nbsp;&nbsp;&nbsp;//20
+            <div class="t_code">
+                <pre><code class="language-js">let num = 10;
+{
+    let num = 20;            //num은 지역 변수
+    document.write(num);    //20
+}
+document.write(num);    //20</code></pre>
             </div>
-            <div class="t_box">
-                <i>let num = 10;</i><br>
-                {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;let num =
-                20;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//num은 지역 변수<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;document.write(num);&nbsp;&nbsp;&nbsp;&nbsp;//20<br>
-                }<br>
-                document.write(num);&nbsp;&nbsp;&nbsp;&nbsp;//20
+            <div class="t_code">
+                <pre><code class="language-js">var num = 10;
+{
+    var num = 20;            //num은 전역 변수
+    document.write(num);    //20
+}
+document.write(num);    //20</code></pre>
             </div>
-            <div class="t_box">
-                <i>const num = 10;</i><br>
-                {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;const num =
-                20;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//num은 지역 변수<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;document.write(num);&nbsp;&nbsp;&nbsp;&nbsp;//20<br>
-                }<br>
-                document.write(num);&nbsp;&nbsp;&nbsp;&nbsp;//20
+            <div class="t_code">
+                <pre><code class="language-js">const num = 10;
+{
+    const num = 20;          //num은 지역 변수
+    document.write(num);    //20
+}
+document.write(num);    //20</code></pre>
             </div>
             <p class="t_desc">위 예시에 나타난 것처럼, 블록{} 안에서 let과 const로 선언된 변수는
                 블록 {}의 지역 변수로 인식합니다.</p>
             <br>
-            <div class="t_box">
-                <i>//함수의 전역 변수</i><br>
-                var sum1 = 10;<br>
-                function add1() {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;sum1 = 20;<br>
-                }<br>
-                add1();<br>
-                document.write('전역' + sum1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//전역20<br><br>
+            <div class="t_code">
+                <pre><code class="language-js">//함수의 전역 변수
+var sum1 = 10;
+function add1() {
+    sum1 = 20;
+}
+add1();
+document.write('전역' + sum1);        //전역20
 
-                <i>//함수의 지역 변수</i><br>
-                var sum2 = 30;<br>
-                function add2() { <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;var sum2 = 40;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;document.write('지역' +
-                sum2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//지역40<br>
-                }<br>
-                add2();<br>
-                document.write('전역' + sum2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//전역30<br><br>
+//함수의 지역 변수
+var sum2 = 30;
+function add2() {
+    var sum2 = 40;
+    document.write('지역' + sum2);        //지역40
+}
+add2();
+document.write('전역' + sum2);        //전역30
 
-                <i>//블록의 지역 변수</i><br>
-                var num1 = 50;<br>
-                if (num1 === 50) {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;var num1 = 60;<br>
-                }<br>
-                document.write('전역' + num1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//전역60<br><br>
-                let num2 = 70;<br>
-                if (num2 === 70) {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;let num2 = 80;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;document.write('지역' +
-                num2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//지역80<br>
-                }<br>
-                document.write('전역' + num2);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//전역70
-            </div>
+//블록의 지역 변수
+var num1 = 50;
+if (num1 === 50) {
+    var num1 = 60;
+}
+document.write('전역' + num1);        //전역60
+
+let num2 = 70;
+if (num2 === 70) {
+    let num2 = 80;
+    document.write('지역' + num2);        //지역80
+}
+document.write('전역' + num2);        //전역70</code></pre></div>
             <h3 class="t_tit2">var, let, const 비교 정리</h3>
             <table class="t_table">
                 <thead>
@@ -167,18 +160,18 @@
                         <td class="ce">함수 레벨 스코프</td>
                         <td class="ce">var</td>
                         <td>변수를 중복해서 선언할 수 있습니다.<br>
-                        함수 블록{} 내에서만 지역 변수가 존재합니다.</td>
+                            함수 블록{} 내에서만 지역 변수가 존재합니다.</td>
                     </tr>
                     <tr>
                         <td rowspan="2" class="ce">블록 레벨 스코프</td>
                         <td class="ce">let</td>
                         <td>var와 같지만 같은 블록{}에서는 이미 선언한 변수를 중복해서 선언할 수 없습니다.<br>
-                        블록{}, 제어문 블록{}에서도 지역 변수가 존재합니다.</td>
+                            블록{}, 제어문 블록{}에서도 지역 변수가 존재합니다.</td>
                     </tr>
                     <tr>
                         <td class="ce">const</td>
                         <td>같은 블록{}에서는 이미 선언한 변수를 중복해서 선언할 수 없고 저장된 값을 변경할 수도 없습니다.<br>
-                        블록{}, 제어문 블록{}에서도 지역 변수가 존재합니다.</td>
+                            블록{}, 제어문 블록{}에서도 지역 변수가 존재합니다.</td>
                     </tr>
                 </thead>
             </table>
