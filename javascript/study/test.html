@@ -4,27 +4,44 @@ const quizNumber = document.querySelector(".quiz__question .number");       // �
 const quizAsk = document.querySelector(".quiz__question .ask");             // 퀴즈 질문
 const quizConfirm = document.querySelector(".quiz__answer .confirm");       // 정답 확인 버튼
 const quizResult = document.querySelector(".quiz__answer .result");         // 정답 결과
-const quizDog = document.querySelector(".quiz__view .dog");                 // 강아지
-    
+const quizInput = document.querySelector(".quiz__answer .input");           // 사용자 입력값
+const quizView = document.querySelector(".quiz__view");                     // 강아지
+
 // 문제 정보
 const answerType = "웹디자인기능사";
-const answerNum = 1;
-const answerAsk = "인접하는 두 색의 경계 부분에 색상, 명도, 채도의 대비가 더욱 강하게 일어나는 현상을 무엇이라고 하는가?";
-const answerResult = "연변대비";
+const answerNum = "2";
+const answerAsk = "기업의 새로운 이념 구축에 필요한 이미지와 커뮤니케이션 시스템을 의도적, 계획적으로 만들어내는 기업 이미지 통합 전략은 무엇인가?";
+let answerResult = "CIP";       // 아래에서 값을 변경하기 때문에 const가 아닌 let으로 선언
 
 // 문제 출력
 quizType.innerText = answerType;
 quizNumber.innerText = answerNum + ". ";
 quizAsk.innerText = answerAsk;
-quizResult.innerHTML = answerResult;
+quizResult.innerText = "정답은 " + answerResult.toLowerCase() + "입니다.";
 
 // 정답 숨기기
 quizResult.style.display = "none";
 
 // 정답 확인
-// 정답 버튼을 클릭하면 확인 버튼 숨기고, 숨겨진 정답 나타내기
-// 정답을 확인하면 강아지가 웃음 -> 클래스 like를 추가함
-quizConfirm.addEventListener("click", function(){
-    quizConfirm.style.display = "none";
-    quizResult.style.display = "block";
+quizConfirm.addEventListener("click", () => {       // 정답 버튼을 클릭했을 때
+quizInput.style.display = "none";
+quizResult.style.display = "block";
+quizConfirm.style.display = "none";
+
+// 사용자 입력값
+const userWord = quizInput.value.toLowerCase().trim();       // 소문자 전환, 여백
+answerResult = answerResult.toLowerCase().trim();
+console.log(userWord)
+console.log(quizResult)
+
+// 사용자 입력값 == 문제의 정답
+if (userWord == answerResult) {
+    // 정답
+    quizView.classList.add("like");
+    // alert("정답입니다.")
+} else {
+    // 오답
+    quizView.classList.add("dislike");
+    // alert("오답입니다.")
+    }
 });
