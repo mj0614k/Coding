@@ -117,10 +117,11 @@ body {
 /* quiz__wrap */
 .quiz__wrap {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     margin-top: 50px;
     margin-bottom: 150px;
+    flex-wrap:wrap;
 }
 
 .quiz {
@@ -168,6 +169,7 @@ body {
     border: 6px ridge #cacaca;
     width: 100%;
     font-size: 22px;
+    font-weight: 1000;
     padding: 13px 20px;
     font-family: 'GoYang';
     background-color: #d6d6d6;

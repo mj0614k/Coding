@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,87 +8,18 @@
 </head>
 <body>
     <script>
-        //01. 선언적 함수
-        {
-            function func(){
-                document.write("출력1");
-            }
-            func();
-        }
-        //02. 익명 함수
-        {
-            const func = function(){
-                document.write("출력2");
-            }
-            func();
-        }
-        //03. 매개변수 함수
-        {
-            function func(str){
-                document.write(str);
-            }
-            func("출력3");
-        }
-        //04. 리턴값 함수
-        {
-            function func(){
-                const str=("출력4");
-                return str;
-            }
-            document.write(func());
-        }
-        //05. 선언적 함수->화살표 함수
-        {
-            // function func(){
-            //     document.write("출력5");
-            // }
-            // func();
+        const arr = ["무엇인가요", "무엇", "일까요", 4, 5, 6, 7, 8, 9];
 
-            func=()=>document.write("출력5");
-            func();
-        }
-        //06. 익명 함수->화살표 함수
-        {
-            // const func = function(){
-            //     document.write("출력6");
-            // }
-            // func();
-            
-            const func=()=>document.write("출력6");
-            func();
-        }
-        //07. 매개변수 함수->화살표 함수
-        {
-            // function func(str){
-            //     document.write(str);
-            // }
-            // func("출력7");
-
-            func=str=>document.write("출력7")
-            func();
-        }
-        //08. 리턴값 함수->화살표 함수
-        {
-            // function func(){
-            //     const str=("출력8");
-            //     return str;
-            // }
-            // document.write(func());
-
-            func=()=>{
-                const str=("출력8<br>");
-                return str;
-            }
-            document.write(func());
+        //for문
+        for(let i=0; i<9; i++){
+            document.write(arr[i], "<br>");
         }
 
-        {
-            for(i=1; i<=10; i++){
-                document.write("<span style='color:red'>"+i+"</span>")
-            } for(i=2; i<=10; i+=2){
-                document.write("<span style='color:blue'>"+i+"</span>")
-            }
-        }
+        document.write("<br>")
+
+        arr.forEach(function(e, i, a){
+            document.write(e, "<br>")
+        })
     </script>
 </body>
 </html>
