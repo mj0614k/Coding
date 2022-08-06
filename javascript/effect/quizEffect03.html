@@ -240,36 +240,36 @@
         // }
 
         // for문으로 출력하기
-        // for(let i=0; i<quizInfo.length; i++){
-        //     quizType[i].textContent = quizInfo[i].answerType     // 출제 시기
-        //     quizNumber[i].textContent = quizInfo[i].answerNum + "."     // 문제 번호
-        //     quizAsk[i].textContent = quizInfo[i].answerAsk     //질문
-        //     quizResult[i].textContent = quizInfo[i].answerResult     //정답
-        // }
-
-        // forEach문으로 출력하기
-        quizInfo.forEach(function(e, i){
+        for(let i=0; i<quizInfo.length; i++){
             quizType[i].textContent = quizInfo[i].answerType     // 출제 시기
             quizNumber[i].textContent = quizInfo[i].answerNum + "."     // 문제 번호
             quizAsk[i].textContent = quizInfo[i].answerAsk     //질문
             quizResult[i].textContent = quizInfo[i].answerResult     //정답
-        })
+        }
+
+        // // forEach문으로 출력하기
+        // quizInfo.forEach(function(e, i){
+        //     quizType[i].textContent = quizInfo[i].answerType     // 출제 시기
+        //     quizNumber[i].textContent = quizInfo[i].answerNum + "."     // 문제 번호
+        //     quizAsk[i].textContent = quizInfo[i].answerAsk     //질문
+        //     quizResult[i].textContent = quizInfo[i].answerResult     //정답
+        // })
 
         // 정답 숨기기
-        // quizResult[0].style.display = "none";
-        // quizResult[1].style.display = "none";
-        // quizResult[2].style.display = "none";
-        // quizResult[3].style.display = "none";
+        quizResult[0].style.display = "none";
+        quizResult[1].style.display = "none";
+        quizResult[2].style.display = "none";
+        quizResult[3].style.display = "none";
 
-        // for문으로 정답 숨기기
+        // // for문으로 정답 숨기기
         // for(let i=0; i<quizInfo.length; i++){
         //     quizResult[i].style.display = "none";
         // }
 
-        // forEach문으로 정답 숨기기
-        quizInfo.forEach(function(e, i){
-            quizResult[i].style.display = "none";
-        })
+        // // forEach문으로 정답 숨기기
+        // quizInfo.forEach(function(e, i){
+        //     quizResult[i].style.display = "none";
+        // })
         
         // 정답 확인하기       버튼이 여러 개 있으므로, 알려주기 위해 for문 혹은 forEach문을 사용해야함 for문은 복잡해서 forEach 추천
         // quizConfirm.addEventListener("click", () => {
