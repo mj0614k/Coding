@@ -44,6 +44,7 @@ const quizView = document.querySelector(".quiz__view");                     // �
 const quizSelects = document.querySelector(".quiz__selects")                // 객관식 보기
 const quizChoice = quizSelects.querySelectorAll(".choice")                     // 객관식 보기
 const quizSelect = quizSelects.querySelectorAll(".select")                     // 객관식 보기
+    // 객관식 보기는 4개씩 존재하기 때문에 querySelectorAll 사용
                 
 // 문제 정보
 const quizInfo = [
@@ -58,49 +59,48 @@ const quizInfo = [
 ]
             
 // 문제 출력
-function updateQuiz(){
+function updateQuiz(){    // 충돌을 방지하기 위해 함수 내에서 작업하였음
     quizType.textContent = quizInfo[0].answerType;
     quizNumber.textContent = quizInfo[0].answerNum + ". ";
     quizAsk.textContent = quizInfo[0].answerAsk;
     quizResult.textContent = quizInfo[0].answerEx;
-            
+
     // 보기 출력
     for(let i=0; i&lt;4; i++){
         quizChoice[i].textContent = quizInfo[0].answerChoice[i];
     }
-            
-        // 해설 숨기기
-        quizResult.style.display = "none";
-    }
-    updateQuiz();
-            
-    // 정답 확인
-    function answerQuiz(){
-        // 사용자 선택값과 정답 비교
-        // 사용자가 선택한 input --> checked로 확인
-            
-        for(let i=0; i&lt;quizSelect.length; i++){
-            if(quizSelect[i].checked == true){  // 보기에 체크가 된 상태
-                // 체크된 번호와 문제 번호 비교
-                if(quizSelect[i].value == quizInfo[0].answerResult){
-                    // alert("정답입니다")
-                    quizView.classList.add("like");
-                    quizConfirm.style.display = "none";
-                } else {
-                    // alert("오답입니다")
-                    quizView.classList.add("dislike");
-                    quizResult.style.display = "block";
-                    quizConfirm.style.display = "none";
-                }
+
+    // 해설 숨기기
+    quizResult.style.display = "none";
+}
+updateQuiz();    // 함수 실행
+
+// 정답 확인
+function answerQuiz(){
+    // 사용자 선택값과 정답 비교
+    // 사용자가 선택한 input --> checked로 확인
+
+    for(let i=0; i&lt;quizSelect.length; i++){
+        if(quizSelect[i].checked == true){  // 보기에 체크가 된 상태
+            // 체크된 번호와 문제 번호 비교
+            if(quizSelect[i].value == quizInfo[0].answerResult){
+                // alert("정답입니다") : 강아지 모션 추가, 버튼 숨김
+                quizView.classList.add("like");
+                quizConfirm.style.display = "none";
+            } else {
+                // alert("오답입니다") : 강아지 모션 추가, 설명 추가, 버튼 숨김
+                quizView.classList.add("dislike");
+                quizResult.style.display = "block";
+                quizConfirm.style.display = "none";
             }
         }
     }
-            
-// 정답 클릭
+}
+
+// 확인하기 버튼을 클릭했을 때 함수 실행
 quizConfirm.addEventListener("click", answerQuiz);
 </code></pre>
             </div>
-
             <div class="t_link">
                 <a href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/quizEffect04.html">원본 소스 보기</a>
             </div>
