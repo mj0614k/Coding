@@ -194,13 +194,17 @@ body {
     text-align: center;
 }
 
+.document .t_link {
+    display : flex;
+    justify-content: center
+}
+
 .document .t_link a{
-    display: block;
     width: 200px;
     background-color: #f5f5f5;
-    margin: 40px auto;
     border-radius: 5px;
     text-align: center;
+    margin: 40px;
     padding: 10px;
     transition: all 0.3s;
 }
