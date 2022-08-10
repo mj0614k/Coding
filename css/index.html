@@ -8017,8 +8017,8 @@
                                     <tr>
                                         <td rowspan="4">계층 선택자</td>
                                         <td>하위 선택자</td>
-                                        <td class="left">* {margin: 0}</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td class="left">div p {color: #fff;}</td>
+                                        <td class="left">div 태그 내부에 있는 모든 p 태그를 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8034,8 +8034,8 @@
                                     </tr>
                                     <tr>
                                         <td>자식 선택자</td>
-                                        <td class="left">* {margin: 0}</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td class="left">div > p {color: #fff;}</td>
+                                        <td class="left">div 태그의 하위 요소인 p 태그만을 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8047,11 +8047,12 @@
                                         </span><span class="material-symbols-outlined">
                                             grade
                                         </span></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>형제 선택자</td>
-                                        <td class="left">* {margin: 0}</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td class="left">div ~ p {color: #fff;}</td>
+                                        <td class="left">div 태그와 같은 계층에 있는 p 태그만을 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8067,7 +8068,25 @@
                                     </tr>
                                     <tr>
                                         <td>인접 선택자</td>
-                                        <td class="left">* {margin: 0}</td>
+                                        <td class="left">div + p {color: #fff;}</td>
+                                        <td class="left">div 태그의 바로 다음에 나오는 p 태그만을 선택하여 글씨 색을 흰색으로 변경합니다.</td>
+                                        <td><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            grade
+                                        </span><span class="material-symbols-outlined">
+                                            grade
+                                        </span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="9">속성 선택자</td>
+                                        <td>[name]</td>
+                                        <td class="left">a[href]</td>
                                         <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
@@ -8083,9 +8102,25 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="7">속성 선택자</td>
-                                        <td>[name]</td>
-                                        <td class="left">* {margin: 0}</td>
+                                        <td>[name="value"]</td>
+                                        <td class="left">a[href="#web"]</td>
+                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            grade
+                                        </span><span class="material-symbols-outlined">
+                                            grade
+                                        </span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>[name="value"]</td>
+                                        <td class="left">a[href="#web"]</td>
                                         <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
@@ -8204,9 +8239,9 @@
                                     </tr>
                                     <tr>
                                         <td rowspan="5">가상 요소</td>
-                                        <td>a:link</td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>::first-line</td>
+                                        <td class="left">p::first-line {color: #fff;}</td>
+                                        <td class="left">p 태그의 첫번째 라인을 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8221,9 +8256,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>a:link</td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>::first-letter</td>
+                                        <td class="left">p::first-letter {color: #fff;}</td>
+                                        <td class="left">p 태그의 첫번째 문자를 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8238,9 +8273,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>a:link</td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>::before</td>
+                                        <td class="left">p::before {content: '시작'}</td>
+                                        <td class="left">p 태그의 시작 지점에 가상 요소를 생성 및 선택하여 content '시작'을 추가합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8255,9 +8290,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>a:link</td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>::after</td>
+                                        <td class="left">p::after {content: '끝'}</td>
+                                        <td class="left">p 태그의 끝 지점에 가상 요소를 생성 및 선택하여 content '끝'을 추가합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8272,9 +8307,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>a:link</td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>::selection</td>
+                                        <td class="left">p::selection {color:red}</td>
+                                        <td class="left">p 태그 안에서 드래그한 영역의 글씨 색을 빨간색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8290,9 +8325,9 @@
                                     </tr>
                                     <tr>
                                         <td rowspan="13">가상 클래스</td>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:first-child</td>
+                                        <td class="left">li:first-child {color: #fff;}</td>
+                                        <td class="left">li의 첫번째 자식만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8307,9 +8342,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:last-child</td>
+                                        <td class="left">li:last-child {color: #fff;}</td>
+                                        <td class="left">li의 마지막 자식만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8324,9 +8359,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:first-of-type</td>
+                                        <td class="left">p:first-of-type {color: #fff;}</td>
+                                        <td class="left">p 태그 중 첫번째 p만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8341,9 +8376,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:last-of-type</td>
+                                        <td class="left">p:last-of-type {color: #fff;}</td>
+                                        <td class="left">p 태그 중 마지막 p만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8358,9 +8393,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:nth-child()</td>
+                                        <td class="left">p:nth-chile(2) {color: #fff;}</td>
+                                        <td class="left">p 태그의 앞에서 두번째 자식만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8375,9 +8410,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:nth-last-child()</td>
+                                        <td class="left">p:nth-last-chile(2) {color: #fff;}</td>
+                                        <td class="left">p 태그의 뒤에서 두번째 자식만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8392,9 +8427,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:nth-of-type()</td>
+                                        <td class="left">p:nth-of-type(3) {color: #fff;}</td>
+                                        <td class="left">p 태그 중 앞에서 세번째 p만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8409,9 +8444,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:nth-last-of-type</td>
+                                        <td class="left">p:nth-last-of-type(3) {color: #fff;}</td>
+                                        <td class="left">p 태그 중 뒤에서 세번째 p만 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8426,9 +8461,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:only-child</td>
+                                        <td class="left">p:only-child {color: #fff;}</td>
+                                        <td class="left">p 태그가 유일한 자식이면, 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8443,9 +8478,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:only-of-type()</td>
+                                        <td class="left">p:only-of-type(3) {color: #fff;}</td>
+                                        <td class="left">p 태그가 유일한 p 태그이면, 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8460,9 +8495,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:not()</td>
+                                        <td class="left">li:not(:nth-child(2)) {color: #fff;}</td>
+                                        <td class="left">li 태그의 자식 중 앞에서 두번째 자식만 빼고 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8477,9 +8512,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:root</td>
+                                        <td class="left">:root {color: #fff;}</td>
+                                        <td class="left">문서상 최상위 요소(html)를 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8494,9 +8529,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:empty</td>
+                                        <td class="left">:empty {color: #fff;}</td>
+                                        <td class="left">텍스트 및 공백을 포함하여 내용이 없는 태그를 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8511,10 +8546,10 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="5">링크 가상 선택자</td>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td rowspan="4">링크 가상 선택자</td>
+                                        <td>:link</td>
+                                        <td class="left">a:link {color: #fff;}</td>
+                                        <td class="left">방문하지 않은 링크를 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8529,9 +8564,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:visited</td>
+                                        <td class="left">a:visited {color: #fff;}</td>
+                                        <td class="left">방문했던 링크를 선택하여 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8546,9 +8581,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:hover</td>
+                                        <td class="left">a:hover {color: #fff;}</td>
+                                        <td class="left">마우스를 a 태그 위에 올린 상태일 때, 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8556,16 +8591,16 @@
                                         </span><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
-                                            grade
+                                            star
                                         </span><span class="material-symbols-outlined">
-                                            grade
+                                            star
                                         </span></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td>:active</td>
+                                        <td class="left">a:active {color: #fff;}</td>
+                                        <td class="left">a 태그를 마우스로 클릭한 상태일 때, 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8573,17 +8608,17 @@
                                         </span><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
-                                            grade
+                                            star
                                         </span><span class="material-symbols-outlined">
-                                            grade
+                                            star
                                         </span></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="4"></td>
-                                        <td></td>
-                                        <td class="left">a[href="#web"]</td>
-                                        <td class="left">전체 태그를 선택하여 바깥쪽 여백을 0으로 설정합니다.</td>
+                                        <td rowspan="4">폼 선택자</td>
+                                        <td>:checked</td>
+                                        <td class="left">input:checked {color: #fff;}</td>
+                                        <td class="left">input 박스가 체크되었을 때, 글씨 색을 흰색으로 변경합니다.</td>
                                         <td><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
@@ -8591,9 +8626,60 @@
                                         </span><span class="material-symbols-outlined">
                                             star
                                         </span><span class="material-symbols-outlined">
-                                            grade
+                                            star
                                         </span><span class="material-symbols-outlined">
-                                            grade
+                                            star
+                                        </span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>:focus</td>
+                                        <td class="left">input:focus {color: #fff;}</td>
+                                        <td class="left">input 박스에 초점(커서 생성)이 맞춰졌을 때, 글씨 색을 흰색으로 변경합니다.</td>
+                                        <td><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>:enabled</td>
+                                        <td class="left">input:enabled {color: #fff;}</td>
+                                        <td class="left">input 박스가 사용 가능할 때, 글씨 색을 흰색으로 변경합니다.</td>
+                                        <td><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>:disabled</td>
+                                        <td class="left">input:disabled {color: #fff;}</td>
+                                        <td class="left">input 박스가 사용 불가능할 때, 글씨 색을 흰색으로 변경합니다.</td>
+                                        <td><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
+                                        </span><span class="material-symbols-outlined">
+                                            star
                                         </span></td>
                                         <td></td>
                                     </tr>

@@ -25,19 +25,29 @@
             </p>
             <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F92SOL7VtARlBSJXSH9enur%2F%25EC%2582%25AC%25EC%259D%25B4%25ED%258A%25B8-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0%3Fnode-id%3D204%253A2" allowfullscreen></iframe>
             <h2 class="t_tit2">CSS 소스</h2>
+            <p class="t_desc">ir 효과는 글자를 시각적으로 보이지 않게 작업해주고 있지만, 스크린 리더기에서 글자가 읽히게 해 줌으로써 웹 표준을 준수할 수 있습니다.</p>
             <div class="t_code">
-                <pre><code class="language-css">/* font */
+                <pre><code class="language-css">/* fonts */
 @import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
 
-.gmarket {
+.gmark {
     font-family: 'GmarketSans';
-    font-weight: 200;
+    font-weight: 500;
 }
 
 /* reset */
 * {
     margin: 0;
     padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    width: 100%;
 }
 
 h1,
@@ -54,6 +64,7 @@ h6 {
     width: 1160px;
     padding: 0 20px;
     margin: 0 auto;
+    min-width:1160px;
 }
 
 .section {
@@ -63,295 +74,144 @@ h6 {
 .section>h2 {
     font-size: 50px;
     line-height: 1;
-    margin-bottom: 20px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .section>p {
     font-size: 22px;
-    line-height: 1.4;
-    color: #666666;
-    margin-bottom: 70px;
+    font-weight: 300;
+    color: #666;
     text-align: center;
+    margin-bottom: 70px;
 }
 
-.container .card {
-    width: 23.7%;
-    margin-bottom: 50px;
+.gray {
+    background-color: #f5f5f5;
 }
 
-/* cardType */
+/* ir 효과(이미지 대체 효과 == alt) */
+.ir {
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+/* cardType02 */
 .card__inner {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.card-header {
-    width: 200px;
-    border-radius: 30%;
+.card__inner .card {
+    width: 24%;
+    position: relative;
 }
 
-.body__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.card__inner .card:first-child{
+    margin-bottom: 50px;
 }
 
-.body__header a {
-    margin-top: 5px;
+.card__inner .card img {
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
-.card__body h3 {
-    padding: 18px 0 10px;
+.card__inner .card .tit {
     font-size: 28px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 20px;
 }
 
-.card__body p {
+.card__inner .card .desc {
     font-size: 18px;
+    font-weight: 300;
+    color: #666;
     line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+}
+
+.card__inner .card .more{
+    width: 24px;
+    height: 24px;
+    background-image: url(img/card_arrow02.svg);
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 230px;
+    border-radius: 5px;
 }</code></pre></div>
 <h2 class="t_tit2">HTML 소스</h2>
-<p class="t_desc">컨테이너 안에 8개의 카드를 만들어, flex를 사용해 레이아웃을 작업했습니다.</p>
+<p class="t_desc">컨테이너 안에 8개의 카드를 만들어, flex를 사용해 레이아웃을 작업했습니다. '더보기' 글자는 보이지 않게
+    ir 효과를 주었습니다. </p>
 <div class="t_code">
-    <pre><code class="language-html">&lt;section id="cardType" class="gmarket section"&gt;
+    <pre><code class="language-html">&lt;section id="cardType02" class="card__wrap gmark section gray"&gt;
     &lt;h2&gt;세상의 맛있는 음식들&lt;/h2&gt;
-    &lt;p&gt;제목은 세상의 맛있는 음식들이라고 거창하게 지었지만,&lt;br&gt;
-        지금 당장 제가 먹고 싶은 음식들입니다.&lt;/p&gt;
+    &lt;p&gt;
+        제목은 세상의 맛있는 음식들이라고 거창하게 지었지만,&lt;br&gt;
+        지금 당장 제가 먹고 싶은 음식들입니다.
+    &lt;/p&gt;
     &lt;div class="card__inner container"&gt;
         &lt;article class="card"&gt;
-            &lt;figure class="card-header"&gt;
-                &lt;img src="img/card02_bg01.jpg" alt="치킨"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;치킨&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;img src="img/card02_bg01.jpg" alt="치킨"&gt;
+            &lt;h3 class="tit"&gt;치킨&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
         &lt;article class="card"&gt;
             &lt;img src="img/card02_bg02.jpg" alt="케이크"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;케이크&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;h3 class="tit"&gt;케이크&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
         &lt;article class="card"&gt;
-            &lt;figure class="card-header"&gt;
-                &lt;img src="img/card02_bg03.jpg" alt="파스타"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;파스타&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;img src="img/card02_bg03.jpg" alt="파스타"&gt;
+            &lt;h3 class="tit"&gt;파스타&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
         &lt;article class="card"&gt;
-            &lt;figure class="card-header"&gt;
-                &lt;img src="img/card02_bg04.jpg" alt="딸기 라떼"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;딸기 라떼&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;img src="img/card02_bg04.jpg" alt="딸기 라떼"&gt;
+            &lt;h3 class="tit"&gt;딸기 라떼&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
         &lt;article class="card"&gt;
-            &lt;figure class="card-header"&gt;
-                &lt;img src="img/card02_bg05.jpg" alt="햄버거"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;햄버거&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;img src="img/card02_bg05.jpg" alt="햄버거"&gt;
+            &lt;h3 class="tit"&gt;햄버거&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
         &lt;article class="card"&gt;
-            &lt;figure class="card-header"&gt;
-                &lt;img src="img/card02_bg06.jpg" alt="핫케이크"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;핫케이크&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;img src="img/card02_bg06.jpg" alt="핫케이크"&gt;
+            &lt;h3 class="tit"&gt;핫케이크&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
         &lt;article class="card"&gt;
-            &lt;figure class="card-header"&gt;
-                &lt;img src="img/card02_bg07.jpg" alt="피자"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;피자&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;img src="img/card02_bg07.jpg" alt="피자"&gt;
+            &lt;h3 class="tit"&gt;피자&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
         &lt;article class="card"&gt;
-            &lt;figure class="card-header"&gt;
-                &lt;img src="img/card02_bg08.jpg" alt="튀김"&gt;
-            &lt;/figure&gt;
-            &lt;div class="card__body"&gt;
-                &lt;div class="body__header"&gt;
-                    &lt;h3&gt;튀김&lt;/h3&gt;
-                    &lt;a class="brn" href="/"&gt;
-                        &lt;span aria-hidden="true"&gt;
-                            &lt;svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
-                                &lt;g clip-path="url(#clip0_278_69)"&gt;
-                                    &lt;rect width="28" height="28" rx="5" fill="#FF7D7D" /&gt;
-                                    &lt;path d="M7 12.75C6.30964 12.75 5.75 13.3096 5.75 14C5.75 14.6904 6.30964 15.25 7 15.25V12.75ZM22.8839 14.8839C23.372 14.3957 23.372 13.6043 22.8839 13.1161L14.9289 5.16117C14.4408 4.67301 13.6493 4.67301 13.1612 5.16117C12.673 5.64932 12.673 6.44078 13.1612 6.92893L20.2322 14L13.1612 21.0711C12.673 21.5592 12.673 22.3507 13.1612 22.8388C13.6493 23.327 14.4408 23.327 14.9289 22.8388L22.8839 14.8839ZM7 15.25H22V12.75H7V15.25Z" fill="white" /&gt;
-                                &lt;/g&gt;
-                                &lt;defs&gt;
-                                    &lt;clipPath id="clip0_278_69"&gt;
-                                        &lt;rect width="28" height="28" rx="5" fill="white" /&gt;
-                                    &lt;/clipPath&gt;
-                                &lt;/defs&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;p&gt;
-                    세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가...
-                &lt;/p&gt;
-            &lt;/div&gt;
+            &lt;img src="img/card02_bg08.jpg" alt="튀김"&gt;
+            &lt;h3 class="tit"&gt;튀김&lt;/h3&gt;
+            &lt;p class="desc"&gt;세상에는 맛있는 음식들이 참 많이 있습니다. 왜 지금은 아무것도 먹지 못하고 있는지 한스럽습니다. 배가 너무 고픈데요.&lt;/p&gt;
+            &lt;a href="#" class="more ir"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/a&gt;
         &lt;/article&gt;
     &lt;/div&gt;
-&lt;/section&gt;
-    </code></pre></div>
+&lt;/section&gt;</code></pre></div>
             <h2 class="t_tit2">결과</h2>
             <div class="t_iframe" style="min-height: 1000px; padding-top: 0px;">
                 <iframe src="https://mj0614k.github.io/Coding/site/cardType/cardType02.html"></iframe>
