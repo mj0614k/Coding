@@ -20,7 +20,6 @@ https://mj0614k.github.io/Coding/javascript/effect/quizEffect03.html
 https://mj0614k.github.io/Coding/javascript/effect/quizEffect04.html   
 
 ### HTML 메인 페이지
-https://mj0614k.github.io/Coding/html/index.html   
 https://mj0614k.github.io/Coding/html/alphabet.html
 
 ### CSS 메인 페이지
