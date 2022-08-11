@@ -288,6 +288,28 @@ body {
     box-shadow: inset 0px 0px 0px 10px rgb(230, 121, 20);
 }
 
+.quiz__confirm {
+    width: 100%;
+    text-align: center;
+}
+
+.quiz__confirm .check {
+    border: 6px ridge #cacaca;
+    font-size: 22px;
+    line-height: 1.3;
+    padding: 13px 60px;
+    font-family: 'GoYang';
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    margin: 40px 0;
+    transition: background 0.3s;
+}
+
+.quiz__confirm .check:hover {
+    background-color: rgb(255, 209, 169);
+}
+
 @keyframes wobble {
     0% {transform: translateX(0) rotate(0deg);}
     15% {transform: translateX(-25%) rotate(-5deg);}

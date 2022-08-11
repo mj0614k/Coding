@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트</title>
+    <link href="https://webfontworld.github.io/DungGeunMo/DungGeunMo.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/goyang/GoYang.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/quiz.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1><a href="../javascript01.html">Quiz </a><em>객관식 유형</em></h1>
+        <nav>
+            <ul>
+                <li><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li><a href="quizEffect04.html">4</a></li>
+                <li class="active"><a href="quizEffect05.html">5</a></li>
+                <li><a href="quizEffect06.html">6</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- // header -->
+
+    <main id="main">
+        <div class="quiz__wrap">
+        </div>
+    </main>
+    <!-- // main -->
+
+    <footer id="footer">
+        <a href="mailto:mo0647@naver.com">mo0647@naver.com</a>
+    </footer>
+    <!-- // footer -->
+
+    <script>
+        // const num = [100, 200, 300, 400, 500]
+
+        // num.forEach((el, i, a)=>{
+        //     document.querySelector(".quiz__wrap").textContent += el;
+        // })
+        
+        // 문제 정보
+        const quizInfo = [
+            {
+                answerType: "웹디자인기능사 2015년 2회",
+                answerNum: "1",
+                answerAsk: "일반적으로 환경 디자인의 종류에 해당하는 것은?",
+                answerChoice: {
+                    1: "가전제품 디자인",
+                    2: "스트리트 퍼니처 디자인",
+                    3: "기업이미지 디자인",
+                    4: "캘린더 디자인"
+                },
+                answerResult: "2",
+                answerEx: "스트리트 퍼니처 디자인은 환경 디자인의 종류에 해당합니다."
+            },
+            {
+                answerType: "웹디자인기능사 2015년 2회",
+                answerNum: "2",
+                answerAsk: "디자인의 원리에서 율동에 해당되는 것은?",
+                answerChoice: {
+                    1: "유사, 대비",
+                    2: "대칭, 비례",
+                    3: "통일, 변화",
+                    4: "점이, 반복"
+                },
+                answerResult: "4",
+                answerEx: "율동의 원리는 반복과 교차, 점이(점증), 방사가 있습니다."
+            },
+            {
+                answerType: "웹디자인기능사 2015년 2회",
+                answerNum: "3",
+                answerAsk: "불투명한 물체가 빛을 반사시킴으로써 나타나는 물체의 색을 의미하는 것은?",
+                answerChoice: {
+                    1: "광원색",
+                    2: "조명색",
+                    3: "경영색",
+                    4: "표면색"
+                },
+                answerResult: "4",
+                answerEx: "불투명한 물체가 빛을 반사시킴으로써 나타나는 물체의 색을 의미하는 것은 표면색입니다."
+            },
+            {
+                answerType: "웹디자인기능사 2015년 2회",
+                answerNum: "4",
+                answerAsk: "부분과 부분 또는 부분과 전체 사이에 안정된 관련성을 지니며 서로 함께 속해있는 것처럼 보이는 디자인 원리는?",
+                answerChoice: {
+                    1: "비례",
+                    2: "조화",
+                    3: "균형",
+                    4: "강조"
+                },
+                answerResult: "2",
+                answerEx: "부분과 부분 또는 부분과 전체 사이에 안정된 관련성을 지니며 서로 함께 속해있는 것처럼 보이는 디자인 원리는 조화입니다."
+            },
+            {
+                answerType: "웹디자인기능사 2015년 2회",
+                answerNum: "5",
+                answerAsk: "다음과 같은 형상이 나타내는 디자인 원리는?",
+                answerChoice: {
+                    1: "조화",
+                    2: "강조",
+                    3: "율동",
+                    4: "비대칭"
+                },
+                answerResult: "4",
+                answerEx: "그림은 대칭을 이루고 있지 못하는 형상입니다."
+            },
+            {
+                answerType: "웹디자인기능사 2015년 2회",
+                answerNum: "6",
+                answerAsk: "기업의 새로운 이념 구축에 필요한 이미지와 커뮤니케이션 시스템을 의도적, 계획적으로 만들어 내는 기업 이미지 통합 전략을 의미하는 것은?",
+                answerChoice: {
+                    1: "CIP",
+                    2: "POP",
+                    3: "Logo",
+                    4: "Symbol"
+                },
+                answerResult: "1",
+                answerEx: "기업의 새로운 이념 구축에 필요한 이미지와 커뮤니케이션 시스템을 의도적, 계획적으로 만들어 내는 기업 이미지 통합 전략을 의미하는 것은 CIP입니다.."
+            }
+        ]
+
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap")
+
+        function updateQuiz(){
+            const exam = [];
+
+            quizInfo.forEach((question, number)=>{
+                exam.push(`
+                    <div class="quiz">
+                        <span class="quiz__type">${question.answerType}</span>
+                        <h2 class="quiz__question">
+                            <span class="number">${question.answerNum}. </span>
+                            <div class="ask">${question.answerAsk}</div>
+                        </h2>
+                        <div class="quiz__view">
+                            <div class="true">정답입니다!</div>
+                            <div class="false">오답입니다!</div>
+                            <div class="dog">
+                                <div class="head">
+                                    <div class="ears"></div>
+                                    <div class="face"></div>
+                                    <div class="eyes">
+                                        <div class="teardrop"></div>
+                                    </div>
+                                    <div class="nose"></div>
+                                    <div class="mouth">
+                                        <div class="tongue"></div>
+                                    </div>
+                                    <div class="chin"></div>
+                                </div>
+                                <div class="body">
+                                    <div class="tail"></div>
+                                    <div class="legs"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz__answer">
+                            <div class="quiz__selects">
+                                <label for="select1${number}">
+                                    <input type="radio" class="select" id="select1${number}" name="select${number}" value="1">
+                                    <span class="choice">${question.answerChoice[1]}</span>
+                                </label>
+                                <label for="select2${number}">
+                                    <input type="radio" class="select" id="select2${number}" name="select${number}" value="2">
+                                    <span class="choice">${question.answerChoice[2]}</span>
+                                </label>
+                                <label for="select3${number}">
+                                    <input type="radio" class="select" id="select3${number}" name="select${number}" value="3">
+                                    <span class="choice">${question.answerChoice[3]}</span>
+                                </label>
+                                <label for="select4${number}">
+                                    <input type="radio" class="select" id="select4${number}" name="select${number}" value="4">
+                                    <span class="choice">${question.answerChoice[4]}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                `)
+            })
+            exam.push(`
+                <div class="quiz__confirm">
+                    <button class="check">정답 확인하기</button>
+                    <div class="ex"></div>
+                </div>`)
+
+            quizWrap.innerHTML = exam.join('')
+        }
+        updateQuiz();
+
+        // 정답 확인
+        function answerQuiz(){
+            const quizSelects = document.querySelectorAll(".quiz__selects")    // 보기
+            const quizView = document.querySelectorAll(".quiz__view")    // 강아지
+
+            // 사용자가 체크한 라디오 박스와 문제 정답 비교
+            quizInfo.forEach((question, number)=>{
+                const quizSelectsWrap = quizSelects[number];    // 전체 보기 박스
+                const userSelector = `input[name=select${number}]:checked`;    // 사용자가 클릭한 라디오 박스
+
+                console.log(quizSelectsWrap)
+            })
+
+        }
+        answerQuiz();
+        document.querySelector(".quiz__confirm .check").addEventListener("click", answerQuiz);
+        
+    </script>
+</body>
+
+</html>
