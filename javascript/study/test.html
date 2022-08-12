@@ -1,20 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>내장함수</title>
+    <script>
+        //1. 인코딩, 디코딩함수
+        var encodeStr = '자바스크립트';
+        console.log(encodeURIComponent(encodeStr));
+        var decodeStr = encodeURIComponent(encodeStr);
+        console.log(decodeURIComponent(decodeStr)); 
+        //자바스크립트
+
+        //2. 숫자, 유/무한 값 판별 함수
+        var num1 = '숫자';
+        if (!isNaN(num1)) {
+            console.log('숫자');
+        } else {
+            console.log('숫자아님')
+        }
+        var num2 = 1 / 0;
+        if (isFinite(num2)) {
+            console.log('유한값');
+        } else {
+            console.log('무한값');
+        }
+        //숫자아님, 무한값
+
+        //3. 숫자, 문자 변환 함수
+        var num3 = '10';
+        console.log(Number(num3));         //10
+        var num4 = '100px';
+        console.log(parseInt(num4));       //100
+        var num5 = '33.3%';
+        console.log(parseFloat(num5));     //33.3
+        var num6 = 10;
+        console.log(typeof num6);          //number
+        console.log(typeof String(num6));  //string
+
+        //4. 자바스크립트 코드 변경 함수
+        var str1 = 'var num7 = 10';
+        var str2 = 'var num8 = 20';
+        eval(str1);
+        eval(str2);
+        console.log(num7 + num8);
+    </script>
 </head>
 <body>
-    <script>
-        const arrNum = [100, 200, 300, 400, 500];
-const text1 = arrNum.join('')
-const text2 = arrNum.join(' ')
-const text3 = arrNum.join('★')
-const text4 = arrNum.join('-')
-
-document.write(text3)
-    </script>
+    
 </body>
 </html>

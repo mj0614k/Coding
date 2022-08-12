@@ -232,6 +232,9 @@ body{
 .document .t_table .ce{
     text-align: center;
 }
+.document .t_table .left{
+    text-align: left;
+}
 
 .document .t_iframe{
     position: relative;
