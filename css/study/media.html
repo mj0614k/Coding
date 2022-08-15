@@ -127,7 +127,7 @@
                 </tbody>
             </table>
             <div class="t_code">
-<pre><code class="language-css">body {color: red;}
+                <pre><code class="language-css">body {color: red;}
 @media only screen and (max-width: 768px) {
     body {color: blue;}
 }
@@ -141,7 +141,7 @@
                 작은 장치에서 페이지를 더 빠르게 표시되게 하려면 모바일 우선으로 설계합니다.
             </p>
             <div class="t_code">
-<pre><code class="language-css">body {color: blue;}
+                <pre><code class="language-css">body {color: blue;}
 @media only screen and (min-width: 768px) {
     body {color: red;}
 }
@@ -155,13 +155,13 @@
             <p class="t_desc">모바일과 태블릿, 그리고 PC의 경계를 768px, 1024px, 1280px로 하여
                 레이아웃이 달라지는 미디어쿼리를 실습해 보도록 하겠습니다. 레이아웃 템플릿은 Figma를 사용하여 다음과 같이 계획하였습니다.
             </p>
-
-
-
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FAKeQMu6bAhxrUrpKB0QAEH%2F%25EB%25A0%2588%25EC%259D%25B4%25EC%2595%2584%25EC%259B%2583%3Fnode-id%3D1512%253A2"
+                allowfullscreen></iframe>
             <details>
                 <summary>CSS 소스 보기</summary>
                 <div class="t_code">
-<pre><code class="language-css">h1,
+                    <pre><code class="language-css">h1,
 h2,
 ul,
 li,
@@ -269,13 +269,43 @@ footer {
                 </div>
             </details>
             <br>
-            <div class="t_iframe" style="min-height: 1000px; padding-top: 0px;">
-                <iframe src="https://mj0614k.github.io/Coding/html/structure_result.html"></iframe>
+            <p class="t_desc">결과는 다음과 같습니다.</p>
+            <div class="t_iframe" style="min-height: 400px; padding-top: 0px;">
+                <iframe src="https://mj0614k.github.io/Coding/css/study/media_result.html"></iframe>
             </div>
-            <!-- <div class="t_link">
-                <a href="https://github.com/mj0614k/Coding/blob/main/html/structure_result.html">원본 소스 보기</a>
-                <a href="https://mj0614k.github.io/Coding/html/structure_result">원본 사이트 보기</a>
-            </div> -->
+            <div class="t_link">
+                <a href="https://github.com/mj0614k/Coding/blob/main/css/study/media_result.html">원본 소스 보기</a>
+                <a href="https://mj0614k.github.io/Coding/css/study/media_result">원본 사이트 보기</a>
+            </div>
+            <hr>
+            <h2 class="t_tit2">미디어쿼리를 흉내내는 script</h2>
+            <div class="t_code">
+                <pre><code class="language-js">function initLayout() {
+    var widthWin = $(window).width();
+    if (widthWin &lt; 1000) $('body').addClass('mob').removeClass('pc');
+    else $('body').removeClass('mob').addClass('pc');
+}</code></pre>
+            </div>
+            <div class="t_desc">
+                창의 가로 크기를 재고, 1000px보다 좁으면 body에 mob 클래스를 붙이고 pc 클래스는 제거하고, 1000px 이상이면
+                body에 pc 클래스를 붙이고, mob 클래스는 제거한다는 뜻입니다.
+            </div>
+            <div class="t_code">
+                <pre><code class="language-js">$(window).resize(function() {
+    initLayout();
+})</code></pre>
+            </div>
+            <div class="t_desc">
+                미리 만들어둔 스크립트를 창 크기가 바뀔 때마다 실행합니다.
+            </div>
+            <div class="t_code">
+                <pre><code class="language-css">...
+    body.mob { max-width: 720px; }
+...</code></pre>
+            </div>
+            <p class="t_desc">
+                css에서 body.mob에 속성을 추가하면 모바일일 때의 속성이 등록되는 것입니다.
+            </p>
         </div>
     </main>
     <!-- //main -->
