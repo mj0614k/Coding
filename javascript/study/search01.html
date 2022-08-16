@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자바스크립트 : 퀴즈 효과</title>
+    <title>자바스크립트 : 검색 효과</title>
 
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dracula.css">
@@ -19,23 +19,194 @@
 
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">자바스크립트 : 퀴즈 효과</h2>
+            <h2 class="t_tit">자바스크립트 : 검색 효과</h2>
             <p class="t_desc">
-                자바스크립트의 다양한 효과들 중, 퀴즈를 맞힐 수 있는 퀴즈 효과입니다.
-                그 중에서도, 정답을 입력하지 않고 정답을 확인할 수 있는 퀴즈 유형을 작업해 보도록 하겠습니다.
+                자바스크립트의 다양한 효과들 중, 해당하는 문자열을 찾을 수 있는 검색 효과입니다.
+                HTML의 알파벳, CSS의 알파벳, JAVASCRIPT의 메서드를 검색할 수 있는 웹 사이트를 작업해 보도록 하겠습니다.
             </p>
             <hr>
-            <h3 class="t_tit2">정답 확인하기 유형</h3>
-            <p class="t_desc">
-                예시는 웹디자인기능사의 필기 시험 문제입니다.
-                '정답 확인하기' 버튼을 누르면 문제의 정답을 확인할 수 있습니다.
+            <h2 class="t_tit2">HTML 소스</h2>
+            <p class="t_desc">HTML로 뼈대를 먼저 잡아주었습니다. 헤더 영역에는 내비게이션 메뉴를, 메인 영역에는 검색창, 하위 목록들을 작성해 주었습니다. 내비게이션 메뉴에서
+                HTML, CSS, JAVASCRIPT를 클릭하면 각각의 페이지로 이동할 수 있습니다. 아래 소스는 메인 영역의 HTML 소스로, 나머지 영역의 소스는 하단의
+                '원본 소스 보기' 버튼을 클릭하면 확인할 수 있습니다.
             </p>
+            <div class="t_code">
+<pre><code class="language-html">&lt;main id="main"&gt;
+    &lt;div class="search__wrap"&gt;
+        &lt;span&gt;indexOf()를 이용하여 검색하기&lt;/span&gt;
+        &lt;h1&gt;HTML 태그 검색하기&lt;/h1&gt;
+        &lt;div class="search__box"&gt;
+            &lt;label for="search"&gt;검색하기&lt;/label&gt; 
+            &lt;input type="text" id="search" placeholder="HTML 태그를 입력해 주세요"&gt;
+        &lt;/div&gt;
+        &lt;div class="search__list"&gt;
+            &lt;div class="html"&gt;
+                &lt;ul&gt;
+                    &lt;li data-name="a"&gt;&lt;strong&gt;a&lt;/strong&gt; : 다른 페이지 이동을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="abbr"&gt;&lt;strong&gt;abbr&lt;/strong&gt; : 줄임말이나 머리글자를 표현하는 데 사용합니다.&lt;/li&gt;
+                    &lt;li data-name="acronym"&gt;&lt;strong&gt;acronym&lt;/strong&gt; : 줄임말이나 머리글자를 표현하는 데 사용합니다. 현재는 사용하지 않습니다.&lt;/li&gt;
+                    &lt;li data-name="address"&gt;&lt;strong&gt;address&lt;/strong&gt; : 가까운 HTML 요소의 사람, 단체, 조직 등에 대한 연락처 정보를 나타냅니다.&lt;/li&gt;
+                    &lt;li data-name="applet"&gt;&lt;strong&gt;applet&lt;/strong&gt; : 	자바 애플릿을 보이게 하는 곳에 쓰입니다. 현재는 사용하지 않습니다.&lt;/li&gt;
+                    &lt;li data-name="area"&gt;&lt;strong&gt;area&lt;/strong&gt; : 이미지의 핫스팟 영역을 정의하고 하이퍼링크를 추가할 수 있습니다.&lt;/li&gt;
+                    &lt;li data-name="article"&gt;&lt;strong&gt;article&lt;/strong&gt; : 해당 문서나 페이지 또는 사이트와는 완전히 독립적으로 구성할 수 있는 요소를 정의할 때 사용합니다.&lt;/li&gt;
+                    &lt;li data-name="aside"&gt;&lt;strong&gt;aside&lt;/strong&gt; : 문서의 주요 내용과 간접적으로만 연관된 부분을 나타냅니다.&lt;/li&gt;
+                    &lt;li data-name="audio"&gt;&lt;strong&gt;audio&lt;/strong&gt; : 문서에 소리 콘텐츠를 포함할 때 사용합니다.&lt;/li&gt;
+                    &lt;li data-name="b"&gt;&lt;strong&gt;b&lt;/strong&gt; : 독자의 주의를 요소의 콘텐츠로 끌기 위한 용도로 사용합니다.&lt;/li&gt;
+                    &lt;li data-name="base"&gt;&lt;strong&gt;base&lt;/strong&gt; : 문서 안의 모든 상대 URL이 사용할 기준 URL을 지정합니다.&lt;/li&gt;
+                    &lt;li data-name="basefont"&gt;&lt;strong&gt;basefont&lt;/strong&gt; : 문서의 기본 폰트, 사이즈, 종류를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="bdi"&gt;&lt;strong&gt;bdi&lt;/strong&gt; :  텍스트의 출력 방향 영역을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="bdo"&gt;&lt;strong&gt;bdo&lt;/strong&gt; : 텍스트의 방향을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="big"&gt;&lt;strong&gt;big&lt;/strong&gt; : 텍스트의 크기를 크게 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="blockquote"&gt;&lt;strong&gt;blockquote&lt;/strong&gt; : 긴 문장의 인용문을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="body"&gt;&lt;strong&gt;body&lt;/strong&gt; : HTML 문서의 내용을 나타냅니다.&lt;/li&gt;
+                    &lt;li data-name="br"&gt;&lt;strong&gt;br&lt;/strong&gt; : 텍스트 안에 줄바꿈을 생성합니다.&lt;/li&gt;
+                    &lt;li data-name="button"&gt;&lt;strong&gt;button&lt;/strong&gt; : 클릭 가능한 버튼을 나타냅니다.&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+            </div>
+            <h2 class="t_tit2">CSS 소스</h2>
+            <p class="t_desc">CSS로 스타일 속성을 추가해 주었습니다. 폰트는 티몬, 에스코어 드림을 사용했습니다. 마찬가지로, 메인 영역의 CSS 소스입니다.
+            </p>
+            <div class="t_code">
+<pre><code class="language-css">:root {
+    --htmlColor: #223547;
+    --cssColor: #472222;
+    --javascriptColor: #224736;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SCoreDream';
+    color: var(--htmlColor);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--htmlColor);
+}
+
+li {
+    list-style: none;
+}
+
+/* main */
+#main {
+    margin: 50px 10px;
+}
+
+.search__wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 3px solid var(--htmlColor);
+    border-radius: 20px;
+    background-color: #f1f3f6;
+    padding: 30px;
+    text-align: center;
+}
+
+.search__wrap>span {
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.search__wrap>h1 {
+    font-family: 'Tmon';
+    color: var(--htmlColor);
+    font-size: 6vw;
+    margin-bottom: 10px;
+}
+
+.search__box {
+    margin-bottom: 20px;
+}
+
+.search__box label {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+.search__box input {
+    border: 2px solid var(--htmlColor);
+    padding: 15px 40px;
+    width: 70%;
+    border-radius: 50px;
+    font-size: 20px;
+}
+
+.search__list li {
+    text-align: left;
+    line-height: 1.7;
+}
+
+.search__list li.hide {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .search__wrap {
+        padding: 20px;
+    }
+
+    .search__wrap>h1 {
+        font-size: 44px;
+    }
+
+    .search__wrap>span {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .search__box input {
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+}</code></pre>
+            </div>
+            <h2 class="t_tit2">JAVASCRIPT 소스</h2>
+            <p class="t_desc">대망의 JAVASCIPRT 소스입니다. 검색 영역과 목록 리스트 선택자를 먼저 만들어 준 뒤,
+                addEventListener로 검색 영역에 keyup 이벤트를 추가해 주었습니다. 사용자가 입력한 키워드와 하위 목록들의
+                값을 비교하여, indexOf의 값이 0이면 리스트를 보여주고, 값이 다르면 리스트를 숨기는 방식으로 작업해 주었습니다.
+            </p>
+            <div class="t_code">
+<pre><code class="language-js">// 선택자
+const searchBox = document.querySelector(".search__box input")  // 검색 영역
+const searchList = document.querySelectorAll(".search__list ul li")  // 목록 리스트
+
+searchBox.addEventListener("keyup", () => {  // 한 글자만 입력해도 검색 가능
+    const searchWord = searchBox.value;  // 사용자가 입력한 키워드
+    
+    searchList.forEach((el)=>{
+        const cssName = el.dataset.name;
+        if(cssName.indexOf(searchWord)){
+            el.classList.add("hide");
+        } else {
+            //"abbr".indexOf("abbr")
+            el.classList.remove("hide");  // indexOf의 값이 0이 되는 값만 hide 클래스 삭제
+        }
+    });
+});
+</code></pre>
+            </div>
+            <hr>
+            <h2 class="t_tit2">결과</h2>
             <div class="t_iframe" style="min-height: 1000px; padding-top: 0px;">
                 <iframe src="https://mj0614k.github.io/Coding/javascript/effect/searchEffect01.html"></iframe>
-            </div>
-            <div class="t_code">
-                <pre><code class="language-js">
-</code></pre>
             </div>
 
             <div class="t_link">

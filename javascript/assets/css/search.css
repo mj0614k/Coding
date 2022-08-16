@@ -1,7 +1,7 @@
 :root {
-    --htmlColor : #223547;
-    --cssColor : #472222;
-    --javascriptColor : #224736;
+    --htmlColor: #223547;
+    --cssColor: #472222;
+    --javascriptColor: #224736;
 }
 
 * {
@@ -9,7 +9,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'SCoreDream';
-    color: #223547;
+    color: var(--htmlColor);
 }
 
 *,
@@ -20,7 +20,7 @@
 
 a {
     text-decoration: none;
-    color: #223547;
+    color: var(--htmlColor);
 }
 
 li {
@@ -32,11 +32,13 @@ li {
     display: flex;
     justify-content: space-between;
 }
+
 #header h1 {
     margin: 10px;
     font-family: 'Tmon';
     font-size: 40px;
 }
+
 #header nav {
     margin: 10px;
 }
@@ -54,29 +56,29 @@ li {
     display: inline-block;
     text-align: center;
     line-height: 30px;
-    font-family: 'SCoreDream';
 }
 
-#header nav ul li.active a {
+#header nav li.active a {
     background-color: var(--htmlColor);
     color: #fff;
 }
+
 #header nav li .sub {
     position: absolute;
     left: 0;
     top: 35px;
-    width: 100%;
-    display: flex;
+    width: 400px;
 }
-#header nav ul.sub li a {
+
+#header nav li .sub li a {
     width: auto;
     background-color: transparent;
-    color:var(--htmlColor);
+    color: var(--htmlColor);
     border: 0;
     text-align: left;
     line-height: 1.2;
-    margin-right: 10px;
 }
+
 #header nav ul.sub li.active a {
     text-decoration: underline;
 }
