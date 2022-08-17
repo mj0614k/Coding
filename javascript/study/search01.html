@@ -19,48 +19,70 @@
 
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">자바스크립트 : 검색 효과</h2>
+            <h2 class="t_tit">자바스크립트 : 검색 효과 : indexOf()</h2>
             <p class="t_desc">
                 자바스크립트의 다양한 효과들 중, 해당하는 문자열을 찾을 수 있는 검색 효과입니다.
-                HTML의 알파벳, CSS의 알파벳, JAVASCRIPT의 메서드를 검색할 수 있는 웹 사이트를 작업해 보도록 하겠습니다.
+                indexOf() 메서드를 이용하여 CSS의 다양한 속성을 검색할 수 있는 웹사이트를 작업해 보도록 하겠습니다.
             </p>
             <hr>
             <h2 class="t_tit2">HTML 소스</h2>
-            <p class="t_desc">HTML로 뼈대를 먼저 잡아주었습니다. 헤더 영역에는 내비게이션 메뉴를, 메인 영역에는 검색창, 하위 목록들을 작성해 주었습니다. 내비게이션 메뉴에서
-                HTML, CSS, JAVASCRIPT를 클릭하면 각각의 페이지로 이동할 수 있습니다. 아래 소스는 메인 영역의 HTML 소스로, 나머지 영역의 소스는 하단의
-                '원본 소스 보기' 버튼을 클릭하면 확인할 수 있습니다.
+            <p class="t_desc">HTML로 뼈대를 먼저 잡아주었습니다. 헤더 영역에는 내비게이션 메뉴를, 메인 영역에는 검색창, 하위 목록들을 작성해 주었습니다. 
+                아래 소스는 메인 영역의 HTML 소스로, 나머지 영역의 소스는 하단의 '원본 소스 보기' 버튼을 클릭하면 확인할 수 있습니다.
             </p>
             <div class="t_code">
 <pre><code class="language-html">&lt;main id="main"&gt;
     &lt;div class="search__wrap"&gt;
         &lt;span&gt;indexOf()를 이용하여 검색하기&lt;/span&gt;
-        &lt;h1&gt;HTML 태그 검색하기&lt;/h1&gt;
+        &lt;h1&gt;CSS 속성 검색하기&lt;/h1&gt;
         &lt;div class="search__box"&gt;
             &lt;label for="search"&gt;검색하기&lt;/label&gt; 
-            &lt;input type="text" id="search" placeholder="HTML 태그를 입력해 주세요"&gt;
+            &lt;input type="text" id="search" placeholder="CSS 속성을 입력해 주세요"&gt;
+        &lt;/div&gt;
+        &lt;div class="search__info"&gt;
+            &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt; &lt;/span&gt;&lt;/div&gt;
         &lt;/div&gt;
         &lt;div class="search__list"&gt;
-            &lt;div class="html"&gt;
+            &lt;div class="css"&gt;
                 &lt;ul&gt;
-                    &lt;li data-name="a"&gt;&lt;strong&gt;a&lt;/strong&gt; : 다른 페이지 이동을 설정합니다.&lt;/li&gt;
-                    &lt;li data-name="abbr"&gt;&lt;strong&gt;abbr&lt;/strong&gt; : 줄임말이나 머리글자를 표현하는 데 사용합니다.&lt;/li&gt;
-                    &lt;li data-name="acronym"&gt;&lt;strong&gt;acronym&lt;/strong&gt; : 줄임말이나 머리글자를 표현하는 데 사용합니다. 현재는 사용하지 않습니다.&lt;/li&gt;
-                    &lt;li data-name="address"&gt;&lt;strong&gt;address&lt;/strong&gt; : 가까운 HTML 요소의 사람, 단체, 조직 등에 대한 연락처 정보를 나타냅니다.&lt;/li&gt;
-                    &lt;li data-name="applet"&gt;&lt;strong&gt;applet&lt;/strong&gt; : 	자바 애플릿을 보이게 하는 곳에 쓰입니다. 현재는 사용하지 않습니다.&lt;/li&gt;
-                    &lt;li data-name="area"&gt;&lt;strong&gt;area&lt;/strong&gt; : 이미지의 핫스팟 영역을 정의하고 하이퍼링크를 추가할 수 있습니다.&lt;/li&gt;
-                    &lt;li data-name="article"&gt;&lt;strong&gt;article&lt;/strong&gt; : 해당 문서나 페이지 또는 사이트와는 완전히 독립적으로 구성할 수 있는 요소를 정의할 때 사용합니다.&lt;/li&gt;
-                    &lt;li data-name="aside"&gt;&lt;strong&gt;aside&lt;/strong&gt; : 문서의 주요 내용과 간접적으로만 연관된 부분을 나타냅니다.&lt;/li&gt;
-                    &lt;li data-name="audio"&gt;&lt;strong&gt;audio&lt;/strong&gt; : 문서에 소리 콘텐츠를 포함할 때 사용합니다.&lt;/li&gt;
-                    &lt;li data-name="b"&gt;&lt;strong&gt;b&lt;/strong&gt; : 독자의 주의를 요소의 콘텐츠로 끌기 위한 용도로 사용합니다.&lt;/li&gt;
-                    &lt;li data-name="base"&gt;&lt;strong&gt;base&lt;/strong&gt; : 문서 안의 모든 상대 URL이 사용할 기준 URL을 지정합니다.&lt;/li&gt;
-                    &lt;li data-name="basefont"&gt;&lt;strong&gt;basefont&lt;/strong&gt; : 문서의 기본 폰트, 사이즈, 종류를 설정합니다.&lt;/li&gt;
-                    &lt;li data-name="bdi"&gt;&lt;strong&gt;bdi&lt;/strong&gt; :  텍스트의 출력 방향 영역을 설정합니다.&lt;/li&gt;
-                    &lt;li data-name="bdo"&gt;&lt;strong&gt;bdo&lt;/strong&gt; : 텍스트의 방향을 설정합니다.&lt;/li&gt;
-                    &lt;li data-name="big"&gt;&lt;strong&gt;big&lt;/strong&gt; : 텍스트의 크기를 크게 설정합니다.&lt;/li&gt;
-                    &lt;li data-name="blockquote"&gt;&lt;strong&gt;blockquote&lt;/strong&gt; : 긴 문장의 인용문을 설정합니다.&lt;/li&gt;
-                    &lt;li data-name="body"&gt;&lt;strong&gt;body&lt;/strong&gt; : HTML 문서의 내용을 나타냅니다.&lt;/li&gt;
-                    &lt;li data-name="br"&gt;&lt;strong&gt;br&lt;/strong&gt; : 텍스트 안에 줄바꿈을 생성합니다.&lt;/li&gt;
-                    &lt;li data-name="button"&gt;&lt;strong&gt;button&lt;/strong&gt; : 클릭 가능한 버튼을 나타냅니다.&lt;/li&gt;
+                    &lt;li data-name="align-content"&gt;&lt;strong&gt;align-content&lt;/strong&gt; : 콘텐츠 아이템의 상하관계 정렬 상태를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="align-items"&gt;&lt;strong&gt;align-items&lt;/strong&gt; : 콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="align-self"&gt;&lt;strong&gt;align-self&lt;/strong&gt; : 개별적인 콘텐츠 아이템의 정렬 상태를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="all"&gt;&lt;strong&gt;all&lt;/strong&gt; : 요소의 속성을 초기화 또는 상속을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation"&gt;&lt;strong&gt;animation&lt;/strong&gt; : 애니메이션과 관련된 속성을 일괄적으로 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-delay"&gt;&lt;strong&gt;animation-delay&lt;/strong&gt; : 애니메이션 지연 시간을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-direction"&gt;&lt;strong&gt;animation-direction&lt;/strong&gt; : 애니메이션 움직임 방향을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-duration"&gt;&lt;strong&gt;animation-duration&lt;/strong&gt; : 애니메이션 움직임 시간을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-fill-mode"&gt;&lt;strong&gt;animation-fill-mode&lt;/strong&gt; : 애니메이션이 끝난 후의 상태를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-iteration-count"&gt;&lt;strong&gt;animation-iteration-count&lt;/strong&gt; : 애니메이션의 반복 횟수를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-name"&gt;&lt;strong&gt;animation-name&lt;/strong&gt; : 애니메이션 keyframe 이름을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-play-state"&gt;&lt;strong&gt;animation-play-state&lt;/strong&gt; : 애니메이션 진행 상태를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="animation-timing-function"&gt;&lt;strong&gt;animation-timing-function&lt;/strong&gt; : 애니메이션 움직임의 속도를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background"&gt;&lt;strong&gt;background&lt;/strong&gt; : 백그라운드 속성을 일괄적으로 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-attachment"&gt;&lt;strong&gt;background-attachment&lt;/strong&gt; : 배경 이미지의 고정 여부를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-blend-mode"&gt;&lt;strong&gt;background-blend-mode&lt;/strong&gt; : 배경을 혼합했을 때 그래픽 효과를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-clip"&gt;&lt;strong&gt;background-clip&lt;/strong&gt; : 백그라운드 이미지의 위치 기준점을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-color"&gt;&lt;strong&gt;background-color&lt;/strong&gt; : 백그라운드 색상을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-image"&gt;&lt;strong&gt;background-image&lt;/strong&gt; : 백그라운드 이미지 속성을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-origin"&gt;&lt;strong&gt;background-origin&lt;/strong&gt; : 백그라운드 이미지의 위치 기준점을 설정하기 위한 속성입니다.&lt;/li&gt;
+                    &lt;li data-name="background-position"&gt;&lt;strong&gt;background-position&lt;/strong&gt; : 백그라운드 이미지의 위치 영역을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-position-x"&gt;&lt;strong&gt;background-position-x&lt;/strong&gt; : 백그라운드 이미지의 x축 위치 영역을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-porsition-y"&gt;&lt;strong&gt;background-porsition-y&lt;/strong&gt; : 백그라운드 이미지의 y축 위치 영역을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-repeat"&gt;&lt;strong&gt;background-repeat&lt;/strong&gt; : 백그라운드 이미지의 반복 여부를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="background-size"&gt;&lt;strong&gt;background-size&lt;/strong&gt; : 백그라운드 이미지 사이즈를 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border"&gt;&lt;strong&gt;border&lt;/strong&gt; : 테두리 속성을 일괄적으로 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-bottom"&gt;&lt;strong&gt;border-bottom&lt;/strong&gt; : 아래쪽 테두리 속성을 일괄적으로 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-bottom-color"&gt;&lt;strong&gt;border-bottom-color&lt;/strong&gt; : 아래쪽 테두리 색상 속성을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-bottom-left-radius"&gt;&lt;strong&gt;border-bottom-left-radius&lt;/strong&gt; : 아래 왼쪽 모서리 굴곡을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-bottom-right-radius"&gt;&lt;strong&gt;border-bottom-right-radius&lt;/strong&gt; : 아래 오른쪽 모서리 굴곡을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-bottom-style"&gt;&lt;strong&gt;border-bottom-style&lt;/strong&gt; : 아래쪽 테두리 스타일 속성을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-bottom-width"&gt;&lt;strong&gt;border-bottom-width&lt;/strong&gt; : 아래쪽 테두리 두께 속성을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-collapse"&gt;&lt;strong&gt;border-collapse&lt;/strong&gt; : 표 및 셀의 테두리선 표시방법을 지정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-color"&gt;&lt;strong&gt;border-color&lt;/strong&gt; : 테두리 색상을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-left"&gt;&lt;strong&gt;border-left&lt;/strong&gt; : 왼쪽 테두리 속성을 일괄적으로 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-left-color"&gt;&lt;strong&gt;border-left-color&lt;/strong&gt; : 왼쪽 테두리 색상을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-left-style"&gt;&lt;strong&gt;border-left-style&lt;/strong&gt; : 왼쪽 테두리 스타일 속성을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-left-width"&gt;&lt;strong&gt;border-left-width&lt;/strong&gt; : 왼쪽 테두리 두께 속성을 설정합니다.&lt;/li&gt;
+                    &lt;li data-name="border-radius"&gt;&lt;strong&gt;border-radius&lt;/strong&gt; : 테두리의 둥글기 속성을 설정합니다.&lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/div&gt;
         &lt;/div&gt;

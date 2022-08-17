@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자바스크립트 : 문자열 검색 메서드</title>
+    <title>자바스크립트 : 문자열 변경 메서드</title>
 
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dracula.css">
@@ -60,43 +60,48 @@
 
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">문자열 검색 메서드 : indexOf() / lastindexOf()</h2>
+            <h2 class="t_tit">문자열 변경 메서드 : toUpperCase() / toLowerCase()</h2>
             <p class="t_desc">
-                indexOf() 메서드는 호출한 String 객체에서 주어진 값과 일치하는 첫 번째 인덱스를 반환합니다. 일치하는 값이 없으면 -1을 반환합니다.
+                toUpperCase() / toLowerCase() 메서드는 문자열을 대 / 소문자로 변환해 줍니다.
             </p>
             <hr>
-            <h2 class="t_tit2">indexOf()</h2>
-            <h3 class="t_tit3">1. indexOf() : "문자열".indexOf(검색값)</h3>
+            <h3 class="t_tit2">toUpperCase() 메서드</h3>
+            <p class="t_desc2">
+                toUpperCase() 메서드는 문자열을 대문자로 변환해 반환합니다.
+            </p>
+            <br>
             <div class="t_code">
-<pre><code class="language-js">const str1 = "javascript reference";
-const currentStr1 = str1.indexOf("javascript");
-const currentStr2 = str1.indexOf("reference");
-const currentStr3 = str1.indexOf("j");
-const currentStr4 = str1.indexOf("a"); // 먼저 나오는 a의 검색값만 출력합니다.
-const currentStr5 = str1.indexOf("v");
-const currentStr6 = str1.indexOf("jquery"); // 일치하는 데이터가 없을 때는 -1을 출력합니다.
-const currentStr7 = str1.indexOf("b");
+<pre><code class="language-js">const str1 = "javascript";
+const currentStr1 = str1.toUpperCase();
+document.write(currentStr1);
+
+const str2 = "jquery";
+const currentStr2 = str2.toUpperCase();
+document.write(currentStr2);
 </code></pre>
             </div>
             <details>
                 <summary>결과보기</summary>
-                <div>0<br>11<br>0<br>1<br>2<br>-1<br>-1
+                <div>JAVASCRIPT<br>JQUERY
                 </div>
             </details>
-            <h3 class="t_tit3">2. indexOf() : "문자열".indexOf(검색값, 위치값)</h3>
+            <h3 class="t_tit2">toLowerCase() 메서드</h3>
+            <p class="t_desc2">
+                toLowerCase() 메서드는 문자열을 소문자로 변환해 반환합니다.
+            </p>
             <div class="t_code">
-<pre><code class="language-js">const str1 = "javascript reference";
-const currentStr1 = str1.indexOf("javascript", 0);
-const currentStr2 = str1.indexOf("javascript", 1);
-const currentStr3 = str1.indexOf("reference", 0);
-const currentStr4 = str1.indexOf("reference", 1);
-const currentStr5 = str1.indexOf("reference", 11);
-const currentStr6 = str1.indexOf("reference", 12);
+<pre><code class="language-js">const str1 = "JAVASCRIPT";
+const currentStr1 = str1.toLowerCase();
+document.write(currentStr1);
+
+const str2 = "JQUERY";
+const currentStr2 = str2.toLowerCase();
+document.write(currentStr2);
 </code></pre>
             </div>
             <details>
                 <summary>결과보기</summary>
-                <div>0<br>-1<br>11<br>11<br>11<br>-1
+                <div>javascript<br>jquery
                 </div>
             </details>
             <br>
