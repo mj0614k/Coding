@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,76 +66,76 @@
         }
 
         /* imageType */
-        .image__inner{
-            margin-top: 70px;
+        .image__inner {
             display: flex;
             justify-content: space-between;
         }
 
-        .image__inner .image01 {
-            width: 570px;
+        .image {
+            width: 49%;
             height: 370px;
-            background-image: url(img/img01_bg01.jpg);
-            position: relative;
-            margin-right: 30px;
+            color: white;
+            padding: 200px 30px 30px 30px;
+            box-sizing: border-box;
         }
-        .image__inner .image02 {
-            width: 570px;
-            height: 370px;
-            background-image: url(img/img01_bg02.jpg);
+
+        .image.img1 {
+            background: url(img/img01_bg01.jpg) no-repeat center;
         }
-        .image__inner .text {
-            position: relative;
+
+        .image.img2 {
+            background: url(img/img01_bg02.jpg) no-repeat center;
         }
-        .image__inner h3 {
+
+        .image__title {
             font-size: 32px;
+            margin-bottom: 10px;
         }
-        .image__inner p {
+
+        .image__desc {
             font-size: 16px;
-            font-weight: 200;
+            font-weight: 300;
+            margin-bottom: 10px;
             line-height: 1.5;
         }
-        .image__inner .more {
-            background-color: #E86E47;
-            width:120px;
-            height: 38px;
-            text-align: center;
-            line-height: 38px;
+
+        .image__btn {
+            font-size: 16px;
             color: #fff;
-            position: absolute;
-            bottom: 20px;
-            left: 23px
+            background: #E86E47;
+            padding: 10px 20px;
+            display: inline-block;
         }
-        .image__inner p{
-            position: absolute;
-            bottom: 70px;
-            left: 23px;
-        }
-        .image__inner h3{
-            position: absolute;
-            bottom: 127px;
-            left: 23px;
+
+        .image__btn.blue {
+            background: #00A8E5;
         }
     </style>
 </head>
+
 <body>
     <section id="imageType01" class="card__wrap nexon section">
         <h2>세상의 귀여운 댕댕이</h2>
         <p>강아지 종류는 매우 다양합니다. 하지만 하나같이 정말 귀엽습니다.</p>
         <div class="image__inner container">
-            <div class="image01 text">
-                <h3>세상의 귀여운 댕댕이</h3>
-                <p>누가 뭐래도 댕댕이는 참 귀엽다.<br>
+            <div class="image img1">
+                <h3 class="image__title">세상의 귀여운 댕댕이</h3>
+                <p class="image__desc">누가 뭐래도 댕댕이는 참 귀엽다.<br>
                     왜 나는 댕댕이가 없을까?</p>
-                    <a href="#"><div class="more">자세히 보기</div></a>
+                <a class="image__btn" href="#" title="자세히 보기">
+                    <div class="more">자세히 보기</div>
+                </a>
             </div>
-            <div class="image02 text">
-                <h3>세상의 귀여운 댕댕이</h3>
-                <p>누가 뭐래도 댕댕이는 참 귀엽다.<br>
+            <div class="image img2">
+                <h3 class="image__title">세상의 귀여운 댕댕이</h3>
+                <p class="image__desc">누가 뭐래도 댕댕이는 참 귀엽다.<br>
                     왜 나는 댕댕이가 없을까?</p>
-                    <a href="#"><div class="more">자세히 보기</div></a>
+                <a class="image__btn blue" href="#" title="자세히 보기">
+                    <div class="more">자세히 보기</div>
+                </a>
             </div>
         </div>
     </section>
 </body>
+
 </html>

@@ -60,12 +60,14 @@
 
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">문자열 검색 메서드 : indexOf() / lastindexOf()</h2>
+            <h2 class="t_tit">문자열 검색 메서드 : indexOf() / lastIndexOf()</h2>
             <p class="t_desc">
-                indexOf() 메서드는 호출한 String 객체에서 주어진 값과 일치하는 첫 번째 인덱스를 반환합니다. 일치하는 값이 없으면 -1을 반환합니다.
+                indexOf(), lastIndexOf() 메서드는 문자열에서 특정 문자의 위치를 찾고, 그 위치값을 숫자로 반환합니다.
             </p>
             <hr>
-            <h2 class="t_tit2">indexOf()</h2>
+            <h2 class="t_tit2">indexOf() 메서드</h2>
+            <p class="t_desc2">indexOf() 메서드는 호출한 String 객체에서 주어진 값과 일치하는 첫 번째 인덱스를 반환합니다. 일치하는 값이 없으면 -1을 반환합니다.</p>
+            <br>
             <h3 class="t_tit3">1. indexOf() : "문자열".indexOf(검색값)</h3>
             <div class="t_code">
 <pre><code class="language-js">const str1 = "javascript reference";
@@ -83,6 +85,7 @@ const currentStr7 = str1.indexOf("b");
                 <div>0<br>11<br>0<br>1<br>2<br>-1<br>-1
                 </div>
             </details>
+            <br>
             <h3 class="t_tit3">2. indexOf() : "문자열".indexOf(검색값, 위치값)</h3>
             <div class="t_code">
 <pre><code class="language-js">const str1 = "javascript reference";
@@ -97,6 +100,45 @@ const currentStr6 = str1.indexOf("reference", 12);
             <details>
                 <summary>결과보기</summary>
                 <div>0<br>-1<br>11<br>11<br>11<br>-1
+                </div>
+            </details>
+            <br>
+            
+            <h2 class="t_tit2">lastIndexOf() 메서드</h2>
+            <p class="t_desc2">lastIndexOf() 메서드는 주어진 값과 일치하는 부분을 역순으로 탐색하여, 최초로 마주치는 인덱스를 반환합니다. 일치하는 부분을 찾을 수 없으면 -1을 반환합니다.</p>
+            <br>
+            <h3 class="t_tit3">1. lastIndexOf() : "문자열".lastIndexOf(검색값)</h3>
+            <div class="t_code">
+<pre><code class="language-js">const str1 = "javascript reference";
+const currentStr1 = str1.lastIndexOf("javascript")
+const currentStr2 = str1.lastIndexOf("reference")
+const currentStr3 = str1.lastIndexOf("j")
+const currentStr4 = str1.lastIndexOf("a")
+const currentStr5 = str1.lastIndexOf("v")
+const currentStr6 = str1.lastIndexOf("jquery")
+const currentStr7 = str1.lastIndexOf("b")
+</code></pre>
+            </div>
+            <details>
+                <summary>결과보기</summary>
+                <div>0<br>11<br>0<br>3<br>2<br>-1<br>-1
+                </div>
+            </details>
+            <br>
+            <h3 class="t_tit3">2. lastIndexOf() : "문자열".lastIndexOf(검색값, 위치값)</h3>
+            <div class="t_code">
+<pre><code class="language-js">const str1 = "javascript reference"
+const currentStr1 = str1.lastIndexOf("javascript", 0)
+const currentStr2 = str1.lastIndexOf("javascript", 1)
+const currentStr3 = str1.lastIndexOf("reference", 0)
+const currentStr4 = str1.lastIndexOf("reference", 1)
+const currentStr5 = str1.lastIndexOf("reference", 11)
+const currentStr6 = str1.lastIndexOf("reference", 12)
+</code></pre>
+            </div>
+            <details>
+                <summary>결과보기</summary>
+                <div>0<br>0<br>-1<br>-1<br>11<br>11
                 </div>
             </details>
             <br>
