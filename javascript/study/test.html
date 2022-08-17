@@ -8,13 +8,13 @@
 </head>
 <body>
     <script>
-        const text1 = "모던";
-const text2 = "자바스크립트";
-const text3 = "핵심";
+        const str1= "javascript reference"
+const currentStr1 = str1.replace("javascript", "자바스크립트"); //자바스크립트 reference
+const currentStr2 = str1.replace("j", "J"); //Javascript reference
+const currentStr3 = str1.replace("e", "E"); //처음에 나오는 e만 대문자로 변경
+const currentStr4 = str1.replace(/e/g)
 
-document.write("나는 " + text1 + "(modern) " + text2 + "(javascript) " + text3 + "을 배우고 싶다.");
-
-document.write(`나는 ${text1}(modern) ${text2}(javascript) ${text3}을 배우고 싶다.`);
+console.log(currnetStr4)
     </script>
 </body>
 </html>
