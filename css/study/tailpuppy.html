@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS : 애니메이션 : 꼬리를 흔드는 강아지</title>
+
+    <link rel="stylesheet" href="../../javascript/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dracula.css">
+</head>
+
+<body>
+    <header id="header">
+        <h1><a href=#>CSS : 애니메이션 : 꼬리를 흔드는 강아지</a></h1>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="document">
+            <h2 class="t_tit">꼬리를 흔드는 강아지 애니메이션 만들기</h2>
+            <hr>
+            <h2 class="t_tit2">@media</h2>
+            <p class="t_desc">처음 로딩할 때 성능이 저하되지 않도록 CSS 파일을 하나로 만들어서 CSS 내부에서 조건에 따라
+                분기시키는 것이 일반적인 형태의 반응형웹 CSS입니다.
+            </p>
+            <div class="t_code">
+                <pre><code class="language-css">@media all and (min-width: 1000px) {
+    모든 기기에서 해상도가 최소 1000px인 경우 적용할 속성들
+}</code></pre>
+            </div>
+            <p class="t_desc">all은 Media Type을 나타냅니다. and 전, 후에 띄어서 씁니다.</p>
+            
+            <div class="t_code">
+<pre><code class="language-css">
+</code></pre>
+            </div>
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FAKeQMu6bAhxrUrpKB0QAEH%2F%25EB%25A0%2588%25EC%259D%25B4%25EC%2595%2584%25EC%259B%2583%3Fnode-id%3D1512%253A2"
+                allowfullscreen></iframe>
+            <details>
+                <summary>HTML 소스 보기</summary>
+                <div class="t_code">
+<pre><code class="language-html">
+    
+</code></pre>
+                </div>
+            </details>
+            <br>
+            <p class="t_desc">결과는 다음과 같습니다.</p>
+            <div class="t_iframe" style="min-height: 400px; padding-top: 0px;">
+                <iframe src="https://mj0614k.github.io/Coding/css/study/media_result.html"></iframe>
+            </div>
+            <div class="t_link">
+                <a href="https://github.com/mj0614k/Coding/blob/main/css/study/media_result.html">원본 소스 보기</a>
+                <a href="https://mj0614k.github.io/Coding/css/study/media_result">원본 사이트 보기</a>
+            </div>
+            <hr>
+        </div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:mo0647@naver.com">mo0647@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../assets/js/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</body>
+
+</html>
