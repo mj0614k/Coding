@@ -60,6 +60,7 @@
                     <span>z</span>
                 </div>
                 <div>전체 속성 갯수 : <span class="num">0</span></div>
+                <div>검색된 속성 갯수 : <span class="result">0</span></div>
             </div>
             <div class="search__list">
                 <div class="css">
@@ -462,7 +463,9 @@
         // 선택자
         const searchKeyword = document.querySelectorAll(".search__info .keyword span")  // 알파벳
         const searchList = document.querySelectorAll(".search__list ul li")  // 목록 리스트
-        const searchInfo = document.querySelector(".search__info .num")
+        const searchInfo = document.querySelector(".search__info .num")  // 전체 속성 갯수
+        const searchResult = document.querySelector(".search__info .result")  // 검색된 속성 갯수
+        let count = 0;
 
         // 속성 갯수 구하기
         searchInfo.textContent = searchList.length;
@@ -479,10 +482,13 @@
                     // 알파벳 첫글자 == CSS 속성의 첫글자
                     if(searchWord.charAt(0) === cssName.charAt(0)){
                         el.classList.remove("hide");
+                        count ++;
                     } else {
                         el.classList.add("hide");
                     }
+                    searchResult.innerHTML = count;
                 })
+                count = 0;
             })
         } );
     </script>
