@@ -968,12 +968,12 @@
                 }
             });
 
-            let totalScore = quizScore / quizInfo.length * 100;
+            let totalScore = Math.floor(quizScore / quizInfo.length * 100);
 
             if(totalScore >= 60){
                 document.querySelector(".ex").innerHTML = `${quizInfo.length} 문제 중 ${quizScore}개 맞히셨습니다. 점수는 ${totalScore}점입니다. 합격입니다!`
             } else {
-                document.querySelector(".ex").innerHTML = `${quizInfo.length} 문제 중 ${quizScore}개 맞히셨습니다. 점수는${totalScore}점입니다. 불합격입니다.`
+                document.querySelector(".ex").innerHTML = `${quizInfo.length} 문제 중 ${quizScore}개 맞히셨습니다. 점수는 ${totalScore}점입니다. 불합격입니다.`
             }
         }
 

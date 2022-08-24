@@ -19,22 +19,23 @@
 
     <main id="main">
         <div class="document">
-            <h2 class="t_tit">자바스크립트 : 퀴즈 효과</h2>
+            <h2 class="t_tit">자바스크립트 : 퀴즈 효과 : 웹디자인기능사 2015년 2회 기출 문제</h2>
             <p class="t_desc">
                 자바스크립트의 다양한 효과들 중, 퀴즈를 맞힐 수 있는 퀴즈 효과입니다.
-                그 중에서도, 객관식 정답을 선택하는 퀴즈 유형을 작업해 보도록 하겠습니다.
+                그 중에서도, 여러 개의 문제의 객관식 정답을 선택하는 퀴즈 유형을 작업해 보도록 하겠습니다.
             </p>
             <hr>
             <h3 class="t_tit2">객관식(여러 문제) 유형</h3>
             <p class="t_desc">
                 예시는 웹디자인기능사의 필기 시험 문제입니다. 문제의 정답을 맞히면 문구가 나타나며 강아지 애니메이션이
                 기뻐하고, 정답을 맞히지 못하면 슬퍼하는 애니메이션으로 입력값에 따라 다른 결과가 나타납니다.
+                문제를 다 푼 뒤 '정답 확인하기' 버튼을 클릭하면 맞힌 문제의 갯수와 점수, 합/불합격 여부가 나타납니다.
             </p>
             <div class="t_iframe" style="min-height: 1000px; padding-top: 0px;">
                 <iframe src="https://mj0614k.github.io/Coding/javascript/effect/quizEffect05.html"></iframe>
             </div>
             <div class="t_code">
-<pre><code class="language-js">// 문제 정보
+<pre><code class="language-js">// 문제 정보 : 배열 안에 객체를 넣은 형태로 각 문제를 작성했습니다.
 const quizInfo = [
     {
         answerType: "웹디자인기능사 2015년 2회",
@@ -101,7 +102,7 @@ const quizInfo = [
         answerResult: "4",
         answerEx: "두 개의 공이 대칭을 이루지 못하고 있는 형상입니다."
     }
-    // 블로그에는 스크롤 압박을 방지하기 위해 다섯 문제의 스크립트만 첨부하겠습니다.
+    // 블로그에는 스크롤 압박을 방지하기 위해 다섯 문제의 스크립트만 첨부하였습니다.
 ]
 
 // 선택자
@@ -111,8 +112,9 @@ let quizScore = "";  // 정답 수 (값이 변하므로 let으로 선언)
 const updateQuiz = () => {
     const exam = [];
 
+    // 배열 exam 안에 push() 메서드를 사용하여 퀴즈 박스 60개를 만들어 주었습니다.
     quizInfo.forEach((question, number) => {
-        exam.push(`
+        exam.push(` 
             &lt;div class="quiz"&gt;
                 &lt;span class="quiz__type"&gt;${question.answerType}&lt;/span&gt;
                 &lt;h2 class="quiz__question"&gt;
@@ -172,7 +174,7 @@ const updateQuiz = () => {
             &lt;div class="ex"&gt;&lt;/div&gt;
         &lt;/div&gt;
     `)
-    quizWrap.innerHTML = exam.join('');
+    quizWrap.innerHTML = exam.join('');  // join() 메서드로 배열에 생기는 ,를 제거해 줍니다.
 }
 updateQuiz();
 
@@ -189,15 +191,16 @@ const answerQuiz = () =&gt; {
 
         if(userAnswer == question.answerResult){
             quizView[number].classList.add("like");
-            quizScore++;
+            quizScore++;  // 문제를 맞힌 갯수
         } else {
             quizView[number].classList.add("dislike");
             const divBox = document.createElement("div")  // 자바스크립트로 태그 생성하는 방법
-            quizSelectsWrap.appendChild(divBox).innerHTML = `&lt;p class="result"&gt;${question.answerEx}&lt;/p&gt;` // appendChild : divBox를 자식으로 넣음
+            quizSelectsWrap.appendChild(divBox).innerHTML = `&lt;p class="result"&gt;${question.answerEx}&lt;/p&gt;`
+            // appendChild : divBox를 자식으로 넣음
         }
     });
 
-    let totalScore = quizScore / quizInfo.length * 100;
+    let totalScore = quizScore / quizInfo.length * 100;  // 점수 계산
 
     if(totalScore &gt;= 60){
         document.querySelector(".ex").innerHTML = `${quizInfo.length} 문제 중 ${quizScore}개 맞히셨습니다. 점수는 ${totalScore}점입니다. 합격입니다!`
