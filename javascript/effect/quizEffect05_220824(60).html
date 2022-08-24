@@ -13,7 +13,7 @@
 
 <body>
     <header id="header">
-        <h1><a href="../javascript01.html">Quiz </a><em>객관식(여러 문제) 유형 : 점수 확인하기</em></h1>
+        <h1><a href="../javascript01.html">Quiz </a><em>객관식(여러 문제) 유형</em></h1>
         <nav>
             <ul>
                 <li><a href="quizEffect01.html">1</a></li>
@@ -29,58 +29,6 @@
 
     <main id="main">
         <div class="quiz__wrap">
-            <!-- <div class="quiz">
-                <span class="quiz__type"></span>
-                <h2 class="quiz__question">
-                    <span class="number"></span>
-                    <div class="ask"></div>
-                </h2>
-                <div class="quiz__view">
-                    <div class="true">정답입니다!</div>
-                    <div class="false">오답입니다!</div>
-                    <div class="dog">
-                        <div class="head">
-                            <div class="ears"></div>
-                            <div class="face"></div>
-                            <div class="eyes">
-                                <div class="teardrop"></div>
-                            </div>
-                            <div class="nose"></div>
-                            <div class="mouth">
-                                <div class="tongue"></div>
-                            </div>
-                            <div class="chin"></div>
-                        </div>
-                        <div class="body">
-                            <div class="tail"></div>
-                            <div class="legs"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="quiz__answer">
-                    <div class="quiz__selects">
-                        <label for="select1">
-                            <input type="radio" class="select" id="select1" name="select" value="1">
-                            <span class="choice"></span>
-                        </label>
-                        <label for="select2">
-                            <input type="radio" class="select" id="select2" name="select" value="2">
-                            <span class="choice"></span>
-                        </label>
-                        <label for="select3">
-                            <input type="radio" class="select" id="select3" name="select" value="3">
-                            <span class="choice"></span>
-                        </label>
-                        <label for="select4">
-                            <input type="radio" class="select" id="select4" name="select" value="4">
-                            <span class="choice"></span>
-                        </label>
-                    </div>
-
-                    <button class="confirm">정답 확인하기</button>
-                    <div class="result"></div>
-                </div>
-            </div> -->
         </div>
     </main>
     <!-- // main -->
@@ -91,6 +39,12 @@
     <!-- // footer -->
 
     <script>
+        // const num = [100, 200, 300, 400, 500]
+
+        // num.forEach((el, i, a)=>{
+        //     document.querySelector(".quiz__wrap").textContent += el;
+        // })
+        
         // 문제 정보
         const quizInfo = [
             {
@@ -876,13 +830,12 @@
         ]
 
         // 선택자
-        const quizWrap = document.querySelector(".quiz__wrap");
-        let quizScore = "";  // 정답 수 (값이 변하므로 let으로 선언)
+        const quizWrap = document.querySelector(".quiz__wrap")
 
-        const updateQuiz = () => {
+        function updateQuiz(){
             const exam = [];
 
-            quizInfo.forEach((question, number) => {
+            quizInfo.forEach((question, number)=>{
                 exam.push(`
                     <div class="quiz">
                         <span class="quiz__type">${question.answerType}</span>
@@ -933,52 +886,44 @@
                             </div>
                         </div>
                     </div>
-                `);
+                `)
             })
-
-            // 문제 출력
             exam.push(`
                 <div class="quiz__confirm">
                     <button class="check">정답 확인하기</button>
                     <div class="ex"></div>
-                </div>
-            `)
-            quizWrap.innerHTML = exam.join('');
+                </div>`)
+
+            quizWrap.innerHTML = exam.join('')
         }
         updateQuiz();
 
-        // 정답 확인
-        const answerQuiz = () => {
-            const quizSelects = document.querySelectorAll(".quiz__selects");
-
-            // 사용자가 체크한 보기와 문제 정답 비교
+        //정답 확인
+        function answerQuiz(){
+            const quizSelects = document.querySelectorAll(".quiz__selects");    //보기
+            const quizView = document.querySelectorAll(".quiz__view");          //강아지
+            //사용자가 체크한 라디오 박스와 문제 정답 비교하기
             quizInfo.forEach((question, number) => {
-                const userSelector = `input[name=select${number}]:checked`;  // 사용자가 체크한 것
-                const quizSelectsWrap = quizSelects[number];
-                const userAnswer = (quizSelectsWrap.querySelector(userSelector) || {}).value;
-                const quizView = document.querySelectorAll(".quiz__view");  // 강아지
-
+                const quizSelectsWrap = quizSelects[number];                    //전체 보기 박스
+                const userSelector = `input[name=select${number}]:checked`;         //사용자가 클릭한 라디오 박스
+                const userAnswer = (quizSelectsWrap.querySelector(userSelector) || {}).value
+                const quizView = document.querySelectorAll(".quiz__view");
+                console.log(quizSelects)
+                const quizConfirm = document.querySelector(".quiz__confirm")
                 if(userAnswer == question.answerResult){
+                    console.log("정답")
                     quizView[number].classList.add("like");
-                    quizScore++;
+                    quizConfirm.style.display = "none";
                 } else {
+                    console.log("오답")
                     quizView[number].classList.add("dislike");
-                    const divBox = document.createElement("div")  // 자바스크립트로 태그 생성하는 방법
-                    quizSelectsWrap.appendChild(divBox).innerHTML = `<p class="result">${question.answerEx}</p>` // appendChild : divBox를 자식으로 넣음
+                    const div = document.createElement("div");
+                    quizSelectsWrap.appendChild(div).innerHTML = `<p class="result">${question.answerEx}</p>`;
+                    quizConfirm.style.display = "none";
                 }
             });
-
-            let totalScore = quizScore / quizInfo.length * 100;
-
-            if(totalScore >= 60){
-                document.querySelector(".ex").innerHTML = `${quizInfo.length} 문제 중 ${quizScore}개 맞히셨습니다. 점수는 ${totalScore}점입니다. 합격입니다!`
-            } else {
-                document.querySelector(".ex").innerHTML = `${quizInfo.length} 문제 중 ${quizScore}개 맞히셨습니다. 점수는${totalScore}점입니다. 불합격입니다.`
-            }
         }
-
-        // 정답 클릭
-        document.querySelector(".quiz__confirm .check").addEventListener("click", answerQuiz)  // 정답을 클릭하면 answerQuiz를 실행
+        document.querySelector(".quiz__confirm .check").addEventListener("click", answerQuiz);
     </script>
 </body>
 
