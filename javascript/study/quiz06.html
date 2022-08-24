@@ -113,33 +113,33 @@ const quizConfirm = document.querySelector(".quiz__answer .confirm")  // 정답 
 const quizView = document.querySelector(".quiz__view")  // 강아지
     
 let quizCount = 0;
-let quizScore = 0;
+let quizScore = 0;  // 맞힌 문제 갯수
 
-const updateQuiz = (index) => {
+const updateQuiz = (index) =&gt; {  // 퀴즈 유형, 문제, 보기 순으로 템플릿 문자열을 활용해 각각의 문제를 삽입했습니다.
     const quizTag = `
-        <div>${quizInfo[index].answerType}</div>
+        &lt;div&gt;${quizInfo[index].answerType}&lt;/div&gt;
     `;
     const questionTag = `
-        <span class="number">${quizInfo[index].answerNum}. </span>
-        <div class="ask">${quizInfo[index].answerAsk}</div>
+        &lt;span class="number"&gt;${quizInfo[index].answerNum}. &lt;/span&gt;
+        &lt;div class="ask"&gt;${quizInfo[index].answerAsk}&lt;/div&gt;
     `;
     const choiceTag = `
-        <label for="select1">
-            <input type="radio" class="select" id="select1" name="select" value="1">
-            <span class="choice">${quizInfo[index].answerChoice[0]}</span>
-        </label>
-        <label for="select2">
-            <input type="radio" class="select" id="select2" name="select" value="2">
-            <span class="choice">${quizInfo[index].answerChoice[1]}</span>
-        </label>
-        <label for="select3">
-            <input type="radio" class="select" id="select3" name="select" value="3">
-            <span class="choice">${quizInfo[index].answerChoice[2]}</span>
-        </label>
-        <label for="select4">
-            <input type="radio" class="select" id="select4" name="select" value="4">
-            <span class="choice">${quizInfo[index].answerChoice[3]}</span>
-        </label>
+        &lt;label for="select1"&gt;
+            &lt;input type="radio" class="select" id="select1" name="select" value="1"&gt;
+            &lt;span class="choice"&gt;${quizInfo[index].answerChoice[0]}&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label for="select2"&gt;
+            &lt;input type="radio" class="select" id="select2" name="select" value="2"&gt;
+            &lt;span class="choice"&gt;${quizInfo[index].answerChoice[1]}&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label for="select3"&gt;
+            &lt;input type="radio" class="select" id="select3" name="select" value="3"&gt;
+            &lt;span class="choice"&gt;${quizInfo[index].answerChoice[2]}&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label for="select4"&gt;
+            &lt;input type="radio" class="select" id="select4" name="select" value="4"&gt;
+            &lt;span class="choice"&gt;${quizInfo[index].answerChoice[3]}&lt;/span&gt;
+        &lt;/label&gt;
     `;
 
     // 문제 출력
@@ -150,7 +150,7 @@ const updateQuiz = (index) => {
 
     const quizChoice = quizSelects.querySelectorAll(".choice");
 
-    for(let i=0; i<quizChoice.length; i++){
+    for(let i=0; i&lt;quizChoice.length; i++){
         quizChoice[i].setAttribute("onclick", "choiceSelected(this)")
     }
 
@@ -175,7 +175,7 @@ const choiceSelected = (answer) =&gt; {
 
 // 정답 확인 버튼
 const answerQuiz = () =&gt; {
-    totalScore = quizScore * 100 / quizInfo.length;
+    totalScore = quizScore * 100 / quizInfo.length;  // 점수 계산하기
     if(quizInfo.length -1 == quizCount){
         if(totalScore >= 60){
             quizConfirm.textContent = `총 ${quizInfo.length}문제 중에 ${quizScore}문제를 맞혔습니다. ${totalScore}점입니다. 합격입니다!`
