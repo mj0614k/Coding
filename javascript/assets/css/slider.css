@@ -175,14 +175,6 @@ a {
 
 }
 
-/* 요소가 보이지 않게 하는 4가지 방법
-    1. display: none; (animation 불가능, 영역 사라짐)
-    2. opacity: 0; (animation 가능, 영역 남음)
-    3. visibility: hidden; (animation 불가능, 영역 사라짐)
-    4. transform: scale(0); (animation 가능, 영역 사라짐)
-    5. width: 0; height: 0; (animation 불가능, 영역 사라짐) : blind 효과
-*/
-
 .modal__cont {
     width: 100%;
     height: 100vh;
@@ -204,6 +196,7 @@ a {
     background-color: #fff;
     box-shadow: 0 10px 20px -5px hsl(180deg 2% 10%);
     height: 70vh;
+    transform: scale(0);
 }
 
 .modal__box .title {
@@ -338,10 +331,9 @@ a {
 }
 .modal__cont.show .modal__box {  /* 스크립트 박스 */
     animation: zoomOut 0.5s 1s ease forwards;
-    transform: scale(0);
 }
 .modal__cont.show .modal__close {  /* 닫기 버튼 */
-    animation: opacityOut 0.5s 1s ease forwards;
+    animation: opacityOut 0.5s 1.5s ease forwards;
 }
 
 .modal__cont.show.hide {
@@ -444,3 +436,11 @@ a {
         width: 96%;
     }
 }
+
+/* 요소가 보이지 않게 하는 5가지 방법
+    1. display: none; (animation 불가능, 영역 사라짐)
+    2. opacity: 0; (animation 가능, 영역 남음)
+    3. visibility: hidden; (animation 불가능, 영역 남음)
+    4. transform: scale(0); (animation 가능, 영역 사라짐)
+    5. width: 0; height: 0; (animation 불가능, 영역 사라짐) : blind 효과
+*/
