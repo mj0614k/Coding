@@ -65,6 +65,8 @@ body {
     font-size: 60px;
     font-weight: 700;
     color:#0242f186;
+    display: inline-block;
+    margin-bottom: 15px;
 }
 .header_nav ul li{
     display:inline;
@@ -74,7 +76,7 @@ body {
     color: #fff;
 }
 .header_nav ul li a{
-    border: 2px dashed #0242f136;
+    border: 2px solid #0242f136;
     padding: 8px 25px;
     display: inline-block;
     margin-bottom: 7px;
@@ -124,6 +126,53 @@ body {
     background: #8baaff36;
     padding: 10px;
     border-radius: 5px;
+}
+
+/* intro_menu */
+.intro__menu {
+    text-align: center;
+    width: 30vw;
+    position: absolute;
+    left: 30%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.4);
+    padding: 3vw;
+    border-radius: 1vw;
+}
+
+.intro__menu li{
+    font-weight: 400;
+    line-height: 40px;
+    color: #430068;
+}
+
+.intro__menu li a{
+    background-color: #430068;
+    color: #bc9cce;
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    border-radius: 10px;
+}
+.intro__menu li a:hover {
+    color: #430068;
+    background-color: #bc9cce;
+}
+
+@media(max-width: 600px){
+    .intro__menu {
+        width: 90%;
+        padding: 14px;
+    }
+    .intro__menu li {
+        font-size: 16px;
+    }
+    .intro__menu li a {
+        font-size: 16px;;
+    }
 }
 
 /* sample */
