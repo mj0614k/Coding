@@ -1,12 +1,14 @@
 /* 웹폰트 */
 @import url('https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css');
+@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
 
 /* 리셋 */
 /* 여백 초기화 */
 *{
     margin: 0;
     padding: 0;
-    font-family: 'NexonLv1Gothic';
+    font-family: 'GmarketSans';
+    font-weight: 200;
     font-size: 16px;
     line-height: 1.6;
 }
@@ -15,6 +17,7 @@
 a {
     text-decoration: none;
     color: #222;
+    font-weight: normal;
 }
 
 /* 목록 초기화 */
@@ -34,6 +37,7 @@ body {
 #header{
     border-bottom: 1px dashed #dcdcdc;
     padding-bottom: 40px;
+    text-align: center;
 }
 
 #main{
@@ -49,26 +53,36 @@ body {
     text-decoration: underline;
 }
 
+/* container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 /* 헤더 영역 */
 #header h1 a{
     font-size: 60px;
     font-weight: 700;
+    color:#0242f186;
 }
 .header_nav ul li{
     display:inline;
 }
 .header_nav ul li.active a{
-    background-color: #000;
+    background-color: #0242f186;
     color: #fff;
 }
 .header_nav ul li a{
-    border: 1px solid #222;
+    border: 2px dashed #0242f136;
     padding: 8px 25px;
     display: inline-block;
     margin-bottom: 7px;
+    font-weight: normal;
+    color: #0242f186;
 }
 .header_nav ul li a:hover{
-    background-color: #000;
+    background-color: #0242f186;
     color:#fff;
 }
 .header_nav .study {
@@ -106,6 +120,10 @@ body {
 }
 .main_sample .result{
     margin-bottom: 80px;
+    margin-top: 10px;
+    background: #8baaff36;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 /* sample */
