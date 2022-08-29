@@ -98,12 +98,12 @@
                 answerType: "웹디자인기능사 2013년 01회",
                 answerNum: "6",
                 answerAsk: "서로 다른 색끼리의 영향으로 인하여 밝은 색은 더 밝게 어두운 색은 더 어둡게 보이는 대비는?",
-                answerChoice: [
-                    "색상대비",
-                    "명도대비",
-                    "채도대비",
-                    "계시대비"
-                ],
+                answerChoice: {
+                    1: "색상대비",
+                    2: "명도대비",
+                    3: "채도대비",
+                    4: "계시대비"
+                },
                 answerResult: "명도대비",
                 answerEx: "어둡고 밝다라는 언급은 명도를 의심하셔야 됩니다."
             },
@@ -111,12 +111,12 @@
                 answerType: "웹디자인기능사 2013년 01회",
                 answerNum: "7",
                 answerAsk: "디자인 원리 중 율동(Rhythm)에 해당하지 않는 것은?",
-                answerChoice: [
-                    "비례",
-                    "반복",
-                    "강조",
-                    "점이"
-                ],
+                answerChoice: {
+                    1: "비례",
+                    2: "반복",
+                    3: "강조",
+                    4: "점이"
+                },
                 answerResult: "비례",
                 answerEx: "율동의 효과는 강한 힘과 약한 힘이 '규칙적'으로 생겨나는 '움직임' 입니다. 비례랑은 상관없습니다."
             },
@@ -124,12 +124,12 @@
                 answerType: "웹디자인기능사 2013년 01회",
                 answerNum: "8",
                 answerAsk: "어둠이 시작될 때 물체의 상이 흐리게 나타나는 현상과 가장 관계가 깊은 것은?",
-                answerChoice: [
-                    "색순응",
-                    "푸르킨예 현상",
-                    "박명시",
-                    "조건등색"
-                ],
+                answerChoice: {
+                    1: "색순응",
+                    2: "푸르킨예 현상",
+                    3: "박명시",
+                    4: "조건등색"
+                },
                 answerResult: "박명시",
                 answerEx: "명순응은 어두운 -> 밝은곳 갈 때 눈의 적응 암순응은 밝은 -> 어두운 곳 갈 때 눈의 적응입니다. 박명시란 그 중간에 눈의 적응입니다. 그 상태에선 물체가 흐리게 보여요"
             },
@@ -137,12 +137,12 @@
                 answerType: "웹디자인 기능사 2013년 01회",
                 answerNum: 11,
                 answerAsk: "스파트(spot) 광고에 대한 설명이 옳은 것은?",
-                answerChoice: [
-                    "전국 방송망으로 방송국에서 전국에 실시하는 광고",
-                    "일정시간을 정해 30초 CM 10개를 계속 방송하는 형태",
-                    "지역 방송국에 제한되어 방송하는 것",
-                    "프로그램과 프로그램 사이에 광고를 삽입하는 것",
-                ],
+                answerChoice: {
+                    1: "전국 방송망으로 방송국에서 전국에 실시하는 광고",
+                    2: "일정시간을 정해 30초 CM 10개를 계속 방송하는 형태",
+                    3: "지역 방송국에 제한되어 방송하는 것",
+                    4: "프로그램과 프로그램 사이에 광고를 삽입하는 것",
+                },
                 answerResult: "프로그램과 프로그램 사이에 광고를 삽입하는 것",
                 answerEx: "기억해주세요 spot 광고란 '라디오나 텔레비전 방송에서, 프로그램 사이 또는 프로그램 진행 중에 아주 짧게 나가는 광고' 입니다.",
             },
@@ -1066,19 +1066,19 @@
             const choiceTag = `
                 <label for="select1">
                     <input type="radio" class="select" id="select1" name="select" value="1">
-                    <span class="choice">${quizInfo[index].answerChoice[0]}</span>
+                    <span class="choice">${quizInfo[index].answerChoice[1]}</span>
                 </label>
                 <label for="select2">
                     <input type="radio" class="select" id="select2" name="select" value="2">
-                    <span class="choice">${quizInfo[index].answerChoice[1]}</span>
+                    <span class="choice">${quizInfo[index].answerChoice[2]}</span>
                 </label>
                 <label for="select3">
                     <input type="radio" class="select" id="select3" name="select" value="3">
-                    <span class="choice">${quizInfo[index].answerChoice[2]}</span>
+                    <span class="choice">${quizInfo[index].answerChoice[3]}</span>
                 </label>
                 <label for="select4">
                     <input type="radio" class="select" id="select4" name="select" value="4">
-                    <span class="choice">${quizInfo[index].answerChoice[3]}</span>
+                    <span class="choice">${quizInfo[index].answerChoice[4]}</span>
                 </label>
             `;
 
