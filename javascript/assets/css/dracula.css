@@ -1,15 +1,18 @@
+pre {
+    height: 100%;
+}
+
 pre code.hljs {
     display: block;
-    overflow-x: auto;
+    height: 100%;
     padding: 20px;
-    font-family: 'NexonLv1Gothic';
     line-height: 1.6;
-    margin-bottom: 20px;
     border-radius: 5px;
     font-weight: 300;
+    overflow-x: auto;
 }
 code.hljs {
-    padding: 3px 5px
+    padding: 3px 5px;
 }
 .hljs {
     color: #E9E9F4;

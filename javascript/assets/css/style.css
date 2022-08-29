@@ -131,15 +131,13 @@ body {
 /* intro_menu */
 .intro__menu {
     text-align: center;
-    width: 30vw;
     position: absolute;
-    left: 30%;
-    top: 15%;
-    transform: translate(-50%, -50%);
+    left: 10px;
+    top: 10px;
     backdrop-filter: blur(10px);
     background: rgba(255,255,255,0.4);
     padding: 3vw;
-    border-radius: 1vw;
+    border-radius: 10px;
 }
 
 .intro__menu li{
