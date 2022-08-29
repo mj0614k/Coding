@@ -11,10 +11,10 @@ code {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'EF_Hyunygothic';
 }
 
 body {
-    font-family: 'EF_Hyunygothic';
     width: 100%;
     height: 100vh;
 }
