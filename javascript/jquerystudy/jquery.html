@@ -1,0 +1,48 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;속성 선택자&lt;/title&gt;
+    &lt;style&gt;
+        li {
+            margin: 5px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul class="list1"&gt;
+        &lt;li class="list_1"&gt;내용1_1&lt;/li&gt;
+        &lt;li class="list_2"&gt;내용1_2&lt;/li&gt;
+        &lt;li class="list_3"&gt;내용1_3&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class="list2"&gt;
+        &lt;li class="list bg"&gt;내용2_1&lt;/li&gt;
+        &lt;li class="list_1"&gt;내용2_2&lt;/li&gt;
+        &lt;li class="list_2"&gt;내용2_3&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class="list3"&gt;
+        &lt;li class="list"&gt;내용3_1&lt;/li&gt;
+        &lt;li class="list-1"&gt;내용3_2&lt;/li&gt;
+        &lt;li class="list-bg"&gt;내용3_3&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class="list4"&gt;
+        &lt;li class="list"&gt;내용4_1&lt;/li&gt;
+        &lt;li class="list-1"&gt;내용4_2&lt;/li&gt;
+        &lt;li class="list-bg"&gt;내용4_3&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        $(document).ready(function() {
+            $(".list1 &gt; li[class='list_1']").css("border", "2px solid red");
+            $(".list1 &gt; li[class!='list_1']").css("border", "2px solid orange");
+            $(".list2 &gt; li[class~='list']").css("background", "yellow");
+            $(".list2 &gt; li[class*='list']").css("border", "2px solid green");
+            $(".list3 &gt; li[class|='list']").css("border", "2px solid blue");
+            $(".list4 &gt; li[class^='list']").css("border", "2px solid navy");
+            $(".list4 &gt; li[class$='bg']").css("background", "purple");
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
