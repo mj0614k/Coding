@@ -126,10 +126,135 @@
                 </tbody>
             </table>
             <div class="t_code">
-<pre><code class="language-html">
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;기본 탐색 선택자&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 5px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="m1"&gt;
+        &lt;a href="#"&gt;내용1_1&lt;/a&gt;&lt;span&gt;내용1_2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div id="m2"&gt;
+        &lt;div&gt;
+            &lt;a href="#"&gt;내용2_1&lt;/a&gt;&lt;span&gt;내용2_2&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="m3"&gt;
+        &lt;div&gt;&lt;span&gt;내용3_1&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="m4"&gt;
+        &lt;span class="m"&gt;내용4_1&lt;/span&gt;&lt;span&gt;내용4_2&lt;/span&gt;&lt;span&gt;내용4_3&lt;/span&gt;&lt;em&gt;내용4_4&lt;/em&gt;
+    &lt;/div&gt;
+    &lt;div id="m5"&gt;
+        &lt;span class="m"&gt;내용5_1&lt;/span&gt;&lt;span&gt;내용5_2&lt;/span&gt;&lt;span&gt;내용5_3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div id="m6"&gt;
+        &lt;div&gt;&lt;span&gt;내용6_1&lt;/span&gt;&lt;/div&gt;
+        &lt;div&gt;내용6_2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        $(document).ready(function() {
+            $("#m1").children().css("border", "2px solid red");
+            $("#m2").children().children("span").css("border", "2px solid orange");
+            $("#m3 span").closest("div").css("border", "2px solid yellow");
+            $("#m4 &gt; span.m").nextUntil("em").css("border", "2px solid green");
+            $("#m5 &gt; span").filter(".m").css("border", "2px solid blue");
+            $("#m6 &gt; div").has("span").css("border", "2px solid navy");
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
             </div>
             <p>스ㅡㅡㅡ터ㅡㅡㅡㅡㅡㅡㅡ디이ㅣ이ㅣㅣ사진</p>
+            <h3 class="t_tit2">2. 기타 탐색 선택자</h3>
+            <table class="t_table">
+                <thead>
+                    <tr>
+                        <th>선택자 종류</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ce">add()</td>
+                        <td>$("div").add("p")<br>
+                        div 요소와 p 요소를 선택합니다.</td>
+                    </tr>
+                    <tr>
+                        <td class="ce">addBack()</td>
+                        <td>$("div").children("p").addBack()<br>
+                        p 요소와 이전 선택요소 div를 선택합니다.</td>
+                    </tr>
+                    <tr>
+                        <td class="ce">end()</td>
+                        <td>$("div").find("span").css(...).end().find("em").css(...)<br>
+                            $("div").find("span").css(...)의 실행이 끝나면 처음 선택자 $("div")로 다시 돌아와<br>
+                            $("div").find("em").css(...)가 실행됩니다.
+                    </tr>
+                    <tr>
+                        <td class="ce">is()</td>
+                        <td>선택한 요소를 판별해주는 선택자로, 보통 if문의 조건식에 사용됩니다.<br>
+                            if("div").children().is("p"){<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;console.log("p 요소가 맞습니다.");<br>}
+                    </tr>
+                </tbody>
+            </table>
+            <div class="t_code">
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;기타 탐색 선택자&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 5px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="m1"&gt;
+        &lt;div&gt;내용1_1&lt;/div&gt;&lt;p&gt;내용1_2&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="m2"&gt;
+        &lt;p&gt;내용2&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="m3"&gt;
+        &lt;span&gt;내용3_1&lt;/span&gt;&lt;em&gt;내용3_2&lt;/em&gt;
+    &lt;/div&gt;
+    &lt;div id="m4"&gt;
+        &lt;p&gt;내용4&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        $(document).ready(function() {
+            $("#m1 &gt; div").add("#m1 &gt; p").css("border", "2px solid red");
+            $("#m2").children("p").addBack().css("border", "2px solid orange");
+            $("#m3").find("span").css("border", "2px solid yellow").end().find("em").css("border", "2px solid green");
+            if($("#m4").children().is("p")){
+                console.log("p 요소가 존재합니다.");
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+            스터디 마지막사지니이ㅣ이이인
         </div>
     </main>
     <!-- //main -->
