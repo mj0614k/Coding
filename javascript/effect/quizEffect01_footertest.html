@@ -5,109 +5,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>슬라이드 이펙트</title>
-
-    <link rel="stylesheet" href="../assets/css/slider.css">
-    <link rel="stylesheet" href="../assets/css/dracula.css">
-    <style>
-        /* slider */
-        .slider__wrap {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .slider__img { /* 이미지 보이는 영역 */
-            position: relative;
-            width: 800px;
-            height: 520px;
-            overflow: hidden;
-        }
-        .slider__inner { /* 이미지를 감싸고 있는 부모(움직이는 부분) */
-            display: flex;
-            flex-wrap: wrap;
-            width: 4800px;
-            height: 520px;
-        }
-        .slider { /* 개별적인 이미지 */
-            position: relative;
-            width: 800px;
-            height: 520px;
-        }
-        .slider::before{
-            position: absolute;
-            left: 5px;
-            top: 5px;
-            background: rgba(0,0,0,0.4);
-            color: #fff;
-            padding: 5px 10px;
-        }
-
-        .slider:nth-child(1)::before {content: '이미지1';}
-        .slider:nth-child(2)::before {content: '이미지2';}
-        .slider:nth-child(3)::before {content: '이미지3';}
-        .slider:nth-child(4)::before {content: '이미지4';}
-        .slider:nth-child(5)::before {content: '이미지5';}
-        .slider:nth-child(6)::before {content: '이미지1';}
-        .slider:nth-child(1) {z-index: 5;}
-        .slider:nth-child(2) {z-index: 4;}
-        .slider:nth-child(3) {z-index: 3;}
-        .slider:nth-child(4) {z-index: 2;}
-        .slider:nth-child(5) {z-index: 1;}
-
-        @media (max-width: 800px){
-            .slider__img {
-                width: 400px;
-                height: 260px;
-            }
-        }
-    </style>
+    <title>퀴즈 이펙트</title>
+    <link href="https://webfontworld.github.io/DungGeunMo/DungGeunMo.css" rel="stylesheet">
+    <link href="https://webfontworld.github.io/goyang/GoYang.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/quiz.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
 </head>
 
-<body class="img03">
+<body>
     <header id="header">
-        <h1>Javascript Slider Effect03</h1>
-        <p>슬라이드 이펙트 : 좌로 움직이는 유형(연속적)</p>
-        <ul>
-            <li><a href="sliderEffect01.html">1</a></li>
-            <li><a href="sliderEffect02.html">2</a></li>
-            <li class="active"><a href="sliderEffect03.html">3</a></li>
-            <li><a href="sliderEffect04.html">4</a></li>
-            <li><a href="sliderEffect05.html">5</a></li>
-            <li><a href="sliderEffect06.html">6</a></li>
-            <li><a href="sliderEffect07.html">7</a></li>
-        </ul>
+        <h1><a href="../javascript01.html">Quiz </a><em>정답 확인하기 유형</em></h1>
+        <nav>
+            <ul>
+                <li class="active"><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li><a href="quizEffect04.html">4</a></li>
+                <li><a href="quizEffect05.html">5</a></li>
+                <li><a href="quizEffect06.html">6</a></li>
+            </ul>
+        </nav>
     </header>
-    <!-- //header -->
+    <!-- // header -->
 
     <main id="main">
-        <section id="sliderType03">
-            <div class="slider__wrap">
-                <div class="slider__img">
-                    <div class="slider__inner">
-                        <div class="slider">
-                            <img src="../assets/img/effect_bg11-min.jpg" alt="이미지1">
+        <div class="quiz__wrap">
+            <div class="quiz">
+                <span class="quiz__type"></span>
+                <h2 class="quiz__question">
+                    <span class="number"></span>
+                    <div class="ask"></div>
+                </h2>
+                <div class="quiz__view">
+                    <div class="dog">
+                        <div class="head">
+                            <div class="ears"></div>
+                            <div class="face"></div>
+                            <div class="eyes">
+                                <div class="teardrop"></div>
+                            </div>
+                            <div class="nose"></div>
+                            <div class="mouth">
+                                <div class="tongue"></div>
+                            </div>
+                            <div class="chin"></div>
                         </div>
-                        <div class="slider">
-                            <img src="../assets/img/effect_bg12-min.jpg" alt="이미지2">
-                        </div>
-                        <div class="slider">
-                            <img src="../assets/img/effect_bg13-min.jpg" alt="이미지3">
-                        </div>
-                        <div class="slider">
-                            <img src="../assets/img/effect_bg14-min.jpg" alt="이미지4">
-                        </div>
-                        <div class="slider">
-                            <img src="../assets/img/effect_bg15-min.jpg" alt="이미지5">
-                        </div>
+                        <div class="body">
+                            <div class="tail"></div>
+                            <div class="legs"></div>
                         </div>
                     </div>
                 </div>
+                <div class="quiz__answer">
+                    <button class="confirm">정답 확인하기</button>
+                    <div class="result"></div>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
-    <!-- //main -->
+    <!-- // main -->
 
     <footer id="footer">
         <div class="modal__wrap">
@@ -205,15 +161,110 @@
                     </div>
                     <div class="cont">
                         <div class="active">
-<pre><code class="language-js">
+<pre><code class="language-js">const sliderWrap = document.querySelector(".slider__wrap");
+const sliderImg = sliderWrap.querySelector(".slider__img");
+const slider = sliderWrap.querySelectorAll(".slider");
+
+let currentIndex = 0;  // 현재 보이는 이미지
+let sliderCount = slider.length;  // 총 이미지 개수
+
+// 1000 : 1초, 1초에 한 번씩 실행한다는 의미
+setInterval(() =&gt; {
+    let nextIndex = (currentIndex + 1) % 5;  // 다음 이미지
+
+    // slider[0].style.opacity = "0";  // 첫번째 이미지 가리기
+    // slider[1].style.opacity = "1";  // 두번째 이미지 보여주기
+
+    // slider[1].style.opacity = "0";  // 두번째 이미지 가리기
+    // slider[2].style.opacity = "1";  // 세번째 이미지 보여주기
+
+    // slider[2].style.opacity = "0";  // 세번째 이미지 가리기
+    // slider[3].style.opacity = "1";  // 네번째 이미지 보여주기
+
+    // slider[3].style.opacity = "0";  // 네번째 이미지 가리기
+    // slider[4].style.opacity = "1";  // 다섯번째 이미지 보여주기
+
+    // slider[4].style.opacity = "0";  // 다섯번째 이미지 가리기
+    // slider[0].style.opacity = "1";  // 첫번째 이미지 보여주기
+
+   slider[currentIndex].style.opacity = "0";  // 현재 이미지 가리기
+    slider[nextIndex].style.opacity = "1";  // 다음 이미지 보여주기
+
+    currentIndex = nextIndex;
+},3000)
 </code></pre>
                         </div>
                         <div>
-<pre><code class="language-html">
+<pre><code class="language-html">&lt;div class="slider__wrap"&gt;
+    &lt;div class="slider__img"&gt;
+        &lt;div class="slider"&gt;
+            &lt;img src="../assets/img/effect_bg11-min.jpg" alt="이미지1"&gt;
+        &lt;/div&gt;
+        &lt;div class="slider"&gt;
+            &lt;img src="../assets/img/effect_bg12-min.jpg" alt="이미지2"&gt;
+        &lt;/div&gt;
+        &lt;div class="slider"&gt;
+            &lt;img src="../assets/img/effect_bg13-min.jpg" alt="이미지3"&gt;
+        &lt;/div&gt;
+        &lt;div class="slider"&gt;
+            &lt;img src="../assets/img/effect_bg14-min.jpg" alt="이미지4"&gt;
+        &lt;/div&gt;
+        &lt;div class="slider"&gt;
+            &lt;img src="../assets/img/effect_bg15-min.jpg" alt="이미지5"&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
                         </div>
                         <div>
-<pre><code class="language-css">
+<pre><code class="language-css">/* slider */
+.slider__wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider__img {
+    position: relative;
+    width: 800px;
+    height: 520px;
+}
+
+.slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.slider::before{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    padding: 5px 10px;
+}
+
+.slider:nth-child(1)::before {content: '이미지1';}
+.slider:nth-child(2)::before {content: '이미지2';}
+.slider:nth-child(3)::before {content: '이미지3';}
+.slider:nth-child(4)::before {content: '이미지4';}
+.slider:nth-child(5)::before {content: '이미지5';}
+.slider:nth-child(1) {z-index: 5;}
+.slider:nth-child(2) {z-index: 4;}
+.slider:nth-child(3) {z-index: 3;}
+.slider:nth-child(4) {z-index: 2;}
+.slider:nth-child(5) {z-index: 1;}
+
+@media (max-width: 800px){
+    .slider__img {
+        width: 400px;
+        height: 260px;
+    }
+}
 </code></pre>
                         </div>
                     </div>
@@ -228,47 +279,42 @@
                 </div>
             </div>
         </div>
+        <a href="mailto:mo0647@naver.com">mo0647@naver.com</a>
     </footer>
-    <!-- //footer -->
+    <!-- // footer -->
 
-    <script src="../assets/js/highlight.min.js"></script>
-    <script src="../assets/js/common.js"></script>
     <script>
-        const sliderWrap = document.querySelector(".slider__wrap");
-        const sliderImg = document.querySelector(".slider__img");  // 보여지는 영역
-        const sliderInner = document.querySelector(".slider__inner");  // 움직이는 영역
-        const slider = document.querySelectorAll(".slider");  // 개별적 이미지
+        // 선택자
+        const quizType = document.querySelector(".quiz__type");                     // 퀴즈 종류
+        const quizNumber = document.querySelector(".quiz__question .number");       // 퀴즈 번호
+        const quizAsk = document.querySelector(".quiz__question .ask");             // 퀴즈 질문
+        const quizConfirm = document.querySelector(".quiz__answer .confirm");       // 정답 확인 버튼
+        const quizResult = document.querySelector(".quiz__answer .result");         // 정답 결과
+        
+        // 문제 정보
+        const answerType = "웹디자인기능사";
+        const answerNum = 1;
+        const answerAsk = "인접하는 두 색의 경계 부분에 색상, 명도, 채도의 대비가 더욱 강하게 일어나는 현상을 무엇이라고 하는가?";
+        const answerResult = "연변대비";
 
-        let currentIndex = 0;  // 현재 보이는 이미지
-        let sliderCount = slider.length;  // 이미지 개수
-        let sliderWidth = sliderImg.offsetWidth;  // 이미지 너비 값
-        let sliderClone = sliderInner.firstElementChild.cloneNode(true);  // 첫 번째 이미지 복사
-        sliderInner.appendChild(sliderClone)  // 첫 번째 이미지를 마지막에 넣어주기
+        // 문제 출력
+        quizType.innerText = answerType;
+        quizNumber.innerText = answerNum + ". ";
+        quizAsk.innerText = answerAsk;
+        quizResult.innerHTML = answerResult;
 
-        function sliderEffect(){
-            currentIndex++;
-            sliderInner.style.transition = "all 0.6s";
-            sliderInner.style.transform = "translateX(-" + sliderWidth * currentIndex +"px)";
+        // 정답 숨기기
+        quizResult.style.display = "none";
 
-            // sliderInner.style.transform = "translateX(-800px)";  800 * 1
-            // sliderInner.style.transform = "translateX(-1600px)"  800 * 2
-            // sliderInner.style.transform = "translateX(-2400px)"  800 * 3
-            // sliderInner.style.transform = "translateX(-3200px)"  800 * 4
-            // sliderInner.style.transform = "translateX(-4000px)"  800 * 5
-            // sliderInner.style.transform = "translateX(-4800px)"  800 * 6
-
-            // 마지막 사진에 위치했을 때
-            if(currentIndex == sliderCount){
-                setTimeout(() => {
-                    sliderInner.style.transition = "0s";
-                    sliderInner.style.transform = "translateX(0px)";
-                }, 700);
-                currentIndex = 0;
-            }
-        }
-        setInterval(sliderEffect, 2000);
-
+        // 정답 확인
+        // 정답 버튼을 클릭하면 확인 버튼 숨기고, 숨겨진 정답 나타내기
+        quizConfirm.addEventListener("click", function(){
+            quizConfirm.style.display = "none";
+            quizResult.style.display = "block";
+        });
     </script>
+
+
 </body>
 
 </html>
