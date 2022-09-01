@@ -41,6 +41,14 @@
     text-align: center;
     margin-bottom: 70px;
 }
+.section>span {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: underline;
+    text-underline-position: under;
+    margin-bottom: 20px;
+}
 
 /* 폰트 */
 .nexon {
