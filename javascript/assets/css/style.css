@@ -77,7 +77,7 @@ body {
 }
 .header_nav ul li a{
     border: 2px solid #0242f136;
-    padding: 8px 25px;
+    padding: 11px 25px 8px 25px;
     display: inline-block;
     margin-bottom: 7px;
     font-weight: normal;
