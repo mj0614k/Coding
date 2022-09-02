@@ -465,17 +465,49 @@
                 display: none;
             }
         }
+
+        .link {
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            z-index: 10000;
+        }
+        .link li {
+            list-style: none;
+            display: inline;
+        }
+        .link li a {
+            text-decoration: none;
+            display: inline-block;
+            border: 1px solid #0066ff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            background: #0066ff;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: "GmarketSans";
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .link li a:hover {
+            background: #fff;
+            color: #0066ff;
+        }
     </style>
 </head>
 
 <body>
-    <nav>
+    <div class="link">
         <ul>
-            <li><a href="">t</a></li>
-            <li><a href="">g</a></li>
-            <li><a href="">v</a></li>
+            <li><a href="https://mo0647.tistory.com/" target="_blank">t</a></li>
+            <li><a href="https://github.com/mj0614k/Coding" target="_blank">g</a></li>
+            <li><a href="https://github1s.com/mj0614k/Coding" target="_blank">v</a></li>
         </ul>
-    </nav>
+    </div>
     <main>
         <div class="dog">
             <div class="wrap">

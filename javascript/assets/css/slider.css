@@ -2,16 +2,11 @@
 @import url('https://webfontworld.github.io/kohi/KOHIBaeum.css');
 
 /* font */
-code {
-    font-family: 'KOHIBaeum';
-    line-height: 1.4;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'EF_Hyunygothic';
+    font-family: 'KOHIBaeum';
 }
 
 body {
@@ -125,10 +120,12 @@ a {
     font-weight: 300;
     margin-bottom: 10px;
     border-bottom: 2px solid black;
+    font-family: 'EF_Hyunygothic';
 }
 
 #header p {
     margin-bottom: 10px;
+    font-family: 'EF_Hyunygothic';
 }
 
 #header li {
@@ -144,6 +141,7 @@ a {
     text-align: center;
     line-height: 28px;
     font-size: 14px;
+    font-family: 'EF_Hyunygothic';
 }
 
 #header li.active a {
@@ -178,6 +176,7 @@ a {
     bottom: 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    font-family: 'EF_Hyunygothic';
 }
 
 .modal__btn:hover {
@@ -200,7 +199,7 @@ a {
 }
 
 .modal__box {
-    width: 90%;
+    width: 60%;
     border-radius: 0.6rem;
     background-color: #fff;
     box-shadow: 0 10px 20px -5px hsl(180deg 2% 10%);
