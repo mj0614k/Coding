@@ -263,7 +263,7 @@ body {
     border: 1px solid #4390e1;
     color: #4390e1;
     border-radius: 40px;
-    padding: 10px 25px;
+    padding: 10px 25px 8px 25px;
     display: inline-block;
     margin: 5px;
 }
