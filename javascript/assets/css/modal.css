@@ -9,7 +9,7 @@
     padding: 10px 20px;
     position: absolute;
     right: 20px;
-    bottom: 20px;
+    bottom: -180px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 }

@@ -1,40 +1,26 @@
-&lt;!DOCTYPE htmld&gt;
-&lt;html lang="ko"d&gt;
-&lt;headd&gt;
-    &lt;meta charset="UTF-8"d&gt;
-    &lt;titled&gt;기타 탐색 선택자&lt;/titled&gt;
-    &lt;styled&gt;
-        * {
-            margin: 5px;
-        }
-    &lt;/styled&gt;
-&lt;/headd&gt;
-&lt;bodyd&gt;
-    &lt;div id="m1"d&gt;
-        &lt;divd&gt;내용1_1&lt;/divd&gt;&lt;pd&gt;내용1_2&lt;/pd&gt;
-    &lt;/divd&gt;
-    &lt;div id="m2"d&gt;
-        &lt;pd&gt;내용2&lt;/pd&gt;
-    &lt;/divd&gt;
-    &lt;div id="m3"d&gt;
-        &lt;spand&gt;내용3_1&lt;/spand&gt;&lt;emd&gt;내용3_2&lt;/emd&gt;
-    &lt;/divd&gt;
-    &lt;div id="m4"d&gt;
-        &lt;pd&gt;내용4&lt;/pd&gt;
-    &lt;/divd&gt;
-
-    &lt;script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-    crossorigin="anonymous"d&gt;&lt;/scriptd&gt;
-    &lt;scriptd&gt;
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>removeClass() 메서드</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script>
         $(document).ready(function() {
-            $("#m1 d&gt; div").add("#m1 d&gt; p").css("border", "2px solid red");
-            $("#m2").children("p").addBack().css("border", "2px solid orange");
-            $("#m3").find("span").css("border", "2px solid yellow").end().find("em").css("border", "2px solid green");
-            if($("#m4").children().is("p")){
-                console.log("p 요소가 존재합니다.");
-            }
+            $("#m1 > div").removeClass("con");
+            $("#m2 > div").removeClass(function() {
+                return "bg";
+            });
         });
-    &lt;/scriptd&gt;
-&lt;/bodyd&gt;
-&lt;/htmld&gt;
+    </script>
+</head>
+<body>
+    <div id="m1">
+        <div class="con">콘텐츠</div>
+    </div>
+    <div id="m2">
+        <div class="c1 bg">내용1</div>
+        <div class="c2 bg">내용2</div>
+        <div class="c3 bg">내용3</div>
+    </div>
+</body>
+</html>
