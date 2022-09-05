@@ -19,6 +19,7 @@
 
         <!-- CSS(섹션별) -->
         <link rel="stylesheet" href="assets/css/header.css" />
+        <link rel="stylesheet" href="assets/css/slider.css" />
         <link rel="stylesheet" href="assets/css/card.css" />
         <link rel="stylesheet" href="assets/css/image.css" />
         <link rel="stylesheet" href="assets/css/text.css" />
@@ -60,9 +61,39 @@
         </header>
         <!-- //header -->
 
-        <main id="main">
+        <main id="mainType">
             <section id="sliderType" class="slider__wrap">
-                <h2>슬라이드 영역</h2>
+                <h2 class="blind">슬라이드 영역</h2>
+                <div class="slider__inner">
+                    <div class="slider">
+                        <div class="slider__img">
+                            <div class="desc">
+                                <span>DEVELOPER</span>
+                                <h3>NEW PROJECT</h3>
+                                <p>
+                                    너무 무리하지 말아요! 이미 당신은 잘하고 있고!<br />
+                                    앞으로도 잘 할 수 있어요!
+                                </p>
+                                <div class="btn">
+                                    <a href="#">자세히 보기</a>
+                                    <a href="#" class="black">사이트 보기</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider__arrow">
+                            <!-- blind는 단순 글자 숨김, ir은 이미지의 alt효과 대체 -->
+                            <a href="#" class="left"><span class="ir">이전 이미지</span></a>
+                            <a href="#" class="right"><span class="ir">다음 이미지</span></a>
+                        </div>
+                        <div class="slider__dot">
+                            <a href="#" class="dot active"><span class="ir">1</span></a>
+                            <a href="#" class="dot"><span class="ir">2</span></a>
+                            <a href="#" class="dot"><span class="ir">3</span></a>
+                            <a href="#" class="play"><span class="ir">플레이</span></a>
+                            <a href="#" class="stop"><span class="ir">정지</span></a>
+                        </div>
+                    </div>
+                </div>
             </section>
             <!-- //sliderType -->
 
