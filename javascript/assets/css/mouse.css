@@ -12,6 +12,7 @@
 body {
     width: 100%;
     height: 100vh;
+    overflow: hidden;
 }
 
 body.img01 {
@@ -75,6 +76,10 @@ a {
     text-decoration: none;
 }
 
+li {
+    list-style: none;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -98,10 +103,10 @@ a {
     z-index: 2000;
 }
 #main {
-    position: relative;
-    z-index: 1000;
     width: 100%;
     height: 100vh;
+    position: relative;
+    z-index: 1000;
 }
 #footer {
     position: relative;
@@ -458,11 +463,3 @@ a {
         width: 96%;
     }
 }
-
-/* 요소가 보이지 않게 하는 5가지 방법
-    1. display: none; (animation 불가능, 영역 사라짐)
-    2. opacity: 0; (animation 가능, 영역 남음)
-    3. visibility: hidden; (animation 불가능, 영역 남음)
-    4. transform: scale(0); (animation 가능, 영역 사라짐)
-    5. width: 0; height: 0; (animation 불가능, 영역 사라짐) : blind 효과
-*/
