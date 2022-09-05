@@ -1,6 +1,9 @@
 # Coding
 
-### 메인 페이지
+### 메인 페이지1
+https://minjeong97.netlify.app/
+
+### 메인 페이지2
 https://mj0614k.github.io/Coding/index.html   
 
 ### 자기소개 페이지
