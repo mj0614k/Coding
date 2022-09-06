@@ -1,69 +1,19 @@
 @import url("https://webfontworld.github.io/earlyfont/EF_Hyunygothic.css");
 @import url("https://webfontworld.github.io/kohi/KOHIBaeum.css");
+@import url("https://webfontworld.github.io/NexonLv2Gothic/NexonLv2Gothic.css");
 
 /* font */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "KOHIBaeum";
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-body.img01 {
-    background: url(../img/effect_bg01@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img02 {
-    background: url(../img/effect_bg02@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img03 {
-    background: url(../img/effect_bg03@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img04 {
-    background: url(../img/effect_bg04@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img05 {
-    background: url(../img/effect_bg05@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img06 {
-    background: url(../img/effect_bg06@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img07 {
-    background: url(../img/effect_bg07@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img08 {
-    background: url(../img/effect_bg08@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img09 {
-    background: url(../img/effect_bg09@2x-min.jpg) no-repeat center / cover;
-}
-
-body.img10 {
-    background: url(../img/effect_bg10@2x-min.jpg) no-repeat center / cover;
-}
-
-body::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(199, 199, 199, 0.38);
-    z-index: -1;
+    background-color: #222;
+    color: #fff;
+    font-weight: 300;
+    font-family: "NexonLv2Gothic";
 }
 
 img {
@@ -72,8 +22,8 @@ img {
 }
 
 a {
-    color: black;
     text-decoration: none;
+    color: #fff;
 }
 
 li {
@@ -115,7 +65,6 @@ li {
 
 /* header */
 #header {
-    color: black;
     padding: 20px;
     position: absolute;
     left: 0;
@@ -126,13 +75,11 @@ li {
     display: inline-block;
     font-weight: 300;
     margin-bottom: 10px;
-    border-bottom: 2px solid black;
-    font-family: "EF_Hyunygothic";
+    border-bottom: 2px solid #fff;
 }
 
 #header p {
     margin-bottom: 10px;
-    font-family: "EF_Hyunygothic";
 }
 
 #header li {
@@ -140,7 +87,7 @@ li {
 }
 
 #header li a {
-    border: 2px solid black;
+    border: 2px solid #fff;
     border-radius: 50%;
     display: inline-block;
     width: 30px;
@@ -148,18 +95,14 @@ li {
     text-align: center;
     line-height: 28px;
     font-size: 14px;
-    font-family: "EF_Hyunygothic";
 }
 
 #header li.active a {
-    color: #fff;
-    background-color: black;
+    color: #000;
+    background-color: #fff;
 }
 
 /* footer */
-#footer {
-}
-
 #footer .source {
     position: absolute;
     right: 20px;
@@ -171,9 +114,6 @@ li {
 }
 
 /* modal__wrap */
-.modal__wrap {
-}
-
 .modal__btn {
     color: black;
     background-color: #fff;
@@ -185,7 +125,6 @@ li {
     bottom: 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-    font-family: "EF_Hyunygothic";
 }
 
 .modal__btn:hover {
