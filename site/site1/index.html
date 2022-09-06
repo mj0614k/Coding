@@ -40,6 +40,7 @@
         </div>
         <!-- //skip (for 웹표준 준수) -->
 
+        <!-- header -->
         <header id="headerType" class="header__wrap nexon">
             <div class="header__inner">
                 <div class="header__logo">
@@ -47,10 +48,10 @@
                 </div>
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="#headerType">헤더 영역</a></li>
-                        <li><a href="#sliderType">슬라이드 영역</a></li>
-                        <li><a href="#bannerType">배너 영역</a></li>
+                        <li class="active"><a href="#sliderType">슬라이드 영역</a></li>
                         <li><a href="#imageType">콘텐츠 영역</a></li>
+                        <li><a href="#bannerType">배너 영역</a></li>
+                        <li><a href="#textType">텍스트 영역</a></li>
                         <li><a href="#footerType">푸터 영역</a></li>
                     </ul>
                 </nav>
@@ -61,43 +62,43 @@
         </header>
         <!-- //header -->
 
-        <main id="mainType">
-            <section id="sliderType" class="slider__wrap">
-                <h2 class="blind">슬라이드 영역</h2>
-                <div class="slider__inner">
-                    <div class="slider">
-                        <div class="slider__img">
-                            <div class="desc">
-                                <span>DEVELOPER</span>
-                                <h3>NEW PROJECT</h3>
-                                <p>
-                                    너무 무리하지 말아요! 이미 당신은 잘하고 있고!<br />
-                                    앞으로도 잘 할 수 있어요!
-                                </p>
-                                <div class="btn">
-                                    <a href="#">자세히 보기</a>
-                                    <a href="#" class="black">사이트 보기</a>
-                                </div>
+        <section id="sliderType" class="slider__wrap">
+            <h2 class="blind">슬라이드 영역</h2>
+            <div class="slider__inner">
+                <div class="slider">
+                    <div class="slider__img">
+                        <div class="desc">
+                            <span>DEVELOPER</span>
+                            <h3>NEW PROJECT</h3>
+                            <p>
+                                너무 무리하지 말아요! 이미 당신은 잘하고 있고!<br />
+                                앞으로도 잘 할 수 있어요!
+                            </p>
+                            <div class="btn">
+                                <a href="#">자세히 보기</a>
+                                <a href="#" class="black">사이트 보기</a>
                             </div>
                         </div>
-                        <div class="slider__arrow">
-                            <!-- blind는 단순 글자 숨김, ir은 이미지의 alt효과 대체 -->
-                            <a href="#" class="left"><span class="ir">이전 이미지</span></a>
-                            <a href="#" class="right"><span class="ir">다음 이미지</span></a>
-                        </div>
-                        <div class="slider__dot">
-                            <a href="#" class="dot active"><span class="ir">1</span></a>
-                            <a href="#" class="dot"><span class="ir">2</span></a>
-                            <a href="#" class="dot"><span class="ir">3</span></a>
-                            <a href="#" class="play"><span class="ir">플레이</span></a>
-                            <a href="#" class="stop"><span class="ir">정지</span></a>
-                        </div>
+                    </div>
+                    <div class="slider__arrow">
+                        <!-- blind는 단순 글자 숨김, ir은 이미지의 alt효과 대체 -->
+                        <a href="#" class="left"><span class="ir">이전 이미지</span></a>
+                        <a href="#" class="right"><span class="ir">다음 이미지</span></a>
+                    </div>
+                    <div class="slider__dot">
+                        <a href="#" class="dot active"><span class="ir">1</span></a>
+                        <a href="#" class="dot"><span class="ir">2</span></a>
+                        <a href="#" class="dot"><span class="ir">3</span></a>
+                        <a href="#" class="play"><span class="ir">플레이</span></a>
+                        <a href="#" class="stop"><span class="ir">정지</span></a>
                     </div>
                 </div>
-            </section>
-            <!-- //sliderType -->
+            </div>
+        </section>
+        <!-- //sliderType -->
 
-            <section id="imageType" class="card__wrap nexon section">
+        <section>
+            <div id="imageType" class="card__wrap nexon section">
                 <h2>세상의 귀여운 댕댕이</h2>
                 <p>강아지 종류는 매우 다양합니다. 하지만 하나같이 정말 귀엽습니다.</p>
                 <div class="image__inner container">
@@ -122,10 +123,10 @@
                         </a>
                     </div>
                 </div>
-            </section>
+            </div>
             <!-- //imageType -->
 
-            <section id="imgTextType" class="imgText__wrap nexon section gray">
+            <div id="imgTextType" class="imgText__wrap nexon section gray">
                 <h2 class="blind">유용한 사이트 살펴보기</h2>
                 <div class="imgText__inner container">
                     <div class="imgText__txt">
@@ -148,10 +149,10 @@
                         <a class="blue" href="#">튜토리얼 사이트</a>
                     </div>
                 </div>
-            </section>
+            </div>
             <!-- //imgTextType -->
 
-            <section id="cardType" class="card__wrap nexon section">
+            <div id="cardType" class="card__wrap nexon section">
                 <h2>세상의 귀여운 댕댕이</h2>
                 <p>강아지 종류는 매우 다양합니다. 하지만 하나같이 정말 귀엽습니다.</p>
                 <div class="card__inner container">
@@ -216,63 +217,63 @@
                         </div>
                     </article>
                 </div>
-            </section>
+            </div>
             <!-- //cardType -->
+        </section>
 
-            <section id="bannerType" class="banner__wrap nexon section">
-                <h2 class="blind">배너 영역</h2>
-                <div class="banner__inner">
-                    <h3 class="title">귀여운 댕댕</h3>
-                    <p class="desc">
-                        더 다양한 댕댕이는 유튜브로 보세요.
-                        <a href="#" title="유튜브 페이지로 이동">yotube.com</a>
-                    </p>
-                    <span class="small">배너 유형01</span>
+        <section id="bannerType" class="banner__wrap nexon section">
+            <h2 class="blind">배너 영역</h2>
+            <div class="banner__inner">
+                <h3 class="title">귀여운 댕댕</h3>
+                <p class="desc">
+                    더 다양한 댕댕이는 유튜브로 보세요.
+                    <a href="#" title="유튜브 페이지로 이동">yotube.com</a>
+                </p>
+                <span class="small">배너 유형01</span>
+            </div>
+        </section>
+        <!-- //bannerType -->
+
+        <section id="textType" class="text__Wrap nexon section">
+            <span>텍스트 유형01</span>
+            <h2 class="mb70">세상의 귀여운 댕댕이</h2>
+            <div class="text__inner container">
+                <div class="text t1">
+                    <h3 class="text__title">세상의 귀여운 댕댕이</h3>
+                    <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
+                    <a class="text__btn" href="#">더보기</a>
                 </div>
-            </section>
-            <!-- //bannerType -->
-
-            <section id="textType" class="text__Wrap nexon section">
-                <span>텍스트 유형01</span>
-                <h2 class="mb70">세상의 귀여운 댕댕이</h2>
-                <div class="text__inner container">
-                    <div class="text t1">
-                        <h3 class="text__title">세상의 귀여운 댕댕이</h3>
-                        <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
-                        <a class="text__btn" href="#">더보기</a>
-                    </div>
-                    <div class="text t2">
-                        <h3 class="text__title">세상의 귀여운 야옹이</h3>
-                        <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
-                        <a class="text__btn" href="#">더보기</a>
-                    </div>
-                    <div class="text t3">
-                        <h3 class="text__title">세상의 귀여운 원숭이</h3>
-                        <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
-                        <a class="text__btn" href="#">더보기</a>
-                    </div>
-                    <div class="text t4">
-                        <h3 class="text__title">세상의 귀여운 고슴도치</h3>
-                        <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
-                        <a class="text__btn" href="#">더보기</a>
-                    </div>
-                    <div class="text t5">
-                        <h3 class="text__title">이 색깔 눈 아프죠?</h3>
-                        <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
-                        <a class="text__btn" href="#">더보기</a>
-                    </div>
-                    <div class="text t6">
-                        <h3 class="text__title">세상의 귀여운 코끼리</h3>
-                        <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
-                        <a class="text__btn" href="#">더보기</a>
-                    </div>
+                <div class="text t2">
+                    <h3 class="text__title">세상의 귀여운 야옹이</h3>
+                    <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
+                    <a class="text__btn" href="#">더보기</a>
                 </div>
-            </section>
-            <!-- //textType -->
-        </main>
-        <!-- //main -->
+                <div class="text t3">
+                    <h3 class="text__title">세상의 귀여운 원숭이</h3>
+                    <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
+                    <a class="text__btn" href="#">더보기</a>
+                </div>
+                <div class="text t4">
+                    <h3 class="text__title">세상의 귀여운 고슴도치</h3>
+                    <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
+                    <a class="text__btn" href="#">더보기</a>
+                </div>
+                <div class="text t5">
+                    <h3 class="text__title">이 색깔 눈 아프죠?</h3>
+                    <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
+                    <a class="text__btn" href="#">더보기</a>
+                </div>
+                <div class="text t6">
+                    <h3 class="text__title">세상의 귀여운 코끼리</h3>
+                    <p class="text__desc">세상의 귀여운 댕댕이... 댕댕이 이야기만 몇 번째인지... 댕댕이 글자를 보면 게슈탈트 붕괴 현상이 일어날 것만 같다...</p>
+                    <a class="text__btn" href="#">더보기</a>
+                </div>
+            </div>
+        </section>
+        <!-- //textType -->
 
-        <footer id="footerType" class="footer__wrap nexon section gray">
+        <!-- footer -->
+        <section id="footerType" class="footer__wrap nexon section gray">
             <h2 class="blind">푸터 영역</h2>
             <div class="footer__inner container">
                 <div class="footer__menu">
@@ -331,10 +332,22 @@
                     All rights reserved.
                 </div>
             </div>
-        </footer>
+        </section>
         <!-- //footer -->
     </body>
     <script>
+        window.addEventListener("scroll", () => {
+            let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+            document.querySelectorAll("section").forEach((el, i) => {
+                if (scrollTop > el.offsetTop - 350) {
+                    document.querySelectorAll(".header__menu ul li").forEach((li) => {
+                        li.classList.remove("active");
+                    });
+                    document.querySelector(".header__menu ul li:nth-child(" + (i + 1) + ")").classList.add("active");
+                }
+            });
+        });
+
         document.querySelectorAll("#headerType li a").forEach((li) => {
             li.addEventListener("click", (e) => {
                 e.preventDefault();
