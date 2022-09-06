@@ -47,11 +47,11 @@
                 </div>
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="#">헤더 영역</a></li>
-                        <li><a href="#">슬라이드 영역</a></li>
-                        <li><a href="#">배너 영역</a></li>
-                        <li><a href="#">콘텐츠 영역</a></li>
-                        <li><a href="#">푸터 영역</a></li>
+                        <li><a href="#headerType">헤더 영역</a></li>
+                        <li><a href="#sliderType">슬라이드 영역</a></li>
+                        <li><a href="#bannerType">배너 영역</a></li>
+                        <li><a href="#imageType">콘텐츠 영역</a></li>
+                        <li><a href="#footerType">푸터 영역</a></li>
                     </ul>
                 </nav>
                 <div class="header__member">
@@ -334,4 +334,14 @@
         </footer>
         <!-- //footer -->
     </body>
+    <script>
+        document.querySelectorAll("#headerType li a").forEach((li) => {
+            li.addEventListener("click", (e) => {
+                e.preventDefault();
+                document.querySelector(li.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth",
+                });
+            });
+        });
+    </script>
 </html>
