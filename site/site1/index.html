@@ -339,7 +339,7 @@
         window.addEventListener("scroll", () => {
             let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
             document.querySelectorAll("section").forEach((el, i) => {
-                if (scrollTop > el.offsetTop - 350) {
+                if (scrollTop > el.offsetTop - 500) {
                     document.querySelectorAll(".header__menu ul li").forEach((li) => {
                         li.classList.remove("active");
                     });
