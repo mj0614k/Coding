@@ -16,6 +16,10 @@
     left: 5px;
 }
 
+body {
+    background-color: black;
+}
+
 /* 컨테이너  */
 .container {
     width: 1160px;
@@ -54,11 +58,15 @@
 .nexon {
     font-family: "NexonLv2Gothic";
     font-weight: 400;
+    color: white;
 }
 
 /* 배경 */
 .gray {
-    background-color: #f5f5f5;
+    background-color: #000;
+}
+.white {
+    background-color: #fff;
 }
 
 /* 간격 세팅 */

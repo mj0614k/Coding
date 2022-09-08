@@ -1,3 +1,7 @@
+.footer__wrap {
+    background-color: #f5f5f5;
+}
+
 .footer__menu {
     display: flex;
     margin-bottom: 70px;
@@ -8,6 +12,7 @@
 .footer__menu div h3 {
     font-size: 18px;
     margin-bottom: 20px;
+    color: #000;
 }
 .footer__menu div li a {
     margin-bottom: 10px;

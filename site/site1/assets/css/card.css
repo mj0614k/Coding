@@ -11,6 +11,7 @@
     padding: 24px;
 }
 .card__body .tit {
+    color: black;
     font-size: 24px;
     margin-bottom: 10px;
     overflow: hidden;
