@@ -92,3 +92,42 @@
 .slider__dot a.stop {
     background-position: -60px -70px;
 }
+
+@media(max-width: 1280px) {
+    .slider__img .desc {
+        width: 100%;
+    }
+    .slider__img .desc span {
+        margin-left: 50px;
+    }
+    .slider__img .desc h3 {
+        font-size: 80px;
+        margin-left: 50px;
+    }
+    .slider__img .desc p {
+        font-size: 20px;
+        margin-left: 50px;
+    }
+    .slider__img .desc .btn {
+        margin-left: 50px;
+    }
+    .slider__img .desc .btn a {
+        font-size: 16px;
+        background-color: #fff;
+        padding: 11px 50px;
+        display: inline-block;
+        margin: 5px;
+    }
+    .slider__img .desc .btn a.black {
+        background: #000;
+        color: #fff;
+    }
+}
+@media(max-width: 768px) {
+    .slider__inner {
+        margin-top: 0px;
+    }
+    .slider__img .desc p {
+        font-size: 14px;
+    }
+}

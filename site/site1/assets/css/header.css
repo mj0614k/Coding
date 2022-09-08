@@ -103,7 +103,7 @@
         position: fixed;
         background-color: rgba(0,0,0,0.8);
         left: 10px;
-        top: 100px;
+        top: 10px;
         border-radius: 20px;
     }
     .header__menu li {
@@ -128,9 +128,6 @@
         background-color: transparent;;
         text-decoration-line: underline;
         border-radius: 5px;
-    }
-    .header__menu li.active a {
-        color: white;
     }
     .header__member a {
         display: none;

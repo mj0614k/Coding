@@ -22,10 +22,9 @@ body {
 
 /* 컨테이너  */
 .container {
-    width: 1160px;
     padding: 0 20px;
     margin: 0 auto;
-    min-width: 1160px;
+    width: 100%;
 }
 
 /* 섹션 공통요소 */
@@ -118,4 +117,31 @@ body {
 }
 .mt70 {
     margin-top: 70px !important;
+}
+
+@media(max-width: 768px) {
+    .container {
+        padding: 0;
+    }
+    .section > h2 {
+        font-size: 42px;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .section > p {
+        font-size: 18px;
+        font-weight: 300;
+        color: #666;
+        text-align: center;
+        margin-bottom: 70px;
+    }
+    .section > span {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        text-decoration: underline;
+        text-underline-position: under;
+        margin-bottom: 20px;
+    }
 }

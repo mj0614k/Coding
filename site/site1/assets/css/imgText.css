@@ -30,6 +30,7 @@
     line-height: 1.5;
     color: #666;
     margin-bottom: 10px;
+    word-break: keep-all;
 }
 .imgText__txt ul {
     font-size: 18px;
@@ -76,4 +77,10 @@
 }
 .imgText__img.img2 {
     background: url(../img/imgText01_bg02.jpg) no-repeat center / cover;
+}
+@media(max-width:1000px) {
+    .imgText__txt h3 {
+        font-size: 36px;
+        
+    }
 }
