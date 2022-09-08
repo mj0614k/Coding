@@ -19,7 +19,7 @@
         <main id="main">
             <div class="document">
                 <h2 class="t_tit">자바스크립트 : 패럴랙스 효과 : 사이드 메뉴</h2>
-                <p class="t_desc">자바스크립트의 다양한 효과들 중, 패럴랙스 효과입니다. 이번에는 상단 메뉴가 아닌 사이드 메뉴를 만들어 주고,</p>
+                <p class="t_desc">자바스크립트의 다양한 효과들 중, 패럴랙스 효과입니다. 이번에는 상단 메뉴가 아닌 사이드 메뉴를 만들어 주고, 현재 위치한 스크롤값에 따라 메뉴에 애니메이션 효과를 추가해 주었습니다.</p>
                 <hr />
                 <h2 class="t_tit2">HTML 소스</h2>
                 <p class="t_desc">HTML은 먼저 nav, main, aside 세 파트로 나누어 주었습니다. nav에는 9개의 메뉴, main에는 9개의 콘텐츠, aside에는 스크롤의 위치값을 볼 수 있게끔 만들어 주었습니다.</p>
@@ -344,7 +344,24 @@
 </code></pre>
                 </div>
                 <h2 class="t_tit2">JAVASCRIPT 소스</h2>
-                <p class="t_desc"></p>
+                <table class="t_table">
+                    <tbody>
+                        <tr>
+                            <td>preventDefault()</td>
+                            <td>클릭 시 페이지 이동 이벤트를 제거합니다.</th>
+                        </tr>
+                        <tr>
+                            <td>Attribute()</td>
+                            <td>선택한 요소의 특정 속성 값을 가져옵니다.</th>
+                        </tr>
+                        <tr>
+                            <td>scrollIntoView()</td>
+                            <td>특정 요소의 위치로 스크롤을 이동시킵니다.
+                                <br>behavior: smooth 옵션을 추가하면 부드럽게 이동합니다.
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="t_code">
                     <pre><code class="language-js">document.querySelectorAll("#parallax__dot a").forEach((el) => {
     el.addEventListener("click", (e) => {
@@ -359,7 +376,8 @@ window.addEventListener("scroll", () => {
 
     document.querySelector("#parallax__info span").innerText = Math.floor(scrollTop);
     document.querySelectorAll(".content__item").forEach((e, i) => {
-        if (scrollTop >= e.offsetTop - window.innerHeight - 10) {
+        if (scrollTop >= e.offsetTop - window.innerHeight - 10) {  /* 오차를 줄이기 위해 -10 */
+        /* 스크롤의 현재 위치 >= 각 섹션의 위치 - 브라우저의 높이 */
             document.querySelectorAll("#parallax__dot li").forEach((li) => {
                 li.classList.remove("active"); /* 각 섹션에 도착하면 active 클래스를 제거 */
             });
@@ -385,6 +403,7 @@ window.addEventListener("scroll", () => {
                 </div>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
+                <p class="t_desc">반응형으로는 스크롤의 범위에 오차가 생기지만, 지금으로서는 고칠 방법이 없으니 태클은 받지 않겠습니다.</p>
                 <div class="t_iframe" style="min-height: 1000px; padding-top: 0px">
                     <iframe src="https://mj0614k.github.io/Coding/javascript/effect/parallaxEffect02.html"></iframe>
                 </div>
