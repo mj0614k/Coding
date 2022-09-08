@@ -1,3 +1,7 @@
+#sliderType .container {
+    width: 100%;
+}
+
 .slider__inner {
     margin-top: 70px;
 }
@@ -15,7 +19,8 @@
 }
 .slider__img .desc span {
     font-size: 16px;
-    background-color: #fff;
+    background-color: #000;
+    color: white;
     padding: 1px 14px 0 14px;
     border-radius: 30px;
     text-transform: uppercase;
@@ -24,9 +29,9 @@
 }
 .slider__img .desc h3 {
     font-size: 110px;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 1;
-    color: #fff;
+    color: white;
     text-transform: uppercase;
     margin-bottom: 16px;
     margin-left: -8px;

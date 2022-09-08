@@ -53,7 +53,7 @@ select,
 table,
 textarea {
     color: #000;
-    font-family: 'NexonLv1Gothic', 'AppleSDGothicNeo-Regular', 'Malgun Gothic', '맑은 고딕', dotum, 돋움;
+    font-family: "NexonLv2Gothic", "AppleSDGothicNeo-Regular", "Malgun Gothic", "맑은 고딕", dotum, 돋움;
 }
 
 /* 링크 초기화 */
@@ -80,7 +80,8 @@ h6 {
 }
 
 /* 폰트 스타일 초기화 */
-em, address {
+em,
+address {
     font-style: normal;
 }
 
@@ -103,7 +104,7 @@ button {
 }
 .clearfix::before,
 .clearfix::after {
-    content: '';
+    content: "";
     display: block;
     line-height: 0;
 }
@@ -113,12 +114,12 @@ button {
 
 /* 블라인드 효과 */
 .blind {
-    position:absolute;
-    clip:rect(0 0 0 0);
-    width:1px;
-    height:1px;
-    margin:-1px;
-    overflow:hidden;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
 }
 
 /* 이미지 대체(ir) 효과 */
