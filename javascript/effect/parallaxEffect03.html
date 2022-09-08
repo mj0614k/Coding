@@ -20,11 +20,15 @@
             #parallax__nav {
                 position: fixed;
                 right: 20px;
-                top: 20px;
+                top: -200px;
                 z-index: 2000;
                 background-color: rgba(0, 0, 0, 0.4);
                 padding: 20px 30px;
                 border-radius: 50px;
+                transition: top 0.4s ease;
+            }
+            #parallax__nav.show {
+                top: 20px;
             }
             #parallax__nav li {
                 display: inline;
@@ -185,17 +189,40 @@
                     border-radius: 5px;
                 }
             }
+            #parallax__top {
+                position: fixed;
+                left: 50%;
+                bottom: -220px;
+                transform: translateX(-50%);
+                z-index: 10000;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                background: rgba(0, 0, 0, 0.4);
+                text-align: center;
+                line-height: 40px;
+                color: #fff;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            #parallax__top.show {
+                bottom: 20px;
+            }
+            #parallax__top:hover {
+                background: #fff;
+                color: #000;
+            }
         </style>
     </head>
 
     <body>
         <header id="header">
-            <h1>Javascript Parallax Effect01</h1>
+            <h1>Javascript Parallax Effect03</h1>
             <p>패럴랙스 이펙트 : 메뉴 숨김</p>
             <ul>
-                <li class="active"><a href="parallaxEffect01.html">1</a></li>
+                <li><a href="parallaxEffect01.html">1</a></li>
                 <li><a href="parallaxEffect02.html">2</a></li>
-                <li><a href="parallaxEffect03.html">3</a></li>
+                <li class="active"><a href="parallaxEffect03.html">3</a></li>
                 <li><a href="parallaxEffect04.html">4</a></li>
                 <li><a href="parallaxEffect05.html">5</a></li>
                 <li><a href="parallaxEffect06.html">6</a></li>
@@ -218,6 +245,8 @@
             </ul>
         </nav>
         <!-- //parallax__nav -->
+
+        <div id="parallax__top">Top</div>
 
         <main id="parallax__cont">
             <div id="contents">
@@ -801,5 +830,57 @@ document.querySelectorAll("#parallax__nav li a").forEach((li) => {
 
         <script src="../assets/js/highlight.min.js"></script>
         <script src="../assets/js/common.js"></script>
+        <script>
+            window.addEventListener("scroll", () => {
+                let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+
+                if (scrollTop > 0) {
+                    document.querySelector("#parallax__nav").classList.add("show");
+                } else {
+                    document.querySelector("#parallax__nav").classList.remove("show");
+                }
+
+                document.querySelector("#parallax__info span").innerText = Math.ceil(scrollTop);
+
+                let body = document.body;
+                html = document.documentElement;
+                let height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+                if (height - 1000 <= scrollTop) {
+                    document.querySelector("#parallax__top").classList.add("show");
+                } else {
+                    document.querySelector("#parallax__top").classList.remove("show");
+                }
+                console.log(height);
+            });
+
+            //03.
+            let nowScroll = true;
+            // true일 때 실행하고, false일 때 실행 중지 (트리거변수)
+            let lastScroll = 0;
+
+            function scrollProgress() {
+                nowScroll = true;
+
+                // setInterval로 시간차를 주기(버벅거림 피하기 위함)
+                setInterval(() => {
+                    if (nowScroll) {
+                        nowScroll = false;
+                        hasScroll();
+                    }
+                }, 300);
+            }
+
+            function hasScroll() {
+                let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+                if (scrollTop < lastScroll) {
+                    document.querySelector("#parallax__nav").classList.add("show");
+                } else {
+                    document.querySelector("#parallax__nav").classList.remove("show");
+                }
+                lastScroll = scrollTop;
+            }
+
+            window.addEventListener("scroll", scrollProgress);
+        </script>
     </body>
 </html>
