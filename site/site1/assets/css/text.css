@@ -80,6 +80,7 @@
         display: none;
     }
     .text__desc {
+        font-size: 16px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -88,5 +89,7 @@
     }
     .text {
         width: 50%;
+        margin-bottom: 0px;
+        padding: 10px;
     }
 }

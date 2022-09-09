@@ -126,10 +126,15 @@
     }
 }
 @media(max-width: 768px) {
+    .slider__img .desc h3 {
+        font-size: 50px;
+        margin-left: 50px;
+    }
     .slider__inner {
         margin-top: 0px;
+        margin-bottom: 70px;
     }
     .slider__img .desc p {
-        font-size: 18px;
+        font-size: 12px;
     }
 }

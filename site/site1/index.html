@@ -64,7 +64,6 @@
             <div class="header__mobile">
                 <nav class="header__menu">
                     <ul>
-                        <li class="logo"></li>
                         <li class="active"><a href="#sliderType">MAIN</a></li>
                         <li><a href="#imageType">DOG</a></li>
                         <li><a href="#imgTextType">CAT</a></li>
@@ -74,9 +73,6 @@
                         <li><a href="#footerType">FOOTER</a></li>
                     </ul>
                 </nav>
-                <div class="header__member">
-                    <a href="#">로그인</a>
-                </div>
             </div>
         </header>
         <!-- //header -->
@@ -342,7 +338,19 @@
             });
         });
 
-        document.querySelectorAll("#headerType li a").forEach((li) => {
+        window.addEventListener("scroll", () => {
+            let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+            document.querySelectorAll("section").forEach((el, i) => {
+                if (scrollTop > el.offsetTop - 500) {
+                    document.querySelectorAll(".header__mobile .header__menu ul li").forEach((li) => {
+                        li.classList.remove("active");
+                    });
+                    document.querySelector(".header__mobile .header__menu ul li:nth-child(" + (i + 1) + ")").classList.add("active");
+                }
+            });
+        });
+
+        document.querySelectorAll(".headerinner li a").forEach((li) => {
             li.addEventListener("click", (e) => {
                 e.preventDefault();
                 document.querySelector(li.getAttribute("href")).scrollIntoView({
@@ -370,13 +378,16 @@
         function hasScroll() {
             let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
             if (scrollTop < lastScroll) {
-                document.querySelector("#headerType").style.display="block";
+                document.querySelector(".header__inner").classList.add("show");
+                document.querySelector(".header__mobile").classList.add("show");
             } else {
-                document.querySelector("#headerType").style.display="none";
+                document.querySelector(".header__inner").classList.remove("show");
+                document.querySelector(".header__mobile").classList.remove("show");
             }
             lastScroll = scrollTop;
         }
 
+        
         window.addEventListener("scroll", scrollProgress);
     </script>
 </html>

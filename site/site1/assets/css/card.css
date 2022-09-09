@@ -37,6 +37,12 @@
     -webkit-box-orient: vertical;
 }
 
+@media(max-width: 1000px) {
+    .card__body {
+        padding: 20px;
+    }
+}
+
 @media(max-width: 784px) {
     .card__inner {
         flex-direction: column;
