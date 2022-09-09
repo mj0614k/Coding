@@ -36,6 +36,9 @@
     -webkit-line-clamp: 4; 
     -webkit-box-orient: vertical;
 }
+.card__body a {
+    text-decoration: underline;
+}
 
 @media(max-width: 1000px) {
     .card__body {
