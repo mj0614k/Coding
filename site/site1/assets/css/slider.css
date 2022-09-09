@@ -96,6 +96,7 @@
 @media(max-width: 1280px) {
     .slider__img .desc {
         width: 100%;
+        box-sizing: border-box;
     }
     .slider__img .desc span {
         margin-left: 50px;
@@ -109,8 +110,9 @@
         margin-left: 50px;
     }
     .slider__img .desc .btn {
-        margin-left: 50px;
-    }
+        display: flex;
+        justify-content: center;
+    } 
     .slider__img .desc .btn a {
         font-size: 16px;
         background-color: #fff;
@@ -128,6 +130,6 @@
         margin-top: 0px;
     }
     .slider__img .desc p {
-        font-size: 14px;
+        font-size: 18px;
     }
 }

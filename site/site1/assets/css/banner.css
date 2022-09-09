@@ -18,6 +18,7 @@
     line-height: 1.5;
     font-weight: 300;
     margin-bottom: 70px;
+    word-break: keep-all;
 }
 .banner__inner .desc a {
     color: black;
