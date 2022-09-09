@@ -24,22 +24,15 @@
                     스크롤이 최하단 부근에 위치하면 Top 버튼이 나타나고, Top 버튼을 클릭하면 최상단으로 올라갈 수 있는 기능을 추가해 주었습니다.
                 </p>
                 <hr />
-                <h2 class="t_tit2">1. 스크롤의 높이값 구하기</h2>
-                <div class="t_code">
-<pre><code class="language-js">let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-</code></pre>
-                </div>
-                <p class="t_box">먼저, 스크롤의 높이값을 구하는 선택자를 만들어 줍니다.
-                    세 가지 방법은 모두 브라우저 기준으로 스크롤의 높이값을 구하는 같은 속성이지만, 
-                    호환되는 브라우저가 다르기 때문에 세 가지 속성을 모두 작성해 주는 것이 좋습니다.
-                </p>
-                <h2 class="t_tit2">2. 스크롤 이벤트 만들어 주기</h2>
+                <h2 class="t_tit2">1. 스크롤 이벤트 만들어 주기</h2>
                 <div class="t_code">
 <pre><code class="language-js">window.addEventListener("scroll", () => {
-    /* 1) info 박스에 스크롤의 높이값 입력 */ 
+    /* 1) 스크롤의 높이값 구하기 */
+    let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+    /* 2) info 박스에 스크롤의 높이값 입력 */ 
     document.querySelector("#parallax__info span").innerText = Math.ceil(scrollTop);
 
-    /* 2) 현재 스크롤의 높이값(scrollTop)과 각 섹션의 높이값(el.offsetTop)을 비교하여,
+    /* 3) 현재 스크롤의 높이값(scrollTop)과 각 섹션의 높이값(el.offsetTop)을 비교하여,
              해당하는 메뉴에 active 클래스를 활성화하고, 나머지 메뉴의 active 클래스는 제거 */
     document.querySelectorAll(".content__item").forEach((el, i) => {
         if (scrollTop > el.offsetTop - 500) {
@@ -50,7 +43,7 @@
         }
     });
 
-    /* 3) 브라우저의 전체 높이를 구하고, 브라우저의 최하단 부근에 스크롤이 위치하면 TOP 버튼 보여주기 */
+    /* 4) 브라우저의 전체 높이를 구하고, 브라우저의 최하단 부근에 스크롤이 위치하면 TOP 버튼 보여주기 */
     let body = document.body.offsetHeight;
     if (body - 1000 &lt;= scrollTop) {
         document.querySelector("#parallax__top").classList.add("show");
@@ -60,10 +53,12 @@
 });
 </code></pre>
 </div>
-<p class="t_box">스크롤 이벤트를 3가지 만들어 주었습니다. 높이값에서 빼기를 해주는 이유는
+<p class="t_box">스크롤의 높이값을 구하는 세 가지 방법은 모두 브라우저 기준으로 값을 구하는 같은 속성이지만, 
+    호환되는 브라우저가 다르기 때문에 세 가지 모두 작성해 주는 것이 좋습니다.
+    위와 같이 스크롤 이벤트를 3가지 만들어 주었습니다. 높이값에서 빼기를 해주는 이유는
     오차를 줄이기 위해서입니다.
 </p>
-<h2 class="t_tit2">3. 클릭 이벤트 만들어 주기</h2>
+<h2 class="t_tit2">2. 클릭 이벤트 만들어 주기</h2>
 <div class="t_code">
 <pre><code class="language-js">/* MENU */
 document.querySelectorAll("#parallax__nav a").forEach((el) => {
@@ -90,7 +85,7 @@ TOP.addEventListener("click", (e) => {
     TOP 버튼의 경우도 마찬가지입니다. 클릭 이벤트를 초기화해준 후, 버튼을 클릭했을 때 top, left의 값이
     0에 위치하도록, 즉 최상단으로, smooth 속성에 따라 부드럽게 이동할 수 있도록 작업해 주었습니다.
 </p>
-<h2 class="t_tit2">4. 메뉴 숨김 효과 추가하기</h2>
+<h2 class="t_tit2">3. 메뉴 숨김 효과 추가하기</h2>
 <div class="t_code">
 <pre><code class="language">let nowScroll = true;
 let lastScroll = 0;
@@ -105,13 +100,11 @@ function scrollProgress() {
         }
     }, 300);
 }
-</code></pre>
-</div>
-<p class="t_box">메뉴 숨김 효과는 트리거변수를 사용하였습니다. 
-    트리거변수는 값이 true일 때 실행하고, false일 때 실행을 중지하는 변수를 말합니다. setInterval() 메서드를 사용하는 이유는, 시간차를 줌으로써 버벅거림을 피하기 위해서입니다.</p>
-<h2 class="t_tit2">5. </h2>
-<div class="t_code"><pre><code class="language-js">function hasScroll() {
+
+function hasScroll() {
+    /* 지역변수 새로 만들어주기 */
     let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+    /* 스크롤을 올릴 때 메뉴를 보여주고, 내릴 때 숨기기 */
     if (scrollTop &lt; lastScroll) {
         document.querySelector("#parallax__nav").classList.add("show");
     } else {
@@ -119,15 +112,19 @@ function scrollProgress() {
     }
     lastScroll = scrollTop;
 }
-</code></pre></div>
-<h2 class="t_tit2">6. 함수 실행시키기</h2>
+</code></pre>
+</div>
+<p class="t_box">메뉴 숨김 효과는 트리거변수를 사용하였습니다. 
+    트리거변수는 값이 true일 때 실행하고, false일 때 실행을 중지하는 변수를 말합니다. setInterval() 메서드를 사용하는 이유는, 시간차를 줌으로써 버벅거림을 피하기 위해서입니다.<br>
+lastScroll은 과거의 스크롤 값이라고 할 수 있겠습니다. 즉, lastScroll(과거)이 scrollTop(현재)의 값보다
+크면, 스크롤을 올리고 있는 것이고, 그 반대라면 스크롤을 내리고 있다고 할 수 있습니다.</p>
+<h2 class="t_tit2">4. 함수 실행시키기</h2>
 <div class="t_code"><pre><code class="language-js">window.addEventListener("scroll", scrollProgress);
 </code></pre>
                 </div>
-                <p class="t_box"></p>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
-                <p class="t_desc">반응형으로는 스크롤의 범위에 오차가 생기지만, 지금으로서는 고칠 방법이 없으니 태클은 받지 않겠습니다.</p>
+                <p class="t_desc">내일 여행을 가기 때문에 신이 나서 아주 열심히 글을 작성했습니다. 티가 나나요? 깔깔.</p>
                 <div class="t_iframe" style="min-height: 1000px; padding-top: 0px">
                     <iframe src="https://mj0614k.github.io/Coding/javascript/effect/parallaxEffect03.html"></iframe>
                 </div>
