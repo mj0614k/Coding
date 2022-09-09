@@ -891,7 +891,7 @@ document.querySelectorAll("#parallax__nav li a").forEach((li) => {
                 // forEach문
                 document.querySelectorAll(".content__item").forEach((el, i) => {
                     // 오차를 줄이기 위해 -2
-                    if (scrollTop > el.offsetTop - 2) {
+                    if (scrollTop > el.offsetTop -500) {
                         document.querySelectorAll("#parallax__nav li").forEach((li) => {
                             li.classList.remove("active");
                         });
