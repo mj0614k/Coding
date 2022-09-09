@@ -50,4 +50,11 @@
     .image {
         width: 100%;
     }
+    .image__title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .image__desc {
+        font-size: 16px;
+    }
 }

@@ -55,4 +55,7 @@
         width: 80%;
         margin-bottom: 20px;
     }
+    .card__body .desc {
+        font-size: 16px;
+    }
 }
