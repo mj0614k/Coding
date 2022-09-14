@@ -23,11 +23,9 @@ body {
 
 /* 컨테이너  */
 .container {
-    width: 100%;
-    max-width: 1160px;
-    margin: 0 auto;
     padding: 0 20px;
-    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1160px;
 }
 
 /* 섹션 공통요소 */
@@ -47,9 +45,6 @@ body {
     color: #666;
     text-align: center;
     margin-bottom: 70px;
-    padding: 0 20px;
-    word-break: keep-all;
-    line-height: 1.5;
 }
 .section > span {
     display: block;
@@ -126,24 +121,36 @@ body {
     margin-top: 70px !important;
 }
 
-@media (max-width: 960px) {
+@media(max-width: 768px) {
+    .container {
+        padding: 0;
+    }
     .section {
-        padding: 100px 0;
+        padding: 70px 0;
     }
     .section > h2 {
-        font-size: 40px;
+        font-size: 42px;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .section > h3 {
+        font-size: 42px;
     }
     .section > p {
         font-size: 18px;
-        margin-bottom: 60px;
+        font-weight: 300;
+        color: #666;
+        text-align: center;
+        margin-bottom: 70px;
+        word-break: keep-all;
     }
-}
-@media (max-width: 600px) {
-    .section > h2 {
-        font-size: 30px;
-    }
-    .section > p {
+    .section > span {
+        display: block;
+        text-align: center;
         font-size: 16px;
-        margin-bottom: 50px;
+        text-decoration: underline;
+        text-underline-position: under;
+        margin-bottom: 20px;
     }
 }
