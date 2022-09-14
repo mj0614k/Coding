@@ -26,6 +26,9 @@
         <link rel="stylesheet" href="assets/css/imgText.css" />
         <link rel="stylesheet" href="assets/css/banner.css" />
         <link rel="stylesheet" href="assets/css/footer.css" />
+
+        <!-- swiper -->
+        <link rel="stylesheet" href="assets/css/swiper.css" />
     </head>
     <body>
         <div id="skip">
@@ -80,7 +83,7 @@
         <section id="sliderType" class="slider__wrap">
             <h2 class="blind">슬라이드 영역</h2>
             <div class="slider__inner">
-                <div class="slider">
+                <!-- <div class="slider">
                     <div class="slider__img">
                         <div class="desc">
                             <span>ANIMAL</span>
@@ -95,9 +98,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slider__arrow">
-                        <!-- blind는 단순 글자 숨김, ir은 이미지의 alt효과 대체 -->
-                        <a href="#" class="left"><span class="ir">이전 이미지</span></a>
+                    <div class="slider__arrow"> -->
+                <!-- blind는 단순 글자 숨김, ir은 이미지의 alt효과 대체 -->
+                <!-- <a href="#" class="left"><span class="ir">이전 이미지</span></a>
                         <a href="#" class="right"><span class="ir">다음 이미지</span></a>
                     </div>
                     <div class="slider__dot">
@@ -107,6 +110,56 @@
                         <a href="#" class="play"><span class="ir">플레이</span></a>
                         <a href="#" class="stop"><span class="ir">정지</span></a>
                     </div>
+                </div> -->
+
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="desc">
+                                <span>ANIMAL</span>
+                                <h3>CUTE ANIMAL</h3>
+                                <p>
+                                    숙제에 지친 이들을 위한 힐링 공간입니다.<br />
+                                    귀여운 동물들을 보며 잠시나마 현실도피를 합시다.
+                                </p>
+                                <div class="btn">
+                                    <a href="#">자세히 보기</a>
+                                    <a href="#" class="black">사이트 보기</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="desc">
+                                <span>ANIMAL</span>
+                                <h3>CUTE ANIMAL</h3>
+                                <p>
+                                    숙제에 지친 이들을 위한 힐링 공간입니다.<br />
+                                    귀여운 동물들을 보며 잠시나마 현실도피를 합시다.
+                                </p>
+                                <div class="btn">
+                                    <a href="#">자세히 보기</a>
+                                    <a href="#" class="black">사이트 보기</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="desc">
+                                <span>ANIMAL</span>
+                                <h3>CUTE ANIMAL</h3>
+                                <p>
+                                    숙제에 지친 이들을 위한 힐링 공간입니다.<br />
+                                    귀여운 동물들을 보며 잠시나마 현실도피를 합시다.
+                                </p>
+                                <div class="btn">
+                                    <a href="#">자세히 보기</a>
+                                    <a href="#" class="black">사이트 보기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -142,7 +195,7 @@
 
         <section id="imgTextType" class="imgText__wrap nexon section">
             <h2 class="blind">고양이가 빠지면 섭하다</h2>
-            <div class="imgText__inner">
+            <div class="imgText__inner container">
                 <div class="imgText__txt">
                     <span>고양이 영역</span>
                     <h3>고양이가 빠지면 섭하다</h3>
@@ -311,8 +364,23 @@
             </div>
         </section>
         <!-- //footer -->
+        <script src="assets/js/swiper.min.js"></script>
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                autoplay: {
+                    delay: 2000,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "bullets",
+                },
+            });
+        </script>
     </body>
-    <script></script>
     <script>
         window.addEventListener("scroll", () => {
             let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
@@ -338,7 +406,16 @@
             });
         });
 
-        document.querySelectorAll(".headerinner li a").forEach((li) => {
+        document.querySelectorAll(".header__inner li a").forEach((li) => {
+            li.addEventListener("click", (e) => {
+                e.preventDefault();
+                document.querySelector(li.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth",
+                });
+            });
+        });
+
+        document.querySelectorAll(".header__mobile li a").forEach((li) => {
             li.addEventListener("click", (e) => {
                 e.preventDefault();
                 document.querySelector(li.getAttribute("href")).scrollIntoView({
