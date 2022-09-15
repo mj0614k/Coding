@@ -23,7 +23,7 @@
                 <hr />
                 <h2 class="t_tit2">HTML 소스</h2>
                 <p class="t_desc">
-                    HTML 소스는 지금까지 작업한 모든 것들을 한 곳에 모은 것과 같습니다. 헤더 메뉴는 모바일에서 모양과 위치를 바꾸어 주기 위해 웹용, 모바일용 두 가지로 작업해 주었습니다. 각 메뉴를 클릭했을 때, 각각의 위치로 이동할 수 있도록 각 영역은 section 태그로 작업해 주었습니다. 슬라이드 영역을 다시 작업해준 이유는 swiper를 사용하기 위함입니다. 드래그를 통한 슬라이드 효과를 사용하기 위해
+                    HTML 소스는 지금까지 작업한 모든 것들을 한 곳에 모은 것과 같습니다. 헤더 메뉴는 웹에서는 일반적인 메뉴 형태로, 모바일에서는 햄버거 메뉴로 작업해 주었습니다. 각 메뉴를 클릭했을 때, 각각의 위치로 이동할 수 있도록 각 영역은 section 태그로 작업해 주었습니다. 슬라이드 영역을 다시 작업해준 이유는 swiper를 사용하기 위함입니다. 드래그를 통한 이미지 슬라이드 효과를 사용하기 위해
                     swiper를 이용했고, swiper의 style에 맞추어 클래스를 새롭게 부여해 주었습니다.
                 </p>
                 <details>
@@ -61,19 +61,6 @@
         &lt;div class="header__member"&gt;
             &lt;a href="#"&gt;로그인&lt;/a&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="header__mobile"&gt;
-        &lt;nav class="header__menu"&gt;
-            &lt;ul&gt;
-                &lt;li class="active"&gt;&lt;a href="#sliderType"&gt;MAIN&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#imageType"&gt;DOG&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#imgTextType"&gt;CAT&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#cardType"&gt;MORE&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#bannerType"&gt;BANNER&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#textType"&gt;ETC&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#footerType"&gt;FOOTER&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/nav&gt;
     &lt;/div&gt;
 &lt;/header&gt;
 &lt;!-- //header --&gt;
@@ -387,15 +374,12 @@
     justify-content: space-between;
     padding: 0 20px;
     box-sizing: border-box;
-    z-index: 100000;
+    border-bottom: 1px solid #ccc;
     position: fixed;
-    background-color: #fff;
     left: 0;
-    top: -100px;
-    transition: all 0.3s;
-}
-.header__inner.show {
-    top:0;
+    top: 0;
+    z-index: 10000;
+    background: #fff;
 }
 .header__logo {
     width: 15%;
@@ -411,28 +395,17 @@
     width: 70%;
     text-align: center;
 }
-.header__menu .cont {
-    display: none;
-}
 .header__menu li {
     display: inline;
+}
+.header__menu li a {
     padding: 13px 30px;
     margin: 0 5px;
     transition: background-color 0.3s;
 }
-.header__menu li:hover {
-    background-color: black;
-    border-radius: 5px;
-}
-.header__menu li:hover a { 
-    color: #fff;
-}
-.header__menu li.active {
-    background-color: black;
-    border-radius: 5px;
-}
+.header__menu li a:hover,
 .header__menu li.active a {
-    color: #fff;
+    border-bottom: 5px solid black;
 }
 .header__member {
     width: 15%;
@@ -449,88 +422,94 @@
     background-color: #000;
     color: #fff;
 }
+.header__ham {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    display: none;
+    cursor: pointer;
+}
+.header__ham span {
+    display: block;
+    background: #000;
+    width: 30px;
+    height: 2px;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-top: 5px;
+    transition: 0.25s margin 0.25s, 0.25s transform;
+}
+.header__ham span:nth-child(1) {
+    margin-top: 18px;
+}
+.header__ham.active span {
+    transition: 0.25s margin, 0.25s transform 0.25s;
+}
+.header__ham.active span:nth-child(1) {
+    margin-top: 25px;
+    margin-bottom: -7px;
+    transform: rotate(45deg);
+}
+.header__ham.active span:nth-child(2) {
+    transform: rotate(45deg);
+}
+.header__ham.active span:nth-child(3) {
+    margin-top: -2px;
+    transform: rotate(135deg);
+}
 
 /* media */
-.header__mobile {
-    display: none;
-    width: 95px;
-    height: 400px;
-    align-items: center;
-    padding: 0 12px;
-    box-sizing: border-box;
-    z-index: 100000;
-    position: fixed;
-    background-color: rgba(0,0,0,0.8);
-    left: -100px;
-    top: 10px;
-    border-radius: 20px;
-    transition: all 0.3s;
-}
-.header__mobile.show {
-    left: 10px;
-}
-.header__mobile .header__menu li {
-    display: inline-block;
-    padding: 10px 0 10px 10px;
-    margin: 5px 0px;
-    font-weight: 700;
-    font-size: 12px;
-}
-.header__mobile .header__menu li a {
-    color: white;
-}
-.header__mobile .header__menu li:hover {
-    background-color: transparent;;
-    border-radius: 5px;
-}
-.header__mobile .header__menu li:hover a { 
-    text-decoration-line: underline;
-    background-color: transparent;;
-}
-.header__mobile .header__menu li.active {
-    background-color: transparent;;
-    text-decoration-line: underline;
-    border-radius: 5px;
-}
-.header__mobile .header__member a {
-    display: none;
-}
-@media(max-width: 1280px) {
-    .header__menu li {
-        display: inline;
-        padding: 13px 20px;
-        margin: 0 5px;
-        transition: background-color 0.3s;
-    }
-}
-@media(max-width: 1024px) {
-    .header__logo {
-        display: none;
-    }
-    .header__menu {
-        width: 80%;
-    }
-    .header__member {
-        width: 20%;
-    }
-    .header__menu li {
-        display: inline;
-        padding: 13px 13px;
-        margin: 0 3px;
-        transition: background-color 0.3s;
-    }
-}
-@media(max-width: 768px) {
-    .header__inner {
-        display: none;
-    }
-    .header__mobile {
+@media (max-width: 1300px) {
+    .header__ham {
         display: block;
     }
-    .header__mobile .header__menu li:first-child {
-        margin-top: 50px;
+    .header__menu {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        width: auto;
+        padding: 10px;
+        text-align: center;
+        background-color: #fff;
+        transition: right 0.4s ease-in;
     }
-}</code></pre>
+    .header__menu.overlay {
+        right: 0;
+    }
+    .header__menu li {
+        display: block;
+        padding: 10px;
+        margin: 10px;
+    }
+    .header__menu li a {
+        font-size: 22px;
+        opacity: 0;
+    }
+    .header__menu.overlay li a {
+        opacity: 1;
+    }
+    .header__member {
+        margin-right: 50px;
+        width: 50%;
+    }
+    .header__logo {
+        width: 50%;
+    }
+    .header__menu li a:hover,
+    .header__menu li.active a {
+        border-bottom: 2px solid black;
+    }
+}
+@media (max-width: 600px) {
+    .header__menu li a {
+        font-size: 3vw;
+        opacity: 0;
+    }
+}
+</code></pre>
                     </div>
                 </details>
                 <details>

@@ -121,9 +121,9 @@ body {
     margin-top: 70px !important;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .container {
-        padding: 0;
+        padding: 0px;
     }
     .section {
         padding: 70px 0;

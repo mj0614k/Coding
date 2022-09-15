@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="assets/css/common.css" />
 
         <!-- CSS(섹션별) -->
-        <link rel="stylesheet" href="assets/css/header copy.css" />
+        <link rel="stylesheet" href="assets/css/header.css" />
         <link rel="stylesheet" href="assets/css/slider.css" />
         <link rel="stylesheet" href="assets/css/card.css" />
         <link rel="stylesheet" href="assets/css/image.css" />
@@ -70,43 +70,6 @@
                 </div>
             </div>
         </header>
-        <!-- //header -->
-
-        <!-- header backup-->
-        <!-- <header id="headerType" class="header__wrap nexon">
-            <div class="header__inner">
-                <div class="header__logo">
-                    <a href="#">CUTE</a>
-                </div>
-                <nav class="header__menu">
-                    <ul>
-                        <li class="active"><a href="#sliderType">MAIN</a></li>
-                        <li><a href="#imageType">DOG</a></li>
-                        <li><a href="#imgTextType">CAT</a></li>
-                        <li><a href="#cardType">MORE</a></li>
-                        <li><a href="#bannerType">BANNER</a></li>
-                        <li><a href="#textType">ETC</a></li>
-                        <li><a href="#footerType">FOOTER</a></li>
-                    </ul>
-                </nav>
-                <div class="header__member">
-                    <a href="#">로그인</a>
-                </div>
-            </div> -->
-        <!-- <div class="header__mobile">
-                <nav class="header__menu">
-                    <ul>
-                        <li class="active"><a href="#sliderType">MAIN</a></li>
-                        <li><a href="#imageType">DOG</a></li>
-                        <li><a href="#imgTextType">CAT</a></li>
-                        <li><a href="#cardType">MORE</a></li>
-                        <li><a href="#bannerType">BANNER</a></li>
-                        <li><a href="#textType">ETC</a></li>
-                        <li><a href="#footerType">FOOTER</a></li>
-                    </ul>
-                </nav>
-            </div> -->
-        <!-- </header> -->
         <!-- //header -->
 
         <section id="sliderType" class="slider__wrap">
@@ -399,6 +362,7 @@
         <!-- //footer -->
         <script src="assets/js/swiper.min.js"></script>
         <script>
+            //swiper
             var swiper = new Swiper(".mySwiper", {
                 navigation: {
                     nextEl: ".swiper-button-next",
@@ -406,6 +370,7 @@
                 },
                 autoplay: {
                     delay: 2000,
+                    disableOnInteraction: false,
                 },
                 pagination: {
                     el: ".swiper-pagination",
@@ -414,13 +379,15 @@
                 },
             });
 
+            // 선택자
             const btnStop = document.querySelector(".swiper-button-stop");
             const btnStart = document.querySelector(".swiper-button-play");
             const btnHam = document.querySelector(".header__ham");
             const btnMenu = document.querySelector(".header__menu");
 
+            // swiper에서 재생 버튼을 누르면 슬라이드 재생, 재생 버튼 숨김, 정지 버튼 나타남
+            // swiper에서 정지 버튼을 누르면 슬라이드 정지, 정지 버튼 숨김, 재생 버튼 나타남
             btnStart.style.display = "none";
-
             btnStop.addEventListener("click", () => {
                 swiper.autoplay.stop();
                 btnStart.style.display = "block";
@@ -431,83 +398,37 @@
                 btnStart.style.display = "none";
                 btnStop.style.display = "block";
             });
+
+            // 햄버거를 클릭하면 메뉴가 나타나도록 설정
             btnHam.addEventListener("click", () => {
                 btnHam.classList.toggle("active");
                 btnMenu.classList.toggle("overlay");
             });
+
+            // 패럴랙스 효과
+            window.addEventListener("scroll", () => {
+                let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
+                document.querySelectorAll("section").forEach((el, i) => {
+                    if (scrollTop > el.offsetTop - 500) {
+                        document.querySelectorAll(".header__menu ul li").forEach((li) => {
+                            li.classList.remove("active");
+                        });
+                        document.querySelector(".header__menu ul li:nth-child(" + (i + 1) + ")").classList.add("active");
+                    }
+                });
+            });
+
+            // 메뉴 이동 시 부드럽게~
+            document.querySelectorAll(".header__inner li a").forEach((li) => {
+                li.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    document.querySelector(li.getAttribute("href")).scrollIntoView({
+                        behavior: "smooth",
+                    });
+                });
+            });
+
+            window.addEventListener("scroll", scrollProgress);
         </script>
     </body>
-    <script>
-        window.addEventListener("scroll", () => {
-            let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-            document.querySelectorAll("section").forEach((el, i) => {
-                if (scrollTop > el.offsetTop - 500) {
-                    document.querySelectorAll(".header__menu ul li").forEach((li) => {
-                        li.classList.remove("active");
-                    });
-                    document.querySelector(".header__menu ul li:nth-child(" + (i + 1) + ")").classList.add("active");
-                }
-            });
-        });
-
-        window.addEventListener("scroll", () => {
-            let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-            document.querySelectorAll("section").forEach((el, i) => {
-                if (scrollTop > el.offsetTop - 500) {
-                    document.querySelectorAll(".header__mobile .header__menu ul li").forEach((li) => {
-                        li.classList.remove("active");
-                    });
-                    document.querySelector(".header__mobile .header__menu ul li:nth-child(" + (i + 1) + ")").classList.add("active");
-                }
-            });
-        });
-
-        document.querySelectorAll(".header__inner li a").forEach((li) => {
-            li.addEventListener("click", (e) => {
-                e.preventDefault();
-                document.querySelector(li.getAttribute("href")).scrollIntoView({
-                    behavior: "smooth",
-                });
-            });
-        });
-
-        document.querySelectorAll(".header__mobile li a").forEach((li) => {
-            li.addEventListener("click", (e) => {
-                e.preventDefault();
-                document.querySelector(li.getAttribute("href")).scrollIntoView({
-                    behavior: "smooth",
-                });
-            });
-        });
-
-        // 메뉴 숨김
-        let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-        let nowScroll = true;
-        let lastScroll = 0;
-
-        function scrollProgress() {
-            nowScroll = true;
-
-            setInterval(() => {
-                if (nowScroll) {
-                    nowScroll = false;
-                    hasScroll();
-                }
-            }, 300);
-        }
-
-        function hasScroll() {
-            let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-            if (scrollTop < lastScroll) {
-                document.querySelector(".header__inner").classList.add("show");
-                document.querySelector(".header__mobile").classList.add("show");
-            } else {
-                document.querySelector(".header__inner").classList.remove("show");
-                document.querySelector(".header__mobile").classList.remove("show");
-            }
-            lastScroll = scrollTop;
-        }
-
-        window.addEventListener("scroll", scrollProgress);
-    </script>
 </html>

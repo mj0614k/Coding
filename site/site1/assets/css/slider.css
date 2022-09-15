@@ -127,7 +127,7 @@
         margin-left: 50px;
     }
     .slider__inner {
-        margin-top: 0px;
+        margin-top: 70px;
         margin-bottom: 70px;
     }
     .slider__img .desc p {
@@ -141,7 +141,7 @@
 }
 .swiper-slide .desc {
     width: 1160px;
-    margin: 0 auto;
+    margin: 0px auto;
     padding: 100px 0px;
 }
 .swiper-slide .desc span {
@@ -199,9 +199,11 @@
 .swiper-pagination-bullet {
     width: 16px !important;
     height: 16px !important;
+    opacity: 0.5 !important;
 }
 .swiper-pagination-bullet-active {
     background-position: 0px -70px !important;
+    opacity: 1 !important;
 }
 .swiper-button {
     position: absolute;
@@ -225,6 +227,7 @@
     width: 16px;
     height: 16px;
     cursor: pointer;
+    margin-left: 5px;
 }
 /* media */
 @media (max-width: 1280px) {
