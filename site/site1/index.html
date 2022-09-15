@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="assets/css/common.css" />
 
         <!-- CSS(섹션별) -->
-        <link rel="stylesheet" href="assets/css/header.css" />
+        <link rel="stylesheet" href="assets/css/header copy.css" />
         <link rel="stylesheet" href="assets/css/slider.css" />
         <link rel="stylesheet" href="assets/css/card.css" />
         <link rel="stylesheet" href="assets/css/image.css" />
@@ -63,8 +63,21 @@
                 <div class="header__member">
                     <a href="#">로그인</a>
                 </div>
+                <div class="header__ham">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            <div class="header__mobile">
+        </header>
+        <!-- //header -->
+
+        <!-- header backup-->
+        <!-- <header id="headerType" class="header__wrap nexon">
+            <div class="header__inner">
+                <div class="header__logo">
+                    <a href="#">CUTE</a>
+                </div>
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="#sliderType">MAIN</a></li>
@@ -76,8 +89,24 @@
                         <li><a href="#footerType">FOOTER</a></li>
                     </ul>
                 </nav>
-            </div>
-        </header>
+                <div class="header__member">
+                    <a href="#">로그인</a>
+                </div>
+            </div> -->
+        <!-- <div class="header__mobile">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="#sliderType">MAIN</a></li>
+                        <li><a href="#imageType">DOG</a></li>
+                        <li><a href="#imgTextType">CAT</a></li>
+                        <li><a href="#cardType">MORE</a></li>
+                        <li><a href="#bannerType">BANNER</a></li>
+                        <li><a href="#textType">ETC</a></li>
+                        <li><a href="#footerType">FOOTER</a></li>
+                    </ul>
+                </nav>
+            </div> -->
+        <!-- </header> -->
         <!-- //header -->
 
         <section id="sliderType" class="slider__wrap">
@@ -158,6 +187,10 @@
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
+                    <div class="swiper-button">
+                        <div class="swiper-button-play"><span class="ir">play</span></div>
+                        <div class="swiper-button-stop"><span class="ir">stop</span></div>
+                    </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
@@ -377,7 +410,24 @@
                 pagination: {
                     el: ".swiper-pagination",
                     type: "bullets",
+                    clickable: true,
                 },
+            });
+
+            const btnStop = document.querySelector(".swiper-button-stop");
+            const btnStart = document.querySelector(".swiper-button-play");
+
+            btnStart.style.display = "none";
+
+            btnStop.addEventListener("click", () => {
+                swiper.autoplay.stop();
+                btnStart.style.display = "block";
+                btnStop.style.display = "none";
+            });
+            btnStart.addEventListener("click", () => {
+                swiper.autoplay.start();
+                btnStart.style.display = "none";
+                btnStop.style.display = "block";
             });
         </script>
     </body>
