@@ -1044,7 +1044,7 @@
                 <h2 class="t_tit2">JAVASCRIPT 소스</h2>
                 <p class="t_desc">자바스크립트 소스는 다음과 같습니다.</p>
                 <div class="t_code">
-                    <pre><code class="language-js">// 슬라이더 섹션의 스와이퍼 실행
+                    <pre><code class="language-js">//swiper
 var swiper = new Swiper(".mySwiper", {
     navigation: {
         nextEl: ".swiper-button-next",
@@ -1052,14 +1052,42 @@ var swiper = new Swiper(".mySwiper", {
     },
     autoplay: {
         delay: 2000,
+        disableOnInteraction: false, /* 슬라이드를 드래그하면 정지되는 버그 제거 */
     },
     pagination: {
         el: ".swiper-pagination",
         type: "bullets",
+        clickable: true,
     },
 });
 
-// 스크롤의 위치에 따라 각 메뉴에 active 활성화하기 (web, mobile)
+// 선택자
+const btnStop = document.querySelector(".swiper-button-stop");
+const btnStart = document.querySelector(".swiper-button-play");
+const btnHam = document.querySelector(".header__ham");
+const btnMenu = document.querySelector(".header__menu");
+
+// swiper에서 재생 버튼을 누르면 슬라이드 재생, 재생 버튼 숨김, 정지 버튼 나타남
+// swiper에서 정지 버튼을 누르면 슬라이드 정지, 정지 버튼 숨김, 재생 버튼 나타남
+btnStart.style.display = "none";
+btnStop.addEventListener("click", () => {
+    swiper.autoplay.stop();
+    btnStart.style.display = "block";
+    btnStop.style.display = "none";
+});
+btnStart.addEventListener("click", () => {
+    swiper.autoplay.start();
+    btnStart.style.display = "none";
+    btnStop.style.display = "block";
+});
+
+// 햄버거를 클릭하면 메뉴가 나타나도록 설정
+btnHam.addEventListener("click", () => {
+    btnHam.classList.toggle("active");
+    btnMenu.classList.toggle("overlay");
+});
+
+// 패럴랙스 효과
 window.addEventListener("scroll", () => {
     let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
     document.querySelectorAll("section").forEach((el, i) => {
@@ -1072,19 +1100,7 @@ window.addEventListener("scroll", () => {
     });
 });
 
-window.addEventListener("scroll", () => {
-    let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-    document.querySelectorAll("section").forEach((el, i) => {
-        if (scrollTop > el.offsetTop - 500) {
-            document.querySelectorAll(".header__mobile .header__menu ul li").forEach((li) => {
-                li.classList.remove("active");
-            });
-            document.querySelector(".header__mobile .header__menu ul li:nth-child(" + (i + 1) + ")").classList.add("active");
-        }
-    });
-});
-
-// 각 메뉴를 클릭했을 때 해당하는 섹션의 위치로 부드럽게 이동하기
+// 메뉴 이동 시 부드럽게~
 document.querySelectorAll(".header__inner li a").forEach((li) => {
     li.addEventListener("click", (e) => {
         e.preventDefault();
@@ -1093,45 +1109,6 @@ document.querySelectorAll(".header__inner li a").forEach((li) => {
         });
     });
 });
-
-document.querySelectorAll(".header__mobile li a").forEach((li) => {
-    li.addEventListener("click", (e) => {
-        e.preventDefault();
-        document.querySelector(li.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-        });
-    });
-});
-
-// 스크롤을 내리면 메뉴를 숨기고, 스크롤을 올리면 메뉴 보여주기
-let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-let nowScroll = true;
-let lastScroll = 0;
-
-function scrollProgress() {
-    nowScroll = true;
-
-    setInterval(() => {
-        if (nowScroll) {
-            nowScroll = false;
-            hasScroll();
-        }
-    }, 300);
-}
-
-function hasScroll() {
-    let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-    if (scrollTop &lt; lastScroll) {
-        document.querySelector(".header__inner").classList.add("show");
-        document.querySelector(".header__mobile").classList.add("show");
-    } else {
-        document.querySelector(".header__inner").classList.remove("show");
-        document.querySelector(".header__mobile").classList.remove("show");
-    }
-    lastScroll = scrollTop;
-}
-
-window.addEventListener("scroll", scrollProgress);
 </code></pre>
                 </div>
                 <hr />
