@@ -416,6 +416,7 @@
 
             const btnStop = document.querySelector(".swiper-button-stop");
             const btnStart = document.querySelector(".swiper-button-play");
+            const btnHam = document.querySelector(".header__ham");
 
             btnStart.style.display = "none";
 
@@ -428,6 +429,9 @@
                 swiper.autoplay.start();
                 btnStart.style.display = "none";
                 btnStop.style.display = "block";
+            });
+            btnHam.addEventListener("click", () => {
+                btnHam.classList.toggle("active");
             });
         </script>
     </body>
