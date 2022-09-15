@@ -217,6 +217,7 @@
     width: 16px;
     height: 16px;
     cursor: pointer;
+    margin-left: 5px;
 }
 .swiper-button-play {
     background-image: url(../img/slider01_icon.svg);

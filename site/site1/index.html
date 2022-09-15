@@ -417,6 +417,7 @@
             const btnStop = document.querySelector(".swiper-button-stop");
             const btnStart = document.querySelector(".swiper-button-play");
             const btnHam = document.querySelector(".header__ham");
+            const btnMenu = document.querySelector(".header__menu");
 
             btnStart.style.display = "none";
 
@@ -432,6 +433,7 @@
             });
             btnHam.addEventListener("click", () => {
                 btnHam.classList.toggle("active");
+                btnMenu.classList.toggle("overlay");
             });
         </script>
     </body>
