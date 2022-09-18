@@ -58,10 +58,7 @@ scroll();
                 </p>
                 <h2 class="t_tit2">2. CSS로 애니메이션 효과 주기</h2>
                 <h3 class="t_tit3">2-1) 한번에 나타나게 하기</h3>
-                <p class="t_desc">
-                    최종 목표는 각 섹션의 번호, 제목, 사진, 글자가 순차적으로 나타나게 하는
-                    것이지만, 시험 삼아 한번에 나타나도록 먼저 작업해 보았습니다.
-                </p>
+                
                 <div class="t_code">
                     <pre><code class="language-css">#contents > section {
     opacity: 0;
@@ -72,38 +69,88 @@ scroll();
 } 
 </code></pre>
                 </div>
-                <h2 class="t_tit3">2-2) 클릭 이벤트 만들어 주기</h2>
+                <p class="t_box">
+                    최종 목표는 각 섹션의 번호, 제목, 사진, 글자가 순차적으로 나타나게 하는
+                    것이지만, 시험 삼아 한번에 나타나도록 먼저 작업해 보았습니다. 한번에
+                    나타나는 것도 괜찮은 듯...
+                </p>
+                <h2 class="t_tit3">2-2) 순차적으로 나타나게 하기</h2>
                 <div class="t_code">
-                    <pre><code class="language-css">
+<pre><code class="language-css">#contents > section .content__item__num {
+    opacity: 0;
+    transform: translateY(200px);
+    transition: all 1s 0.1s cubic-bezier(0.42, 0, 0.64, 1.07);
+}
+#contents > section .content__item__title {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 1s 0.3s cubic-bezier(0.42, 0, 0.64, 1.07);
+}
+#contents > section .content__item__imgWrap {
+    opacity: 0;
+    transform: translateY(200px) rotate(30deg) skew(20deg);
+    transition: all 1s 0.6s cubic-bezier(0.42, 0, 0.64, 1.07);
+}
+#contents > section .content__item__desc {
+    opacity: 0;
+    transform: translateX(-200px);
+    transition: all 1s 0.9s cubic-bezier(0.42, 0, 0.64, 1.07);
+}
+#contents > section.show .content__item__num {
+    opacity: 0.07;
+    transform: translateY(0);
+}
+#contents > section.show .content__item__title {
+    opacity: 1;
+    transform: translateX(0);
+}
+#contents > section.show .content__item__imgWrap {
+    opacity: 1;
+    transform: translateY(0) rotate(0) skew(0);
+}
+#contents > section.show .content__item__desc {
+    opacity: 1;
+    transform: translateX(0);
+}
+#contents > section:nth-child(even) .content__item__title {
+    transform: translateX(100px);
+}
+#contents > section:nth-child(even).show .content__item__title {
+    transform: translateX(0);
+}
+#contents > section:nth-child(even) .content__item__desc {
+    transform: translateX(200px);
+}
+#contents > section:nth-child(even).show .content__item__desc {
+    transform: translateX(0);
+}
 </code></pre>
                 </div>
                 <p class="t_box">
-                    preventDefault()는 기존의 클릭 이벤트를 초기화하는 메서드입니다.<br />
-                    먼저, 각각의 MENU 버튼을 눌렀을 때, a 태그의 기본 속성으로 인해 각 섹션으로 즉시
-                    이동하는 이벤트를 초기화해 주었습니다. 그 다음, smooth 속성을 적용하여 부드럽게
-                    이동하도록 작업해 주었습니다.<br />
-                    TOP 버튼의 경우도 마찬가지입니다. 클릭 이벤트를 초기화해준 후, 버튼을 클릭했을
-                    때 top, left의 값이 0에 위치하도록, 즉 최상단으로, smooth 속성에 따라 부드럽게
-                    이동할 수 있도록 작업해 주었습니다.
+                    각각의 콘텐츠에 opacity, transform 초기 값을 설정해 주었습니다. 이후, show 클래스가 추가되었을 때 애니메이션이
+                    나타나도록 효과를 주었습니다. 짝수 번째의 텍스트는
+                    오른쪽 정렬이 되어있기 때문에, 홀수 번째의 텍스트는 왼쪽에서, 짝수 번째의 텍스트는 오른쪽에서 나타나도록
+                    nth-child(even)을 사용하여 작업해 주었습니다.<br>
+                    transition의 경우 cubic-bezier를 사용하여 작업해 주었는데, 이것은 검사(F12)에서 곡선을 조절하며
+                    각 수치에 따른 애니메이션을 시험해 보고, 적절한 수치를 찾아 적용해 주었습니다.
                 </p>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
                 <p class="t_desc">
-                    내일 여행을 가기 때문에 신이 나서 아주 열심히 글을 작성했습니다. 티가 나나요?
-                    깔깔.
+                    주말은 왜이리 짧은 걸까요?
                 </p>
                 <div class="t_iframe" style="min-height: 1000px; padding-top: 0px">
                     <iframe
-                        src="https://mj0614k.github.io/Coding/javascript/effect/parallaxEffect03.html"
+                        src="https://mj0614k.github.io/Coding/javascript/effect/parallaxEffect04.html"
                     ></iframe>
                 </div>
 
                 <div class="t_link">
                     <a
-                        href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/parallaxEffect03.html"
+                        href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/parallaxEffect04.html"
                         >원본 소스 보기</a
                     >
-                    <a href="https://mj0614k.github.io/Coding/javascript/effect/parallaxEffect03"
+                    <a href="https://mj0614k.github.io/Coding/javascript/effect/parallaxEffect04"
                         >원본 사이트 보기</a
                     >
                 </div>
