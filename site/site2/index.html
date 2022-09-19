@@ -69,43 +69,40 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="desc">
-                                <span>ANIMAL</span>
-                                <h3>CUTE ANIMAL</h3>
+                                <h3>Delicious<br />Food</h3>
                                 <p>
-                                    숙제에 지친 이들을 위한 힐링 공간입니다.<br />
-                                    귀여운 동물들을 보며 잠시나마 현실도피를 합시다.
+                                    세상에는 맛있는 음식이 왜 이렇게 많을까요?<br />
+                                    여러분들은 어떤 음식을 좋아하시나요?<br />
+                                    이 중에서 하나쯤은 있을 겁니다.
                                 </p>
                                 <div class="btn">
                                     <a href="#">자세히 보기</a>
-                                    <a href="#">사이트 보기</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="desc">
-                                <span>ANIMAL</span>
-                                <h3>CUTE ANIMAL</h3>
+                                <h3>Delicious<br />Food</h3>
                                 <p>
-                                    숙제에 지친 이들을 위한 힐링 공간입니다.<br />
-                                    귀여운 동물들을 보며 잠시나마 현실도피를 합시다.
+                                    세상에는 맛있는 음식이 왜 이렇게 많을까요?<br />
+                                    여러분들은 어떤 음식을 좋아하시나요?<br />
+                                    이 중에서 하나쯤은 있을 겁니다.
                                 </p>
                                 <div class="btn">
                                     <a href="#">자세히 보기</a>
-                                    <a href="#">사이트 보기</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="desc">
-                                <span>ANIMAL</span>
-                                <h3>CUTE ANIMAL</h3>
+                                <h3>Delicious<br />Food</h3>
                                 <p>
-                                    숙제에 지친 이들을 위한 힐링 공간입니다.<br />
-                                    귀여운 동물들을 보며 잠시나마 현실도피를 합시다.
+                                    세상에는 맛있는 음식이 왜 이렇게 많을까요?<br />
+                                    여러분들은 어떤 음식을 좋아하시나요?<br />
+                                    이 중에서 하나쯤은 있을 겁니다.
                                 </p>
                                 <div class="btn">
                                     <a href="#">자세히 보기</a>
-                                    <a href="#">사이트 보기</a>
                                 </div>
                             </div>
                         </div>
@@ -121,5 +118,42 @@
             </div>
         </section>
         <!-- //sliderType -->
+        <script src="assets/js/swiper.min.js"></script>
+        <script>
+            //swiper
+            var swiper = new Swiper(".mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "bullets",
+                    clickable: true,
+                },
+            });
+
+            // 선택자
+            const btnStop = document.querySelector(".swiper-button-stop");
+            const btnStart = document.querySelector(".swiper-button-play");
+
+            // swiper에서 재생 버튼을 누르면 슬라이드 재생, 재생 버튼 숨김, 정지 버튼 나타남
+            // swiper에서 정지 버튼을 누르면 슬라이드 정지, 정지 버튼 숨김, 재생 버튼 나타남
+            btnStart.style.display = "none";
+            btnStop.addEventListener("click", () => {
+                swiper.autoplay.stop();
+                btnStart.style.display = "block";
+                btnStop.style.display = "none";
+            });
+            btnStart.addEventListener("click", () => {
+                swiper.autoplay.start();
+                btnStart.style.display = "none";
+                btnStop.style.display = "block";
+            });
+        </script>
     </body>
 </html>
