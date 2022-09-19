@@ -1,0 +1,23 @@
+.header__inner {
+    backdrop-filter: blur(10px);
+}
+
+.header__title {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.header__menu {
+    margin-bottom: 20px;
+}
+
+.header__menu ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header__menu ul li:hover a {
+    text-decoration: underline;
+}

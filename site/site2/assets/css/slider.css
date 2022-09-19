@@ -1,0 +1,95 @@
+/* swiper */
+.swiper-slide {
+    width: 100%;
+    background: url(../img/slider_bg01.jpg) no-repeat center / cover;
+}
+.swiper-slide .desc {
+    width: 1160px;
+    margin: 0px auto;
+    padding: 100px 20px;
+}
+.swiper-slide .desc span {
+    font-size: 16px;
+    background-color: #000;
+    color: white;
+    padding: 1px 14px 0 14px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.swiper-slide .desc h3 {
+    font-size: 110px;
+    font-weight: 500;
+    line-height: 1;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    margin-left: -8px;
+}
+.swiper-slide .desc p {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    line-height: 1.35;
+    margin-bottom: 130px;
+}
+.swiper-slide .desc .btn {
+}
+.swiper-slide .desc .btn a {
+    font-size: 16px;
+    background-color: black;
+    padding: 11px 50px;
+    display: inline-block;
+}
+.swiper-slide .desc .btn a.black {
+    background: #000;
+    color: #fff;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 30px !important;
+    height: 56px !important;
+    background-image: url(../img/slider01_icon.svg);
+}
+.swiper-button-next {
+    background-position: -50px 0px;
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    opacity: 0;
+}
+.swiper-pagination-bullet {
+    width: 16px !important;
+    height: 16px !important;
+    opacity: 0.5 !important;
+}
+.swiper-pagination-bullet-active {
+    background-position: 0px -70px !important;
+    opacity: 1 !important;
+}
+.swiper-button {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    z-index: 1000;
+    margin-left: 40px;
+    display: flex;
+}
+.swiper-button-stop {
+    background-image: url(../img/slider01_icon.svg);
+    background-position: -60px -70px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.swiper-button-play {
+    background-image: url(../img/slider01_icon.svg);
+    background-position: -40px -70px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-left: 5px;
+}
