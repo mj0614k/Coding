@@ -995,10 +995,36 @@ info2.result2();
         </main>
         <!-- //main -->
 
+        <div id="parallax__top">Top</div>
+
         <footer id="footer">
             <a href="mailto:mo0647@naver.com">mo0647@naver.com</a>
         </footer>
         <!-- //footer -->
+
+        <script>
+            function scroll() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                let body = document.body.offsetHeight;
+                if (body - 1000 <= scrollTop) {
+                    document.querySelector("#parallax__top").classList.add("show");
+                } else {
+                    document.querySelector("#parallax__top").classList.remove("show");
+                }
+                requestAnimationFrame(scroll);
+            }
+            // TOP버튼 클릭 이벤트
+            let TOP = document.querySelector("#parallax__top");
+            TOP.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                });
+            });
+            scroll();
+        </script>
 
         <script>
             // // 선언적 함수
