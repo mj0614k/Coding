@@ -47,71 +47,30 @@
                 }
             }
             .mouse__cursor {
-                z-index: 2001;
                 position: absolute;
                 left: 0;
                 top: 0;
-                width: 50px;
-                height: 50px;
+                width: 200px;
+                height: 200px;
+                z-index: -1;
                 border-radius: 50%;
-                border: 3px solid #fff;
-                background-color: rgba(255, 255, 255, 0.1);
-                /* 선택, 클릭 X */
-                user-select: none;
-                pointer-events: none;
-                transition: background-color 0.3s, border-color 0.3s, transform 0.6s,
-                    border-radius 0.3s;
-            }
-            .mouse__cursor.style1 {
-                background-color: rgba(255, 0, 0, 0.5);
-                border-color: red;
-            }
-            .mouse__cursor.style2 {
-                background-color: rgba(255, 166, 0, 0.5);
-                border-color: orange;
-                transform: scale(2) rotateY(720deg);
-            }
-            .mouse__cursor.style3 {
-                background-color: rgba(255, 255, 0, 0.5);
-                border-color: yellow;
-                transform: scale(1.5) rotateX(720deg);
-            }
-            .mouse__cursor.style4 {
-                background-color: rgba(172, 255, 47, 0.5);
-                border-color: greenyellow;
-                transform: scale(10);
-            }
-            .mouse__cursor.style5 {
-                background-color: rgba(0, 0, 255, 0.5);
-                border-color: blue;
-                transform: scale(0.1);
-            }
-            .mouse__cursor.style6 {
-                background-color: rgba(137, 43, 226, 0.5);
-                border-color: blueviolet;
-                border-radius: 0;
-                transform: rotate(720deg);
-            }
-            .mouse__info {
-                z-index: 2001;
-                position: absolute;
-                left: 20px;
-                bottom: 10px;
-                font-size: 14px;
-                line-height: 1.6;
-                color: #fff;
+                background-image: url(../assets/img/effect_bg15@2x-min.jpg);
+                background-size: cover;
+                background-position: center center;
+                background-attachment: fixed;
+                border: 5px solid #fff;
             }
         </style>
     </head>
 
-    <body class="img10">
+    <body class="img15">
         <header id="header">
-            <h1><a href="mouseEffect.html">Javascript Mouse Effect01</a></h1>
-            <p>마우스 이펙트 : 마우스 따라다니기</p>
+            <h1><a href="mouseEffect.html">Javascript Mouse Effect03</a></h1>
+            <p>마우스 이펙트 : 조명 효과</p>
             <ul>
-                <li class="active"><a href="mouseEffect01.html">1</a></li>
+                <li><a href="mouseEffect01.html">1</a></li>
                 <li><a href="mouseEffect02.html">2</a></li>
-                <li><a href="mouseEffect03.html">3</a></li>
+                <li class="active"><a href="mouseEffect03.html">3</a></li>
                 <li><a href="mouseEffect04.html">4</a></li>
                 <li><a href="mouseEffect05.html">5</a></li>
                 <li><a href="mouseEffect06.html">6</a></li>
@@ -121,33 +80,13 @@
         <!-- //header -->
 
         <main id="main">
-            <section id="mouseType01">
+            <section id="mouseType">
                 <div class="mouse__cursor"></div>
                 <div class="mouse__wrap">
-                    <p>
-                        The <span class="style1">future</span> depends on
-                        <span class="style2">what</span> we do in the
-                        <span class="style3">present</span>
-                    </p>
-                    <p>
-                        <span class="style4">미래는</span> 현재 <span class="style5">우리가</span>
-                        <span class="style6">무엇을</span> 하는가에 달려있다
-                    </p>
+                    <p>I Dream <span>my Painting</span> and I paint <span>my Dream</span></p>
+                    <p>나는 나의 <span>그림</span>을 꿈꾸고, 내 <span>꿈</span>을 그린다.</p>
                 </div>
             </section>
-
-            <div class="mouse__info">
-                <ul>
-                    <li>clientX : <span class="clientX">0</span>px</li>
-                    <li>clientY : <span class="clientY">0</span>px</li>
-                    <li>offsetX : <span class="offsetX">0</span>px</li>
-                    <li>offsetY : <span class="offsetY">0</span>px</li>
-                    <li>pageX : <span class="pageX">0</span>px</li>
-                    <li>pageY : <span class="pageY">0</span>px</li>
-                    <li>screenX : <span class="screenX">0</span>px</li>
-                    <li>screenY : <span class="screenY">0</span>px</li>
-                </ul>
-            </div>
         </main>
         <!-- //main -->
 
@@ -332,120 +271,32 @@
                         </div>
                         <div class="cont">
                             <div class="active">
-                                <pre><code class="language-js">window.addEventListener("mousemove", (event) => {
-    document.querySelector(".clientX").innerHTML = event.clientX;
-    document.querySelector(".clientY").innerHTML = event.clientY;
-    document.querySelector(".offsetX").innerHTML = event.offsetX;
-    document.querySelector(".offsetY").innerHTML = event.offsetY;
-    document.querySelector(".pageX").innerHTML = event.pageX;
-    document.querySelector(".pageY").innerHTML = event.pageY;
-    document.querySelector(".screenX").innerHTML = event.screenX;
-    document.querySelector(".screenY").innerHTML = event.screenY;
-});
+                                <pre><code class="language-js">const cursor = document.querySelector(".mouse__cursor");
+// const circle1 = cursor.offsetWidth; // 200 : 보더값 포함
+// const circle2 = cursor.clientWidth; // 190 : 보더값 제외
+// const circleW = cursor.offsetWidth;
+// const circleH = cursor.offsetHeight;
 
-const cursor = document.querySelector(".mouse__cursor");
+const circle = cursor.getBoundingClientRect();
+// DOMRect {x: 0, y: 0, width: 200, height: 200, top: 0, …}
 
 window.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX - 25 + "px"; // 커서에 스타일(위치값) 추가
-    cursor.style.top = e.clientY - 25 + "px";
-});
-
-// document.querySelector(".style1").addEventListener("mouseover", () => {
-//     cursor.classList.add("style1");
-// });
-// document.querySelector(".style1").addEventListener("mouseout", () => {
-//     cursor.classList.remove("style1");
-// });
-
-// document.querySelector(".style2").addEventListener("mouseover", () => {
-//     cursor.classList.add("style2");
-// });
-// document.querySelector(".style2").addEventListener("mouseout", () => {
-//     cursor.classList.remove("style2");
-// });
-
-// document.querySelector(".style3").addEventListener("mouseover", () => {
-//     cursor.classList.add("style3");
-// });
-// document.querySelector(".style3").addEventListener("mouseout", () => {
-//     cursor.classList.remove("style3");
-// });
-
-// document.querySelector(".style4").addEventListener("mouseover", () => {
-//     cursor.classList.add("style4");
-// });
-// document.querySelector(".style4").addEventListener("mouseout", () => {
-//     cursor.classList.remove("style4");
-// });
-
-// document.querySelector(".style5").addEventListener("mouseover", () => {
-//     cursor.classList.add("style5");
-// });
-// document.querySelector(".style5").addEventListener("mouseout", () => {
-//     cursor.classList.remove("style5");
-// });
-
-// document.querySelector(".style6").addEventListener("mouseover", () => {
-//     cursor.classList.add("style6");
-// });
-// document.querySelector(".style6").addEventListener("mouseout", () => {
-//     cursor.classList.remove("style6");
-// });
-
-//for문
-// for (let i = 1; i &lt;= 6; i++) {
-//     document.querySelector(".style" + i).addEventListener("mouseover", () => {
-//         cursor.classList.add("style" + i);
-//     });
-//     document.querySelector(".style" + i).addEventListener("mouseout", () => {
-//         cursor.classList.remove("style" + i);
-//     });
-// }
-
-// forEach문
-// document.querySelectorAll(".mouse__wrap span").forEach((span, num) => {
-//     span.addEventListener("mouseover", () => {
-//         cursor.classList.add("style" + (num + 1));
-//     });
-//     span.addEventListener("mouseout", () => {
-//         cursor.classList.remove("style" + (num + 1));
-//     });
-// });
-
-//getAttribute() 메서드 활용하기 : 속성값으로 가져오기
-document.querySelectorAll(".mouse__wrap span").forEach((span) => {
-    let attr = span.getAttribute("class");
-
-    span.addEventListener("mouseover", () => {
-        cursor.classList.add(attr);
-    });
-    span.addEventListener("mouseout", () => {
-        cursor.classList.remove(attr);
+    gsap.to(cursor, {
+        duration: 0.5,
+        left: e.pageX - circle.width / 2,
+        top: e.pageY - circle.height / 2,
     });
 });
 </code></pre>
                             </div>
                             <div>
-                                <pre><code class="language-html">&lt;section id="mouseType01"&gt;
+                                <pre><code class="language-html">&lt;section id="mouseType"&gt;
     &lt;div class="mouse__cursor"&gt;&lt;/div&gt;
     &lt;div class="mouse__wrap"&gt;
-        &lt;p&gt;The &lt;span class="style1"&gt;future&lt;/span&gt; depends on &lt;span class="style2"&gt;what&lt;/span&gt; we do in the &lt;span class="style3"&gt;present&lt;/span&gt;&lt;/p&gt;
-        &lt;p&gt;&lt;span class="style4"&gt;미래는&lt;/span&gt; 현재 &lt;span class="style5"&gt;우리가&lt;/span&gt; &lt;span class="style6"&gt;무엇을&lt;/span&gt; 하는가에 달려있다&lt;/p&gt;
+        &lt;p&gt;I Dream &lt;span&gt;my Painting&lt;/span&gt; and I paint &lt;span&gt;my Dream&lt;/span&gt;&lt;/p&gt;
+        &lt;p&gt;나는 나의 &lt;span&gt;그림&lt;/span&gt;을 꿈꾸고, 내 &lt;span&gt;꿈&lt;/span&gt;을 그린다.&lt;/p&gt;
     &lt;/div&gt;
 &lt;/section&gt;
-
-&lt;div class="mouse__info"&gt;
-    &lt;ul&gt;
-        &lt;li&gt;clientX : &lt;span class="clientX"&gt;0&lt;/span&gt;px&lt;/li&gt;
-        &lt;li&gt;clientY : &lt;span class="clientY"&gt;0&lt;/span&gt;px&lt;/li&gt;
-        &lt;li&gt;offsetX : &lt;span class="offsetX"&gt;0&lt;/span&gt;px&lt;/li&gt;
-        &lt;li&gt;offsetY : &lt;span class="offsetY"&gt;0&lt;/span&gt;px&lt;/li&gt;
-        &lt;li&gt;pageX : &lt;span class="pageX"&gt;0&lt;/span&gt;px&lt;/li&gt;
-        &lt;li&gt;pageY : &lt;span class="pageY"&gt;0&lt;/span&gt;px&lt;/li&gt;
-        &lt;li&gt;screenX : &lt;span class="screenX"&gt;0&lt;/span&gt;px&lt;/li&gt;
-        &lt;li&gt;screenY : &lt;span class="screenY"&gt;0&lt;/span&gt;px&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;
 </code></pre>
                             </div>
                             <div>
@@ -487,58 +338,18 @@ document.querySelectorAll(".mouse__wrap span").forEach((span) => {
     }
 }
 .mouse__cursor {
-    z-index: 2001;
     position: absolute;
     left: 0;
     top: 0;
-    width: 50px;
-    height: 50px;
+    width: 200px;
+    height: 200px;
+    z-index: -1;
     border-radius: 50%;
-    border: 3px solid #fff;
-    background-color: rgba(255, 255, 255, 0.1);
-    /* 선택, 클릭 X */
-    user-select: none;
-    pointer-events: none;
-    transition: background-color 0.3s, border-color 0.3s, transform 0.6s, border-radius 0.3s;
-}
-.mouse__cursor.style1 {
-    background-color: rgba(255, 0, 0, 0.5);
-    border-color: red;
-}
-.mouse__cursor.style2 {
-    background-color: rgba(255, 166, 0, 0.5);
-    border-color: orange;
-    transform: scale(2) rotateY(720deg);
-}
-.mouse__cursor.style3 {
-    background-color: rgba(255, 255, 0, 0.5);
-    border-color: yellow;
-    transform: scale(1.5) rotateX(720deg);
-}
-.mouse__cursor.style4 {
-    background-color: rgba(172, 255, 47, 0.5);
-    border-color: greenyellow;
-    transform: scale(10);
-}
-.mouse__cursor.style5 {
-    background-color: rgba(0, 0, 255, 0.5);
-    border-color: blue;
-    transform: scale(0.1);
-}
-.mouse__cursor.style6 {
-    background-color: rgba(137, 43, 226, 0.5);
-    border-color: blueviolet;
-    border-radius: 0;
-    transform: rotate(720deg);
-}
-.mouse__info {
-    z-index: 2001;
-    position: absolute;
-    left: 20px;
-    bottom: 10px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #fff;
+    background-image: url(../assets/img/effect_bg15@2x-min.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    border: 5px solid #fff;
 }
 </code></pre>
                             </div>
@@ -576,96 +387,21 @@ document.querySelectorAll(".mouse__wrap span").forEach((span) => {
 
         <script src="../assets/js/highlight.min.js"></script>
         <script src="../assets/js/common.js"></script>
+        <script src="../assets/js/gsap.min.js"></script>
         <script>
-            window.addEventListener("mousemove", (event) => {
-                document.querySelector(".clientX").innerHTML = event.clientX;
-                document.querySelector(".clientY").innerHTML = event.clientY;
-                document.querySelector(".offsetX").innerHTML = event.offsetX;
-                document.querySelector(".offsetY").innerHTML = event.offsetY;
-                document.querySelector(".pageX").innerHTML = event.pageX;
-                document.querySelector(".pageY").innerHTML = event.pageY;
-                document.querySelector(".screenX").innerHTML = event.screenX;
-                document.querySelector(".screenY").innerHTML = event.screenY;
-            });
-
             const cursor = document.querySelector(".mouse__cursor");
+            // const circle1 = cursor.offsetWidth; // 200 : 보더값 포함
+            // const circle2 = cursor.clientWidth; // 190 : 보더값 제외
+            // const circleW = cursor.offsetWidth;
+            // const circleH = cursor.offsetHeight;
+
+            const circle = cursor.getBoundingClientRect(); // DOMRect {x: 0, y: 0, width: 200, height: 200, top: 0, …}
 
             window.addEventListener("mousemove", (e) => {
-                cursor.style.left = e.clientX - 25 + "px"; // 커서에 스타일(위치값) 추가
-                cursor.style.top = e.clientY - 25 + "px";
-            });
-
-            // document.querySelector(".style1").addEventListener("mouseover", () => {
-            //     cursor.classList.add("style1");
-            // });
-            // document.querySelector(".style1").addEventListener("mouseout", () => {
-            //     cursor.classList.remove("style1");
-            // });
-
-            // document.querySelector(".style2").addEventListener("mouseover", () => {
-            //     cursor.classList.add("style2");
-            // });
-            // document.querySelector(".style2").addEventListener("mouseout", () => {
-            //     cursor.classList.remove("style2");
-            // });
-
-            // document.querySelector(".style3").addEventListener("mouseover", () => {
-            //     cursor.classList.add("style3");
-            // });
-            // document.querySelector(".style3").addEventListener("mouseout", () => {
-            //     cursor.classList.remove("style3");
-            // });
-
-            // document.querySelector(".style4").addEventListener("mouseover", () => {
-            //     cursor.classList.add("style4");
-            // });
-            // document.querySelector(".style4").addEventListener("mouseout", () => {
-            //     cursor.classList.remove("style4");
-            // });
-
-            // document.querySelector(".style5").addEventListener("mouseover", () => {
-            //     cursor.classList.add("style5");
-            // });
-            // document.querySelector(".style5").addEventListener("mouseout", () => {
-            //     cursor.classList.remove("style5");
-            // });
-
-            // document.querySelector(".style6").addEventListener("mouseover", () => {
-            //     cursor.classList.add("style6");
-            // });
-            // document.querySelector(".style6").addEventListener("mouseout", () => {
-            //     cursor.classList.remove("style6");
-            // });
-
-            //for문
-            // for (let i = 1; i <= 6; i++) {
-            //     document.querySelector(".style" + i).addEventListener("mouseover", () => {
-            //         cursor.classList.add("style" + i);
-            //     });
-            //     document.querySelector(".style" + i).addEventListener("mouseout", () => {
-            //         cursor.classList.remove("style" + i);
-            //     });
-            // }
-
-            // forEach문
-            // document.querySelectorAll(".mouse__wrap span").forEach((span, num) => {
-            //     span.addEventListener("mouseover", () => {
-            //         cursor.classList.add("style" + (num + 1));
-            //     });
-            //     span.addEventListener("mouseout", () => {
-            //         cursor.classList.remove("style" + (num + 1));
-            //     });
-            // });
-
-            //getAttribute() 메서드 활용하기 : 속성값으로 가져오기
-            document.querySelectorAll(".mouse__wrap span").forEach((span) => {
-                let attr = span.getAttribute("class");
-
-                span.addEventListener("mouseover", () => {
-                    cursor.classList.add(attr);
-                });
-                span.addEventListener("mouseout", () => {
-                    cursor.classList.remove(attr);
+                gsap.to(cursor, {
+                    duration: 0.5,
+                    left: e.pageX - circle.width / 2,
+                    top: e.pageY - circle.height / 2,
                 });
             });
         </script>

@@ -55,6 +55,10 @@ body.img10 {
     background: url(../img/effect_bg10@2x-min.jpg) no-repeat center / cover;
 }
 
+body.img15 {
+    background: url(../img/effect_bg15@2x-min.jpg) no-repeat center / cover;
+}
+
 body::after {
     content: "";
     position: absolute;
@@ -127,6 +131,10 @@ li {
     font-weight: 300;
     margin-bottom: 10px;
     border-bottom: 2px solid black;
+    font-family: "EF_Hyunygothic";
+}
+
+#header h1 a {
     font-family: "EF_Hyunygothic";
 }
 
