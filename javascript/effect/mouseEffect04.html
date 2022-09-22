@@ -301,6 +301,10 @@ const cursorRect = document.querySelector(".mouse__cursor").getBoundingClientRec
 
 // mouse__wrap figure 내에 효과를 주었기 때문에 박스 안에서만 움직임
 document.querySelector(".mouse__wrap figure").addEventListener("mousemove", (e) => {
+    // 마우스 좌표값
+    let mousePageX = e.pageX;
+    let mousePageY = e.pageY;
+
     // 커서
     gsap.to(cursor, {
         duration: 0.3,
@@ -308,9 +312,6 @@ document.querySelector(".mouse__wrap figure").addEventListener("mousemove", (e) 
         top: e.pageY - cursorRect.height / 2,
     });
 
-    // 마우스 좌표값
-    let mousePageX = e.pageX;
-    let mousePageY = e.pageY;
 
     // 전체 가로
     // window.innerWidth 1920 - 스크롤바 미포함, 유동적(브라우저 기준)
@@ -339,8 +340,8 @@ document.querySelector(".mouse__wrap figure").addEventListener("mousemove", (e) 
     document.querySelector(".mousePageX").textContent = mousePageX;
     document.querySelector(".mousePageY").textContent = mousePageY;
     // 가운데 기준
-    document.querySelector(".centerPageX").textContent = -centerPageX;
-    document.querySelector(".centerPageY").textContent = centerPageY;
+    document.querySelector(".centerPageX").textContent = Math.ceil(centerPageX);
+    document.querySelector(".centerPageY").textContent = Math.ceil(centerPageY);
 });
 </code></pre>
                             </div>
@@ -474,15 +475,15 @@ document.querySelector(".mouse__wrap figure").addEventListener("mousemove", (e) 
             // mouse__wrap figure 내에 효과를 주었기 때문에 박스 안에서만 움직임
             document.querySelector(".mouse__wrap figure").addEventListener("mousemove", (e) => {
                 // 커서
+                // 마우스 좌표값
+                let mousePageX = e.pageX;
+                let mousePageY = e.pageY;
+
                 gsap.to(cursor, {
                     duration: 0.3,
                     left: e.pageX - cursorRect.width / 2,
                     top: e.pageY - cursorRect.height / 2,
                 });
-
-                // 마우스 좌표값
-                let mousePageX = e.pageX;
-                let mousePageY = e.pageY;
 
                 // 전체 가로
                 // window.innerWidth 1920 - 스크롤바 미포함, 유동적(브라우저 기준)
@@ -511,8 +512,8 @@ document.querySelector(".mouse__wrap figure").addEventListener("mousemove", (e) 
                 document.querySelector(".mousePageX").textContent = mousePageX;
                 document.querySelector(".mousePageY").textContent = mousePageY;
                 // 가운데 기준
-                document.querySelector(".centerPageX").textContent = -centerPageX;
-                document.querySelector(".centerPageY").textContent = centerPageY;
+                document.querySelector(".centerPageX").textContent = Math.ceil(centerPageX);
+                document.querySelector(".centerPageY").textContent = Math.ceil(centerPageY);
             });
         </script>
     </body>
