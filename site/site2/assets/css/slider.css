@@ -43,8 +43,8 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-    width: 30px !important;
-    height: 56px !important;
+    width: 22px !important;
+    height: 40px !important;
     background-image: url(../img/slider01_icon.svg);
 }
 .swiper-button-next {
@@ -71,7 +71,7 @@
     margin-left: 40px;
     display: flex;
 }
-.swiper-button-stop {
+/* .swiper-button-stop {
     background-image: url(../img/slider01_icon.svg);
     background-position: -60px -70px;
     width: 16px;
@@ -86,7 +86,7 @@
     height: 16px;
     cursor: pointer;
     margin-left: 5px;
-}
+} */
 
 @media (max-width: 1000px) {
     .swiper-slide {

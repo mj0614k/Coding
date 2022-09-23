@@ -53,7 +53,8 @@ select,
 table,
 textarea {
     color: #000;
-    font-family: "NexonLv2Gothic", "AppleSDGothicNeo-Regular", "Malgun Gothic", "맑은 고딕", dotum, 돋움;
+    font-family: "GmarketSans", "AppleSDGothicNeo-Regular", "Malgun Gothic", "맑은 고딕", dotum,
+        돋움;
 }
 
 /* 가로모드 초기화 */
