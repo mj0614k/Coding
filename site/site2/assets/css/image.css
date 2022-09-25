@@ -89,3 +89,21 @@
         font-size: 14px;
     }
 }
+
+@media(max-width: 480px) {
+    .image__inner {
+        flex-direction: column;
+    }
+
+    .image {
+        width: 100%;
+    }
+
+    .image__desc h3 {
+        font-size: 24px;
+    }
+    
+    .image__desc .more {
+        font-size: 16px;
+    }
+}
