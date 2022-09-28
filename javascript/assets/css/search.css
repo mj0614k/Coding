@@ -162,7 +162,7 @@ li {
 }
 
 .search__info {
-    text-align: center;
+    text-align: right;
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px dashed var(--htmlColor);
@@ -171,6 +171,7 @@ li {
 
 .search__info .type {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .search__info .all {
@@ -310,6 +311,7 @@ li {
 
 .modal__box {
     width: 60%;
+    min-width: 1000px;
     border-radius: 0.6rem;
     background-color: #fff;
     box-shadow: 0 10px 20px -5px hsl(180deg 2% 10%);

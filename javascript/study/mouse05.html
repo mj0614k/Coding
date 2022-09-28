@@ -150,15 +150,10 @@ softPageY += (anglePageY - softPageY) * 0.4;
                 <h3 class="t_tit3">2-4) 이미지 움직이기</h3>
                 <div class="t_code">
                     <pre><code class="language-js">const imgMove = document.querySelector(".mouse__img");
-imgMove.style.transform =
-    "perspective(600px) rotateX(" +
-    softPageX +
-    "deg) rotateY(" +
-    softPageY +
-    "deg)";
+imgMove.style.transform = "perspective(600px) rotateX(" + softPageX + "deg) rotateY(" + softPageY + "deg)";
 </code></pre>
                 </div>
-                <p class="t_box"></p>
+                <p class="t_box">이제 이미지에 움직임 효과를 주면 모든 작업이 끝납니다.</p>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
                 <div class="t_iframe" style="min-height: 800px; padding-top: 0px">
