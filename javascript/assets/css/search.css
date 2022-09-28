@@ -145,8 +145,24 @@ li {
     display: block;
 }
 
+.search__list span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--htmlColor);
+    border-radius: 50px;
+    margin: 5px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.search__list span:hover {
+    background-color: var(--htmlColor);
+    color: #fff;
+    transition: all 0.3s;
+}
+
 .search__info {
-    text-align: right;
+    text-align: center;
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 2px dashed var(--htmlColor);
@@ -154,12 +170,30 @@ li {
 }
 
 .search__info .type {
-    text-align: center;
     margin-bottom: 10px;
 }
 
+.search__info .all {
+    display: inline;
+    margin-bottom: 10px;
+}
+
+.search__info .all span {
+    border-bottom: 2px solid var(--htmlColor);
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.search__info .all span:hover {
+    background-color: var(--htmlColor);
+    color: #fff;
+    cursor: pointer;
+}
 .search__info .keyword {
-    text-align: center;
+    display: inline;
     margin-bottom: 10px;
 }
 
@@ -176,6 +210,28 @@ li {
     background-color: var(--htmlColor);
     color: #fff;
     cursor: pointer;
+}
+
+.search__info div:nth-child(3) {
+    text-align: right;
+}
+.search__info div:nth-child(4) {
+    text-align: right;
+}
+.search__info .searchResult.hide {
+    display: none;
+}
+
+.search__desc {
+    padding: 20px 40px 20px 60px;
+    margin-bottom: 50px;
+    display: inline-block;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.5 16.958L21.5 21.958' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-color: var(--htmlColor);
+    color: #fff;
+    border-radius: 50px;
+    background-repeat: no-repeat;
+    background-position: 24px 18px;
 }
 
 @media (max-width: 600px) {

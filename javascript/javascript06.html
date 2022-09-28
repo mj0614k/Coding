@@ -1947,21 +1947,30 @@ document.querySelector(".sample14_P3").innerHTML = result3;</code></pre>
             }
 
             {
-                const number = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-                const number2 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-                const number3 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-                const number4 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-
-                //400 500
-                console.log(number.slice(3, 5));
-                console.log(number2.splice(3, 2));
-                console.log(number3.filter((el) => el == 400 || el == 500));
-
+                // const number = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+                // const number2 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+                // const number3 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+                // const number4 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+                // //400 500
+                // console.log(number.slice(3, 5));
+                // console.log(number2.splice(3, 2));
+                // console.log(number3.filter((el) => el == 400 || el == 500));
                 // for (i = 0; i < number4.length; i++) {
                 //     if (i == 3 || i == 4) {
                 //         console.log(number4[i]);
                 //     }
                 // }
+            }
+
+            {
+                const num1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                // b d f h k
+
+                for (i = 1; i < num1.length; i += 2) {
+                    console.log(num1[i]);
+                }
+
+                const num2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
             }
         </script>
     </body>
