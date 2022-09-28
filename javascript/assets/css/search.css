@@ -311,7 +311,6 @@ li {
 
 .modal__box {
     width: 60%;
-    min-width: 1000px;
     border-radius: 0.6rem;
     background-color: #fff;
     box-shadow: 0 10px 20px -5px hsl(180deg 2% 10%);

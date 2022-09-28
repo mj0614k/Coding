@@ -226,106 +226,81 @@
                         </div>
                         <div class="cont">
                             <div class="active">
-                                <pre><code class="language-js">// 선택자
-const searchKeyword = document.querySelectorAll(".search__info .keyword span")  // 알파벳
-const searchList = document.querySelectorAll(".search__list ul li")  // 목록 리스트
-const searchInfo = document.querySelector(".search__info .num")  // 전체 속성 갯수
-const searchResult = document.querySelector(".search__info .result")  // 검색된 속성 갯수
-let count = 0;
+                                <pre><code class="language-js">const cssProperty = [
+    { name: "accent-color", desc: "특정 요소에 색상을 지정할 때 사용됩니다." },
+    { name: "align-content", desc: "콘텐츠 아이템의 상하관계 정렬 상태를 설정합니다." },
+    {
+        name: "align-items",
+        desc: "콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정합니다.",
+    },
+    { name: "align-self", desc: "개별적인 콘텐츠 아이템의 정렬 상태를 설정합니다." },
+    { name: "all", desc: "요소의 속성을 초기화 또는 상속을 설정합니다." },
+    { name: "animation", desc: "애니메이션과 관련된 속성을 일괄적으로 설정합니다." },
+    { name: "animation-delay", desc: "애니메이션 지연 시간을 설정합니다." },
+    { name: "animation-direction", desc: "애니메이션 움직임 방향을 설정합니다." },
+    { name: "animation-duration", desc: "애니메이션 움직임 시간을 설정합니다." },
+    { name: "animation-fill-mode", desc: "애니메이션이 끝난 후의 상태를 설정합니다." },
+    { name: "animation-iteration-count", desc: "애니메이션의 반복 횟수를 설정합니다." },
+    { name: "animation-name", desc: "애니메이션 keyframe 이름을 설정합니다." },
+    { name: "animation-play-state", desc: "애니메이션 진행상태를 설정 합니다." },
+    { name: "animation-timeline", desc: "x" }
+    // 생략
+];
 
-// 속성 갯수 구하기
-searchInfo.textContent = searchList.length;
+const searchList = document.querySelector(".search__list");
+const searchNum = document.querySelector(".search__info .num"); // 속성 갯수
+const searchBox = document.querySelector(".search__box input"); // 검색창
+const searchDesc = document.querySelector(".search__desc"); // 속성 설명
+// 출력하기
+cssProperty.map((element, index) => {
+    // 속성들
+    searchList.innerHTML += `&lt;span&gt;${element.name}&lt;/span&gt;`;
+    // 전체 속성 갯수
+    searchNum.innerHTML = index + 1;
+});
 
-searchKeyword.forEach( el => {
-    el.addEventListener("click", () => {
-        const searchWord = el.innerText;  // 사용자가 클릭한 알파벳
-        // console.log(searchWord);
+// 입력하기
+searchBox.addEventListener("keyup", () => {
+    let searchWord = searchBox.value; // 데이터 가져오기
+    findProperty(searchWord);
+});
 
-        searchList.forEach(el => {
-            const cssName = el.querySelector("strong").innerText;  // CSS 속성의 텍스트
-            // console.log(cssName)
+// 속성 찾기
+function findProperty(searchData) {
+    const targetData = cssProperty.find((data) => data.name === searchData);
 
-            // 알파벳 첫글자 == CSS 속성의 첫글자
-            if(searchWord.charAt(0) === cssName.charAt(0)){
-                el.classList.remove("hide");
-                count ++;
-            } else {
-                el.classList.add("hide");
-            }
-            searchResult.innerHTML = count;
-        })
-        count = 0;
-    })
+    if (targetData == null || targetData == undefined) {
+        searchDesc.textContent = "해당 속성은 존재하지 않습니다. 다시 검색해 주세요.";
+        return; // '종료' 의미의 return
+    }
+
+    searchDesc.textContent = targetData.desc;
+}
+
+// 속성 클릭
+const searchcss = document.querySelectorAll(".search__list span"); // 속성 목록
+searchcss.forEach((e, i) => {
+    e.addEventListener("click", () => {
+        searchDesc.textContent = cssProperty[i].desc;
+    });
 });
 </code></pre>
                             </div>
                             <div>
                                 <pre><code class="language-html">&lt;main id="main"&gt;
-&lt;div class="search__wrap"&gt;
-    &lt;span&gt;charAt()를 이용하여 검색하기&lt;/span&gt;
-    &lt;h1&gt;CSS 속성 첫글자 검색하기&lt;/h1&gt;
-    &lt;div class="search__info"&gt;
-        &lt;div class="keyword"&gt;
-            &lt;span&gt;a&lt;/span&gt;
-            &lt;span&gt;b&lt;/span&gt;
-            &lt;span&gt;c&lt;/span&gt;
-            &lt;span&gt;d&lt;/span&gt;
-            &lt;span&gt;e&lt;/span&gt;
-            &lt;span&gt;f&lt;/span&gt;
-            &lt;span&gt;g&lt;/span&gt;
-            &lt;span&gt;h&lt;/span&gt;
-            &lt;span&gt;i&lt;/span&gt;
-            &lt;span&gt;j&lt;/span&gt;
-            &lt;span&gt;k&lt;/span&gt;
-            &lt;span&gt;l&lt;/span&gt;
-            &lt;span&gt;m&lt;/span&gt;
-            &lt;span&gt;n&lt;/span&gt;
-            &lt;span&gt;o&lt;/span&gt;
-            &lt;span&gt;p&lt;/span&gt;
-            &lt;span&gt;q&lt;/span&gt;
-            &lt;span&gt;r&lt;/span&gt;
-            &lt;span&gt;s&lt;/span&gt;
-            &lt;span&gt;t&lt;/span&gt;
-            &lt;span&gt;u&lt;/span&gt;
-            &lt;span&gt;v&lt;/span&gt;
-            &lt;span&gt;w&lt;/span&gt;
-            &lt;span&gt;x&lt;/span&gt;
-            &lt;span&gt;y&lt;/span&gt;
-            &lt;span&gt;z&lt;/span&gt;
+    &lt;div class="search__wrap"&gt;
+        &lt;span&gt;find()를 이용하여 검색하면 설명 보여주기&lt;/span&gt;
+        &lt;h1&gt;CSS 속성 검색하기&lt;/h1&gt;
+        &lt;div class="search__box"&gt;
+            &lt;label for="search"&gt;검색하기&lt;/label&gt;
+            &lt;input type="text" id="search" placeholder="CSS 속성 및 유형을 입력해 주세요" /&gt;
         &lt;/div&gt;
-        &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt;0&lt;/span&gt;&lt;/div&gt;
-        &lt;div&gt;검색된 속성 갯수 : &lt;span class="result"&gt;0&lt;/span&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="search__list"&gt;
-        &lt;div class="css"&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;accent-color&lt;/strong&gt; : 특정 요소에 색상을 지정할 때 사용됩니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;align-content&lt;/strong&gt; : 콘텐츠 아이템의 상하관계 정렬 상태를 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;align-items&lt;/strong&gt; : 콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;align-self&lt;/strong&gt; : 개별적인 콘텐츠 아이템의 정렬 상태를 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;all&lt;/strong&gt; : 요소의 속성을 초기화 또는 상속을 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation&lt;/strong&gt; : 애니메이션과 관련된 속성을 일괄적으로 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-delay&lt;/strong&gt; : 애니메이션 지연 시간을 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-direction&lt;/strong&gt; : 애니메이션 움직임 방향을 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-duration&lt;/strong&gt; : 애니메이션 움직임 시간을 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-fill-mode&lt;/strong&gt; : 애니메이션이 끝난 후의 상태를 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-iteration-count&lt;/strong&gt; : 애니메이션의 반복 횟수를 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-name&lt;/strong&gt; : 애니메이션 keyframe 이름을 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-play-state&lt;/strong&gt; : 애니메이션 진행상태를 설정 합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-timeline&lt;/strong&gt; : 애니메이션의 타임라인을 설정합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;animation-timing-function&lt;/strong&gt; : 애니메이션 움직임의 속도를 설정 합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;appearance&lt;/strong&gt; : 운영체제 및 브라우저에 기본적으로 설정되어 있는 테마를 기반으로 요소를 표현합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;aspect-ratio&lt;/strong&gt; : 요소의 크기를 비율대로 조정할 수 있게 합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;backdrop-filter&lt;/strong&gt; : 요소 뒤 영역에 흐림이나 색상 시프트 등 그래픽 효과를 적용할 수 있는 속성입니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;backface-visibility&lt;/strong&gt; : 입체적인 모습의 뒷면의 가시성을 결정하는 속성이다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;background&lt;/strong&gt; : 백그라운드 속성을 일괄적으로 설정 합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;background-attachment&lt;/strong&gt; : 배경 이미지의 고정 여부를 설정 합니다.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;background-blend-mode&lt;/strong&gt; : 배경을 혼합했을 때 그래픽 효과를 설정 합니다.&lt;/li&gt;
-                &lt;!-- 생략 --&gt;
-            &lt;/ul&gt;
+        &lt;div class="search__desc"&gt;속성을 검색하면 설명이 나타납니다.&lt;/div&gt;
+        &lt;div class="search__info"&gt;
+            &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt;0&lt;/span&gt;&lt;/div&gt;
         &lt;/div&gt;
+        &lt;div class="search__list"&gt;&lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;
 &lt;/main&gt;
 </code></pre>
                             </div>
@@ -393,6 +368,22 @@ searchKeyword.forEach( el => {
     display: block;
 }
 
+.search__list span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--htmlColor);
+    border-radius: 50px;
+    margin: 5px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.search__list span:hover {
+    background-color: var(--htmlColor);
+    color: #fff;
+    transition: all 0.3s;
+}
+
 .search__info {
     text-align: right;
     margin-bottom: 20px;
@@ -402,12 +393,31 @@ searchKeyword.forEach( el => {
 }
 
 .search__info .type {
+    margin-bottom: 10px;
     text-align: center;
+}
+
+.search__info .all {
+    display: inline;
     margin-bottom: 10px;
 }
 
+.search__info .all span {
+    border-bottom: 2px solid var(--htmlColor);
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.search__info .all span:hover {
+    background-color: var(--htmlColor);
+    color: #fff;
+    cursor: pointer;
+}
 .search__info .keyword {
-    text-align: center;
+    display: inline;
     margin-bottom: 10px;
 }
 
@@ -424,6 +434,30 @@ searchKeyword.forEach( el => {
     background-color: var(--htmlColor);
     color: #fff;
     cursor: pointer;
+}
+
+.search__info div:nth-child(3) {
+    text-align: right;
+}
+
+.search__info div:nth-child(4) {
+    text-align: right;
+}
+
+.search__info .searchResult.hide {
+    display: none;
+}
+
+.search__desc {
+    padding: 20px 40px 20px 60px;
+    margin-bottom: 50px;
+    display: inline-block;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.5 16.958L21.5 21.958' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-color: var(--htmlColor);
+    color: #fff;
+    border-radius: 50px;
+    background-repeat: no-repeat;
+    background-position: 24px 18px;
 }
 
 @media (max-width: 600px) {
@@ -1490,9 +1524,9 @@ searchKeyword.forEach( el => {
             ];
 
             const searchList = document.querySelector(".search__list");
-            const searchNum = document.querySelector(".search__info .num");
-            const searchBox = document.querySelector(".search__box");
-            const searchDesc = document.querySelector(".search__desc");
+            const searchNum = document.querySelector(".search__info .num"); // 속성 갯수
+            const searchBox = document.querySelector(".search__box input"); // 검색창
+            const searchDesc = document.querySelector(".search__desc"); // 속성 설명
             // 출력하기
             cssProperty.map((element, index) => {
                 // 속성들
@@ -1503,8 +1537,7 @@ searchKeyword.forEach( el => {
 
             // 입력하기
             searchBox.addEventListener("keyup", () => {
-                const searchWord = searchBox.value; // 데이터 가져오기
-                console.log(searchWord);
+                let searchWord = searchBox.value; // 데이터 가져오기
                 findProperty(searchWord);
             });
 
@@ -1519,6 +1552,14 @@ searchKeyword.forEach( el => {
 
                 searchDesc.textContent = targetData.desc;
             }
+
+            // 속성 클릭
+            const searchcss = document.querySelectorAll(".search__list span"); // 속성 목록
+            searchcss.forEach((e, i) => {
+                e.addEventListener("click", () => {
+                    searchDesc.textContent = cssProperty[i].desc;
+                });
+            });
         </script>
     </body>
 </html>
