@@ -64,17 +64,25 @@ cssProperty.map((element, index) => {
                 </p>
                 <h2 class="t_tit2">2. keyup 이벤트 만들기</h2>
                 <div class="t_code">
-                    <pre><code class="language-js">
-const searchBox = document.querySelector(".search__box input"); // 검색창
+                    <pre><code class="language-js">const searchBox = document.querySelector(".search__box input"); // 검색창
 const searchDesc = document.querySelector(".search__desc"); // 속성 설명
 
 searchBox.addEventListener("keyup", () => {
     let searchWord = searchBox.value;
     findProperty(searchWord);
 });
-
-// 속성 찾기
-function findProperty(searchData) {
+</code></pre>
+                </div>
+                <p class="t_box">
+                    검색창에 키워드를 입력했을 때, 키워드와 일치하는 속성의 설명이 나타나도록 작업해
+                    봅시다.<br />먼저, searchBox에 어떠한 값이 입력되었는지 알아야 합니다. value는
+                    그 값을 불러올 때 사용합니다.<br />
+                    value를 불러왔다면, 그 값이 속성명과 일치하는지 확인하고, 일치한다면 설명을
+                    불러와야 합니다. 그 과정은 findProperty라는 매개변수 함수 안에서 작업하도록
+                    하겠습니다.
+                </p>
+                <div class="t_code">
+                    <pre><code class="language-js">function findProperty(searchData) {
     const targetData = cssProperty.find((data) => data.name === searchData);
 
     if (targetData == null || targetData == undefined) {
@@ -86,10 +94,17 @@ function findProperty(searchData) {
 }
 </code></pre>
                 </div>
+                <p class="t_box">
+                    find()는 배열 요소를 검색하고, 해당하는 요소를 반환하는 메서드입니다.<br />
+                    즉, 두번째 라인의 스크립트는 cssProperty 배열 내의 각각의 객체에서 name 값을
+                    찾고, 그것을 searchData와 비교하는 것입니다. 일치하는 값이 없으면 결과 없음
+                    알림을 출력하고, 값이 있으면 cssProperty 배열 내에서 해당하는 desc 값을
+                    출력합니다. <br />
+                    참고로, 여기에서 return은 <i>종료</i>의 의미로 사용됩니다.
+                </p>
                 <h2 class="t_tit2">3. click 이벤트 만들기</h2>
                 <div class="t_code">
-                    <pre><code class="language-js">// 속성 클릭
-const searchcss = document.querySelectorAll(".search__list span"); // 속성 목록
+                    <pre><code class="language-js">const searchcss = document.querySelectorAll(".search__list span"); // 속성 목록
 searchcss.forEach((e, i) => {
     e.addEventListener("click", () => {
         searchDesc.textContent = cssProperty[i].desc;
@@ -97,6 +112,12 @@ searchcss.forEach((e, i) => {
 });
 </code></pre>
                 </div>
+                <p class="t_box">
+                    보너스로, 속성을 클릭했을 때에도 해당하는 설명이 나타나도록 작업해 보겠습니다.
+                    각각의 속성 목록에 대한 선택자를 만들고, click 이벤트를 만들어 줍니다.
+                    cssProperty는 배열이므로, 해당하는 인덱스의 desc 값을 출력하도록 작업해 주면
+                    됩니다.
+                </p>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
                 <div class="t_iframe" style="min-height: 1000px; padding-top: 0px">

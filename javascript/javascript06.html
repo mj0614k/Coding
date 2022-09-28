@@ -601,7 +601,7 @@ const arrSpread = [...arrNum1, ...arrNum2];
 
 document.querySelector(".sample06_N2").innerHTML = "2";
 document.querySelector(".sample06_Q2").innerHTML = "[100, 200, 300], [400, 500, 600]";
-document.querySelector(".sample06_M2").innerHTML = "...arrNum1, ...arrNum2)";
+document.querySelector(".sample06_M2").innerHTML = "...arrNum1, ...arrNum2";
 document.querySelector(".sample06_P2").innerHTML = arrSpread;</code></pre>
                         </div>
                     </div>
@@ -714,7 +714,7 @@ document.querySelector(".sample07_P5").innerHTML = arrReduce5;</code></pre>
                     <!-- //sample07 -->
                     <div id="sample08" class="sample">
                         <h3>08. slice() : 배열에서 원하는 값 추출 : 반환(배열)</h3>
-                        <p>slcie() 메서드는 배열에서 원하는 값을 추출하여 반환합니다.</p>
+                        <p>slice() 메서드는 배열에서 원하는 값을 추출하여 반환합니다.</p>
                         <div class="table">
                             <table>
                                 <colgroup>
@@ -1590,7 +1590,7 @@ document.querySelector(".sample14_P3").innerHTML = result3;</code></pre>
                 document.querySelector(".sample06_N2").innerHTML = "2";
                 document.querySelector(".sample06_Q2").innerHTML =
                     "[100, 200, 300], [400, 500, 600]";
-                document.querySelector(".sample06_M2").innerHTML = "...arrNum1, ...arrNum2)";
+                document.querySelector(".sample06_M2").innerHTML = "...arrNum1, ...arrNum2";
                 document.querySelector(".sample06_P2").innerHTML = arrSpread;
             }
 
@@ -1963,14 +1963,42 @@ document.querySelector(".sample14_P3").innerHTML = result3;</code></pre>
             }
 
             {
+                //1
                 const num1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
-                // b d f h k
-
                 for (i = 1; i < num1.length; i += 2) {
                     console.log(num1[i]);
                 }
 
+                //2
                 const num2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                console.log(
+                    num2
+                        .filter(
+                            (el) =>
+                                el === "b" || el === "d" || el === "f" || el === "h" || el === "k"
+                        )
+                        .join()
+                );
+
+                //3
+                const num3 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                console.log(
+                    num3.slice(1, 2) +
+                        num3.slice(3, 4) +
+                        num3.slice(5, 6) +
+                        num3.slice(7, 8) +
+                        num3.slice(9, 10)
+                );
+
+                //4
+                const num4 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                console.log(
+                    num4.splice(1, 1) +
+                        num4.splice(2, 1) +
+                        num4.splice(3, 1) +
+                        num4.splice(4, 1) +
+                        num4.splice(5, 1)
+                );
             }
         </script>
     </body>
