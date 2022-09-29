@@ -1951,7 +1951,7 @@ document.querySelector(".sample14_P3").innerHTML = result3;</code></pre>
                 // const number2 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
                 // const number3 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
                 // const number4 = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-                // //400 500
+                // //400 500 4가지
                 // console.log(number.slice(3, 5));
                 // console.log(number2.splice(3, 2));
                 // console.log(number3.filter((el) => el == 400 || el == 500));
@@ -1963,42 +1963,49 @@ document.querySelector(".sample14_P3").innerHTML = result3;</code></pre>
             }
 
             {
-                //1
+                // //1
+                // //b d f h k (짝수) 4가지
+                // const num1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                // for (i = 1; i < num1.length; i += 2) {
+                //     console.log(num1[i]);
+                // }
+                // //2
+                // const num2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                // console.log(
+                //     num2
+                //         .filter(
+                //             (el) =>
+                //                 el === "b" || el === "d" || el === "f" || el === "h" || el === "k"
+                //         )
+                //         .join()
+                // );
+                // //3
+                // const num3 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                // console.log(
+                //     num3.slice(1, 2) +
+                //         num3.slice(3, 4) +
+                //         num3.slice(5, 6) +
+                //         num3.slice(7, 8) +
+                //         num3.slice(9, 10)
+                // );
+                // //4
+                // const num4 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
+                // console.log(
+                //     num4.splice(1, 1) +
+                //         num4.splice(2, 1) +
+                //         num4.splice(3, 1) +
+                //         num4.splice(4, 1) +
+                //         num4.splice(5, 1)
+                // );
+            }
+
+            {
+                //5
                 const num1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
-                for (i = 1; i < num1.length; i += 2) {
-                    console.log(num1[i]);
-                }
 
-                //2
-                const num2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
-                console.log(
-                    num2
-                        .filter(
-                            (el) =>
-                                el === "b" || el === "d" || el === "f" || el === "h" || el === "k"
-                        )
-                        .join()
-                );
+                //e, f (3가지) slice, splice 빼고
 
-                //3
-                const num3 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
-                console.log(
-                    num3.slice(1, 2) +
-                        num3.slice(3, 4) +
-                        num3.slice(5, 6) +
-                        num3.slice(7, 8) +
-                        num3.slice(9, 10)
-                );
-
-                //4
-                const num4 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k"];
-                console.log(
-                    num4.splice(1, 1) +
-                        num4.splice(2, 1) +
-                        num4.splice(3, 1) +
-                        num4.splice(4, 1) +
-                        num4.splice(5, 1)
-                );
+                console.log(num1);
             }
         </script>
     </body>

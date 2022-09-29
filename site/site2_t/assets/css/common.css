@@ -53,7 +53,6 @@
 .gmark {
     font-family: "GmarketSans";
     font-weight: 500;
-    color: white;
 }
 
 /* 배경 */
@@ -113,6 +112,10 @@
 }
 .mt70 {
     margin-top: 70px !important;
+}
+
+.skyBlue {
+    background-color: #f6f8fd;
 }
 
 @media (max-width: 768px) {
