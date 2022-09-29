@@ -549,6 +549,8 @@ window.addEventListener("mousemove", mouseMove);
                 gsap.to(".mouse__cursor", { duration: 0.3, left: e.pageX - 10, top: e.pageY - 10 });
             };
 
+            window.addEventListener("mousemove", mouseMove);
+
             // 마우스 커서가 글씨 위에 올라가면 크기 5배 정도 크게..
 
             const text = document.querySelectorAll(".spanSlow");
@@ -569,8 +571,6 @@ window.addEventListener("mousemove", mouseMove);
                     document.querySelector(".mouse__cursor").classList.remove("active");
                 });
             });
-
-            window.addEventListener("mousemove", mouseMove);
         </script>
     </body>
 </html>

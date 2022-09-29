@@ -83,10 +83,10 @@
                 <p class="t_box">
                     오늘은 HTML의 구조도 중요하기 때문에 함께 살펴보겠습니다. 텍스트 상자는 하나처럼
                     보이지만, 사실은 다른 각도로 기울어진 두 개의 상자가 있고, 두 상자가 만나는 지점
-                    이후로는 overflow: hidden 속성을 사용하여 숨겨준 것입니다.
-                    <br />총 네 줄의 텍스트를 작성할 것이기 때문에 line 박스를 네 개 만들어 줍니다.
-                    그 안에는 각각 left, right 박스를 만들어 줍니다. 그 안에 span으로 텍스트가
-                    들어가 있는 구조입니다.
+                    이후로는 <i>overflow: hidden</i> 속성을 사용하여 숨겨준 것입니다. <br />총 네
+                    줄의 텍스트를 작성할 것이기 때문에 line 박스를 네 개 만들어 줍니다. 그 안에는
+                    각각 left, right 박스를 만들어 줍니다. 그 안에 span으로 텍스트가 들어가 있는
+                    구조입니다.
                 </p>
                 <h2 class="t_tit2">2. CSS 소스</h2>
                 <h3 class="t_tit3">2-1) text box</h3>
@@ -122,109 +122,113 @@
                 </div>
                 <p class="t_box">
                     텍스트 상자들을 만들었다면 CSS 속성을 적용해 줍니다.<br />
-                    transform: skew 속성은 요소의 경사를 변형시킬 때 사용합니다. left, right 박스에
-                    각각 적용시켜 줍니다.
+                    <i>transform: skew</i> 속성은 요소의 경사를 변형시킬 때 사용합니다. left, right
+                    박스에 각각 적용시켜 줍니다. 요소를 벗어나는 부분은 overflow: hidden을 사용하여
+                    숨겨줍니다.
                 </p>
-                <h2 class="t_tit2">2. JAVASCRIPT 소스</h2>
-                <h3 class="t_tit3">2-1) mouseMove 이벤트 만들어 주기</h3>
+                <h3 class="t_tit3">2-2) cursor</h3>
                 <div class="t_code">
-                    <pre><code class="language-js">const mouseMove = (e) => {};
+                    <pre><code class="language-css">.mouse__cursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 9999;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    user-select: none;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transition: transform 0.3s;
+}
+.mouse__cursor.active {
+    transform: scale(5);
+}
+</code></pre>
+                </div>
+                <p class="t_box">
+                    마우스 커서에도 스타일을 적용해 줍니다. 크기가 20px인 원 모양으로 만들어주고,
+                    <i>mix-blend-mode: difference</i> 속성을 사용하여 이미지에 마우스를 오버했을 때
+                    색상이 변화하는 반전 효과도 부여해 주었습니다. active 클래스는 텍스트 위에
+                    마우스를 오버했을 때, 반전 효과가 더 잘 나타나게끔 크기를 5배 키우기 위해 작업해
+                    주었습니다.
+                </p>
+                <h2 class="t_tit2">3. JAVASCRIPT 소스</h2>
+                <h3 class="t_tit3">3-1) mousemove 이벤트 만들기</h3>
+                <div class="t_code">
+                    <pre><code class="language-js">const mouseMove = (e) => {
+    let positionSlow = (e.pageX - window.innerWidth / 2) * 0.1;
+    let positionFast = (e.pageX - window.innerWidth / 2) * 0.2;
+
+    gsap.to(".spanSlow", { duration: 0.4, x: positionSlow });
+    gsap.to(".spanFast", { duration: 0.4, x: positionFast });
+    gsap.to(".mouse__cursor", { duration: 0.3, left: e.pageX - 10, top: e.pageY - 10 });
+};
 window.addEventListener("mousemove", mouseMove);
 </code></pre>
                 </div>
                 <p class="t_box">
-                    addEventListener로 마우스가 움직일 때의 이벤트를 먼저 만들어 줍니다. 아래에서
-                    작업할 모든 소스들은, 모두 해당 이벤트 안에서 이루어질 것입니다.
+                    먼저, mousemove 이벤트를 만들어 줍니다. positionSlow, positionFast 변수는
+                    이미지의 움직임 정도를 결정합니다. 텍스트가 이미지 영역을 벗어나지 않도록,
+                    window.innerWidth / 2만큼을 빼 주었습니다. Slow는 살짝 느리게, Fast는 살짝
+                    빠르게 움직이도록 각각 0.1, 0.2를 곱해 주었습니다.<br />
+                    이후, gsap를 사용하여 부드럽게 움직이도록 만들어 줍니다. 마우스 커서의 움직임도
+                    함께 작업해 주었습니다. 10을 빼는 이유는 마우스 커서의 크기가 20px, 20px이기
+                    때문입니다.
                 </p>
-                <h3 class="t_tit3">2-2) 마우스 커서의 좌표값 구하기</h3>
+                <h3 class="t_tit3">3-2) mouseenter 이벤트 만들기</h3>
                 <div class="t_code">
-                    <pre><code class="language-js">// 마우스 좌표값(브라우저 기준)
-let mousePageX = e.pageX;
-let mousePageY = e.pageY;
-
-// 커서 움직이기
-gsap.to(".mouse__cursor", {
-    duration: 0.3,
-    left: mousePageX - 50,
-    top: mousePageY - 50,
+                    <pre><code class="language-js">const text = document.querySelectorAll(".spanSlow");
+const text2 = document.querySelectorAll(".spanFast");
+</code></pre>
+                </div>
+                <p class="t_box">
+                    이제 텍스트 위에 마우스를 오버하면 마우스가 커지도록 작업해 봅시다. 각각의
+                    텍스트를 먼저 선택해 줍니다. spanSlow, spanFast는 각각 4개씩 존재하므로,
+                    querySelectorAll을 사용해야 합니다.
+                </p>
+                <div class="t_code">
+                    <pre><code class="language-js">text.forEach((e) => {
+    e.addEventListener("mouseenter", () => {
+        document.querySelector(".mouse__cursor").classList.add("active");
+    });
+    e.addEventListener("mouseleave", () => {
+        document.querySelector(".mouse__cursor").classList.remove("active");
+    });
+});
+text2.forEach((e) => {
+    e.addEventListener("mouseenter", () => {
+        document.querySelector(".mouse__cursor").classList.add("active");
+    });
+    e.addEventListener("mouseleave", () => {
+        document.querySelector(".mouse__cursor").classList.remove("active");
+    });
 });
 </code></pre>
                 </div>
                 <p class="t_box">
-                    pageX, pageY를 이용하여 브라우저 기준 마우스 좌표값을 구해줍니다.
-                    <br />그 다음, gsap를 사용하여 부드럽게 커서를 움직여 줍니다. 50을 빼주는 이유는
-                    마우스 커서의 너비, 높이가 100px이기 때문입니다. 실제 커서의 위치를 가운데로
-                    작업해주기 위함입니다.
+                    querySelectorAll을 사용했기 때문에, forEach문으로 작업해 줍니다. text를 각각
+                    선택하고, addEventListener로 mouseenter, mouseleave 이벤트를 만들어 줍니다.<br />
+                    마우스가 텍스트 위에 위치했을 때(<i>mouseenter</i>)는 커서에 active(transform:
+                    scale(5)) 클래스를 추가해 주고,<br />마우스가 텍스트를 벗어났을
+                    때(<i>mouseleave</i>)는 커서에 active 클래스를 제거해 주면 됩니다.
                 </p>
-                <div class="t_code">
-                    <pre><code class="language-js">// 마우스 좌표값(중앙 기준)
-let centerPageX = window.innerWidth / 2 - mousePageX;
-let centerPageY = window.innerHeight / 2 - mousePageY;
-</code></pre>
-                </div>
-                <p class="t_box">
-                    브라우저의 중앙 기준 마우스 위치값도 구해줍니다. 2-2에서 구한 좌표값과는 별개로,
-                    이미지가 움직일 때 사용되는 값입니다.<br />
-                    이 값을 바로 적용할 수도 있지만, 아직은 값이 커서 이미지가 과하게 움직일
-                    것입니다. 그러므로 값을 줄여주고, 최대ㆍ최소값을 지정하는 작업이 필요합니다.
-                </p>
-                <h3 class="t_tit3">2-3) 세부 작업하기</h3>
-                <div class="t_code">
-                    <pre><code class="language-js">// 최소값은 -100, 최대값은 100 설정
-let maxPageX = Math.max(-100, Math.min(100, centerPageX));
-let maxPageY = Math.max(-100, Math.min(100, centerPageY));
-</code></pre>
-                </div>
-                <p class="t_box">
-                    Math.max 함수는 입력값으로 받은 숫자 중 가장 큰 숫자를 반환합니다. 반대로
-                    Math.min 함수는 가장 작은 숫자를 반환합니다.<br />
-                    즉, Math.min(100, centerPageX)에서, centerPageX가 100보다 커지면 함수는 100의
-                    값을 반환할 것입니다. 이후, Math.max(-100, 100)에서, 100을 반환하게 되므로,
-                    최대값은 자연스럽게 100으로 설정됩니다.<br />
-                    한편, Math.min(100, centerPageX)에서, centerPageX가 100보다 작으면 함수는
-                    centerPageX의 값을 반환할 것입니다. 이후, Math.max(-100, centerPageX)에서,
-                    centerPageX의 값을 반환하게 되고, 값이 더 작아지면 -100의 값을 반환할 것입니다.
-                    자연스럽게 최소값은 -100으로 설정됩니다.
-                </p>
-                <div class="t_code">
-                    <pre><code class="language-js">// 각도 줄이기
-let anglePageX = maxPageX * 0.1;
-let anglePageY = maxPageY * 0.1;
-    
-// 부드러운 설정
-let softPageX = 0,
-    softPageY = 0;
-softPageX += (anglePageX - softPageX) * 0.4;
-softPageY += (anglePageY - softPageY) * 0.4;
-</code></pre>
-                </div>
-                <p class="t_box">
-                    maxPageX, maxPageY를 구했지만, 아직도 움직임이 클 것입니다. 따라서 0.1씩
-                    곱해주었습니다.<br />
-                    또, 움직임을 더 부드럽게 작업해 주기 위해 softPage 변수를 만들어 주었습니다.
-                    anglePage와 softPage의 값은 0으로 같지만, 오차는 발생합니다.
-                </p>
-                <h3 class="t_tit3">2-4) 이미지 움직이기</h3>
-                <div class="t_code">
-                    <pre><code class="language-js">const imgMove = document.querySelector(".mouse__img");
-imgMove.style.transform = "perspective(600px) rotateX(" + softPageX + "deg) rotateY(" + softPageY + "deg)";
-</code></pre>
-                </div>
-                <p class="t_box">이제 이미지에 움직임 효과를 주면 모든 작업이 끝납니다.</p>
+
                 <hr />
                 <h2 class="t_tit2">결과</h2>
                 <div class="t_iframe" style="min-height: 800px; padding-top: 0px">
                     <iframe
-                        src="https://mj0614k.github.io/Coding/javascript/effect/mouseEffect05.html"
+                        src="https://mj0614k.github.io/Coding/javascript/effect/mouseEffect06.html"
                     ></iframe>
                 </div>
 
                 <div class="t_link">
                     <a
-                        href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/mouseEffect05.html"
+                        href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/mouseEffect06.html"
                         >원본 소스 보기</a
                     >
-                    <a href="https://mj0614k.github.io/Coding/javascript/effect/mouseEffect05"
+                    <a href="https://mj0614k.github.io/Coding/javascript/effect/mouseEffect06"
                         >원본 사이트 보기</a
                     >
                 </div>
