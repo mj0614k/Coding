@@ -97,49 +97,54 @@ updateList(cssProperty);
                     모든 목록이 추가된 listCSS는 searchList 안에 삽입됩니다.
                 </p>
                 <h2 class="t_tit2">4. click 이벤트 만들기</h2>
+                <h3 class="t_tit3">4-1) 클릭한 별점에 해당하는 속성만 보여주기</h3>
                 <div class="t_code">
                     <pre><code class="language-js">searchClick.forEach((star) => {
     star.addEventListener("click", () => {
-        // star 값(0, 1, 2, 3, 4, 5) 가져오기
         const target = star.dataset.star;
 
-        // target과 값이 동일한 star를 가진
         const filterList = cssProperty.filter((data) => data.star == target);
         count = filterList.length;
         document.querySelector(".num2").innerHTML = count;
 
-        // filterList의 데이터를 updateList로 전송
-        updateList(filterList);
-    });
-});
-
-searchClick2.forEach((star) => {
-    star.addEventListener("click", () => {
-        // star 값(0, 1, 2, 3, 4, 5) 가져오기
-        const target = star.dataset.star;
-
-        // target 값보다 큰 star를 가진
-        const filterList = cssProperty.filter((data) => data.star >= target);
-        count = filterList.length;
-        document.querySelector(".num2").innerHTML = count;
-
-        // filterList의 데이터를 updateList로 전송
         updateList(filterList);
     });
 });
 </code></pre>
                 </div>
-                <h2 class="t_tit2">4. 전체 속성 수 출력하기</h2>
+                <p class="t_box">먼저, star의 값(0, 1, 2, 3, 4, 5 존재)을 가져와야 합니다. target 변수 안에 넣어 줍니다. <br>
+                filterList는 data.star의 값이 target과 같은지 확인하고, 같은 값을 가진 데이터만 출력해 줍니다.
+                이 때, filterList의 갯수는 검색 결과의 수와 같습니다.<br>
+                스크립트를 모두 작성했다면, filterList의 데이터를 updateList로 전송합니다.</p>
+                <h3 class="t_tit3">4-2) 클릭한 별점 이상에 해당하는 속성만 보여주기</h3>
                 <div class="t_code">
-                    <pre><code class="language-js">
-document.querySelector(".num").innerHTML = cssProperty.length;</code></pre>
+                    <pre><code class="language-js">searchClick2.forEach((star) => {
+    star.addEventListener("click", () => {
+        const target = star.dataset.star;
+
+        const filterList = cssProperty.filter((data) => data.star >= target);
+        count = filterList.length;
+        document.querySelector(".num2").innerHTML = count;
+
+        updateList(filterList);
+    });
+});
+</code></pre>
+                </div>
+                <p class="t_box">별점 1개 이상, 별점 2개 이상 등 클릭한 별점 갯수 이상에 해당하는 속성만 보여줄 수도 있습니다. 
+                    위와 동일하지만, filter 메서드에서 연산자를 >=로 바꾸어만 주면 됩니다.<br>
+                </p>
+                <h2 class="t_tit2">5. 전체 속성 수 출력하기</h2>
+                <div class="t_code">
+                    <pre><code class="language-js">document.querySelector(".num").innerHTML = cssProperty.length;</code></pre>
                 </div>
                 <p class="t_box">
                     마지막으로, 전체 속성 수를 출력해 줍니다.
                 </p>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
-                <p class="t_desc">?? ㅋㅋ</p>
+                <p class="t_desc">?? 아ㅋㅋ;;;;; 학원 컴퓨터로는 귀여웠던 달님이 제 벌레같은 LG 노트북에서는 또도가스로 보이네요... 여러분들은 어떻게 보이시나요...</p>
+                <img src="https://github.com/mj0614k/Coding/blob/main/assets/tistory/search05_img01.jpg?raw=true" alt="">
                 <div class="t_iframe" style="min-height: 1000px; padding-top: 0px">
                     <iframe
                         src="https://mj0614k.github.io/Coding/javascript/effect/searchEffect05.html"
