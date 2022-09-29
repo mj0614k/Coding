@@ -545,7 +545,7 @@ window.addEventListener("mousemove", mouseMove);
                 let positionFast = (e.pageX - window.innerWidth / 2) * 0.2;
 
                 gsap.to(".spanSlow", { duration: 0.4, x: positionSlow });
-                gsap.to(".spanFast", { duration: 0.4, x: positionFast });
+                gsap.to(".spanFast", { duration: 0.4, x: -positionFast });
                 gsap.to(".mouse__cursor", { duration: 0.3, left: e.pageX - 10, top: e.pageY - 10 });
             };
 
