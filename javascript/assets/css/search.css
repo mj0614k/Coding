@@ -245,7 +245,7 @@ li {
 
 .search__desc {
     padding: 20px 40px 20px 60px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     display: inline-block;
     background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.5 16.958L21.5 21.958' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-color: var(--htmlColor);

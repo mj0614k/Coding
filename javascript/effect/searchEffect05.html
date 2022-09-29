@@ -19,8 +19,8 @@
                     <li><a href="searchEffect01.html">1</a></li>
                     <li><a href="searchEffect02.html">2</a></li>
                     <li><a href="searchEffect03.html">3</a></li>
-                    <li class="active"><a href="searchEffect04.html">4</a></li>
-                    <li><a href="searchEffect05.html">5</a></li>
+                    <li><a href="searchEffect04.html">4</a></li>
+                    <li class="active"><a href="searchEffect05.html">5</a></li>
                     <li><a href="searchEffect06.html">6</a></li>
                 </ul>
             </nav>
@@ -29,7 +29,7 @@
 
         <main id="main">
             <div class="search__wrap">
-                <span>filter()를 이용하여 속성을 검색하면 중요도 보여주기</span>
+                <span>filter()를 이용하여 중요도 보여주기</span>
                 <h1>CSS 속성 검색하기</h1>
                 <div class="search__click">
                     <ul>
@@ -50,6 +50,7 @@
                 </div>
                 <div class="search__info">
                     <div>전체 속성 갯수 : <span class="num">0</span></div>
+                    <div>검색된 속성 갯수 : <span class="num2">0</span></div>
                 </div>
                 <div class="search__list">
                     <ul class="line"></ul>
@@ -241,86 +242,175 @@
                         <div class="cont">
                             <div class="active">
                                 <pre><code class="language-js">const cssProperty = [
-    { name: "accent-color", desc: "특정 요소에 색상을 지정할 때 사용됩니다." },
-    { name: "align-content", desc: "콘텐츠 아이템의 상하관계 정렬 상태를 설정합니다." },
+    { star: 0, name: "accent-color", desc: "특정 요소에 색상을 지정할 때 사용됩니다." },
     {
+        star: 1,
+        name: "align-content",
+        desc: "콘텐츠 아이템의 상하관계 정렬 상태를 설정합니다.",
+    },
+    {
+        star: 2,
         name: "align-items",
         desc: "콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정합니다.",
     },
-    { name: "align-self", desc: "개별적인 콘텐츠 아이템의 정렬 상태를 설정합니다." },
-    { name: "all", desc: "요소의 속성을 초기화 또는 상속을 설정합니다." },
-    { name: "animation", desc: "애니메이션과 관련된 속성을 일괄적으로 설정합니다." },
-    { name: "animation-delay", desc: "애니메이션 지연 시간을 설정합니다." },
-    { name: "animation-direction", desc: "애니메이션 움직임 방향을 설정합니다." },
-    { name: "animation-duration", desc: "애니메이션 움직임 시간을 설정합니다." },
-    { name: "animation-fill-mode", desc: "애니메이션이 끝난 후의 상태를 설정합니다." },
-    { name: "animation-iteration-count", desc: "애니메이션의 반복 횟수를 설정합니다." },
-    { name: "animation-name", desc: "애니메이션 keyframe 이름을 설정합니다." },
-    { name: "animation-play-state", desc: "애니메이션 진행상태를 설정 합니다." },
-    { name: "animation-timeline", desc: "x" }
+    {
+        star: 3,
+        name: "align-self",
+        desc: "개별적인 콘텐츠 아이템의 정렬 상태를 설정합니다.",
+    },
+    { star: 4, name: "all", desc: "요소의 속성을 초기화 또는 상속을 설정합니다." },
+    {
+        star: 5,
+        name: "animation",
+        desc: "애니메이션과 관련된 속성을 일괄적으로 설정합니다.",
+    },
+    { star: 1, name: "animation-delay", desc: "애니메이션 지연 시간을 설정합니다." },
+    {
+        star: 1,
+        name: "animation-direction",
+        desc: "애니메이션 움직임 방향을 설정합니다.",
+    },
+    {
+        star: 1,
+        name: "animation-duration",
+        desc: "애니메이션 움직임 시간을 설정합니다.",
+    },
+    {
+        star: 1,
+        name: "animation-fill-mode",
+        desc: "애니메이션이 끝난 후의 상태를 설정합니다.",
+    },
+    {
+        star: 1,
+        name: "animation-iteration-count",
+        desc: "애니메이션의 반복 횟수를 설정합니다.",
+    },
+    { star: 1, name: "animation-name", desc: "애니메이션 keyframe 이름을 설정합니다." },
+    {
+        star: 1,
+        name: "animation-play-state",
+        desc: "애니메이션 진행상태를 설정 합니다.",
+    },
+    { star: 1, name: "animation-timeline", desc: "x" },
+    {
+        star: 1,
+        name: "animation-timing-function",
+        desc: "애니메이션 움직임의 속도를 설정 합니다.",
+    },
+    {
+        star: 1,
+        name: "appearance",
+        desc: "운영체제 및 브라우저에 기본적으로 설정되어 있는 테마를 기반으로 요소를 표현합니다.",
+    },
+    {
+        star: 1,
+        name: "aspect-ratio",
+        desc: "요소의 크기를 비율대로 조정할 수 있게 합니다.",
+    }
     // 생략
 ];
 
-const searchList = document.querySelector(".search__list");
-const searchNum = document.querySelector(".search__info .num"); // 속성 갯수
-const searchBox = document.querySelector(".search__box input"); // 검색창
-const searchDesc = document.querySelector(".search__desc"); // 속성 설명
+const searchList = document.querySelector(".search__list ul");
+const searchClick = document.querySelectorAll(".search__click ul:nth-child(1) li");
+const searchClick2 = document.querySelectorAll(".search__click ul:nth-child(2) li");
+let count = 0;
+
 // 출력하기
-cssProperty.map((element, index) => {
-    // 속성들
-    searchList.innerHTML += `&lt;span&gt;${element.name}&lt;/span&gt;`;
-    // 전체 속성 갯수
-    searchNum.innerHTML = index + 1;
-});
-
-// 입력하기
-searchBox.addEventListener("keyup", () => {
-    let searchWord = searchBox.value; // 데이터 가져오기
-    findProperty(searchWord);
-});
-
-// 속성 찾기
-function findProperty(searchData) {
-    const targetData = cssProperty.find((data) => data.name === searchData);
-
-    if (targetData == null || targetData == undefined) {
-        searchDesc.textContent = "해당 속성은 존재하지 않습니다. 다시 검색해 주세요.";
-        return; // '종료' 의미의 return
+function updateList(list) {
+    listCSS = "";
+    // data = cssProperty
+    for (const data of list) {
+        if (data.star == 0) {
+            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌚🌚🌚🌚🌚&lt;/em&gt;&lt;/li&gt;`;
+        }
+        if (data.star == 1) {
+            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌚🌚🌚🌚&lt;/em&gt;&lt;/li&gt;`;
+        }
+        if (data.star == 2) {
+            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌚🌚🌚&lt;/em&gt;&lt;/li&gt;`;
+        }
+        if (data.star == 3) {
+            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌝🌚🌚&lt;/em&gt;&lt;/li&gt;`;
+        }
+        if (data.star == 4) {
+            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌝🌝🌚&lt;/em&gt;&lt;/li&gt;`;
+        }
+        if (data.star == 5) {
+            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌝🌝🌝&lt;/em&gt;&lt;/li&gt;`;
+        }
     }
-
-    searchDesc.textContent = targetData.desc;
+    searchList.innerHTML = listCSS;
 }
+updateList(cssProperty);
 
-// 속성 클릭
-const searchcss = document.querySelectorAll(".search__list span"); // 속성 목록
-searchcss.forEach((e, i) => {
-    e.addEventListener("click", () => {
-        searchDesc.textContent = cssProperty[i].desc;
+// 클릭하기
+searchClick.forEach((star) => {
+    star.addEventListener("click", () => {
+        // star 값(0, 1, 2, 3, 4, 5) 가져오기
+        const target = star.dataset.star;
+
+        // target과 값이 동일한 star를 가진
+        const filterList = cssProperty.filter((data) => data.star == target);
+        count = filterList.length;
+        document.querySelector(".num2").innerHTML = count;
+
+        // filterList의 데이터를 updateList로 전송
+        updateList(filterList);
     });
 });
+
+// 클릭하면 ★개 이상의 별 나타나도록 작업하기
+searchClick2.forEach((star) => {
+    star.addEventListener("click", () => {
+        // star 값(0, 1, 2, 3, 4, 5) 가져오기
+        const target = star.dataset.star;
+
+        // target 값보다 큰 star를 가진
+        const filterList = cssProperty.filter((data) => data.star >= target);
+        count = filterList.length;
+        document.querySelector(".num2").innerHTML = count;
+
+        // filterList의 데이터를 updateList로 전송
+        updateList(filterList);
+    });
+});
+
+document.querySelector(".num").innerHTML = cssProperty.length;
 </code></pre>
                             </div>
                             <div>
-                                <pre><code class="language-html">&lt;main id="main"&gt;
-    &lt;div class="search__wrap"&gt;
-        &lt;span&gt;find()를 이용하여 검색하면 설명 보여주기&lt;/span&gt;
-        &lt;h1&gt;CSS 속성 검색하기&lt;/h1&gt;
-        &lt;div class="search__box"&gt;
-            &lt;label for="search"&gt;검색하기&lt;/label&gt;
-            &lt;input type="text" id="search" placeholder="CSS 속성 및 유형을 입력해 주세요" /&gt;
-        &lt;/div&gt;
-        &lt;div class="search__desc"&gt;속성을 검색하면 설명이 나타납니다.&lt;/div&gt;
-        &lt;div class="search__info"&gt;
-            &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt;0&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="search__list"&gt;&lt;/div&gt;
+                                <pre><code class="language-html">&lt;div class="search__wrap"&gt;
+    &lt;span&gt;filter()를 이용하여 중요도 보여주기&lt;/span&gt;
+    &lt;h1&gt;CSS 속성 검색하기&lt;/h1&gt;
+    &lt;div class="search__click"&gt;
+        &lt;ul&gt;
+            &lt;li data-star="0"&gt;&lt;a href="#"&gt;🌚🌚🌚🌚🌚&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="1"&gt;&lt;a href="#"&gt;🌝🌚🌚🌚🌚&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="2"&gt;&lt;a href="#"&gt;🌝🌝🌚🌚🌚&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="3"&gt;&lt;a href="#"&gt;🌝🌝🌝🌚🌚&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="4"&gt;&lt;a href="#"&gt;🌝🌝🌝🌝🌚&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="5"&gt;&lt;a href="#"&gt;🌝🌝🌝🌝🌝&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul&gt;
+            &lt;li data-star="0"&gt;&lt;a href="#"&gt;ALL&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="1"&gt;&lt;a href="#"&gt;🌝🔺&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="2"&gt;&lt;a href="#"&gt;🌝🌝🔺&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="3"&gt;&lt;a href="#"&gt;🌝🌝🌝🔺&lt;/a&gt;&lt;/li&gt;
+            &lt;li data-star="4"&gt;&lt;a href="#"&gt;🌝🌝🌝🌝🔺&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
     &lt;/div&gt;
-&lt;/main&gt;
+    &lt;div class="search__info"&gt;
+        &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt;0&lt;/span&gt;&lt;/div&gt;
+        &lt;div&gt;검색된 속성 갯수 : &lt;span class="num2"&gt;0&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="search__list"&gt;
+        &lt;ul class="line"&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
                             </div>
                             <div>
-                                <pre><code class="language-css">/* main */
-#main {
+                                <pre><code class="language-css">#main {
     margin: 50px 10px;
 }
 
@@ -398,6 +488,26 @@ searchcss.forEach((e, i) => {
     transition: all 0.3s;
 }
 
+.search__list em {
+    float: right;
+    font-style: normal;
+}
+
+.search__list .line {
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+.search__list .line li {
+    background: #e3eaf5;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+.search__list .line li:hover {
+    background: #c2d5f5;
+    cursor: pointer;
+}
+
 .search__info {
     text-align: right;
     margin-bottom: 20px;
@@ -453,18 +563,16 @@ searchcss.forEach((e, i) => {
 .search__info div:nth-child(3) {
     text-align: right;
 }
-
 .search__info div:nth-child(4) {
     text-align: right;
 }
-
 .search__info .searchResult.hide {
     display: none;
 }
 
 .search__desc {
     padding: 20px 40px 20px 60px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     display: inline-block;
     background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='8' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M16.5 16.958L21.5 21.958' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-color: var(--htmlColor);
@@ -472,6 +580,25 @@ searchcss.forEach((e, i) => {
     border-radius: 50px;
     background-repeat: no-repeat;
     background-position: 24px 18px;
+}
+
+.search__click {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.search__click li {
+    display: inline;
+}
+.search__click li a {
+    display: inline-block;
+    border: 1px solid var(--htmlColor);
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin: 5px 0;
+}
+.search__click li a:hover {
+    background-color: var(--htmlColor);
+    color: #fff;
 }
 
 @media (max-width: 600px) {
@@ -2024,110 +2151,38 @@ searchcss.forEach((e, i) => {
                 { star: 1, name: "z-index", desc: "요소들의 수직 위치를 설정합니다." },
             ];
 
-            // const searchList = document.querySelector(".search__list ul");
-            // const searchClick = document.querySelectorAll(".search__click ul li");
-
-            // // 출력하기
-            // function updateList(list) {
-            //     listCSS = "";
-            //     // data = cssProperty
-            //     for (const data of list) {
-            //         listCSS += `<li>${data.name} : ${data.desc} <em>${data.star}</em></li>`;
-            //     }
-            //     searchList.innerHTML = listCSS;
-            // }
-            // updateList(cssProperty);
-
-            // // 클릭하기 find=filter
-            // searchClick.forEach((star) => {
-            //     star.addEventListener("click", () => {
-            //         // star 값(0, 1, 2, 3, 4, 5) 가져오기
-            //         const target = star.dataset.star;
-
-            //         // target과 값이 동일한 star를 가진
-            //         const filterList = cssProperty.filter((data) => data.star == target);
-
-            //         // filterList의 데이터를 updateList로 전송
-            //         updateList(filterList);
-            //     });
-            // });
-
-            // //숫자를 별로 치환
-            // //dataset 안쓰고 가져오기 -> index값
-            // //2개이상, 3개이상 어쩌고
-            // //전체 속성 갯수
-
             const searchList = document.querySelector(".search__list ul");
             const searchClick = document.querySelectorAll(".search__click ul:nth-child(1) li");
             const searchClick2 = document.querySelectorAll(".search__click ul:nth-child(2) li");
+            let count = 0;
 
             // 출력하기
             function updateList(list) {
                 listCSS = "";
                 // data = cssProperty
                 for (const data of list) {
-                    listCSS += `<li>${data.name} : ${data.desc} <em>${data.star}</em></li>`;
+                    if (data.star == 0) {
+                        listCSS += `<li>${data.name} : ${data.desc} <em>🌚🌚🌚🌚🌚</em></li>`;
+                    }
+                    if (data.star == 1) {
+                        listCSS += `<li>${data.name} : ${data.desc} <em>🌝🌚🌚🌚🌚</em></li>`;
+                    }
+                    if (data.star == 2) {
+                        listCSS += `<li>${data.name} : ${data.desc} <em>🌝🌝🌚🌚🌚</em></li>`;
+                    }
+                    if (data.star == 3) {
+                        listCSS += `<li>${data.name} : ${data.desc} <em>🌝🌝🌝🌚🌚</em></li>`;
+                    }
+                    if (data.star == 4) {
+                        listCSS += `<li>${data.name} : ${data.desc} <em>🌝🌝🌝🌝🌚</em></li>`;
+                    }
+                    if (data.star == 5) {
+                        listCSS += `<li>${data.name} : ${data.desc} <em>🌝🌝🌝🌝🌝</em></li>`;
+                    }
                 }
                 searchList.innerHTML = listCSS;
             }
             updateList(cssProperty);
-            // const starBox = document.querySelectorAll(".search__list ul li em"); // 별 입력 상자
-            // function starNum() {
-            //     for (i in cssProperty) {
-            //         if (cssProperty[i].star == 0) {
-            //             starBox[i].innerHTML = "🌚🌚🌚🌚🌚";
-            //         }
-            //         if (cssProperty[i].star == 1) {
-            //             starBox[i].innerHTML = "🌝🌚🌚🌚🌚";
-            //         }
-            //         if (cssProperty[i].star == 2) {
-            //             starBox[i].innerHTML = "🌝🌝🌚🌚🌚";
-            //         }
-            //         if (cssProperty[i].star == 3) {
-            //             starBox[i].innerHTML = "🌝🌝🌝🌚🌚";
-            //         }
-            //         if (cssProperty[i].star == 4) {
-            //             starBox[i].innerHTML = "🌝🌝🌝🌝🌚";
-            //         }
-            //         if (cssProperty[i].star == 5) {
-            //             starBox[i].innerHTML = "🌝🌝🌝🌝🌝";
-            //         }
-            //     }
-            // }
-            // starNum();
-
-            // for (i = 0; i < cssProperty.length; i++) {
-            //     if (cssProperty[i].star === "0") {
-            //         starBox.forEach((e, index) => {
-            //             index.querySelector("em").innerHTML = "🌚🌚🌚🌚🌚";
-            //         });
-            //     }
-            //     if (cssProperty[i].star === 1) {
-            //         starBox.forEach((e, index) => {
-            //             index.innerHTML = "🌝🌚🌚🌚🌚";
-            //         });
-            //     }
-            //     if (cssProperty[i].star === 2) {
-            //         starBox.forEach((e, index) => {
-            //             index.innerHTML = "🌝🌝🌚🌚🌚";
-            //         });
-            //     }
-            //     if (cssProperty[i].star === 3) {
-            //         starBox.forEach((e, index) => {
-            //             index.innerHTML = "🌝🌝🌝🌚🌚";
-            //         });
-            //     }
-            //     if (cssProperty[i].star === 4) {
-            //         starBox.forEach((e, index) => {
-            //             index.innerHTML = "🌝🌝🌝🌝🌚";
-            //         });
-            //     }
-            //     if (cssProperty[i].star === 5) {
-            //         starBox.forEach((e, index) => {
-            //             index.innerHTML = "🌝🌝🌝🌝🌝";
-            //         });
-            //     }
-            // }
 
             // 클릭하기
             searchClick.forEach((star) => {
@@ -2137,6 +2192,8 @@ searchcss.forEach((e, i) => {
 
                     // target과 값이 동일한 star를 가진
                     const filterList = cssProperty.filter((data) => data.star == target);
+                    count = filterList.length;
+                    document.querySelector(".num2").innerHTML = count;
 
                     // filterList의 데이터를 updateList로 전송
                     updateList(filterList);
@@ -2151,15 +2208,15 @@ searchcss.forEach((e, i) => {
 
                     // target 값보다 큰 star를 가진
                     const filterList = cssProperty.filter((data) => data.star >= target);
+                    count = filterList.length;
+                    document.querySelector(".num2").innerHTML = count;
 
                     // filterList의 데이터를 updateList로 전송
                     updateList(filterList);
                 });
             });
 
-            //숫자를 별로 치환
-            //dataset 안쓰고 가져오기 -> index값
-            //전체 속성 갯수
+            document.querySelector(".num").innerHTML = cssProperty.length;
         </script>
     </body>
 </html>
