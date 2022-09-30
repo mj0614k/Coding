@@ -2003,17 +2003,17 @@ document.querySelector(".sample14_P3").innerHTML = result3;</code></pre>
                 //e, f (3가지) slice, splice 빼고
                 //1.
                 const num1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-                console.log(num1.filter(el => el === "e" || el === "f"));
+                console.log(num1.filter((el) => el === "e" || el === "f"));
 
                 //2.
                 const num2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-                for(i=4; i<6; i++){
+                for (i = 4; i < 6; i++) {
                     console.log(num2[i]);
                 }
 
                 //3.
                 const num3 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-                for(i=0; i<4; i++) {
+                for (i = 0; i < 4; i++) {
                     num3.shift();
                     num3.pop();
                 }
@@ -2021,10 +2021,11 @@ document.querySelector(".sample14_P3").innerHTML = result3;</code></pre>
 
                 //4.
                 const num4 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-                const result1 = num4.join('');
-                const result2 = result1.replace("")
-                
-                console.log(result4);
+                const result1 = num4.join("");
+                const result2 = result1.replace("abcde", "e");
+                const result3 = result2.replace("fghij", "f");
+
+                console.log(result3);
             }
         </script>
     </body>
