@@ -226,10 +226,9 @@
                 position: absolute;
                 left: 0;
                 top: 0;
-                width: 0;
                 z-index: 1;
                 height: 100%;
-                background: royalblue;
+                background: rgb(46, 46, 46);
             }
 
             /* 1개 */
@@ -248,17 +247,17 @@
             }
 
             /* 2개 */
-            .reveal.reveal-TWO.show::after {
-                animation: reveal 1.5s 0.5;
+            .reveal.show::after {
+                animation: reveal 1s 0.3s;
             }
-            .reveal.reveal-TWO.reveal-RTL.show::after {
-                animation: reveal-RTL 1.5s 0.5;
+            .reveal.reveal-RTL.show::after {
+                animation: reveal-RTL 1s 0.3s;
             }
-            .reveal.reveal-TWO.reveal-TTB.show::after {
-                animation: reveal-TTB 1.5s 0.5;
+            .reveal.reveal-TTB.show::after {
+                animation: reveal-TTB 1s 0.3s;
             }
-            .reveal.reveal-TWO.reveal-BTT.show::after {
-                animation: reveal-BTT 1.5s 0.5;
+            .reveal.reveal-BTT.show::after {
+                animation: reveal-BTT 1s 0.3s;
             }
 
             @keyframes opacity {
@@ -485,10 +484,8 @@
                         <div class="content__item__img"></div>
                     </figure>
                     <p class="content__item__desc split reveal reveal-TWO">
-                        <span
-                            >사랑은 두 사람이 마주 쳐다보는 것이 아니라 함께 같은 방향을 바라보는
-                            것이다.</span
-                        >
+                       사랑은 두 사람이 마주 쳐다보는 것이 아니라 함께 같은 방향을 바라보는
+                            것이다.
                     </p>
                 </section>
                 <!-- //section9 -->
@@ -831,6 +828,16 @@
         <script>
             //reveal 클래스 자식에 글씨만 있다면 가상으로 span 태그를 만들어서 넣어주기
             const reveal = document.querySelectorAll(".reveal");
+            
+            reveal.forEach((el)=>{
+                let splitText = el.innerText;
+
+                // console.log(splitText)
+                if(splitText){
+                    el.innerHTML = '<span>' + splitText + '</span>';
+                }
+            })     
+
 
             function scroll() {
                 let scrollTop = window.scrollY;
