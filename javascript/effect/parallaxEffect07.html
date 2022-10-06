@@ -830,11 +830,10 @@
             const reveal = document.querySelectorAll(".reveal");
             
             reveal.forEach((el)=>{
-                let splitText = el.innerText;
+                let textspan = el.innerText;
 
-                // console.log(splitText)
-                if(splitText){
-                    el.innerHTML = '<span>' + splitText + '</span>';
+                if(textspan){
+                    el.innerHTML = '<span>' + textspan + '</span>';
                 }
             })     
 
