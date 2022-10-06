@@ -481,7 +481,7 @@
                 <section id="section9" class="content__item">
                     <span class="content__item__num">09</span>
                     <h2 class="content__item__title">section9</h2>
-                    <figure class="content__item__imgWrap reveal">
+                    <figure class="content__item__imgWrap reveal reveal-TWO">
                         <div class="content__item__img"></div>
                     </figure>
                     <p class="content__item__desc split reveal reveal-TWO">
@@ -830,11 +830,11 @@
         <script src="../assets/js/common.js"></script>
         <script>
             //reveal 클래스 자식에 글씨만 있다면 가상으로 span 태그를 만들어서 넣어주기
+            const reveal = document.querySelectorAll(".reveal");
 
             function scroll() {
                 let scrollTop = window.scrollY;
 
-                const reveal = document.querySelectorAll(".reveal");
                 reveal.forEach((el) => {
                     let revealOffset = el.offsetTop + el.parentElement.offsetTop;
 
