@@ -160,12 +160,32 @@ table {
     width: 100px;
     height: 45px;
     margin-right: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'scoredream';
+}
+.board__search fieldset select option {
+    font-family: 'scoredream';
+    font-size: 16px;
+    font-weight: 400;
+}
+.board__search fieldset select:focus{
+    outline: none;
 }
 .board__search fieldset input {
     width: 200px;
     height: 45px;
     border: none;
     border-bottom: 1px solid #b0b0b0;
+    font-family: 'scoredream';
+    font-size: 16px;
+    font-weight: 400;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+    display:none;
 }
 .board__search fieldset input:focus {
     outline: none;
@@ -177,8 +197,22 @@ table {
 }
 .board__search fieldset button {
     background-color: white;
+    margin-left: 10px;
+    cursor:pointer;
 }
 .board__pages ul {
     display: flex;
-    margin-bottom: 120px;
+    justify-content: center;
+}
+.board__pages ul li a{
+    display: flex;
+    justify-content: center;
+    color: #888888;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 400;
+}
+.board__pages ul li a.active{
+    color: #323232;
+    font-weight: 600;
 }
