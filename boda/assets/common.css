@@ -1,0 +1,20 @@
+.container {
+    width: 1200px;
+    padding: 0 20px;
+    margin: 180px auto 120px auto;
+    font-family: "scoredream";
+}
+
+.main__container {
+    width: 1200px;
+    padding: 0 20px;
+    margin: 180px auto 0 auto;
+    font-family: "scoredream";
+}
+
+.mid__container {
+    width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+    font-family: "scoredream";
+}

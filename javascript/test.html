@@ -8,14 +8,16 @@
     </head>
     <body>
         <script>
-            for (let i = 1; i < arr.length; i++) {
-                if ((arr[0] * n) % arr[i] === 0) {
-                    flag = true;
-                } else {
-                    flag = false;
-                    break;
-                }
+            function solution(s) {
+                let answer;
+                let mid = Math.floor(s.length / 2);
+                console.log(mid);
+
+                if (s.length % 2 === 1) answer = s.substring(mid, mid + 1);
+                else answer = s.substring(mid - 1, mid + 1);
+                return answer;
             }
+            console.log(solution("study"));
         </script>
     </body>
 </html>
