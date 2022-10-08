@@ -679,7 +679,43 @@
                         </div>
                         <div class="cont">
                             <div class="active">
-                                <pre><code class="language-js">
+<pre><code class="language-js">//reveal 클래스 자식에 글씨만 있다면 가상으로 span 태그를 만들어서 넣어주기
+const reveal = document.querySelectorAll(".reveal");
+reveal.forEach((el)=>{
+    let textspan = el.innerText;
+    if(textspan){
+        el.innerHTML = '&lt;span&gt;' + textspan + '&lt;/span&gt;';
+    }
+})     
+
+function scroll() {
+    let scrollTop = window.scrollY;
+    reveal.forEach((el) => {
+        let revealOffset = el.offsetTop + el.parentElement.offsetTop;
+
+        // transition을 사용하면 자바스크립트에서 css를 일일이 해석해야 함
+        // show를 사용하면 버벅거림 최소화!
+        // 빼주는 이유 : 더 빨리 나타나라
+        // CSS: 네모 지나가는 시간, 이미지 나타나는 시간을 맞춰줘야 함
+        // if (scrollTop > revealOffset - window.innerHeight / 2) {
+        //     el.classList.add("show");
+        // }
+
+        let revealDelay = el.dataset.delay;
+        if (scrollTop >= revealOffset - window.innerHeight) {
+            if (revealDelay == undefined) {
+                el.classList.add("show");
+            } else {
+                setTimeout(() => {
+                    el.classList.add("show");
+                }, revealDelay);
+            }
+        }
+    });
+    document.querySelector(".scroll span").innerHTML = Math.round(scrollTop);
+    requestAnimationFrame(scroll);
+}
+scroll();
 </code></pre>
                             </div>
                             <div>
