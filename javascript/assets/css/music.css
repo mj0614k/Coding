@@ -63,7 +63,7 @@
     border-radius: 5px;
 }
 .music__control .progress .bar {
-    width: 30%;
+    width: 0%;
     height: inherit;
     background: #ffff43;
     border-radius: 5px;
@@ -89,22 +89,22 @@
     background-size: 200px;
     background-repeat: no-repeat;
 }
-/* .music__control .control .repeat_one {
-    width: 48px;
-    height: 48px;
+.music__control .control .repeat_one {
+    width: 24px;
+    height: 24px;
     background-image: url(../img/effect_icon07.svg);
-    background-size: cover;
+    background-position: -150px;
+    background-size: 200px;
     background-repeat: no-repeat;
-    background-position: -288px;
-} */
-/* .music__control .control .shuffle {
-    width: 48px;
-    height: 48px;
+}
+.music__control .control .shuffle {
+    width: 24px;
+    height: 24px;
     background-image: url(../img/effect_icon07.svg);
-    background-size: cover;
+    background-position: -175px;
+    background-size: 200px;
     background-repeat: no-repeat;
-    background-position: -96px;
-} */
+}
 .music__control .control .prev {
     width: 24px;
     height: 24px;
@@ -146,4 +146,47 @@
     background-position: -100px;
 }
 .music__footer {
+    background-color: #c4c4c4;
+}
+.music__list {
+    padding: 20px;
+}
+.music__list h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-top: 2px solid #011d3f;
+    padding-top: 10px;
+}
+.music__list h3 .list {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/effect_icon07.svg) no-repeat;
+    margin-right: 5px;
+    background-position: -100px 0;
+    vertical-align: -5px;
+    background-size: 200px;
+}
+.music__list ul {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+.music__list li {
+    border-bottom: 1px solid #011d3f;
+    list-style: none;
+    position: relative;
+    padding: 5px 0;
+}
+.music__list li strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+.music__list li em {
+    font-style: normal;
+}
+.music__list li span {
+    position: absolute;
+    right: 0;
+    top: 5px;
 }
