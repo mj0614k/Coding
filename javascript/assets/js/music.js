@@ -66,6 +66,7 @@ const musicView = document.querySelector(".music__view .img img");
 const musicName = document.querySelector(".music__view .title h3");
 const MusicArtist = document.querySelector(".music__view .title p");
 const musicAudio = document.querySelector("#main-audio");
+
 const musicPlay = document.querySelector("#control-play");
 const musicPrevBtn = document.querySelector("#control-prev");
 const musicNextBtn = document.querySelector("#control-next");
@@ -83,11 +84,19 @@ function loadMusic(num) {
 
 // 재생 버튼
 function playMusic() {
+    musicWrap.classList.add("paused");
+    musicPlay.setAttribute("id", "control-stop");
+    musicPlay.setAttribute("class", "stop");
     musicAudio.play();
 }
 
 // 정지 버튼
-function pauseMusic() {}
+function pauseMusic() {
+    musicWrap.classList.remove("paused");
+    musicPlay.setAttribute("id", "control-play");
+    musicPlay.setAttribute("class", "play");
+    musicAudio.pause();
+}
 
 // 이전 곡 버튼
 function prevMusic() {}
@@ -101,5 +110,6 @@ window.addEventListener("load", () => {
 
 // 플레이 버튼
 musicPlay.addEventListener("click", () => {
-    playMusic();
+    const isMusicPaused = musicWrap.classList.contains("paused"); // 음악이 재생 중
+    isMusicPaused ? pauseMusic() : playMusic();
 });
