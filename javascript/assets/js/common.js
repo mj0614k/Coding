@@ -4,13 +4,16 @@ hljs.highlightAll();
 const modalBtn = document.querySelector(".modal__btn");
 const modalClose = document.querySelector(".modal__close")
 const modalCont = document.querySelector(".modal__cont");
+const iframeCont = document.querySelector(".modal__cont .cont .iframe")
 
 modalBtn.addEventListener("click", () => {
     modalCont.classList.add("show");
     modalCont.classList.remove("hide");
+    iframeCont.classList.remove("blind");
 })
 modalClose.addEventListener("click", () => {
     modalCont.classList.add("hide");
+    iframeCont.classList.add("blind");
 })
 
 // 탭 메뉴

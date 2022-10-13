@@ -72,6 +72,8 @@ const musicPlay = musicWrap.querySelector("#control-play");
 const musicPrevBtn = musicWrap.querySelector("#control-prev");
 const musicNextBtn = musicWrap.querySelector("#control-next");
 const musicRepeat = musicWrap.querySelector("#control-repeat");
+const musicVolUp = musicWrap.querySelector("#control-volUp");
+const musicVolDown = musicWrap.querySelector("#control-volDown");
 
 // 뮤직 리스트
 const musicListBtn = musicWrap.querySelector("#control-list");
@@ -85,8 +87,6 @@ const musicProgressBar = musicWrap.querySelector(".progress .bar");
 const musicProgressCurrent = musicWrap.querySelector(".progress .timer .current");
 const musicProgressDuration = musicWrap.querySelector(".progress .timer .duration");
 
-let musicIndex = 1;  // 현재 음악 인덱스
-
 // 음악 재생
 function loadMusic(num) {
     musicName.innerText = allMusic[num - 1].name;   // 뮤직 이름 로드
@@ -95,6 +95,29 @@ function loadMusic(num) {
     musicView.alt = allMusic[num - 1].name;     // 이미지 alt 로드
     musicAudio.src = `../assets/audio/${allMusic[num - 1].audio}.mp3`;  // 뮤직 로드
 }
+let musicIndex = 1;  // 현재 음악 인덱스
+musicAudio.volume = 0.5;
+
+// 음악 볼륨
+musicVolDown.addEventListener("click", () => {
+    musicAudio.volume -= 0.1;
+    document.querySelector(".volume .nowvolume").innerHTML = Math.round(musicAudio.volume * 10);
+    if(musicAudio.volume < 0.1){
+        musicVolDown.style.backgroundPosition = "-48px";
+    } else {
+        musicVolDown.style.backgroundPosition = "-24px";
+    }
+})
+// 음악 볼륨
+musicVolUp.addEventListener("click", () => {
+    musicAudio.volume += 0.1;
+    document.querySelector(".volume .nowvolume").innerHTML = Math.round(musicAudio.volume * 10);
+    if(musicAudio.volume > 9){
+        musicVolUp.style.backgroundPosition = "-72px";
+    } else {
+        musicVolUp.style.backgroundPosition = "0px";
+    }
+})
 
 // 재생 버튼을 누르면 음악이 재생되고, 정지 버튼으로 바뀌게
 function playMusic() {
