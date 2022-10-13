@@ -1,3 +1,19 @@
+/* scroll */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f224a26;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #011d3f;
+    border-radius: 20px;
+}
+
 .music__wrap {
 }
 .music__inner {
@@ -48,7 +64,7 @@
     line-height: 1.2;
 }
 .music__view .title p {
-    color: orangered;
+    color: rosybrown;
 }
 .music__control {
     width: 100%;
@@ -65,7 +81,7 @@
 .music__control .progress .bar {
     width: 0%;
     height: inherit;
-    background: #ffff43;
+    background: rosybrown;
     border-radius: 5px;
 }
 .music__control .progress .timer {
@@ -150,6 +166,11 @@
 }
 .music__list {
     padding: 20px;
+    padding-top: 0px;
+    display: none;
+}
+.music__list.show {
+    display: block;
 }
 .music__list h3 {
     font-size: 24px;
@@ -167,6 +188,13 @@
     vertical-align: -5px;
     background-size: 200px;
 }
+.music__list h3 .close {
+    float: right;
+    background: url(../img/effect_icon08.svg) no-repeat;
+    width: 24px;
+    height: 24px;
+    background-size: 24px;
+}
 .music__list ul {
     max-height: 200px;
     overflow-y: scroll;
@@ -177,6 +205,9 @@
     position: relative;
     padding: 5px 0;
 }
+.music__list li.playing {
+    color: rosybrown;
+}
 .music__list li strong {
     display: block;
     font-size: 16px;
@@ -184,9 +215,11 @@
 }
 .music__list li em {
     font-style: normal;
+    font-size: 14px;
 }
 .music__list li span {
     position: absolute;
     right: 0;
     top: 5px;
+    font-size: 16px;
 }
