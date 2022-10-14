@@ -44,10 +44,21 @@
                 이번 작업의 HTML 소스 중 일부입니다. 슬라이드의 위치를 표시할 dot을 스크립트로 작업해줄 예정입니다.
             </p>
             <div class="t_code">
-                <pre><code class="language-html">
-                </code></pre>
+<pre><code class="language-js">const sliderDot = document.querySelector(".slider__dot");
+let dotIndex = "";
+
+function init(){
+    slider.forEach(() => {dotIndex += "이미지1"})
+    sliderDot.innerHTML = dotIndex;
+    sliderDot.firstChild.classList.add("active");
+}
+init();
+</code></pre>
             </div>
             <p class="t_box">
+                먼저, dot을 만들 div 박스를 선택(<i>sliderDot</i>)합니다. dotIndex라는 빈 문자열을 만들어 줍니다.<br>
+                이제 init() 함수 안에서 dot을 만들어 봅시다.
+                
             </p>
             <h2 class="t_tit2">2. JAVASCRIPT 소스</h2>
             <h3 class="t_tit3">2-1) 선택자 만들기</h3>
