@@ -13,9 +13,9 @@
 
     <link rel="stylesheet" href="../../html/assets/css/agree.css">
 
-    <link rel="stylesheet" href="../..//html/assets/css/header.css">
-    <link rel="stylesheet" href="../..//html/assets/css/loginPopup.css">
-    <link rel="stylesheet" href="../..//html/assets/css/footer.css">
+    <link rel="stylesheet" href="../../html/assets/css/header.css">
+    <link rel="stylesheet" href="../../html/assets/css/loginPopup.css">
+    <link rel="stylesheet" href="../../html/assets/css/footer.css">
 </head>
 
 <body>
@@ -108,10 +108,9 @@
     <?php include "../include/footer.php" ?>
     <!-- //footer -->
 
-    <script src="../assets/js/agree.js"></script>
-    <script src="../assets/js/headermenu.js"></script>
-    <script src="../assets/js/loginpopup.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../html/assets/js/headermenu.js"></script>
+    <script src="../../html/assets/js/loginpopup.js"></script>
     <script>
         let IDCheck = false;
         let nickCheck = false;

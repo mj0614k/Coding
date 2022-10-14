@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="../../html/assets/css/fonts.css">
     <link rel="stylesheet" href="../../html/assets/css/reset.css">
 
-    <link rel="stylesheet" href="../..//html/assets/css/agree.css">
+    <link rel="stylesheet" href="../../html/assets/css/agree.css">
 
-    <link rel="stylesheet" href="../..//html/assets/css/header.css">
-    <link rel="stylesheet" href="../..//html/assets/css/loginPopup.css">
-    <link rel="stylesheet" href="../..//html/assets/css/footer.css">
+    <link rel="stylesheet" href="../../html/assets/css/header.css">
+    <link rel="stylesheet" href="../../html/assets/css/loginPopup.css">
+    <link rel="stylesheet" href="../../html/assets/css/footer.css">
 </head>
 
 <body>
@@ -80,10 +80,7 @@
     <?php include "../include/footer.php" ?>
     <!-- //footer -->
 
-    <script src="../assets/js/agree.js"></script>
-    <script src="../assets/js/headermenu.js"></script>
-    <script src="../assets/js/loginpopup.js"></script>
-
+    <?php include "../include/script.php" ?>
 </body>
 
 </html>

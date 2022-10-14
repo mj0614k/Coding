@@ -70,4 +70,6 @@
         </div>
         <div class="footer__bottom">ⓒ 2022 BY BODA ALL RIGHT RESERVED.</div>
     </div>
+
+    <?php include "script.php" ?>
 </footer>
