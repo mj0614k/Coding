@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <header id="header" class="header__container">
     <div class="header__area">
         <div class="header__logo">

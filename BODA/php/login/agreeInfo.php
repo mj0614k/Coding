@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../html/assets/css/fonts.css">
     <link rel="stylesheet" href="../../html/assets/css/reset.css">
 
-    <link rel="stylesheet" href="../..//html/assets/css/agree.css">
+    <link rel="stylesheet" href="../../html/assets/css/agree.css">
 
     <link rel="stylesheet" href="../..//html/assets/css/header.css">
     <link rel="stylesheet" href="../..//html/assets/css/loginPopup.css">
