@@ -6,7 +6,7 @@
             <button type="button" class="popup__close"><span class="blind">닫기</span></button>
         </div>  
         <div class="login__inner">
-            <form action="loginSave.php" name="login" class="loginForm" method="post">
+            <form action="../login/loginSave.php" name="login" class="loginForm" method="post">
                 <fieldset>
                     <legend class="blind">로그인 작성 란</legend>
                     <div class="ID">

@@ -4,5 +4,5 @@
     $pass = "sjsksk79513!";
     $db = "mo0647";
     $connect = new mysqli($host, $user, $pass, $db);
-    $connect -> set_charset("utf8");
+    $connect -> set_charset("utf-8");
 ?>

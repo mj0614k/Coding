@@ -1,6 +1,5 @@
 <?php
     include "../connect/connect.php";
-    include "../connect/session.php";
 
     // 변수 설정
     $type = $_POST['type'];
@@ -9,7 +8,7 @@
     // $sql = "SELECT youEmail, youNickName FROM myAdminMember WHERE youEmail = '{$youEmail}'";
     // $sql = "SELECT youEmail, youNickName FROM myAdminMember WHERE youNickName = '{$youNickName}'";
 
-    $sql = "SELECT youID, youEmail, youNickName FROM myMember";
+    $sql = "SELECT youID, youEmail, youNickName FROM myMember ";
     
     if($type == "IDCheck"){
         $youID = $connect -> real_escape_string(trim($_POST['youID']));

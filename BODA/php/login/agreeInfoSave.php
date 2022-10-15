@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,10 +23,8 @@
         <a href="#main">콘텐츠 영역 바로가기</a>
         <a href="#footer">푸터 영역 바로가기</a>
     </div>
-
-    <?php include "../include/header.php" ?>
+<?php include "../include/header.php" ?>
     <!-- //header -->
-    
     <main id="infoType" class="info__wrap agree">
         <div class="alert">
             <div class="modal">
@@ -36,7 +33,6 @@
                     <h2>SIGN UP</h2>
                     <?php
                         include "../connect/connect.php";
-
                         $youID = $_POST['youID'];
                         $youName = $_POST['youName'];
                         $youPass = $_POST['youPass'];
@@ -45,7 +41,6 @@
                         $youBirth = $_POST['youBirth'];
                         $youPhone = $_POST['youPhone'];
                         $regTime = time();
-
                         // $youID = $connect -> real_escape_string(trim($youID));
                         // $youName = $connect -> real_escape_string(trim($youName));
                         // $youPass = $connect -> real_escape_string(trim($youPass));
@@ -54,14 +49,13 @@
                         // $youBirth = $connect -> real_escape_string(trim($youBirth));
                         // $youPhone = $connect -> real_escape_string(trim($youPhone));
                         
-                        $youPass = sha1("web".$youPass);
+                        // $youPass = sha1("web".$youPass);
 
                         // 회원가입
                         $sql = "INSERT INTO myMember(youID, youName, youPass, youNickName, youEmail, youBirth, youPhone, regTime) VALUES('$youID', '$youName', '$youPass', '$youNickName', '$youEmail', '$youBirth', '$youPhone', '$regTime')";
                         $result = $connect -> query($sql);
 
                         // echo "$sql";
-                        
                         if($result){
                             echo ("<p>회원가입이 성공적으로 완료되었습니다.</p><div class='mobal-btn'><a href='#' class='closeBtn'>메인으로</a></div>");
                         } else {
@@ -77,10 +71,10 @@
     </main>
     <!-- //main -->
 
-    <?php include "../include/footer.php" ?>
-    <!-- //footer -->
+<?php include "../include/footer.php" ?>
+<!-- //footer -->
 
-    <?php include "../include/script.php" ?>
+<?php include "../include/script.php" ?>
 </body>
 
 </html>
