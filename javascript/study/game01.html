@@ -18,12 +18,9 @@
 
         <main id="main">
             <div class="document">
-                <h2 class="t_tit">자바스크립트 : 게임 효과 : 마우스 커서, 날짜 및 사용 환경</h2>
+                <h2 class="t_tit">자바스크립트 : 게임 효과 : 뮤직 플레이어</h2>
                 <p class="t_desc">
                     이번에는 게임 효과입니다. 첫번째 유형으로는 뮤직 플레이어를 작업할 예정입니다.
-                    게임 효과의 스크립트는 양이 많기 때문에 
-                    뮤직 플레이어를 만들기 전(마우스 커서, 날짜 및 사용 환경 출력)의 스크립트,
-                    뮤직 플레이어를 작업하는 스크립트로 두 번에 나누어 작성하도록 하겠습니다.
                 </p>
                 <hr />
                 <h2 class="t_tit2">1. 사전 작업</h2>
@@ -75,13 +72,7 @@ window.addEventListener("mousemove", (e) => {
     const agent = document.querySelector(".agent");
     const os = navigator.userAgent.toLocaleLowerCase();
 
-    // agent.innerText = os;
-    // 윈도우 기준 출력물
-    // mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/105.0.0.0 safari/537.36
-
     if (os.indexOf("window") >= 0) {
-        // 기종 출력
-        // 기종별로 CSS를 달리 설정할 수 있음
         agent.innerText = "현재 windows를 사용하고 있으며, 화면 크기는 " + screen.width + " * " + screen.height + "입니다.";
         document.querySelector("body").classList.add("window");
     } else if (os.indexOf("macintosh") >= 0) {
@@ -98,7 +89,17 @@ window.addEventListener("mousemove", (e) => {
 </code></pre>
                 </div>
                 <p class="t_box">
-                    잘해보세요
+                    이번에는 사용자들의 환경을 출력하도록 하겠습니다. 
+                    이렇게 환경에 따라 if문을 사용하면, 환경에 따라 CSS 소스를 달리하여 작업을 할 수 있습니다.
+                    <br>위의 상수 os를 innerText를 사용하여 출력해 보면, 윈도우를 기준으로 다음과 같은 내용이 출력됩니다.
+                </p>
+                <p class="t_desc2">
+                    mozilla/5.0 (<i>windows</i> nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/105.0.0.0 safari/537.36
+                </p>
+                <p class="t_box">
+                    windows, mac, iphone, android 사용자들의 환경에서는 각각 windows,
+                    macintoshv, iphone, android가 출력될 것입니다. indexOf를 통해 해당하는 내용을
+                    검색함으로써 사용자들의 환경을 알 수 있습니다. 환경과 함께 화면 크기도 출력해 줍니다.
                 </p>
                 <h3 class="t_tit3">1-4. 폴더 드래그 효과</h3>
                 <div class="t_code">
@@ -132,15 +133,92 @@ $(".icon6").draggable({
         $(".mouse__cursor img").attr("src", "../assets/img/effect_mouse06.png");
     },
 });
-
 $(".music__wrap").draggable();
 </code></pre>
                 </div>
                 <p class="t_box">
                     draggable() 함수는 jQuery UI 가 제공하는 상호작용(Interaction) 기능 중 하나입니다.
-                    <a href="https://jqueryui.com/draggable/">https://jqueryui.com/draggable/</a>
-                    이 함수를 사용하면 선택한 요소를 자유롭게 드래그할 수 있게 됩니다. 각각의 요소를 드래그할 때, 마우스 커서의 색상이 요소의 색상에 맞추어 변화하는 멋진 함수도 만들어 주었습니다.
+                    <a href="https://jqueryui.com/draggable/">https://jqueryui.com/draggable/</a><br>
+                    이 함수를 사용하면 선택한 요소를 자유롭게 드래그할 수 있게 됩니다.
+                    각각의 요소를 드래그할 때, 마우스 커서의 색상이 요소의 색상에 맞추어 변화하는 멋진 함수도 만들어 주었습니다.
                 </p>
+                <h3 class="t_tit3">1-5. 함수 실행시키기</h3>
+                <div class="t_code">
+<pre><code class="language-js">window.onload = function () {
+    printTime();
+    printAgent();
+};
+</code></pre>
+                </div>
+                <p class="t_box">
+                    만든 함수들을 출력해 줍니다. window.onload는 HTML 페이지가 로드되면 작업을 수행한다는 의미입니다. 
+                </p>
+                <h2 class="t_tit2">2. 뮤직 플레이어 작업</h2>
+                <h3 class="t_tit3">2-1. HTML 소스</h3>
+                <div class="t_code">
+<pre><code class="language-html">&lt;div class="music__wrap"&gt;
+    &lt;div class="music__inner"&gt;
+        &lt;div class="music__header"&gt;
+            &lt;div&gt;*&lt;/div&gt;
+            &lt;h2&gt;Music Player&lt;/h2&gt;
+            &lt;div&gt;*&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="music__contents"&gt;
+            &lt;div class="music__view"&gt;
+                &lt;div class="img"&gt;
+                    &lt;img src="../assets/img/effect_img01.png" alt="이미지1" /&gt;
+                &lt;/div&gt;
+                &lt;div class="title"&gt;
+                    &lt;h3&gt;Loading...&lt;/h3&gt;
+                    &lt;p&gt;Loading...&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="music__control"&gt;
+                &lt;div class="volume"&gt;
+                    vol = &lt;span class="nowvolume"&gt;5&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="progress"&gt;
+                    &lt;div class="bar"&gt;
+                        &lt;audio
+                            id="main-audio"
+                            src="../assets/audio/music_audio01.mp3"
+                        &gt;&lt;/audio&gt;
+                    &lt;/div&gt;
+                    &lt;div class="timer"&gt;
+                        &lt;span class="current"&gt;0:00&lt;/span&gt;
+                        &lt;span class="duration"&gt;0:00&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="control"&gt;
+                    &lt;i title="전체 반복" class="repeat" id="control-repeat"&gt;&lt;/i&gt;
+                    &lt;!-- &lt;i title="한곡 반복" class="repeat_one"&gt;&lt;/i&gt; --&gt;
+                    &lt;!-- &lt;i title="랜덤 반복" class="shuffle"&gt;&lt;/i&gt; --&gt;
+                    &lt;i title="이전곡 재생" class="prev" id="control-prev"&gt;&lt;/i&gt;
+                    &lt;i title="음량 작게" class="volumeDown" id="control-volDown"&gt;&lt;/i&gt;
+                    &lt;i title="재생" class="play" id="control-play"&gt;&lt;/i&gt;
+                    &lt;!-- &lt;i title="정지" class="stop" id="control-stop"&gt;&lt;/i&gt; --&gt;
+                    &lt;i title="음량 크게" class="volumeUp" id="control-volUp"&gt;&lt;/i&gt;
+                    &lt;i title="다음곡 재생" class="next" id="control-next"&gt;&lt;/i&gt;
+                    &lt;i title="재생 목록" class="list" id="control-list"&gt;&lt;/i&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="music__footer"&gt;
+            &lt;div class="music__list"&gt;
+                &lt;h3&gt;&lt;span class="list"&gt;&lt;/span&gt;Music List&lt;span class="close" id="control-list-close"&gt;&lt;/span&gt;&lt;/h3&gt;
+                &lt;ul&gt;
+                    &lt;!-- &lt;li&gt;
+                        &lt;strong&gt;제목&lt;/strong&gt;
+                        &lt;em&gt;아티스트&lt;/em&gt;
+                        &lt;span&gt;재생시간&lt;/span&gt;
+                    &lt;/li&gt; --&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
                 <div class="t_iframe" style="min-height: 800px; padding-top: 0px">
