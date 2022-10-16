@@ -35,8 +35,8 @@
                 <div class="search__click">
                     <ul>
                         <li><a href="#" class="btn1">반대로 정렬하기</a></li>
-                        <li><a href="#" class="btn2">내림차순 정렬하기</a></li>
-                        <li><a href="#" class="btn3">오름차순 정렬하기</a></li>
+                        <li><a href="#" class="btn2">오름차순 정렬하기</a></li>
+                        <li><a href="#" class="btn3">내림차순 정렬하기</a></li>
                         <li><a href="#" class="btn4">알파벳순(a-z) 정렬하기</a></li>
                         <li><a href="#" class="btn5">알파벳순(z-a) 정렬하기</a></li>
                         <li><a href="#" class="btn6">랜덤 정렬하기</a></li>
@@ -234,172 +234,116 @@
                         </div>
                         <div class="cont">
                             <div class="active">
-                                <pre><code class="language-js">const cssProperty = [
-    { star: 0, name: "accent-color", desc: "특정 요소에 색상을 지정할 때 사용됩니다." },
-    {
-        star: 1,
-        name: "align-content",
-        desc: "콘텐츠 아이템의 상하관계 정렬 상태를 설정합니다.",
-    },
-    {
-        star: 2,
-        name: "align-items",
-        desc: "콘텐츠 아이템의 내부 상하관계 정렬 상태를 설정합니다.",
-    },
-    {
-        star: 3,
-        name: "align-self",
-        desc: "개별적인 콘텐츠 아이템의 정렬 상태를 설정합니다.",
-    },
-    { star: 4, name: "all", desc: "요소의 속성을 초기화 또는 상속을 설정합니다." },
-    {
-        star: 5,
-        name: "animation",
-        desc: "애니메이션과 관련된 속성을 일괄적으로 설정합니다.",
-    },
-    { star: 1, name: "animation-delay", desc: "애니메이션 지연 시간을 설정합니다." },
-    {
-        star: 1,
-        name: "animation-direction",
-        desc: "애니메이션 움직임 방향을 설정합니다.",
-    },
-    {
-        star: 1,
-        name: "animation-duration",
-        desc: "애니메이션 움직임 시간을 설정합니다.",
-    },
-    {
-        star: 1,
-        name: "animation-fill-mode",
-        desc: "애니메이션이 끝난 후의 상태를 설정합니다.",
-    },
-    {
-        star: 1,
-        name: "animation-iteration-count",
-        desc: "애니메이션의 반복 횟수를 설정합니다.",
-    },
-    { star: 1, name: "animation-name", desc: "애니메이션 keyframe 이름을 설정합니다." },
-    {
-        star: 1,
-        name: "animation-play-state",
-        desc: "애니메이션 진행상태를 설정 합니다.",
-    },
-    { star: 1, name: "animation-timeline", desc: "x" },
-    {
-        star: 1,
-        name: "animation-timing-function",
-        desc: "애니메이션 움직임의 속도를 설정 합니다.",
-    },
-    {
-        star: 1,
-        name: "appearance",
-        desc: "운영체제 및 브라우저에 기본적으로 설정되어 있는 테마를 기반으로 요소를 표현합니다.",
-    },
-    {
-        star: 1,
-        name: "aspect-ratio",
-        desc: "요소의 크기를 비율대로 조정할 수 있게 합니다.",
-    }
+<pre><code class="language-js">const cssProperty = [
+    { num: 1, name: "accent-color", desc: " 요소의 강조 색상을 지정합니다. " },
+    { num: 2, name: "align-content", desc: " 콘텐츠 사이와 콘텐츠 주위 빈 공간을 플렉스 박스'의 교차축 또는 그리드의 블록 축을 따라 배치하는 방식을 결정합니다." },
+    { num: 3, name: "align-items", desc: " 교차축에서 아이템 정렬 하는 속성입니다. 주로 flex에서 item들을 정렬할 때 사용됩니다." },
+    { num: 4, name: "align-self", desc: " 특정 item의 정렬을 따로 하고 싶을 때 사용합니다." },
+    { num: 5, name: "all", desc: " CSS 사용자 지정 속성을 제외한 모든 속성을 초기화합니다. 초깃값, 상속값, 아니면 다른 스타일시트 출처의 값로 설정할 수 있습니다." },
+    { num: 6, name: "animation", desc: " 애니메이션과 관련된 속성을 일괄적로 처리합니다." },
+    { num: 7, name: "animation-delay", desc: " 애니메이션 지연 시간을 설정합니다." },
+    { num: 8, name: "animation-direction", desc: " 애니메이션 움직임 방향을 설정합니다." },
+    { num: 9, name: "animation-duration", desc: " 애니메이션 움직인 시간을 설정합니다." },
+    { num: 10, name: "animation-fill-mode", desc: " 애니메이션이 끝난 후의 상태를 설정합니다." },
+    { num: 11, name: "animation-iteration-count", desc: " 애니메이션의 반복 횟수를 설정합니다." },
+    { num: 12, name: "animation-name", desc: " 애니메이션 keyframe 이름을 설정합니다." },
+    { num: 13, name: "animation-play-state", desc: " 애니메이션 진행상태를 설정합니다." },
+    { num: 14, name: "animation-timeline", desc: " 애니메이션의 타임라인을 설정합니다." },
+    { num: 15, name: "animation-timing-function", desc: " 애니메이션 움직임의 속도를 설정합니다." }
     // 생략
-];
+]
 
-const searchList = document.querySelector(".search__list ul");
-const searchClick = document.querySelectorAll(".search__click ul:nth-child(1) li");
-const searchClick2 = document.querySelectorAll(".search__click ul:nth-child(2) li");
-let count = 0;
+document.querySelector(".search__info .num").innerHTML = cssProperty.length;
 
-// 출력하기
-function updateList(list) {
-    listCSS = "";
-    // data = cssProperty
-    for (const data of list) {
-        if (data.star == 0) {
-            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌚🌚🌚🌚🌚&lt;/em&gt;&lt;/li&gt;`;
-        }
-        if (data.star == 1) {
-            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌚🌚🌚🌚&lt;/em&gt;&lt;/li&gt;`;
-        }
-        if (data.star == 2) {
-            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌚🌚🌚&lt;/em&gt;&lt;/li&gt;`;
-        }
-        if (data.star == 3) {
-            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌝🌚🌚&lt;/em&gt;&lt;/li&gt;`;
-        }
-        if (data.star == 4) {
-            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌝🌝🌚&lt;/em&gt;&lt;/li&gt;`;
-        }
-        if (data.star == 5) {
-            listCSS += `&lt;li&gt;${data.name} : ${data.desc} &lt;em&gt;🌝🌝🌝🌝🌝&lt;/em&gt;&lt;/li&gt;`;
-        }
-    }
-    searchList.innerHTML = listCSS;
+const cssList = document.querySelector(".search__list .line");
+// 데이터 출력하기
+const updateList = () => {
+    let listCSS = "";
+    cssProperty.forEach((data, index) => {
+        listCSS += `<li>${data.num}. ${data.name} : ${data.desc}</li>`;
+    });
+    cssList.innerHTML = listCSS;
 }
-updateList(cssProperty);
-
-// 클릭하기
-searchClick.forEach((star) => {
-    star.addEventListener("click", () => {
-        // star 값(0, 1, 2, 3, 4, 5) 가져오기
-        const target = star.dataset.star;
-
-        // target과 값이 동일한 star를 가진
-        const filterList = cssProperty.filter((data) => data.star == target);
-        count = filterList.length;
-        document.querySelector(".num2").innerHTML = count;
-
-        // filterList의 데이터를 updateList로 전송
-        updateList(filterList);
-    });
+updateList();
+// 반대로 정렬 클릭
+document.querySelector(".btn1").addEventListener("click", (e) => {
+    e.preventDefault();
+    cssProperty.reverse();
+    updateList();
 });
-
-// 클릭하면 ★개 이상의 별 나타나도록 작업하기
-searchClick2.forEach((star) => {
-    star.addEventListener("click", () => {
-        // star 값(0, 1, 2, 3, 4, 5) 가져오기
-        const target = star.dataset.star;
-
-        // target 값보다 큰 star를 가진
-        const filterList = cssProperty.filter((data) => data.star >= target);
-        count = filterList.length;
-        document.querySelector(".num2").innerHTML = count;
-
-        // filterList의 데이터를 updateList로 전송
-        updateList(filterList);
+// 내림차순 정렬 클릭
+document.querySelector(".btn2").addEventListener("click", (e) => {
+    e.preventDefault();
+    cssProperty.sort((a,b) => {
+        return a.num - b.num;
     });
+    updateList();
 });
-
-document.querySelector(".num").innerHTML = cssProperty.length;
+// 오름차순 정렬 클릭
+document.querySelector(".btn3").addEventListener("click", (e) => {
+    e.preventDefault();
+    cssProperty.sort((a,b) => {
+        return b.num - a.num;
+    });
+    updateList();
+});
+// 알파벳 정렬(a~z) 클릭
+document.querySelector(".btn4").addEventListener("click", (e) => {
+    e.preventDefault();
+    cssProperty.sort((a, b) => {
+        let x = a.name;
+        let y = b.name;
+        return x.localeCompare(y);
+    });
+    updateList();
+});
+// 알파벳 정렬(z~a) 클릭
+document.querySelector(".btn5").addEventListener("click", (e) => {
+    e.preventDefault();
+    cssProperty.sort((a, b) => {
+        let x = a.name;
+        let y = b.name;
+        return y.localeCompare(x);
+    });
+    updateList();
+});
+// 랜덤 정렬
+document.querySelector(".btn6").addEventListener("click", (e) => {
+    e.preventDefault();
+    for(let i=cssProperty.length-1; i>=0; i--){
+        const randomIndex = Math.floor(Math.random() * (i+1));
+        // console.log(randomIndex); 여기까지 하면 중복발생
+        // [1,2,3] = [3,2,1]; // 객체구조분해할당
+        [cssProperty[i], cssProperty[randomIndex]] = [cssProperty[randomIndex], cssProperty[i]]; // 중복 제거... 모르면 걍 외워...
+        cssProperty.innerHTML += cssProperty[i]
+    }
+    updateList();
+});
 </code></pre>
                             </div>
                             <div>
-                                <pre><code class="language-html">&lt;div class="search__wrap"&gt;
-    &lt;span&gt;filter()를 이용하여 중요도 보여주기&lt;/span&gt;
-    &lt;h1&gt;CSS 속성 검색하기&lt;/h1&gt;
-    &lt;div class="search__click"&gt;
-        &lt;ul&gt;
-            &lt;li data-star="0"&gt;&lt;a href="#"&gt;🌚🌚🌚🌚🌚&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="1"&gt;&lt;a href="#"&gt;🌝🌚🌚🌚🌚&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="2"&gt;&lt;a href="#"&gt;🌝🌝🌚🌚🌚&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="3"&gt;&lt;a href="#"&gt;🌝🌝🌝🌚🌚&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="4"&gt;&lt;a href="#"&gt;🌝🌝🌝🌝🌚&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="5"&gt;&lt;a href="#"&gt;🌝🌝🌝🌝🌝&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;ul&gt;
-            &lt;li data-star="0"&gt;&lt;a href="#"&gt;ALL&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="1"&gt;&lt;a href="#"&gt;🌝🔺&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="2"&gt;&lt;a href="#"&gt;🌝🌝🔺&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="3"&gt;&lt;a href="#"&gt;🌝🌝🌝🔺&lt;/a&gt;&lt;/li&gt;
-            &lt;li data-star="4"&gt;&lt;a href="#"&gt;🌝🌝🌝🌝🔺&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
+<pre><code class="language-html">&lt;main id="main"&gt;
+    &lt;div class="search__wrap"&gt;
+        &lt;span&gt;sort(), reverse()를 이용하여 정렬하기&lt;/span&gt;
+        &lt;h1&gt;CSS 속성 검색하기&lt;/h1&gt;
+        &lt;div class="search__click"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#" class="btn1"&gt;반대로 정렬하기&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="btn2"&gt;오름차순 정렬하기&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="btn3"&gt;내림차순 정렬하기&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="btn4"&gt;알파벳순(a-z) 정렬하기&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="btn5"&gt;알파벳순(z-a) 정렬하기&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#" class="btn6"&gt;랜덤 정렬하기&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class="search__info"&gt;
+            &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt;0&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="search__list"&gt;
+            &lt;ul class="line"&gt;&lt;/ul&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="search__info"&gt;
-        &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt;0&lt;/span&gt;&lt;/div&gt;
-        &lt;div&gt;검색된 속성 갯수 : &lt;span class="num2"&gt;0&lt;/span&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="search__list"&gt;
-        &lt;ul class="line"&gt;&lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+&lt;/main&gt;
 </code></pre>
                             </div>
                             <div>
@@ -653,7 +597,7 @@ document.querySelector(".num").innerHTML = cssProperty.length;
         <script>
             const cssProperty = [
                 { num: 1, name: "accent-color", desc: " 요소의 강조 색상을 지정합니다. " },
-                { num: 2, name: "align-content", desc: " 콘텐츠 사이와 콘텐츠 주위 빈 공간을 플렉스 박스'의 교차축 또는 그리드의 블록 축을 따라 배치하는 방식을 결정합니다." },
+                { num: 2, name: "align-content", desc: " 콘텐츠 사이와 콘텐츠 주위 빈 공간을 플렉스 박스의 교차축 또는 그리드의 블록 축을 따라 배치하는 방식을 결정합니다." },
                 { num: 3, name: "align-items", desc: " 교차축에서 아이템 정렬 하는 속성입니다. 주로 flex에서 item들을 정렬할 때 사용됩니다." },
                 { num: 4, name: "align-self", desc: " 특정 item의 정렬을 따로 하고 싶을 때 사용합니다." },
                 { num: 5, name: "all", desc: " CSS 사용자 지정 속성을 제외한 모든 속성을 초기화합니다. 초깃값, 상속값, 아니면 다른 스타일시트 출처의 값로 설정할 수 있습니다." },
@@ -1035,6 +979,8 @@ document.querySelector(".num").innerHTML = cssProperty.length;
                 { num: 381, name: "writing-mode", desc: " 텍스트의 선이 수평 또는 수직으로 배치 여부 속성 집합뿐만 아니라 블록이 진행되는 방향." },
                 { num: 382, name: "z-index", desc: " 엘리먼트의 겹쳐지는 순서를 지정한다." }
             ];
+
+            document.querySelector(".search__info .num").innerHTML = cssProperty.length;
 
             const cssList = document.querySelector(".search__list .line");
             // 데이터 출력하기
