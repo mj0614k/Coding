@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: "NeoDunggeunmo";
     font-weight: normal;
-    /* cursor: none; */
+    cursor: none;
 }
 body {
     width: 100%;

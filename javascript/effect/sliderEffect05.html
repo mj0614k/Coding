@@ -255,7 +255,7 @@ let dotIndex = "";
 
 function init(){
     // dot 만들어주기!
-    slider.forEach(() => {dotIndex += "<a href='#' class='dot'>이미지1</a>"})
+    slider.forEach(() => {dotIndex += "&lt;a href='#' class='dot'&gt;이미지1&lt;/a&gt;"})
     sliderDot.innerHTML = dotIndex;
     // 첫번째 닷에 활성화 표시
     sliderDot.firstChild.classList.add("active");

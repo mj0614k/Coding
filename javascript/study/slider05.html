@@ -22,10 +22,27 @@
             <h2 class="t_tit">자바스크립트 슬라이드 효과 : 버튼, 닷메뉴</h2>
             <p class="t_desc">
                 자바스크립트의 다양한 효과들 중, CSS의 트랜지션 속성을 활용한
-                이미지 슬라이드 효과입니다. 이번 유형은 해당하는 버튼을 클릭하면 이전 이미지,
+                이미지 슬라이드 효과입니다. 이번 유형은 이전 버튼, 다음 버튼을 클릭하면 이전 이미지,
                 다음 이미지로 슬라이드하는 유형입니다.</p>
             <hr>
-            <h2 class="t_tit2">1. dot 만들기</h2>
+            <h2 class="t_tit2">1. 선택자 및 변수 만들기</h2>
+            <div class="t_code">
+<pre><code class="language-js">const sliderWrap = document.querySelector(".slider__wrap");
+const sliderImg = document.querySelector(".slider__img");  // 보여지는 영역
+const sliderInner = document.querySelector(".slider__inner");  // 움직이는 영역
+const slider = document.querySelectorAll(".slider");  // 개별적 이미지
+const sliderDot = document.querySelector(".slider__dot");  // dot
+
+let currentIndex = 0;  // 현재 이미지
+let sliderCount = slider.length;  // 이미지 개수
+let sliderWidth = sliderImg.offsetWidth;  // 이미지 가로값
+let dotIndex = "";
+</code></pre>
+            </div>
+            <p class="t_box">
+                먼저, 선택자와 변수를 만들어 줍니다.
+            </p>
+            <h2 class="t_tit2">2. dot 만들기</h2>
             <div class="t_code">
 <pre><code class="language-html">&lt;div class="slider__btn"&gt;
     &lt;a href="#" class="prev"&gt;prev&lt;/a&gt;
@@ -44,11 +61,8 @@
                 이번 작업의 HTML 소스 중 일부입니다. 슬라이드의 위치를 표시할 dot을 스크립트로 작업해줄 예정입니다.
             </p>
             <div class="t_code">
-<pre><code class="language-js">const sliderDot = document.querySelector(".slider__dot");
-let dotIndex = "";
-
-function init(){
-    slider.forEach(() => {dotIndex += "이미지1"})
+<pre><code class="language-js">function init(){
+    slider.forEach(() => {dotIndex += "&lt;a href='#' class='dot'&gt;이미지1&lt;/a&gt;"})
     sliderDot.innerHTML = dotIndex;
     sliderDot.firstChild.classList.add("active");
 }
@@ -56,72 +70,68 @@ init();
 </code></pre>
             </div>
             <p class="t_box">
-                먼저, dot을 만들 div 박스를 선택(<i>sliderDot</i>)합니다. dotIndex라는 빈 문자열을 만들어 줍니다.<br>
-                이제 init() 함수 안에서 dot을 만들어 봅시다.
-                
+                init() 함수 안에서 dot을 만들어 봅시다. dotIndex라는 빈 문자열 안에 dot을 이미지 개수만큼 추가해 주고,
+                sliderDot(.slider__dot)에 출력해 줍니다.<br>
+                첫 번째 dot에는 active 클래스를 추가해 주었습니다.
             </p>
-            <h2 class="t_tit2">2. JAVASCRIPT 소스</h2>
-            <h3 class="t_tit3">2-1) 선택자 만들기</h3>
+            <h2 class="t_tit2">3. 이미지 슬라이드 구현하기</h2>
             <div class="t_code">
-<pre><code class="language-js">const sliderWrap = document.querySelector(".slider__wrap");
-const sliderImg = document.querySelector(".slider__img"); // 보여지는 영역
-const sliderInner = document.querySelector(".slider__inner"); // 움직이는 영역
-const slider = document.querySelectorAll(".slider"); // 개별적 이미지
-const sliderBtn = document.querySelector(".slider__btn"); // 버튼
-const sliderBtnPrev = sliderBtn.querySelector(".prev"); // 왼쪽
-const sliderBtnNext = sliderBtn.querySelector(".next"); // 오른쪽
-
-let currentIndex = 0; // 현재 이미지
-let sliderCount = slider.length; // 이미지 개수
-let sliderWidth = sliderImg.offsetWidth; // 이미지 가로값
-</code></pre>
-            </div>
-            <p class="t_box">각각에 해당하는 선택자를 만들어 줍니다. 현재 이미지, 이미지 개수, 이미지의 가로값은 
-                변화할 수 있기 때문에 let으로 선언해 줍니다.
-            </p>
-            <h3 class="t_tit3">2-2) 이미지에 transition 효과 주기</h3>
-            <div class="t_code">
-<pre><code class="language-js">function gotoSlider(num) {
+<pre><code class="language-js">function gotoSlider(num){
     sliderInner.style.transition = "all 400ms";
-    sliderInner.style.transform = "translateX(" + -sliderWidth * num + "px)";
+    sliderInner.style.transform = "translateX("+ -sliderWidth * num +"px)";
     currentIndex = num;
+
+    const dotActive = document.querySelectorAll(".slider__dot .dot");
+    dotActive.forEach(el => el.classList.remove("active"));
+    dotActive[num].classList.add("active");
 }
 </code></pre>
             </div>
-            <p class="t_box">이번에는 매개변수(num)함수를 사용해 주었습니다. gotoSlider 함수는
-                실행되었을 때 sliderInner(움직이는 영역)가 sliderWidth * num만큼 이동할 수 있도록 작업해 주었습니다.
-                -를 붙여준 이유는 왼쪽으로 이동해야 하기 때문입니다.
+            <p class="t_box">
+                이제, 이미지 슬라이드를 구현할 gotoSlider() 함수를 만들어 줍니다. 한 번 움직일 때 이미지의 가로값만큼 움직일 수 있도록 transform 속성을 추가해 줍니다.<br>
+또, 이미지 슬라이드가 움직일 때마다 해당하는 번호의 dot이 활성화되게끔 만들어야 합니다. 먼저, 각각의 dot의 클래스를 모두 삭제한 뒤, 해당 이미지의 dot에만 active 클래스가 추가될 수 있도록 forEach를 사용하여 작업해 주었습니다.
             </p>
-            <h3 class="t_tit3">2-3) 버튼 클릭 이벤트 설정하기</h2>
-                <div class="t_code">
-<pre><code class="language-js">// 왼쪽 버튼 클릭
-sliderBtnPrev.addEventListener("click", () => {
-    let prevIndex = (currentIndex + sliderCount -1) % sliderCount;
-    gotoSlider(prevIndex);
-    // 4 3 2 1 0
-});
+            <h2 class="t_tit2">4. 클릭 이벤트</h2>
+            <div class="t_code">
+<pre><code class="language-js">document.querySelectorAll(".slider__btn a").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        let prevIndex = (currentIndex + (sliderCount - 1)) % sliderCount;
+        let nextIndex = (currentIndex + 1) % sliderCount;
 
-// 오른쪽 버튼 클릭
-sliderBtnNext.addEventListener("click", () => {
-    let nextIndex = (currentIndex + 1) % sliderCount;
-    gotoSlider(nextIndex);
-    // 0 1 2 3 4
-});
+        if(btn.classList.contains("prev")){
+            gotoSlider(prevIndex);
+        } else {
+            gotoSlider(nextIndex);
+        }
+    })
+})
 </code></pre>
-                </div>
-                <p class="t_box">
-                    버튼을 클릭했을 때의 이벤트 효과를 만들어 줍니다. 첫번째 이미지에서 이전 버튼을 클릭하면 다시 마지막 이미지로
-                    이동하고, 마지막 이미지에서 다음 버튼을 클릭하면 다시 첫번째 이미지로 이동하도록 작업해 주었습니다.
-                </p>
+            </div>
+            <p class="t_box">
+                각각의 이미지들은 버튼을 클릭했을 때 움직이기 때문에, addEventListener로 클릭 이벤트를 만들어 줍니다.
+                이전 버튼을 눌렀을 때(prevIndex), 다음 버튼을 눌렀을 때(nextIndex) 각각 변수를 만들어 작업해 주었습니다.
+            </p>
+            <div class="t_code">
+<pre><code class="language-js">document.querySelectorAll(".slider__dot .dot").forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+        gotoSlider(index);
+    })
+})
+</code></pre>
+                            </div>
+                            <p class="t_box">
+                                각각의 dot을 클릭했을 때에도 이미지가 이동하도록 만들어 줍니다. 완성!
+                            </p>
             <hr> 
             <h2 class="t_tit2">결과</h2>
             <div class="t_iframe" style="min-height: 1000px; padding-top: 0px;">
-                <iframe src="https://mj0614k.github.io/Coding/javascript/effect/sliderEffect04.html"></iframe>
+                <iframe src="https://mj0614k.github.io/Coding/javascript/effect/sliderEffect05.html"></iframe>
             </div>
             <div class="t_link">
-                <a href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/sliderEffect04.html">원본 소스 보기</a>
-                <a href="https://mj0614k.github.io/Coding/javascript/effect/sliderEffect04">원본 사이트 보기</a>
+                <a href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/sliderEffect05.html">원본 소스 보기</a>
+                <a href="https://mj0614k.github.io/Coding/javascript/effect/sliderEffect05">원본 사이트 보기</a>
             </div>
+            
         </div>
     </main>
     <!-- //main -->

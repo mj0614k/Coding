@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>자바스크립트 : 게임 효과</title>
+
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <link rel="stylesheet" href="../assets/css/dracula.css" />
+    </head>
+
+    <body>
+        <header id="header">
+            <h1><a href="../index.html">Javascript</a></h1>
+        </header>
+        <!-- //header -->
+
+        <main id="main">
+            <div class="document">
+                <h2 class="t_tit">자바스크립트 : 게임 효과 : 마우스 커서, 날짜 및 사용 환경</h2>
+                <p class="t_desc">
+                    이번에는 게임 효과입니다. 첫번째 유형으로는 뮤직 플레이어를 작업할 예정입니다.
+                    게임 효과의 스크립트는 양이 많기 때문에 
+                    뮤직 플레이어를 만들기 전(마우스 커서, 날짜 및 사용 환경 출력)의 스크립트,
+                    뮤직 플레이어를 작업하는 스크립트로 두 번에 나누어 작성하도록 하겠습니다.
+                </p>
+                <hr />
+                <h2 class="t_tit2">1. 사전 작업</h2>
+                <h3 class="t_tit3">1-1. 마우스 커서 만들기</h3>
+                <div class="t_code">
+                    <pre><code class="language-js">const cursor = document.querySelector(".mouse__cursor");
+window.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+</code></pre>
+                </div>
+                <p class="t_box">
+                    귀여운 이미지로 마우스 커서를 바꾸어 줍니다. 이 정도는 껌이죠.
+                </p>
+                <h3 class="t_tit3">1-2. 시간 출력하기</h3>
+                <div class="t_code">
+<pre><code class="language-js">function printTime() {
+    const clock = document.querySelector(".time");
+    const now = new Date();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    let second = now.getSeconds();
+    if (hour &gt; 12) hour = hour - 12;
+    if (hour &lt; 10) hour = `0${hour}`;
+    if (minute &lt; 10) minute = `0${minute}`;
+    if (second &lt; 10) second = `0${second}`;
+    const nowTime = now.getFullYear() + "년 " + (now.getMonth() + 1) + "월 " +
+        now.getDate() + "일 " + hour + ":" + minute + ":" + second;
+
+    clock.innerText = nowTime;
+    setTimeout("printTime()", 1000);
+}
+</code></pre>
+                </div>
+                <p class="t_box">
+                    우리는 먼저 현재 연도와 날짜, 시간을 출력할 것입니다.<br>
+                    연도는 <i>getFullYear()</i>, 월은 <i>getMonth()</i>, 일은 <i>getDate()</i>를 이용하여 출력할 수 있습니다.
+                    이 때, getMonth()의 반환값은 1-12가 아닌 0-11 사이이기 때문에 1을 더해줘야 현재의 월수가 출력됩니다.
+                    그 이유는 공식적으로 발표된 바는 없지만, 매개변수를 사용하여 해당하는 달의 이름을 가져올 때 편리하다는 추측이 있습니다. <br>
+                    시간은 <i>getHours()</i>, 분은 <i>getMinutes()</i>, 초는 <i>getSeconds()</i>를 이용하여 각각 출력해 줍니다.
+                    시간은 24시간이 아닌 12시간을 기준으로 출력되도록 if문을 사용하여 작업해 주었습니다.
+                    또, 각각의 시간, 분, 초가 10 미만일 때에는 03시, 05분, 09초 등 두 자릿수로 출력될 수 있도록 작업해 주었습니다.<br>
+                    1초마다 시간이 바뀌도록 해야 하므로, setTimeout을 사용하여 1초마다 printTime() 함수가 실행되게끔 작업해 줍니다.
+                </p>
+                <h3 class="t_tit3">1-3. 환경 출력하기</h3>
+                <div class="t_code">
+<pre><code class="language-js">function printAgent() {
+    const agent = document.querySelector(".agent");
+    const os = navigator.userAgent.toLocaleLowerCase();
+
+    // agent.innerText = os;
+    // 윈도우 기준 출력물
+    // mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/105.0.0.0 safari/537.36
+
+    if (os.indexOf("window") >= 0) {
+        // 기종 출력
+        // 기종별로 CSS를 달리 설정할 수 있음
+        agent.innerText = "현재 windows를 사용하고 있으며, 화면 크기는 " + screen.width + " * " + screen.height + "입니다.";
+        document.querySelector("body").classList.add("window");
+    } else if (os.indexOf("macintosh") >= 0) {
+        agent.innerText = "현재 mac을 사용하고 있으며, 화면 크기는 " + screen.width + " * " + screen.height + "입니다.";
+        document.querySelector("body").classList.add("mac");
+    } else if (os.indexOf("iphone") >= 0) {
+        agent.innerText = "현재 IPhone을 사용하고 있으며, 화면 크기는 " + screen.width + " * " + screen.height + "입니다.";
+        document.querySelector("body").classList.add("iphone");
+    } else if (os.indexOf("android") >= 0) {
+        agent.innerText = "현재 Android를 사용하고 있으며, 화면 크기는 " + screen.width + " * " + screen.height + "입니다.";
+        document.querySelector("body").classList.add("android");
+    }
+}
+</code></pre>
+                </div>
+                <p class="t_box">
+                    잘해보세요
+                </p>
+                <h3 class="t_tit3">1-4. 폴더 드래그 효과</h3>
+                <div class="t_code">
+<pre><code class="language-js">$(".icon1").draggable({
+    drag: function () {
+        $(".mouse__cursor img").attr("src", "../assets/img/effect_mouse01.png");
+    },
+});
+$(".icon2").draggable({
+    drag: function () {
+        $(".mouse__cursor img").attr("src", "../assets/img/effect_mouse02.png");
+    },
+});
+$(".icon3").draggable({
+    drag: function () {
+        $(".mouse__cursor img").attr("src", "../assets/img/effect_mouse03.png");
+    },
+});
+$(".icon4").draggable({
+    drag: function () {
+        $(".mouse__cursor img").attr("src", "../assets/img/effect_mouse04.png");
+    },
+});
+$(".icon5").draggable({
+    drag: function () {
+        $(".mouse__cursor img").attr("src", "../assets/img/effect_mouse05.png");
+    },
+});
+$(".icon6").draggable({
+    drag: function () {
+        $(".mouse__cursor img").attr("src", "../assets/img/effect_mouse06.png");
+    },
+});
+
+$(".music__wrap").draggable();
+</code></pre>
+                </div>
+                <p class="t_box">
+                    draggable() 함수는 jQuery UI 가 제공하는 상호작용(Interaction) 기능 중 하나입니다.
+                    <a href="https://jqueryui.com/draggable/">https://jqueryui.com/draggable/</a>
+                    이 함수를 사용하면 선택한 요소를 자유롭게 드래그할 수 있게 됩니다. 각각의 요소를 드래그할 때, 마우스 커서의 색상이 요소의 색상에 맞추어 변화하는 멋진 함수도 만들어 주었습니다.
+                </p>
+                <hr />
+                <h2 class="t_tit2">결과</h2>
+                <div class="t_iframe" style="min-height: 800px; padding-top: 0px">
+                    <iframe
+                        src="https://mj0614k.github.io/Coding/javascript/effect/gameEffect01.html"
+                    ></iframe>
+                </div>
+
+                <div class="t_link">
+                    <a
+                        href="https://github.com/mj0614k/Coding/blob/main/javascript/effect/gameEffect01.html"
+                        >원본 소스 보기</a
+                    >
+                    <a href="https://mj0614k.github.io/Coding/javascript/effect/gameEffect01"
+                        >원본 사이트 보기</a
+                    >
+                </div>
+            </div>
+        </main>
+        <!-- //main -->
+
+        <footer id="footer">
+            <a href="mailto:mo0647@naver.com">mo0647@naver.com</a>
+        </footer>
+        <!-- //footer -->
+
+        <script src="../assets/js/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+    </body>
+</html>

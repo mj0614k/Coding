@@ -203,6 +203,7 @@ a {
 }
 
 .modal__box {
+    min-width: 400px;
     width: 60%;
     border-radius: 0.6rem;
     background-color: #fff;
