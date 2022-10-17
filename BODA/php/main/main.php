@@ -33,6 +33,9 @@
     <div style="height: 500px"></div>
     메인!!
 
+    <a href="../create/createTalk.php">Talk 테이블 만들기</a>
+    <a href="../create/createTalkData.php">Talk 테이블 데이터 만들기</a>
+
 <?php include "../include/footer.php" ?>
 <!-- //footer -->
 <?php include "../include/script.php" ?>

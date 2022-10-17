@@ -1185,8 +1185,10 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
             const searchRestart = document.querySelector(".search__result .restart");
 
             let timeReamining = 120,  // 남은 시간
-                score = 0;      // 점수
+                timeInterval = "",
+                score = 0,      // 점수
                 answers = {};   // 새로운 정답
+                
 
             function updateList(){
                 cssProperty.forEach(data => {
@@ -1201,8 +1203,12 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 searchStart.style.display = "none";
                 searchList.style.display = "none";
 
+                // 다시 시작할 때 기존 데이터 초기화
+                searchAnswers.innerHTML = "";
+                searchMissAnswers.innerHTML = "";
+
                 // 시간 설정(1초에 한번씩 줄어듦)
-                setInterval(reduceTime, 1000);
+                timeInterval = setInterval(reduceTime, 1000);
 
                 // 속성 리스트 없애기
 
@@ -1307,6 +1313,9 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 // 음악 끄기
                 searchAudio.pause();
 
+                // 시간 정지
+                clearInterval(timeInterval);
+
                 // 메시지 출력
                 searchResultWrap.classList.add("show");
                 let point = Math.round(score / cssProperty.length * 100);
@@ -1316,11 +1325,12 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
             // 다시 시작하기
             function restart(){
                 searchResultWrap.classList.remove("show");
+                searchAudio.play();
+
+                startQuiz();
                 timeReamining = 120;  // 시간
                 score = 0;
-                searchStart.style.display = "none";  // 버튼 숨김
-                searchList.style.display = "none";
-                searchAudio.play();
+                searchScoreNow.innerText = 0;
             }
 
             // 버튼 이벤트

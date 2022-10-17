@@ -154,7 +154,9 @@ $(".music__wrap").draggable();
                     만든 함수들을 출력해 줍니다. window.onload는 HTML 페이지가 로드되면 작업을 수행한다는 의미입니다. 
                 </p>
                 <h2 class="t_tit2">2. 뮤직 플레이어 작업</h2>
-                <p class="t_desc">본격적으로 뮤직 플레이어를 만들어 보도록 하겠습니다. HTML 소스는 아래를 참고해 주세요.</p>
+                <p class="t_desc">본격적으로 뮤직 플레이어를 만들어 보도록 하겠습니다. 이번에 작업할 뮤직 플레이어의
+                    모습은 다음과 같습니다. HTML 소스는 아래를 참고해 주세요.</p>
+                    <img src="https://github.com/mj0614k/Coding/blob/main/assets/tistory/EFFECT/%EA%B2%8C%EC%9E%84%ED%9A%A8%EA%B3%BC_01_study_01.jpg?raw=true" alt="뮤직 플레이어 디자인">
                 <details>
                     <summary>HTML 소스 보기</summary>
                 <div class="t_code">
@@ -366,40 +368,42 @@ musicVolUp.addEventListener("click", () => {
             musicRepeat.setAttribute("class", "repeat_one");
             musicRepeat.setAttribute("title", "한곡 반복");
             break;
-
         case "repeat_one":
             musicRepeat.setAttribute("class", "shuffle");
             musicRepeat.setAttribute("title", "랜덤 반복");
             break;
-
         case "shuffle":
             musicRepeat.setAttribute("class", "repeat");
             musicRepeat.setAttribute("title", "전체 반복");
             break;
     }
-});
-                    </code></pre>
+});</code></pre>
                 </div>
-                <h3 class="t_tit3">2-7. 어쩌고 작업하기</h3>
-                <div class="t_code"><pre><code class="language-js">// 뮤직 진행바
-musicAudio.addEventListener("timeupdate", (e) => {
+                <p class="t_box">이번에는 반복 버튼입니다. 반복 버튼의 default는
+                    전체 반복입니다. 전체 반복 버튼을 클릭하면 한곡 반복 버튼, 한곡 반복 버튼을 클릭하면
+                    랜덤 반복 버튼, 랜덤 반복 버튼을 클릭하면 다시 전체 반복 버튼이 나타나도록 작업해 주었습니다.
+                </p>
+                <h3 class="t_tit3">2-8. 진행바 작업하기</h3>
+                <div class="t_code"><pre><code class="language-js">musicAudio.addEventListener("timeupdate", (e) => {
     const currentTime = e.target.currentTime; // 음악 진행시간
     const duration = e.target.duration; // 오디오의 총 길이
-
     let progressWidth = (currentTime / duration) * 100; // 전체 길이에서 현재 진행되는 시간을 백분위로 나눔
-
-    musicProgressBar.style.width = `${progressWidth}%`;
-
-    // 전체 시간 : 오디오 이벤트 : 미디어의 현재 재생 위치에 있는 프레임이 로드를 완료하면 발생한다.
+    musicProgressBar.style.width = `${progressWidth}%`;</code></pre></div>
+                <p class="t_box">
+                    음악의 진행 상태를 나타내는 바를 작업해 보도록 하겠습니다. timeupdate 이벤트를 사용합니다.
+                    currentTime은 오디오의 진행 시간, duration은 오디오의 총 길이를 의미합니다.
+                    progressWidth는 전체 길이에서 현재 진행되는 시간을 백분위로 나눈 것입니다. 그리고,
+                    바의 길이를 설정해 줍니다.
+                </p>
+<div class="t_code"><pre><code class="language-js">// 전체 시간 : 오디오 이벤트 : 미디어의 현재 재생 위치에 있는 프레임이 로드를 완료하면 발생한다.
     musicAudio.addEventListener("loadeddata", () => {
         let audioDuration = musicAudio.duration;
         let totalMin = Math.floor(audioDuration / 60); // 전체 시간을 분 단위로 쪼갬
         let totalSec = Math.floor(audioDuration % 60); // 남은 초 저장
         if (totalSec &lt; 10) totalSec = `0${totalSec}`; // 초가 10보다 작으면 0을 붙여서 두 자리수로 만들어줌 ex) 01, 02...
         musicProgressDuration.innerText = `${totalMin}:${totalSec}`; // 완성된 시간 문자열을 출력
-    });
-
-    // 진행 시간
+    });</code></pre></div>
+<div class="t_code"><pre><code class="language-js">// 진행 시간
     let currentMin = Math.floor(currentTime / 60);
     let currentSec = Math.floor(currentTime % 60);
     if (currentSec &lt; 10) currentSec = `0${currentSec}`;
@@ -415,7 +419,11 @@ musicProgress.addEventListener("click", (e) => {
 
     musicAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration; // 백분위로 나눈 숫자에 다시 전체 길이를 곱해서 현재 재생값으로 바꿈
 });
+</code></pre></div>
+<p class="t_box">
 
+</p>
+<div class="t_code"><pre><code class="language-js">
 // 오디오가 끝났을 때의 이벤트 : ended
 musicAudio.addEventListener("ended", () => {
     let getAttr = musicRepeat.getAttribute("class");

@@ -28,8 +28,8 @@
                 <li>
                     <a class="main__menu" href="#">COMMUNITY</a>
                     <ul class="sub blind">
-                        <li><a href="../community/bestReview.html">REVIEW</a></li>
-                        <li><a href="../community/Talk.html">TALK</a></li>
+                        <li><a href="../community/bestReview.php">REVIEW</a></li>
+                        <li><a href="../community/Talk.php">TALK</a></li>
                     </ul>
                 </li>
             </ul>
@@ -67,9 +67,9 @@
 
             <div class="smallmenu blind">
                 <li><a href="#">LOGIN</a></li>
-                <li><a href="../login/agree.html">SIGN UP</a></li>
+                <li><a href="../login/agree.php">SIGN UP</a></li>
                 <li><a href="#">MYPAGE</a></li>
-                <li><a href="../notice/notice.html">NOTICE</a></li>
+                <li><a href="../notice/notice.php">NOTICE</a></li>
             </div>
             <div class="mobilemenu">
                 <li>
@@ -89,8 +89,8 @@
                 </li>
                 <li><a href="#">COMMUNITY</a>
                     <ul>
-                        <li><a href="#">REVIEW</a></li>
-                        <li><a href="#">TALK</a></li>
+                        <li><a href="../community/bestReview.php">REVIEW</a></li>
+                        <li><a href="../community/Talk.php">TALK</a></li>
                     </ul>
                 </li>
                 <li><a href="#">ABOUT</a>
@@ -101,9 +101,9 @@
                 </li>
                 <ul class="small">
                     <li><a href="#">LOGIN</a></li>
-                    <li><a href="../login/agree.html">SIGN UP</a></li>
+                    <li><a href="../login/agree.php">SIGN UP</a></li>
                     <li><a href="#">MYPAGE</a></li>
-                    <li><a href="../notice/notice.html">NOTICE</a></li>
+                    <li><a href="../notice/notice.php">NOTICE</a></li>
                 </ul>
             </div>
         </div>

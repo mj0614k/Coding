@@ -60,8 +60,9 @@
             // echo "<pre>";
             // var_dump($info);
             // echo "</pre>";
-            Header("Location: ../main/main.php");
             // Header("Location: ../main/main.php");
+            // Header("Location: ../main/main.php");
+            echo "<script>location.href='../main/main.php'</script>";
         }
     } else {
         msg("에러발생 - 관리자에게 문의하세요.");
