@@ -1184,7 +1184,7 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
             const searchResultWrap = document.querySelector(".search__result");
             const searchRestart = document.querySelector(".search__result .restart");
 
-            let timeReamining = 5,  // 남은 시간
+            let timeReamining = 120,  // 남은 시간
                 score = 0;      // 점수
                 answers = {};   // 새로운 정답
 
@@ -1315,16 +1315,12 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
 
             // 다시 시작하기
             function restart(){
-                setTimeout(() => {
-                    searchResultWrap.classList.remove("show");
-                    timeReamining = 120;  // 시간
-                    score = 0;
-                    searchStart.style.display = "none";  // 버튼 숨김
-                    searchStart.style.pointerEvents = "all";
-                    searchList.style.display = "none";
-                    audio();
-                    startQuiz();
-                }, 1000)
+                searchResultWrap.classList.remove("show");
+                timeReamining = 120;  // 시간
+                score = 0;
+                searchStart.style.display = "none";  // 버튼 숨김
+                searchList.style.display = "none";
+                searchAudio.play();
             }
 
             // 버튼 이벤트

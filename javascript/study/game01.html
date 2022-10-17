@@ -356,8 +356,32 @@ musicVolUp.addEventListener("click", () => {
                     볼륨을 조절할 수 있는 버튼도 만들어 줍니다. 음량 줄이기, 높이기 버튼을 클릭할 때마다
                     0.1씩 볼륨이 작아지도록 작업해 줍니다. 값을 정수로 출력하기 위해 10을 곱해 주었습니다.
                 </p>
+                <h3 class="t_tit3">2-7. 반복 버튼 작업하기</h3>
+                <div class="t_code">
+                    <pre><code class="language-js">musicRepeat.addEventListener("click", () => {
+    let getAttr = musicRepeat.getAttribute("class");
+
+    switch (getAttr) {
+        case "repeat":
+            musicRepeat.setAttribute("class", "repeat_one");
+            musicRepeat.setAttribute("title", "한곡 반복");
+            break;
+
+        case "repeat_one":
+            musicRepeat.setAttribute("class", "shuffle");
+            musicRepeat.setAttribute("title", "랜덤 반복");
+            break;
+
+        case "shuffle":
+            musicRepeat.setAttribute("class", "repeat");
+            musicRepeat.setAttribute("title", "전체 반복");
+            break;
+    }
+});
+                    </code></pre>
+                </div>
                 <h3 class="t_tit3">2-7. 어쩌고 작업하기</h3>
-                <div class="t_box"><pre><code class="language-js">// 뮤직 진행바
+                <div class="t_code"><pre><code class="language-js">// 뮤직 진행바
 musicAudio.addEventListener("timeupdate", (e) => {
     const currentTime = e.target.currentTime; // 음악 진행시간
     const duration = e.target.duration; // 오디오의 총 길이
@@ -390,28 +414,6 @@ musicProgress.addEventListener("click", (e) => {
     let songDuration = musicAudio.duration; // 오디오 전체 길이
 
     musicAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration; // 백분위로 나눈 숫자에 다시 전체 길이를 곱해서 현재 재생값으로 바꿈
-});
-
-// 반복 버튼 클릭
-musicRepeat.addEventListener("click", () => {
-    let getAttr = musicRepeat.getAttribute("class");
-
-    switch (getAttr) {
-        case "repeat":
-            musicRepeat.setAttribute("class", "repeat_one");
-            musicRepeat.setAttribute("title", "한곡 반복");
-            break;
-
-        case "repeat_one":
-            musicRepeat.setAttribute("class", "shuffle");
-            musicRepeat.setAttribute("title", "랜덤 반복");
-            break;
-
-        case "shuffle":
-            musicRepeat.setAttribute("class", "repeat");
-            musicRepeat.setAttribute("title", "전체 반복");
-            break;
-    }
 });
 
 // 오디오가 끝났을 때의 이벤트 : ended
