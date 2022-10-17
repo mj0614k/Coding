@@ -268,7 +268,7 @@ const musicProgressBar = musicWrap.querySelector(".progress .bar");
 const musicProgressCurrent = musicWrap.querySelector(".progress .timer .current");
 const musicProgressDuration = musicWrap.querySelector(".progress .timer .duration");
 </code></pre></div>
-                <p class="t_box">선택자가 너무 많으므로 한번에 정리하도록 하겠습니다.</p>
+                <p class="t_box">선택자를 개별적으로 정리하고 싶었지만... 너무 많으므로 한번에 정리하도록 하겠습니다.</p>
                 <h3 class="t_tit3">2-3. 음악 정보 입력하기</h3>
                 <div class="t_code">
                     <pre><code class="language-js">function loadMusic(num) {
@@ -285,6 +285,64 @@ musicAudio.volume = 0.5;</code></pre>
                     먼저, 배열에 저장된 각 음악의 제목, 아티스트, 이미지, 오디오 파일을 입력해 줍니다.
                     <br>각 오디오들의 볼륨은 0-1 사이로 지정할 수 있습니다. 초기 볼륨은 그 중간인 0.5로 작업해 주었습니다.
                 </div>
+                <h3 class="t_tit3">2-4. 재생 버튼 작업하기</h3>
+                <div class="t_code">
+                    <pre><code class="language-js">function playMusic() {
+    musicWrap.classList.add("paused");
+    musicPlay.setAttribute("id", "control-stop");
+    musicPlay.setAttribute("class", "stop");
+    musicAudio.play();
+}
+function pauseMusic() {
+    musicWrap.classList.remove("paused");
+    musicPlay.setAttribute("id", "control-play");
+    musicPlay.setAttribute("class", "play");
+    musicAudio.pause();
+}
+musicPlay.addEventListener("click", () => {
+    const isMusicPaused = musicWrap.classList.contains("paused");
+    isMusicPaused ? pauseMusic() : playMusic();
+});
+</code></pre>
+                </div>
+                <p class="t_box">먼저, 재생 버튼을 작업해 주도록 하겠습니다. playMusic() 함수는
+                    재생 버튼을 눌렀을 때, 정지 버튼이 나타나게 하고, musicWrap에 paused 클래스를 추가합니다.
+                    pauseMusic() 함수는 정지 버튼을 눌렀을 때, 재생 버튼이 나타나게 하고, paused 클래스를 제거합니다.
+                    즉, musicWrap의 클래스 중 paused가 있다면 음악이 재생 중이라는 의미입니다.<br>
+                    이후, 클릭 이벤트를 만들어 줍니다. 재생 버튼을 클릭했을 때, 음악이 재생 중이라면
+                    음악을 pauseMusic() 함수를 실행하고, 정지 중이라면 playMusic() 함수를 실행시킵니다.
+                </p>
+                <h3 class="t_tit3">2-5. 이전 곡 버튼, 다음 곡 버튼 작업하기</h3>
+                <div class="t_code">
+                    <pre><code class="language-js">function prevMusic() {
+    musicIndex == 1 ? (musicIndex = allMusic.length) : musicIndex--;
+    loadMusic(musicIndex);
+    playMusic();
+    playListMusic();
+}
+function nextMusic() {
+    musicIndex == allMusic.length ? (musicIndex = 1) : musicIndex++;
+    loadMusic(musicIndex);
+    playMusic();
+    playListMusic();
+}
+musicPrevBtn.addEventListener("click", () => {
+    prevMusic();
+});
+musicNextBtn.addEventListener("click", () => {
+    nextMusic();
+});
+</code></pre>
+                </div>
+                <p class="t_box">
+                    이전 버튼, 다음 버튼도 작업해 주도록 하겠습니다.
+                    <br>이전 버튼을 클릭하면 이전 음악이 재생되도록 하고,
+                    첫번째 음악에서 버튼을 클릭했을 때에는 마지막 음악이 재생되도록 작업해 주었습니다.<br>
+                    한편, 다음 버튼을 클릭했을 때에는 다음 음악이 재생되도록 하고,
+                    마지막 음악에서 버튼을 클릭했을 때에는 첫번째 음악이 재생되도록 작업해 주었습니다.<br>
+                    이후, loadMusic 함수에 매개변수를 전송해 주고, 클릭 이벤트를 만들어 줍니다.
+                </p>
+                <h3 class="t_tit3">2-6. 볼륨 조절 버튼 작업하기</h3>
                 <div class="t_code"><pre><code class="language-js">// 음악 볼륨
 musicVolDown.addEventListener("click", () => {
     musicAudio.volume -= 0.1;
@@ -305,40 +363,9 @@ musicVolUp.addEventListener("click", () => {
         musicVolUp.style.backgroundPosition = "0px";
     }
 })
-
-// 재생 버튼을 누르면 음악이 재생되고, 정지 버튼으로 바뀌게
-function playMusic() {
-    musicWrap.classList.add("paused");
-    musicPlay.setAttribute("id", "control-stop");
-    musicPlay.setAttribute("class", "stop");
-    musicAudio.play();
-}
-
-// 정지 버튼을 누르면 음악이 정지되고, 재생 버튼으로 바뀌게
-function pauseMusic() {
-    musicWrap.classList.remove("paused");
-    musicPlay.setAttribute("id", "control-play");
-    musicPlay.setAttribute("class", "play");
-    musicAudio.pause();
-}
-
-// 이전 곡 버튼
-function prevMusic() {
-    musicIndex == 1 ? (musicIndex = allMusic.length) : musicIndex--;
-    loadMusic(musicIndex); // 매개변수 전송
-    playMusic();
-    playListMusic();
-}
-
-// 다음 곡 버튼
-function nextMusic() {
-    musicIndex == allMusic.length ? (musicIndex = 1) : musicIndex++;
-    loadMusic(musicIndex); // 매개변수 전송
-    playMusic();
-    playListMusic();
-}
-
-// 뮤직 진행바
+</code></pre></div>
+                <h3 class="t_tit3">2-7. 어쩌고 작업하기</h3>
+                <div class="t_box"><pre><code class="language-js">// 뮤직 진행바
 musicAudio.addEventListener("timeupdate", (e) => {
     const currentTime = e.target.currentTime; // 음악 진행시간
     const duration = e.target.duration; // 오디오의 총 길이
@@ -419,24 +446,6 @@ musicAudio.addEventListener("ended", () => {
             break;
     }
     playListMusic();  // 재생목록 업데이트
-});
-
-// 플레이 버튼 클릭
-musicPlay.addEventListener("click", () => {
-    const isMusicPaused = musicWrap.classList.contains("paused"); // 음악이 재생 중
-    isMusicPaused ? pauseMusic() : playMusic();
-    // 버튼을 클릭했을 때 musicWrap에 paused(멈춰있다) 클래스가 있는지 확인하고,
-    // 있으면(멈춰있으면) 음악을 재생시키고, 없으면(재생중이면) 음악을 정지시킴
-});
-
-// 이전 곡 버튼 클릭
-musicPrevBtn.addEventListener("click", () => {
-    prevMusic();
-});
-
-// 다음 곡 버튼 클릭
-musicNextBtn.addEventListener("click", () => {
-    nextMusic();
 });
 
 // 뮤직 리스트 버튼 클릭

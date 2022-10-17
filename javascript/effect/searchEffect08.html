@@ -10,6 +10,11 @@
         <link href="https://webfontworld.github.io/score/SCoreDream.css" rel="stylesheet" />
         <link href="https://webfontworld.github.io/tmon/Tmon.css" rel="stylesheet" />
         <link rel="stylesheet" href="../assets/css/dracula.css" />
+        <style>
+            .search__answers, .search__missAnswers {
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <header id="header">
@@ -21,9 +26,9 @@
                     <li><a href="searchEffect03.html">3</a></li>
                     <li><a href="searchEffect04.html">4</a></li>
                     <li><a href="searchEffect05.html">5</a></li>
-                    <li class="active"><a href="searchEffect06.html">6</a></li>
+                    <li><a href="searchEffect06.html">6</a></li>
                     <li><a href="searchEffect07.html">7</a></li>
-                    <li><a href="searchEffect08.html">8</a></li>
+                    <li class="active"><a href="searchEffect08.html">8</a></li>
                 </ul>
             </nav>
         </header>
@@ -31,24 +36,43 @@
 
         <main id="main">
             <div class="search__wrap">
-                <span>sort(), reverse()를 이용하여 정렬하기</span>
-                <h1>CSS 속성 검색하기</h1>
-                <div class="search__click">
-                    <ul>
-                        <li><a href="#" class="btn1">반대로 정렬하기</a></li>
-                        <li><a href="#" class="btn2">오름차순 정렬하기</a></li>
-                        <li><a href="#" class="btn3">내림차순 정렬하기</a></li>
-                        <li><a href="#" class="btn4">알파벳순(a-z) 정렬하기</a></li>
-                        <li><a href="#" class="btn5">알파벳순(z-a) 정렬하기</a></li>
-                        <li><a href="#" class="btn6">랜덤 정렬하기</a></li>
-                    </ul>
+                <div class="search__audio">
+                    <span class="play">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 6.3706C15 4.65827 12.9884 3.73774 11.6926 4.85712L8.36317 7.73321C7.99989 8.04704 7.53583 8.21972 7.05576 8.21973L5.49998 8.21974C4.11928 8.21975 3 9.33903 3 10.7197V14.0127C3 15.3934 4.11929 16.5127 5.5 16.5127H7.0558C7.53587 16.5127 7.99993 16.6854 8.36322 16.9992L11.6926 19.8753C12.9884 20.9947 15 20.0741 15 18.3618V12.3662V6.3706Z" fill="#223547" stroke="#223547" stroke-width="1.5"/>
+                            <path d="M18 15.3667C18.6279 14.531 19 13.4923 19 12.3667C19 11.2411 18.6279 10.2024 18 9.3667" stroke="#223547" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M20 18.3667C21.2558 16.6954 22 14.6179 22 12.3667C22 10.1155 21.2558 8.03802 20 6.3667" stroke="#223547" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="stop">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 6.3706C14 4.65827 11.9884 3.73774 10.6926 4.85712L7.36317 7.73321C6.99989 8.04704 6.53583 8.21972 6.05576 8.21973L4.49998 8.21974C3.11928 8.21975 2 9.33903 2 10.7197V14.0127C2 15.3934 3.11929 16.5127 4.5 16.5127H6.0558C6.53587 16.5127 6.99993 16.6854 7.36322 16.9992L10.6926 19.8753C11.9884 20.9947 14 20.0741 14 18.3618V12.3662V6.3706Z" fill="#223547" stroke="#223547" stroke-width="1.5"/>
+                            <path d="M18 14.1215L22.2427 9.87891" stroke="#223547" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 9.87894L22.2427 14.1216" stroke="#223547" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <audio id="audio" src="../assets/audio/music_audio10.mp3" loop="loop"></audio>
+                </div>
+                <span>CSS 속성 검색 이벤트</span>
+                <h1><a href="searchEffect.html">2분 동안 CSS 속성 검색하기</a></h1>
+                <p class="desc">
+                    2분 동안 CSS 속성을 많이 검색하면 점수가 올라갑니다.<br>
+                    속성이 기억나지 않으면, 힌트 보기를 1회 이용할 수 있습니다.
+                </p>
+                <div class="time">
+                    <span>2:00</span>
+                </div>
+                <div class="search__box">
+                    <label for="search">검색하기</label>
+                    <input type="text" id="search" placeholder="CSS 속성을 입력해 주세요" />
+                    <div class="start">버튼을 누르면 게임이 시작됩니다.</div>
                 </div>
                 <div class="search__info">
                     <div>전체 속성 갯수 : <span class="num">0</span></div>
                 </div>
-                <div class="search__list">
-                    <ul class="line"></ul>
-                </div>
+                <div class="search__answers"></div>
+                <div class="search__missAnswers"></div>
+                <div class="search__list"></div>
             </div>
         </main>
         <!-- //main -->
@@ -981,72 +1005,103 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 { num: 382, name: "z-index", desc: " 엘리먼트의 겹쳐지는 순서를 지정한다." }
             ];
 
-            document.querySelector(".search__info .num").innerHTML = cssProperty.length;
+            const searchTime = document.querySelector(".time span");
+            const searchList = document.querySelector(".search__list");
+            const searchAnswers = document.querySelector(".search__answers");
+            const searchMissAnswers = document.querySelector(".search__missAnswers");
+            const searchStart = document.querySelector(".search__box .start");
+            const searchInput = document.querySelector("#search");
+            const searchAudio = document.querySelector("#audio");
 
-            const cssList = document.querySelector(".search__list .line");
-            // 데이터 출력하기
-            const updateList = () => {
-                let listCSS = "";
-                cssProperty.forEach((data, index) => {
-                    listCSS += `<li>${data.num}. ${data.name} : ${data.desc}</li>`;
-                });
-                cssList.innerHTML = listCSS;
+            let timeReamining = 120,  // 남은 시간
+                score = 0;      // 점수
+                answers = {};   // 새로운 정답
+
+            function updateList(){
+                cssProperty.forEach(data => {
+                    searchList.innerHTML += `<span>${data.name}</span>`;
+                })
             }
             updateList();
-            // 반대로 정렬 클릭
-            document.querySelector(".btn1").addEventListener("click", (e) => {
-                e.preventDefault();
-                cssProperty.reverse();
-                updateList();
-            });
-            // 오름차순 정렬 클릭
-            document.querySelector(".btn2").addEventListener("click", (e) => {
-                e.preventDefault();
-                cssProperty.sort((a,b) => {
-                    return a.num - b.num;
-                });
-                updateList();
-            });
-            // 내림차순 정렬 클릭
-            document.querySelector(".btn3").addEventListener("click", (e) => {
-                e.preventDefault();
-                cssProperty.sort((a,b) => {
-                    return b.num - a.num;
-                });
-                updateList();
-            });
-            // 알파벳 정렬(a~z) 클릭
-            document.querySelector(".btn4").addEventListener("click", (e) => {
-                e.preventDefault();
-                cssProperty.sort((a, b) => {
-                    let x = a.name;
-                    let y = b.name;
-                    return x.localeCompare(y);
-                });
-                updateList();
-            });
-            // 알파벳 정렬(z~a) 클릭
-            document.querySelector(".btn5").addEventListener("click", (e) => {
-                e.preventDefault();
-                cssProperty.sort((a, b) => {
-                    let x = a.name;
-                    let y = b.name;
-                    return y.localeCompare(x);
-                });
-                updateList();
-            });
-            // 랜덤 정렬
-            document.querySelector(".btn6").addEventListener("click", (e) => {
-                e.preventDefault();
-                for(let i=cssProperty.length-1; i>=0; i--){
-                    const randomIndex = Math.floor(Math.random() * (i+1));
-                    // console.log(randomIndex); 여기까지 하면 중복발생
-                    // [1,2,3] = [3,2,1]; // 객체구조분해할당
-                    [cssProperty[i], cssProperty[randomIndex]] = [cssProperty[randomIndex], cssProperty[i]]; // 중복 제거... 모르면 걍 외워...
-                    cssProperty.innerHTML += cssProperty[i]
+
+            // 게임 시작하기
+            function startQuiz(){
+                // 시작 버튼 숨기기
+                searchStart.style.display = "none";
+                searchList.style.display = "none";
+
+                // 시간 설정(1초에 한번씩 줄어듦)
+                setInterval(reduceTime, 1000);
+
+                // 속성 리스트 없애기
+
+                // 음악 추가
+                searchAudio.play();
+
+                // 점수 계산
+
+                // 정답 체크
+                checkAnswers();
+            }
+
+            // 인풋 체크하기
+            function checkInput(){
+                let input = event.currentTarget.value.trim().toLowerCase();  // 사용자가 입력한 값 가져오기
+
+                if(answers.hasOwnProperty(input)){
+                    answers[input] = true;
+
+                    // 정답 표시
+                    searchAnswers.style.display = "block";
+                    searchAnswers.innerHTML += `<span>${input}</span>`;
+
+                    // 정답 초기화
+                    searchInput.value = "";
                 }
-                updateList();
-            });
+            }
+
+            // 정답 체크하기 : 정답을 객체 파일로 만들기
+            function checkAnswers() {
+                    cssProperty.forEach(item => {
+                        let answer = item.name.trim().toLocaleLowerCase();
+                        answers[answer] = false;
+                    });
+                    console.log(answers);
+                }
+
+            // 시간 설정하기 0:00
+            function reduceTime(){
+                timeReamining--;
+
+                if(timeReamining == 0) endQuiz();
+
+                searchTime.innerText = displayTime();
+            }
+
+            // 시간 표시하기
+            function displayTime(){
+                if(timeReamining <= 0){
+                    return "0:00";
+                } else {
+                    let minutes = Math.floor(timeReamining / 60);
+                    let seconds = timeReamining % 60;
+
+                    // 초 단위가 한자리수일 때 0 추가
+                    if(seconds < 10) seconds = "0" + seconds;
+                    return minutes + ":" + seconds;
+                }
+            }
+
+            // 게임이 끝났을 때
+            function endQuiz(){
+                
+                // 시작 버튼 만들기
+                searchStart.style.display = "block";
+            }
+
+            // 버튼 이벤트
+            searchStart.addEventListener("click", startQuiz); // 게임 시작
+            searchInput.addEventListener("input", checkInput);
         </script>
     </body>
 </html>
