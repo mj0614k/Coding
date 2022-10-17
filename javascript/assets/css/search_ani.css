@@ -900,11 +900,12 @@
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: royalblue;
+    background: white;
+    border: 5px solid #223547;
     transform: scle3d(0, 0, 0);
     z-index: 1;
     align-items: center;
-    color: #fff;
+    color: #223547;
     font-weight: 300;
     justify-content: center;
     display: none;
@@ -916,17 +917,18 @@
 }
 
 .search__result .result {
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 16px;
     line-height: 1.4;
 }
 .search__result .restart {
-  background: royalblue;
+  background: #223547;
   color: #fff;
   border: 0;
   border-radius: 10px;
   font-size: 20px;
-  padding: 5px 10px;
+  padding: 5px 20px;
+  display: inline-block;
   margin-top: 10px;
   cursor: pointer;
 }

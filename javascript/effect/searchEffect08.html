@@ -780,6 +780,8 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
 
         <script src="../assets/js/highlight.min.js"></script>
         <script src="../assets/js/common.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
         <script>
             const cssProperty = [
@@ -1312,6 +1314,8 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
             // 버튼 이벤트
             searchStart.addEventListener("click", startQuiz); // 게임 시작
             searchInput.addEventListener("input", checkInput);
+
+            $(searchResultWrap).draggable();
         </script>
     </body>
 </html>

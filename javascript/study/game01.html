@@ -343,8 +343,7 @@ musicNextBtn.addEventListener("click", () => {
                     이후, loadMusic 함수에 매개변수를 전송해 주고, 클릭 이벤트를 만들어 줍니다.
                 </p>
                 <h3 class="t_tit3">2-6. 볼륨 조절 버튼 작업하기</h3>
-                <div class="t_code"><pre><code class="language-js">// 음악 볼륨
-musicVolDown.addEventListener("click", () => {
+                <div class="t_code"><pre><code class="language-js">musicVolDown.addEventListener("click", () => {
     musicAudio.volume -= 0.1;
     document.querySelector(".volume .nowvolume").innerHTML = Math.round(musicAudio.volume * 10);
     if(musicAudio.volume &lt; 0.1){
@@ -353,7 +352,6 @@ musicVolDown.addEventListener("click", () => {
         musicVolDown.style.backgroundPosition = "-24px";
     }
 })
-// 음악 볼륨
 musicVolUp.addEventListener("click", () => {
     musicAudio.volume += 0.1;
     document.querySelector(".volume .nowvolume").innerHTML = Math.round(musicAudio.volume * 10);
@@ -364,6 +362,9 @@ musicVolUp.addEventListener("click", () => {
     }
 })
 </code></pre></div>
+                <p class="t_box">
+                    볼륨을 조절할 수 있는 버튼도 만들어 줍니다.
+                </p>
                 <h3 class="t_tit3">2-7. 어쩌고 작업하기</h3>
                 <div class="t_box"><pre><code class="language-js">// 뮤직 진행바
 musicAudio.addEventListener("timeupdate", (e) => {
