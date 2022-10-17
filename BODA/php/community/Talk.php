@@ -63,14 +63,43 @@
                 </form>
             </div>
             <div class="board">
-                <h2 class="blind">게시판 보기 영역입니다.</h2>
+                <h2 class="blind">전시 토크 게시판 보기 영역입니다.</h2>
                 <div class="board__table">
                     <table>
                         <tbody>
 <?php
-    $myTalkID = $_GET['myTalkID'];
+    if(isset($_GET['page'])){
+        $page = (int)$_GET['page'];
+    } else {
+        $page = 1;
+    } 
 
-    $sql = "SELECT m.youNickName, t.regTime, t.TalkContents FROM myTalk t JOIN myMember m ON(m.myMemberID = b.myMemberID) WHERE b.myTalkID = {$myTalkID}";
+    $viewNum = 10;
+    $viewLimit = ($viewNum * $page) - $viewNum;
+
+    // 두 개의 테이블 join
+    $sql = "SELECT t.myTalkID, m.youNickName, t.regTime FROM myTalk t JOIN myMember m ON(t.myMemberID = m.myMemberID) ORDER BY myTalkID DESC LIMIT ${viewLimit}, ${viewNum}";
+    $result = $connect -> query($sql);
+
+    if($result){
+        $count = $result -> num_rows;
+
+        if($count > 0){
+            for($i=1; $i <= $count; $i++){
+                $info = $result -> fetch_array(MYSQLI_ASSOC);
+                echo "<tr><td class='comment comment_1'><div class='profile'></div><div class='contents'><div class='contents__top'>";
+                echo "<p class='name'><span class='ir'>작성자</span><span>".$info['youNickName']."</span></p>";
+                echo "<p class='date'><span class='ir'>작성일</span><span>| ".date('Y-m-d H:i', $info['regTime'])."</span></p>";
+                echo "<a href='#' class='modify'>| 수정</a><a href='#' class='remove'>| 삭제</a></div>";
+                echo "<div class='contents__bottom'><span>".$info['TalkContents']."</span></div></div>";
+                echo "</td></tr>";
+            }
+        }
+    }
+
+    $myTalkID = $_GET['myTalkID'];
+// 시험
+    $sql = "SELECT m.youNickName, t.TalkContents, t.regTime FROM myTalk t JOIN myMember m ON(m.myMemberID = t.myMemberID) WHERE t.myTalkID = {$myTalkID}";
     $result = $connect -> query($sql);
 
     if($result){

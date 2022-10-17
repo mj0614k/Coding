@@ -22,8 +22,8 @@
             </form>
             <div class="login__footer">
                 <div class="join__btn">
-                    <a href="../login/join.html">회원가입</a>
-                    <a href="../login/findID.html">아이디 찾기</a>
+                    <a href="../login/join.php">회원가입</a>
+                    <a href="../login/findID.php">아이디 찾기</a>
                     <a href="#">비밀번호 찾기</a>
                 </div>
             </div>
