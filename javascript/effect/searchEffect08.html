@@ -1182,6 +1182,7 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
             const searchScoreNow = document.querySelector(".search__info .now");
             const searchResult = document.querySelector(".search__result .result");
             const searchResultWrap = document.querySelector(".search__result");
+            const searchRestart = document.querySelector(".search__result .restart");
 
             let timeReamining = 5,  // 남은 시간
                 score = 0;      // 점수
@@ -1298,6 +1299,7 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 
                 // 시작 버튼 만들기
                 searchStart.style.display = "block";
+                searchStart.style.pointerEvents = "none";
 
                 // 오답 보여주기
                 missAnswers();
@@ -1311,9 +1313,24 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 searchResult.innerHTML = `게임이 종료되었습니다.<br>${cssProperty.length}개 중 ${score}개를 맞혔습니다.<br>점수는 ${point}점입니다.`;
             }
 
+            // 다시 시작하기
+            function restart(){
+                setTimeout(() => {
+                    searchResultWrap.classList.remove("show");
+                    timeReamining = 120;  // 시간
+                    score = 0;
+                    searchStart.style.display = "none";  // 버튼 숨김
+                    searchStart.style.pointerEvents = "all";
+                    searchList.style.display = "none";
+                    audio();
+                    startQuiz();
+                }, 1000)
+            }
+
             // 버튼 이벤트
             searchStart.addEventListener("click", startQuiz); // 게임 시작
             searchInput.addEventListener("input", checkInput);
+            searchRestart.addEventListener("click", restart); 
 
             $(searchResultWrap).draggable();
         </script>

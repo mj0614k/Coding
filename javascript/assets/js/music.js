@@ -102,21 +102,11 @@ musicAudio.volume = 0.5;
 musicVolDown.addEventListener("click", () => {
     musicAudio.volume -= 0.1;
     document.querySelector(".volume .nowvolume").innerHTML = Math.round(musicAudio.volume * 10);
-    if(musicAudio.volume < 0.1){
-        musicVolDown.style.backgroundPosition = "-48px";
-    } else {
-        musicVolDown.style.backgroundPosition = "-24px";
-    }
 })
 // 음악 볼륨
 musicVolUp.addEventListener("click", () => {
     musicAudio.volume += 0.1;
     document.querySelector(".volume .nowvolume").innerHTML = Math.round(musicAudio.volume * 10);
-    if(musicAudio.volume > 9){
-        musicVolUp.style.backgroundPosition = "-72px";
-    } else {
-        musicVolUp.style.backgroundPosition = "0px";
-    }
 })
 
 // 재생 버튼을 누르면 음악이 재생되고, 정지 버튼으로 바뀌게
