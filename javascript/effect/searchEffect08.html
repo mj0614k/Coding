@@ -1004,6 +1004,7 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 { num: 381, name: "writing-mode", desc: " 텍스트의 선이 수평 또는 수직으로 배치 여부 속성 집합뿐만 아니라 블록이 진행되는 방향." },
                 { num: 382, name: "z-index", desc: " 엘리먼트의 겹쳐지는 순서를 지정한다." }
             ];
+            document.querySelector(".search__info span").innerHTML = cssProperty.length;
 
             const searchTime = document.querySelector(".time span");
             const searchList = document.querySelector(".search__list");
@@ -1012,6 +1013,8 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
             const searchStart = document.querySelector(".search__box .start");
             const searchInput = document.querySelector("#search");
             const searchAudio = document.querySelector("#audio");
+            const musicPlay = document.querySelector(".search__audio .play");
+            const musicStop = document.querySelector(".search__audio .stop");
 
             let timeReamining = 120,  // 남은 시간
                 score = 0;      // 점수
@@ -1036,19 +1039,49 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 // 속성 리스트 없애기
 
                 // 음악 추가
-                searchAudio.play();
+                audio();
 
                 // 점수 계산
 
+                // 오답 보여주기
+                missAnswers();
+
                 // 정답 체크
                 checkAnswers();
+            }
+
+            // 음악 재생
+            function audio(){
+                musicStop.addEventListener("click", () => {
+                    musicStop.style.display = "none";
+                    musicPlay.style.display = "block";
+                    searchAudio.play();
+                })
+                musicPlay.addEventListener("click", () => {
+                    musicPlay.style.display = "none";
+                    musicStop.style.display = "block";
+                    searchAudio.pause();
+                })
+                searchAudio.play();
+
+                // searchAudioBtn.addEventListener("click", () => {
+                //     searchAudioBtn.classList.toggle("playing");
+
+                //     if(searchAudioBtn.classList.contains("playing")){
+                //         searchAudio.play();
+
+                //     } else {
+                //         searchAudio.pause();
+                //     }
+                // })
+                // searchAudio.play();
             }
 
             // 인풋 체크하기
             function checkInput(){
                 let input = event.currentTarget.value.trim().toLowerCase();  // 사용자가 입력한 값 가져오기
 
-                if(answers.hasOwnProperty(input)){
+                if(answers.hasOwnProperty(input) && !answers[input]){
                     answers[input] = true;
 
                     // 정답 표시
@@ -1062,12 +1095,19 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
 
             // 정답 체크하기 : 정답을 객체 파일로 만들기
             function checkAnswers() {
-                    cssProperty.forEach(item => {
-                        let answer = item.name.trim().toLocaleLowerCase();
-                        answers[answer] = false;
-                    });
-                    console.log(answers);
-                }
+                cssProperty.forEach(item => {
+                    let answer = item.name.trim().toLocaleLowerCase();
+                    answers[answer] = false;
+                });
+            }
+                
+            // 오답 보여주기
+            function missAnswers(){
+                // searchMissAnswers.style.display = "block";
+                // if(!answers[input]){
+                //     searchMissAnswers.innerHTML += `<span>${data.name}</span>`
+                // }
+            }
 
             // 시간 설정하기 0:00
             function reduceTime(){
@@ -1097,6 +1137,13 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
                 
                 // 시작 버튼 만들기
                 searchStart.style.display = "block";
+
+                // 오답 보여주기
+
+
+                // 음악 끄기
+                searchAudio.pause();
+                searchAudioBtn.classList.remove("playing");
             }
 
             // 버튼 이벤트

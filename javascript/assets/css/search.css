@@ -341,8 +341,8 @@ li {
     cursor: pointer;
     margin-bottom: 10px;
 }
-.search__audio {
-
+.search__audio .play {
+    display: none;
 }
 
 @media (max-width: 1360px) {
