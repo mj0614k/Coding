@@ -1,21 +1,22 @@
 <!-- CSS -->
-<link rel="stylesheet" href="../assets/css/fonts.css" />
-<link rel="stylesheet" href="../assets/css/reset.css" />
-<link rel="stylesheet" href="../assets/css/common.css" />
+<link rel="stylesheet" href="../../html/assets/css/fonts.css" />
+<link rel="stylesheet" href="../../html/assets/css/reset.css" />
+<link rel="stylesheet" href="../../html/assets/css/common.css" />
 
-<link rel="stylesheet" href="../assets/css/header.css" />
-<link rel="stylesheet" href="../assets/css/login.css">
-<link rel="stylesheet" href="../assets/css/loginPopup.css">
-<link rel="stylesheet" href="../assets/css//agree.css">
+<link rel="stylesheet" href="../../html/assets/css/header.css" />
+<link rel="stylesheet" href="../../html/assets/css/login.css">
+<link rel="stylesheet" href="../../html/assets/css/loginPopup.css">
+<link rel="stylesheet" href="../../html/assets/css//agree.css">
 
-<link rel="stylesheet" href="../assets/css/notice.css">
-<link rel="stylesheet" href="../assets/css/Review.css">
-<link rel="stylesheet" href="../assets/css/ReviewView.css">
-<link rel="stylesheet" href="../assets/css/talk.css">
+<link rel="stylesheet" href="../../html/assets/css/notice.css">
+<link rel="stylesheet" href="../../html/assets/css/Review.css">
+<link rel="stylesheet" href="../../html/assets/css/ReviewView.css">
+<link rel="stylesheet" href="../../html/assets/css/ReviewWrite.css">
+<link rel="stylesheet" href="../../html/assets/css/talk.css">
 
-<link rel="stylesheet" href="../assets/css/footer.css">
+<link rel="stylesheet" href="../../html/assets/css/footer.css">
 
-<link rel="stylesheet" href="../assets/css/swiper.css">
+<link rel="stylesheet" href="../../html/assets/css/swiper.css">
 <!-- //CSS -->
 
 <!-- SEO -->

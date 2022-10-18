@@ -385,9 +385,9 @@ musicVolUp.addEventListener("click", () => {
                 </p>
                 <h3 class="t_tit3">2-8. 진행바 작업하기</h3>
                 <div class="t_code"><pre><code class="language-js">musicAudio.addEventListener("timeupdate", (e) => {
-    const currentTime = e.target.currentTime; // 음악 진행시간
-    const duration = e.target.duration; // 오디오의 총 길이
-    let progressWidth = (currentTime / duration) * 100; // 전체 길이에서 현재 진행되는 시간을 백분위로 나눔
+    const currentTime = e.target.currentTime;
+    const duration = e.target.duration;
+    let progressWidth = (currentTime / duration) * 100;
     musicProgressBar.style.width = `${progressWidth}%`;</code></pre></div>
                 <p class="t_box">
                     음악의 진행 상태를 나타내는 바를 작업해 보도록 하겠습니다. timeupdate 이벤트를 사용합니다.
@@ -395,37 +395,38 @@ musicVolUp.addEventListener("click", () => {
                     progressWidth는 전체 길이에서 현재 진행되는 시간을 백분위로 나눈 것입니다. 그리고,
                     바의 길이를 설정해 줍니다.
                 </p>
-<div class="t_code"><pre><code class="language-js">// 전체 시간 : 오디오 이벤트 : 미디어의 현재 재생 위치에 있는 프레임이 로드를 완료하면 발생한다.
-    musicAudio.addEventListener("loadeddata", () => {
+<div class="t_code"><pre><code class="language-js">    musicAudio.addEventListener("loadeddata", () => {
         let audioDuration = musicAudio.duration;
         let totalMin = Math.floor(audioDuration / 60); // 전체 시간을 분 단위로 쪼갬
         let totalSec = Math.floor(audioDuration % 60); // 남은 초 저장
         if (totalSec &lt; 10) totalSec = `0${totalSec}`; // 초가 10보다 작으면 0을 붙여서 두 자리수로 만들어줌 ex) 01, 02...
         musicProgressDuration.innerText = `${totalMin}:${totalSec}`; // 완성된 시간 문자열을 출력
-    });</code></pre></div>
-<div class="t_code"><pre><code class="language-js">// 진행 시간
+    });
     let currentMin = Math.floor(currentTime / 60);
     let currentSec = Math.floor(currentTime % 60);
     if (currentSec &lt; 10) currentSec = `0${currentSec}`;
     musicProgressCurrent.innerText = `${currentMin}:${currentSec}`;
-});
-
-// 진행바 클릭
-musicProgress.addEventListener("click", (e) => {
-    // 보통 자기 자신을 가리킬 때 this.를 쓰지만 화살표 함수는 안됑
+});</code></pre></div>
+    <p class="t_box">
+        <i>lodeddata</i>는 오디오 이벤트로, 미디어의 현재 재생 위치에 있는 프레임이 로드를 완료하면 발생하게 됩니다. 
+    오디오의 재생 시간을 구했다면, innerText로 출력해 줍니다.</p>
+<div class="t_code"><pre><code class="language-js">musicProgress.addEventListener("click", (e) => {
     let progressWidth = musicProgress.clientWidth; // 진행바 전체 길이
     let clickedOffsetX = e.offsetX; // 진행바 기준 측정되는 x 좌표값
     let songDuration = musicAudio.duration; // 오디오 전체 길이
 
-    musicAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration; // 백분위로 나눈 숫자에 다시 전체 길이를 곱해서 현재 재생값으로 바꿈
+    musicAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration;
+    // 백분위로 나눈 숫자에 다시 전체 길이를 곱해서 현재 재생값으로 바꿈
 });
 </code></pre></div>
 <p class="t_box">
-
+    진행바를 기준으로 측정되는 x 좌표값을 구한 뒤, 진행바를 클릭하면 해당하는 부분을 재생하도록
+    클릭 이벤트를 만들어 줍니다.<br>
+    이 때, 보통 함수 안에서 자기 자신을 다시 가리킬 때는 this를 사용하지만, 화살표 함수에서는 this를
+    사용할 수 없기 때문에 musicProgress를 그대로 선택해 주어야 합니다.
 </p>
-<div class="t_code"><pre><code class="language-js">
-// 오디오가 끝났을 때의 이벤트 : ended
-musicAudio.addEventListener("ended", () => {
+<h3 class="t_tit3">2-9. ended 이벤트 작업하기</h3>
+<div class="t_code"><pre><code class="language-js">musicAudio.addEventListener("ended", () => {
     let getAttr = musicRepeat.getAttribute("class");
 
     switch (getAttr) {
@@ -438,7 +439,6 @@ musicAudio.addEventListener("ended", () => {
         case "shuffle":
             let randomIndex = Math.floor(Math.random() * allMusic.length + 1); // 랜덤 인덱스 생성
 
-            // while: 무조건 한 번은 실행 , do while: 조건에 맞을 때만 실행
             do {
                 randomIndex = Math.floor(Math.random() * allMusic.length + 1);
             } while (musicIndex == randomIndex);
@@ -448,19 +448,27 @@ musicAudio.addEventListener("ended", () => {
             break;
     }
     playListMusic();  // 재생목록 업데이트
-});
+});</code></pre></div>
+    <p class="t_box">
+        한 음악이 끝났을 때의 이벤트를 작업해 줍니다. 2-7의 반복 버튼과 이어집니다. getAttribute로 현재
+        버튼(전체 반복, 한곡 반복, 랜덤 반복)을 확인하고, 사용자가 선택한 반복 방식에 맞추어 다음 인덱스로 넘어갑니다.
 
-// 뮤직 리스트 버튼 클릭
-musicListBtn.addEventListener("click", () => {
+        <br>참고로, while문과 do while문의 차이는, while문은 무조건 한 번은 실행하고, do while문은 조건에 맞을 때만
+        실행시킨다는 것입니다.
+    </p>
+<h3 class="t_tit3">2-10. 뮤직 리스트 작업하기</h3>
+<div class="t_code"><pre><code class="language-js">musicListBtn.addEventListener("click", () => {
     musicList.classList.add("show");
 });
-
 musicListCloseBtn.addEventListener("click", () => {
     musicList.classList.remove("show");
 });
-
-// 뮤직 리스트 구현하기
-for (let i = 0; i &lt; allMusic.length; i++) {
+</code></pre></div>
+<p class="t_box">마지막으로, 뮤직 리스트를 작업해 봅시다. 우선, 뮤직 리스트 버튼을 클릭하면 뮤직 리스트가 나타나고,
+    닫기 버튼을 클릭하면 뮤직 리스트가 숨겨지도록
+    클릭 이벤트를 만들어 줍니다.
+</p>
+<div class="t_code"><pre><code class="language-js">for (let i = 0; i &lt; allMusic.length; i++) {
     let li = `
         &lt;li data-index="${i + 1}">
             &lt;strong>${allMusic[i].name}&lt;/strong>
@@ -469,17 +477,11 @@ for (let i = 0; i &lt; allMusic.length; i++) {
             &lt;span class="audio-duration" id="${allMusic[i].audio}">재생시간&lt;/span>
         &lt;/li>
     `;
-
-    // 해석하는 방법에 차이가 있음
-    // musicListUl.innerHTML += li; 이렇게 하면 마지막곡만 재생시간 나옴
-    // +를 쓰면 값을 하나로 인식해서 마지막 값만 알아먹음
-    musicListUl.insertAdjacentHTML("beforeend", li); // 이렇게 해야 다 나옴!! 누적됨!!
-    // insertAdjacentHTML
-    // beforeend : element 안에 가장 마지막 child
-
-    // 리스트에 재생 시간 불러오기
-    let liAudioDuration = musicListUl.querySelector(`#${allMusic[i].audio}`); // 리스트에서 시간을 표시할 선택자를 가져옴
-    let liAudio = musicListUl.querySelector(`.${allMusic[i].audio}`); // 리스트에서 오디오를 가져옴
+    musicListUl.insertAdjacentHTML("beforeend", li);</code></pre></div>
+            <p class="t_box">for문을 사용하여 모든 음악들을 뮤직 리스트에 추가해 줍니다. <i>beforeend</i>는 element 안에 가장 마지막 child로 추가하라는 의미입니다.
+            </p>
+<div class="t_code"><pre><code class="language-js">    let liAudioDuration = musicListUl.querySelector(`#${allMusic[i].audio}`);
+    let liAudio = musicListUl.querySelector(`.${allMusic[i].audio}`); 
     liAudio.addEventListener("loadeddata", () => {
         let audioDuration = liAudio.duration; // 오디오 전체 길이
         let totalMin = Math.floor(audioDuration / 60); // 전체 길이를 분 단위로 쪼갬
@@ -489,42 +491,48 @@ for (let i = 0; i &lt; allMusic.length; i++) {
         liAudioDuration.setAttribute("data-duration", `${totalMin}:${totalSec}`); // 속성에 오디오 길이 기록
     });
 }
-
-// 리스트를 클릭하면 음악 재생 : 을 위한 준비(클릭하면 clicked함수가 실행되게끔)
-function playListMusic(){
+</code></pre></div>
+<p class="t_box">리스트에 재생 시간도 불러와 줍니다. 오디오에 loadeddata 이벤트를 설정하고,
+    2-8과 같이 재생 시간을 출력해 줍니다.
+</p>
+<div class="t_code"><pre><code class="language-js">function playListMusic(){
     const musicListAll = musicListUl.querySelectorAll("li");  // 뮤직 리스트 목록
     for(let i=0; i&lt;musicListAll.length; i++){
         let audioTag = musicListAll[i].querySelector(".audio-duration");
-
-        // 클릭하면 playing
         if(musicListAll[i].classList.contains("playing")){
             musicListAll[i].classList.remove("playing");                // 클래스가 존재하면 삭제
             let adDuration = audioTag.getAttribute("data-duration");    // 오디오 길이값 가져오기
             audioTag.innerText = adDuration;                            // 오디오 길이값 출력
         }
-
         if(musicListAll[i].getAttribute("data-index") == musicIndex){   // 현재 뮤직 인덱스와 리스트 인덱스 값이 같으면
             musicListAll[i].classList.add("playing");                   // 클래스 playing 추가
             audioTag.innerText = "Playing"                              // 재생중인 음악에 멘트 추가
         }
-
         musicListAll[i].setAttribute("onclick", "clicked(this)");
     }
 }
-
-// 리스트를 클릭하면 음악 재생 : 이게 찐
-function clicked(el){
+</code></pre></div>
+<p class="t_box">이제, 리스트에 있는 음악을 클릭하면 해당 음악이 재생되도록 작업해 봅시다.
+    위 과정은 음악을 클릭하면 playing 클래스를 추가하고, 뮤직 리스트에서 
+    재생 시간 대신 멘트를 출력하도록 만드는 과정입니다.<br>
+    각각의 음악을 클릭하면 clicked 함수가 실행되도록 작업해 줍니다.
+</p>
+<div class="t_code"><pre><code class="language-js">function clicked(el){
     let getLiIndex = el.getAttribute("data-index");  // 클릭한 리스트의 인덱스값 저장
     musicIndex = getLiIndex;                         // 클릭한 인덱스값을 뮤직 인덱스에 저장
     loadMusic(musicIndex);                           // 해당 인덱스 뮤직을 로드
     playMusic();                                     // 음악 재생
     playListMusic();                                 // 음악 리스트 업데이트
 }
-
-window.addEventListener("load", () => {
-    loadMusic(musicIndex);  // 음악 재생
-    playListMusic();  // 리스트 초기화(리스트를 클릭하면 음악 재생)
+</code></pre></div>
+<p class="t_box">음악을 클릭했을 때 실행되는 clicked 함수를 만들어 줍니다.
+</p>
+<h3 class="t_tit3">2-11. 함수 실행시키기</h3>
+<div class="t_code"><pre><code class="language-js">window.addEventListener("load", () => {
+    loadMusic(musicIndex);
+    playListMusic();
 });</code></pre></div>
+<p class="t_box">이제, 음악을 재생하는 loadMusic(), 리스트를 초기화하는 playListMusic() 함수를 실행시켜주면 끝입니다.</p>
                 <hr />
                 <h2 class="t_tit2">결과</h2>
                 <div class="t_iframe" style="min-height: 800px; padding-top: 0px">

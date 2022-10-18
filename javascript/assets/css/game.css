@@ -259,17 +259,17 @@ body {
 }
 
 .modal__cont .cont .iframe {
-    position: absolute;
-    width: 200%;
+    /* position: absolute; */
+    width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 .modal__cont .cont .iframe iframe {
-    width: calc(100% + 120px);
-    position: relative;
+    width: 100%;
+    /* position: relative;
     left: -225px;
-    top: -60px;
+    top: -60px; */
     height: 100vh;
     border: none;
 }

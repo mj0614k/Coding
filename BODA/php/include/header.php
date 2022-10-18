@@ -1,7 +1,7 @@
 <header id="header" class="header__container">
     <div class="header__area">
         <div class="header__logo">
-            <a href="#">BODA</a>
+            <a href="../main/main.php">BODA</a>
         </div>
         <div class="header__menu">
             <ul>
@@ -28,7 +28,7 @@
                 <li>
                     <a class="main__menu" href="#">COMMUNITY</a>
                     <ul class="sub blind">
-                        <li><a href="../community/bestReview.php">REVIEW</a></li>
+                        <li><a href="../community/Review.php">REVIEW</a></li>
                         <li><a href="../community/Talk.php">TALK</a></li>
                     </ul>
                 </li>
@@ -52,19 +52,15 @@
             <svg class="ham" width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d ="M6.25 5.94922H33.75M6.25 15.8979H33.7 5M6.25 25.8467H33.75"stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-
             <svg class="ham__close blind" width="25" height="28" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 31L27.9483 1M27.9483 31L1 1" stroke="#323232" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-
             <svg class="ham__mobile" width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d ="M6.25 5.94922H33.75M6.25 15.8979H33.7 5M6.25 25.8467H33.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-
             <svg class="ham__mobile__close blind" width="25" height="28" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 31L27.9483 1M27.9483 31L1 1" stroke="#323232" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-
             <div class="smallmenu blind">
                 <li><a href="#">LOGIN</a></li>
                 <li><a href="../login/agree.php">SIGN UP</a></li>
@@ -89,7 +85,7 @@
                 </li>
                 <li><a href="#">COMMUNITY</a>
                     <ul>
-                        <li><a href="../community/bestReview.php">REVIEW</a></li>
+                        <li><a href="../community/Review.php">REVIEW</a></li>
                         <li><a href="../community/Talk.php">TALK</a></li>
                     </ul>
                 </li>

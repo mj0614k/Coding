@@ -137,21 +137,3 @@ button {
 	line-height: 0;
 	text-indent: -9999px;
 }
-
-fieldset select:focus{
-    outline: none;
-}
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button,
-input::-webkit-search-results-button,
-input::-webkit-search-results-decoration{
-    display:none;
-}
-fieldset input:focus {
-    outline: none;
-}
-fieldset input::placeholder {
-    font-family: "scoredream";
-    font-weight: 300;
-    font-size: 16px;
-}

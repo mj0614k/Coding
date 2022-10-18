@@ -7,20 +7,8 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <link rel="stylesheet" href="../../html/assets/css/fonts.css" />
-        <link rel="stylesheet" href="../../html/assets/css/reset.css" />
-        <link rel="stylesheet" href="../../html/assets/css/common.css" />
-
-        <link rel="stylesheet" href="../../html/assets/css/header.css" />
-        <link rel="stylesheet" href="../../html/assets/css/login.css">
-        <link rel="stylesheet" href="../../html/assets/css/loginPopup.css">
-        <link rel="stylesheet" href="../../html/assets/css/mainHeader.css">
-        <link rel="stylesheet" href="../../html/assets/css/Review.css" />
-        <link rel="stylesheet" href="../../html/assets/css/footer.css">
+        <!-- CSS -->
+        <?php include "../include/link.php" ?>
         <title>ALL REVIEW</title>
     </head>
     <body>
@@ -42,10 +30,10 @@
                     <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 17V11H12V17H17V9H20L10 0L0 9H3V17H8Z" fill="#323232"/>
                     </svg>
-                    </a></span><span>ALL REVIEW</span></div>
+                    </a></span><span>REVIEW</span></div>
                 <div class="menu">
-                    <li><a href="bestReview.html">BEST REVIEW</a></li>
-                    <li><a href="allReview.html" class="active">ALL REVIEW</a></li>
+                    <li><a href="Review.php" class="active">REVIEW</a></li>
+                    <li><a href="Talk.php">Talk</a></li>
                 </div>
             </div>
             <section class="mid__container">
@@ -93,21 +81,21 @@
                 $info = $result -> fetch_array(MYSQLI_ASSOC);
                 echo "<tr>";
                 echo "<td>".$info['myReviewID']."</td>";
-                echo "<td><a href='allReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
+                echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
                 echo "<td>".$info['youNickName']."</td>";
                 echo "<td>".date('Y-m-d', $info['regTime'])."</td>";
                 echo "<td>".$info['ReviewView']."</td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
+            echo "<tr><td colspan='6'>게시글이 없습니다.</td></tr>";
         }
     }
 ?>
 
                                 <!-- <tr>
                                     <td>10</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -115,7 +103,7 @@
                                 </tr>
                                 <tr>
                                     <td>9</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -123,7 +111,7 @@
                                 </tr>
                                 <tr>
                                     <td>8</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -131,7 +119,7 @@
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -139,7 +127,7 @@
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -147,7 +135,7 @@
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -155,7 +143,7 @@
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -163,7 +151,7 @@
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -171,7 +159,7 @@
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -179,7 +167,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
                                     <td>123</td>
@@ -188,7 +176,7 @@
                             </tbody>
                         </table>
                         <div class="board__btn">
-                            <a href="ReviewWrite.html">
+                            <a href="ReviewWrite.php">
                                 글쓰기
                             </a>
                         </div>
@@ -213,68 +201,68 @@
                             <tbody>
                                 <tr>
                                     <td>10</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 이 시대 최고의 전시</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 이 시대 최고의 전시</a></td>
                                     <td>둘리</td>
                                     <td>2.4K / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>9</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고 저쩌고 울랄라랄라라</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고 저쩌고 울랄라랄라라</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>8</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td><a href="allreviewView.html">진짜 멋진 포토존 어쩌고</a></td>
+                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>123 / 1.1K</td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="board__btn">
-                            <a href="ReviewWrite.html">
+                            <a href="ReviewWrite.php">
                                 글쓰기
                             </a>
                         </div>
@@ -349,7 +337,7 @@
         <?php include "../include/footer.php" ?>
         <!-- //footer -->
 
-        <script src="../assets/js/headermenu.js"></script>
-        <script src="../assets/js/loginpopup.js"></script>
+        <script src="../../html/assets/js/headermenu.js"></script>
+        <script src="../../html/assets/js/loginpopup.js"></script>
     </body>
 </html>

@@ -12,17 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXHIBITION TALK</title>
-
-    <!-- css -->
-    <link rel="stylesheet" href="../../html/assets/css/fonts.css" />
-        <link rel="stylesheet" href="../../html/assets/css/reset.css" />
-        <link rel="stylesheet" href="../../html/assets/css/common.css" />
-
-        <link rel="stylesheet" href="../../html/assets/css/header.css" />
-        <link rel="stylesheet" href="../../html/assets/css/login.css">
-        <link rel="stylesheet" href="../../html/assets/css/loginPopup.css">
-        <link rel="stylesheet" href="../../html/assets/css/talk.css" />
-        <link rel="stylesheet" href="../../html/assets/css/footer.css">
+    <!-- CSS -->
+    <?php include "../include/link.php" ?>
 </head>
 
 <body>
@@ -398,4 +389,3 @@
     <?php include "../include/script.php" ?>
 </body>
 </html>
-

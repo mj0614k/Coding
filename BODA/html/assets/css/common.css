@@ -2,6 +2,7 @@
     max-width: 1200px;
     padding: 0 20px;
     margin: 180px auto 120px auto;
+    transition: all 0.2s ease-in-out;
 }
 
 .top__container {
@@ -18,26 +19,7 @@
 
 /* 미디어쿼리 */
 @media (max-width:960px) {
-    .container,
-    .top__container,
-    .mid__container {
+    .container {
         width: 90%;
     }
-}
-
-#skip {
-    position: relative;
-    z-index: 100000;
-}
-#skip a {
-    background: #000;
-    color: #fff;
-    position: absolute;
-    padding: 20px 40px;
-    left: -400px;
-    top: 5px;
-}
-#skip a:active,
-#skip a:focus {
-    left: 5px;
 }
