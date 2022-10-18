@@ -22,7 +22,7 @@
                 position: relative;
                 width: 800px;
                 height: 520px;
-                /* overflow: hidden; */
+                overflow: hidden;
             }
             .slider__inner {
                 /* 이미지를 감싸고 있는 부모(움직이는 부분) */
@@ -449,6 +449,7 @@
                 sliderDot.innerHTML = dotIndex;
                 sliderDot.firstElementChild.classList.add("active");
             }
+            const dotActive = document.querySelectorAll(".slider__dot .dot");
 
             function gotoSlider(index){
                 sliderInner.classList.add("transition");
@@ -475,10 +476,14 @@
             sliderBtnPrev.addEventListener("click", () => {
                 let prevIndex = currentIndex - 1;
                 gotoSlider(prevIndex);
+                dotActive.forEach(el => el.classList.remove("active"));
+                dotActive[prevIndex].classList.add("active");
             });
             sliderBtnNext.addEventListener("click", () => {
                 let nextIndex = currentIndex + 1;
                 gotoSlider(nextIndex);
+                dotActive.forEach(el => el.classList.remove("active"));
+                dotActive[nextIndex].classList.add("active");
             });
             
             const sliderBtnPlay = document.querySelector(".slider__dot .play"); // 플레이 버튼
@@ -493,10 +498,17 @@
                 sliderBtnPlay.style.display = "inline-block";
                 stopPlay();
             });
+            document.querySelectorAll(".slider__dot .dot").forEach((dot, index)=>{
+                dot.addEventListener("click", ()=>{
+                    dotActive.forEach(el => el.classList.remove("active"));
+                    dotActive[index].classList.add("active");
+                    gotoSlider(index);
+                })
+            })
+            
             // sliderInner.addEventListener("mouseenter", stopPlay);
             // sliderInner.addEventListener("mouseleave", autoPlay);
             sliderInner.addEventListener("transitionend", checkIndex);
-
         </script>
     </body>
 </html>

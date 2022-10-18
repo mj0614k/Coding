@@ -68,7 +68,7 @@ const MusicArtist = musicWrap.querySelector(".music__view .title p");
 const musicAudio = musicWrap.querySelector("#main-audio");
 
 // 버튼
-const musicPlay = musicWrap.querySelector("#control-play");
+const musicPlayBtn = musicWrap.querySelector("#control-play");
 const musicPrevBtn = musicWrap.querySelector("#control-prev");
 const musicNextBtn = musicWrap.querySelector("#control-next");
 const musicRepeat = musicWrap.querySelector("#control-repeat");
@@ -112,16 +112,16 @@ musicVolUp.addEventListener("click", () => {
 // 재생 버튼을 누르면 음악이 재생되고, 정지 버튼으로 바뀌게
 function playMusic() {
     musicWrap.classList.add("paused");
-    musicPlay.setAttribute("id", "control-stop");
-    musicPlay.setAttribute("class", "stop");
+    musicPlayBtn.setAttribute("id", "control-stop");
+    musicPlayBtn.setAttribute("class", "stop");
     musicAudio.play();
 }
 
 // 정지 버튼을 누르면 음악이 정지되고, 재생 버튼으로 바뀌게
 function pauseMusic() {
     musicWrap.classList.remove("paused");
-    musicPlay.setAttribute("id", "control-play");
-    musicPlay.setAttribute("class", "play");
+    musicPlayBtn.setAttribute("id", "control-play");
+    musicPlayBtn.setAttribute("class", "play");
     musicAudio.pause();
 }
 
@@ -225,7 +225,7 @@ musicAudio.addEventListener("ended", () => {
 });
 
 // 플레이 버튼 클릭
-musicPlay.addEventListener("click", () => {
+musicPlayBtn.addEventListener("click", () => {
     const isMusicPaused = musicWrap.classList.contains("paused"); // 음악이 재생 중
     isMusicPaused ? pauseMusic() : playMusic();
     // 버튼을 클릭했을 때 musicWrap에 paused(멈춰있다) 클래스가 있는지 확인하고,

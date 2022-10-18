@@ -430,6 +430,8 @@
                 dotActive[currentIndex].classList.add("active");
                 // if(currentIndex == 0)
             }
+            
+            
 
             function checkIndex(){
                 sliderInner.classList.remove("transition");
@@ -449,6 +451,15 @@
                     dotActive[currentIndex].classList.add("active");
                 }
             }
+            dotActive.forEach((dot, index) => {
+                dot.addEventListener("click", () => {
+                    sliderInner.style.left = -(sliderWidth) * (index+1)+ "px";
+                    currentIndex == index;
+                    gotoSlider(index);
+                    dotActive.forEach(el => el.classList.remove("active"));
+                    dotActive[index].classList.add("active");
+                })
+            })
 
             sliderBtnPrev.addEventListener("click", () => {
                 gotoSlider(-1);
