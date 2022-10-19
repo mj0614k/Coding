@@ -20,6 +20,7 @@
     </div>
 
     <?php include "../include/header.php" ?>
+    <?php include "../login/login.php" ?>
     <!-- //header -->
     
     <main id="infoType" class="info__wrap agree">

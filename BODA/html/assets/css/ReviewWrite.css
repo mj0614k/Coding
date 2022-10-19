@@ -89,7 +89,6 @@ table {
 
 .table__bottom {
 	display: flex;
-	justify-content: flex-end;
 }
 
 .table__bottom .icon {
