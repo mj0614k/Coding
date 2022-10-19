@@ -13,7 +13,7 @@
     line-height: 1.3;
     font-weight: 500;
     font-size: 50px;
-    margin-bottom: 60px;
+    margin-bottom: 110px;
     color: #323232;
 }
 .main__header .menu {
@@ -25,20 +25,46 @@
     font-weight: 200;
     padding: 3px 20px;
     font-size: 18px;
-    color: #b0b0b0;
+    width: 150px;
+    height: 23px;
+    text-align: center;
+    display: inline-block;
+    color: #B0B0B0;
     border-right: 1px solid #D0D0D0;
 }
 .main__header .menu li:nth-child(2) a {
-    color: #b0b0b0;
     font-weight: 200;
     font-size: 18px;
     padding: 3px 20px;
+    color: #B0B0B0;
+    text-align: center;
+    width: 140px;
+    display: inline-block;
 }
 .main__header .menu li:nth-child(1) a.active,
 .main__header .menu li:nth-child(2) a.active {
     color: #323232;
     font-weight: 600;
 }
+
+/* .main__header .menu li:nth-child(1) a {
+    font-weight: 200;
+    width: 150px;
+    height: 26px;
+    display: inline-block;
+    font-size: 18px;
+    color: #B0B0B0;
+    border-right: 1px solid #D0D0D0;
+}
+.main__header .menu li:nth-child(2) a {
+    color: #B0B0B0;
+    font-weight: 200;
+    text-align: right;
+    width: 140px;
+    height: 26px;
+    display: inline-block;
+    font-size: 18px;
+} */
 
 .main__header .home {
     position: absolute;
@@ -56,24 +82,6 @@
     border-left: 1px solid #D0D0D0;
 }
 
-.main__header .menu li:nth-child(1) a {
-    font-weight: 200;
-    width: 150px;
-    height: 26px;
-    display: inline-block;
-    font-size: 18px;
-    color: #B0B0B0;
-    border-right: 1px solid #D0D0D0;
-}
-.main__header .menu li:nth-child(2) a {
-    color: #B0B0B0;
-    font-weight: 200;
-    text-align: right;
-    width: 140px;
-    height: 26px;
-    display: inline-block;
-    font-size: 18px;
-}
 
 
 /* cardType */
@@ -92,7 +100,7 @@
 }
 .card {
     margin: 40px 0;
-    width: 30%;
+    width: 32%;
     background-color: #fff;
     border-radius: 10px;
     position: relative;
@@ -136,12 +144,16 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     font-weight: 500;
     font-size: 18px;
     color: #323232;
 }
-.card__desc p {
+.card__desc .icon {
+    display: flex;
+    justify-content: space-between;
+}
+.card__desc .icon p {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -149,24 +161,25 @@
     font-weight: 400;
     font-size: 16px;
     -webkit-box-orient: vertical;
-    margin-bottom: 30px;
-    color: #323232;
+    color: #888888;
 }
-.card__desc .icon {
+.card__desc .icon .views {
     display: flex;
-    justify-content: space-between;
 }
-.card__desc .icon div svg {
-}
-.card__desc .icon div span:nth-child(2) {
+
+.card__desc .icon .views span:nth-child(2) {
+    margin-left: 10px;
     color: #888888;
     font-size: 14px;
     font-weight: 300;
 }
 
 @media(max-width: 1200px){
+    .card__container {
+        justify-content: space-evenly;
+    }
     .card {
-        width: 33%;
+        width: 30%;
     }
 }
 
@@ -184,7 +197,7 @@
     }
     
     .card__desc h3 {
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         font-weight: 500;
         font-size: 14px;
         color: #323232;
@@ -198,10 +211,13 @@
         display: flex;
         justify-content: space-between;
     }
-    .card__desc .icon div svg {
+    .card__desc .icon p {
+        font-size: 14px;
+    }
+    .card__desc .icon .views svg {
         width: 16px;
     }
-    .card__desc .icon div span:nth-child(2) {
+    .card__desc .icon .views span:nth-child(2) {
         color: #888888;
         font-size: 12px;
         font-weight: 300;
@@ -219,18 +235,17 @@
     }
     
     .card__desc h3 {
-        margin-bottom: 15px;
+        margin-bottom: 40px;
         font-size: 18px;
     }
     .card__desc p {
         font-size: 16px;
-        margin-bottom: 30px;
     }
     .card__desc .icon {
         display: flex;
         justify-content: space-between;
     }
-    .card__desc .icon div span:nth-child(2) {
+    .card__desc .icon .views span:nth-child(2) {
         color: #888888;
         font-size: 14px;
         font-weight: 300;
@@ -241,18 +256,18 @@
     .cardType.mobile {
         display: block;
     }
+    .main__header h2:nth-child(2) {
+        margin-bottom: 80px;
+    }
 }
 
 
 /* board */
-.review__board {
+.review {
     margin-bottom: 30px;
 }
-.board__head {
-    background-color: #323232;
-}
 
-table {
+.review__table {
     width: 100%;
     border-spacing: 0px;
     border-collapse: collapse;
@@ -261,20 +276,20 @@ table {
     table-layout: fixed;
 }
 
-.review__table table thead tr {
+.review__board .review__table thead tr {
     background-color: #323232;
     color: #f5f5f5;
 }
-.review__table table thead tr th {
+.review__board .review__table thead tr th {
     font-weight: 400;
     height: 54px;
     font-size: 18px;
 }
-.review__table table tbody tr:hover {
+.review__board .review__table tbody tr:hover {
     background-color: #f5f5f5;
 }
 
-.review__table table tbody tr td:nth-child(2) {
+.review__board .review__table tbody tr td:nth-child(2) {
     text-align: left;
     padding-left: 60px;
     white-space:nowrap;
@@ -282,33 +297,33 @@ table {
     overflow:hidden;
 }
 
-.review__table table tbody tr td {
+.review__board .review__table tbody tr td {
     text-align: center;
     height: 80px;
     border-bottom: 1px solid #e6e6e6;
     font-size: 16px;
     color: #323232;
 }
-.review__table table tbody tr td a {
+.review__board .review__table tbody tr td a {
     color: #323232;
 }
-/* table2 */
-.review__table.subTable {
+/* review__table2 */
+.review__board.subReview__board {
     display: none;
 }
-.review__table.subTable table thead tr th {
+.review__board.subReview__board .review__table thead tr th {
     font-size: 16px;
 }
-.review__table.subTable tr td {
+.review__board.subReview__board tr td {
     font-size: 15px;
 }
-.review__table.subTable table tbody tr td:nth-child(2) {
+.review__board.subReview__board .review__table tbody tr td:nth-child(2) {
     padding-left: 10px;
 }
-.review__table.subTable table tbody tr td:nth-child(4) {
+.review__board.subReview__board .review__table tbody tr td:nth-child(4) {
     font-size: 14px;
 }
-.review__table.subTable .board__btn {
+.review__board.subReview__board .board__btn {
     display: none;
 }
 
@@ -402,7 +417,7 @@ input::-webkit-search-results-decoration{
     padding: 10px;
     font-weight: 400;
 }
-.board__pages ul li a.active{
+.board__pages ul li a.active {
     color: #323232;
     font-weight: 600;
 }
@@ -415,13 +430,16 @@ input::-webkit-search-results-decoration{
     .main__header .home {
         display: none;
     }
-    .review__table {
+    .main__header .menu li:nth-child(1) a {
+        max-width: 160px;
+    }
+    .review__board {
         display: none;
     }
-    .review__table.subTable {
+    .review__board.subReview__board {
         display: block;
     }
-    .review__table .board__btn a {
+    .review__board .board__btn a {
         display: block;
     }
     .riview__search .board__btn {
@@ -439,11 +457,16 @@ input::-webkit-search-results-decoration{
 
 }
 @media (max-width: 480px) {
+    .main__header .menu li:nth-child(1) a {
+        max-width: 120px;
+    }
     .riview__search {
         display: none;
     }
     .riview__subSerch {
-        display: block;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
     }
     .review__board {
         margin-bottom: 30px;
@@ -466,13 +489,12 @@ input::-webkit-search-results-decoration{
     }
     .riview__subSerch fieldset {
         position: relative;
-        width: initial;
-        margin-right: 20px;
+        width: fit-content;
     }
     .riview__subSerch fieldset select {
-        width: 100px;
+        width: 90px;
         height: 45px;
-        margin-right: 20px;
+        margin-right: 10px;
         font-weight: 400;
         font-size: 16px;
     }
@@ -510,13 +532,13 @@ input::-webkit-search-results-decoration{
         margin-left: 10px;
         cursor:pointer;
         position: absolute;
-        right: 0px;
+        right: 5px;
         bottom: 13px;
     }
-    .review__table.subTable .board__btn {
+    .review__board.subReview__board .board__btn {
         margin-top: 30px;
     }
-    .review__table.subTable .board__btn a {
+    .review__board.subReview__board .board__btn a {
         width: 107px;
         height: 50px;
         color: white;
@@ -528,7 +550,7 @@ input::-webkit-search-results-decoration{
         font-weight: 200;
         font-size: 16px;
     }
-    .review__table table colgroup col:first-child {
+    .review__board .review__table colgroup col:first-child {
         width: 10%;
     }
 }

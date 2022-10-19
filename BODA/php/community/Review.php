@@ -577,6 +577,6 @@
         <?php include "../include/footer.php" ?>
         <!-- //footer -->
 
-        <?php include "../html/assets/include/script.php" ?>
+        <?php include "../include/script.php" ?>
     </body>
 </html>
