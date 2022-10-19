@@ -57,7 +57,7 @@
             <div class="board">
                 <h2 class="blind">전시 토크 게시판 보기 영역입니다.</h2>
                 <div class="board__table">
-                    <table>
+                    <table class="talk">
                         <tbody>
 <?php
     if(isset($_GET['page'])){
@@ -70,7 +70,7 @@
     $viewLimit = ($viewNum * $page) - $viewNum;
 
     // 두 개의 테이블 join
-    $sql = "SELECT t.myTalkID, m.youNickName, t.regTime FROM myTalk t JOIN myMember m ON(t.myMemberID = m.myMemberID) ORDER BY myTalkID DESC LIMIT ${viewLimit}, ${viewNum}";
+    $sql = "SELECT t.myTalkID, m.youNickName, t.TalkContents, t.TalkregTime FROM myTalk t JOIN myMember m ON(t.myMemberID = m.myMemberID) ORDER BY myTalkID DESC LIMIT ${viewLimit}, ${viewNum}";
     $result = $connect -> query($sql);
 
     if($result){
@@ -81,32 +81,12 @@
                 $info = $result -> fetch_array(MYSQLI_ASSOC);
                 echo "<tr><td class='comment comment_1'><div class='profile'></div><div class='contents'><div class='contents__top'>";
                 echo "<p class='name'><span class='ir'>작성자</span><span>".$info['youNickName']."</span></p>";
-                echo "<p class='date'><span class='ir'>작성일</span><span>| ".date('Y-m-d H:i', $info['regTime'])."</span></p>";
-                echo "<a href='#' class='modify'>| 수정</a><a href='#' class='remove'>| 삭제</a></div>";
+                echo "<p class='date'><span class='ir'>작성일</span><span>| ".date('Y-m-d H:i', $info['TalkregTime'])."</span></p>";
+                echo "<a href='#' class='remove'>| 삭제</a></div>";
                 echo "<div class='contents__bottom'><span>".$info['TalkContents']."</span></div></div>";
                 echo "</td></tr>";
             }
         }
-    }
-
-    $myTalkID = $_GET['myTalkID'];
-// 시험
-    $sql = "SELECT m.youNickName, t.TalkContents, t.regTime FROM myTalk t JOIN myMember m ON(m.myMemberID = t.myMemberID) WHERE t.myTalkID = {$myTalkID}";
-    $result = $connect -> query($sql);
-
-    if($result){
-        $info = $result -> fetch_array(MYSQLI_ASSOC);
-
-        // echo "<pre>";
-        // var_dump($info);
-        // echo "</pre>";
-
-        echo "<tr><td class='comment comment_1'><div class='profile'></div><div class='contents'><div class='contents__top'>";
-        echo "<p class='name'><span class='ir'>작성자</span><span>".$info['youNickName']."</span></p>";
-        echo "<p class='date'><span class='ir'>작성일</span><span>| ".date('Y-m-d H:i', $info['regTime'])."</span></p>";
-        echo "<a href='#' class='modify'>| 수정</a><a href='#' class='remove'>| 삭제</a></div>";
-        echo "<div class='contents__bottom'><span>".$info['TalkContents']."</span></div></div>";
-        echo "</td></tr>";
     }
 ?>
                             <!-- <tr>
@@ -354,31 +334,57 @@
             </div>
 
             <div class="board__pages">
-                <ul>
-                    <li><a href="#">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.2498 18L11.2498 12L17.2498 6" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11.25 18L5.25 12L11.25 6" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg></a></li>
-                    <li><a href="#">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.25 6L8.25 12L14.25 18" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            </a></li>
-                    <li><a class="active" href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg></a></li>
-                    <li><a href="#">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.75024 6L12.7502 12L6.75024 18" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12.75 6L18.75 12L12.75 18" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg></a></li>
+                    <ul>
+<?php
+    $sql = "SELECT count(myTalkID) FROM myTalk";
+    $result = $connect -> query($sql);
+
+    $TalkCount = $result -> fetch_array(MYSQLI_ASSOC);
+    $TalkCount = $TalkCount['count(myTalkID)'];
+
+    $TalkCount = ceil($TalkCount / $viewNum);
+
+    $pageCurrent = 5;
+    $startPage = $page - $pageCurrent;
+    $endPage = $page + $pageCurrent;
+
+    // 처음 페이지 초기화
+    if($startPage < 1) $startPage = 1;
+
+    // 마지막 페이지 초기화
+    if($endPage >= $TalkCount) $endPage = $TalkCount;
+
+    // 이전 페이지, 처음 페이지 이동
+    if($page != 1){
+        $prevPage = $page - 1;
+        echo "<li><a href='Talk.php?page=1'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M17.2498 18L11.2498 12L17.2498 6' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        <path d='M11.25 18L5.25 12L11.25 6' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+        echo "<li><a href='Talk.php?page={$prevPage}'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M14.25 6L8.25 12L14.25 18' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+    }
+    
+    // 페이지 넘버 표시
+    for($i=$startPage; $i<=$endPage; $i++){
+        $active = "";
+        if($i == $page) $active = "active";
+        echo "<li ><a class='{$active}' href='Talk.php?page={$i}'>{$i}</a></li>";
+    }
+    
+    // 다음 페이지, 마지막 페이지 이동
+    if($page != $endPage){
+        $nextPage = $page + 1;
+        echo "<li><a href='Talk.php?page={$nextPage}'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M9 18L15 12L9 6' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+        echo "<li><a href='Talk.php?page={$TalkCount}'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M6.75024 6L12.7502 12L6.75024 18' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        <path d='M12.75 6L18.75 12L12.75 18' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+    }
+?>
                 </ul>
             </div>
         </section>

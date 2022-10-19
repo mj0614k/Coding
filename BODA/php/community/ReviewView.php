@@ -86,28 +86,10 @@
                                     </span>
                                     <span class="ir">조회수</span>
                                 </div>
-                                <div class="heart">
-                                    <svg
-                                        width="18"
-                                        height="17"
-                                        viewBox="0 0 18 17"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M9 16.515L7.695 15.327C3.06 11.124 0 8.352 0 4.95C0 2.178 2.178 0 4.95 0C6.516 0 8.019 0.729 9 1.881C9.981 0.729 11.484 0 13.05 0C15.822 0 18 2.178 18 4.95C18 8.352 14.94 11.124 10.305 15.336L9 16.515Z"
-                                            fill="#323232"
-                                        />
-                                    </svg>
-                                    <span>
-                                        <? echo $info['ReviewLike']; ?>
-                                    </span>
-                                    <span class="ir">추천수</span>
-                                </div>
                             </div>
                             <div class="btn">
                                 <a href="ReviewModify.php?myReviewID=<?=$myReviewID?>">수정</a>
-                                <a href="ReviewRemove.php?myReviewID=<?=$myReviewID?>" onclick="alert('정말로 삭제할까요...?')">삭제</a>
+                                <a href="ReviewRemove.php?myReviewID=<?=$myReviewID?>" onclick="alert('정말로 삭제할까요?')">삭제</a>
                                 <a href="Review.php">목록</a>
                             </div>
                         </div>
@@ -135,7 +117,7 @@
                                 <div class="contents__top">
                                     <p class="name"><span class="ir">작성자</span><span>댕댕이</span></p>
                                     <p class="date"><span class="ir">작성일</span><span>| 2022-09-18</span></p>
-                                    <a href="#" class="modify">| 수정</a>
+                                    <!-- <a href="#" class="modify">| 수정</a> -->
                                     <a href="#" class="remove">| 삭제</a>
                                 </div>
                                 <div class="contents__bottom">
@@ -150,7 +132,7 @@
                                 <div class="contents__top">
                                     <p class="name"><span class="ir">작성자</span><span>머릿고기</span></p>
                                     <p class="date"><span class="ir">작성일</span><span>| 2022-09-18</span></p>
-                                    <a href="#" class="modify">| 수정</a>
+                                    <!-- <a href="#" class="modify">| 수정</a> -->
                                     <a href="#" class="remove">| 삭제</a>
                                 </div>
                                 <div class="contents__bottom">

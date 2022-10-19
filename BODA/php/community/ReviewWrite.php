@@ -136,11 +136,11 @@
                                     </colgroup>
                                     <div>
                                         <label class="blind" for="ReviewTitle">제목</label>
-                                        <input type="text" name="ReviewTitle" class="Title" placeholder="제목을 입력해 주세요." required>
+                                        <input type="text" name="ReviewTitle" id="ReviewTitle" class="Title" placeholder="제목을 입력해 주세요." required>
                                     </div>
                                     <div>
                                         <label class="blind" for="ReviewContents">내용</label>
-                                        <textarea name="ReviewContents" class="Contents" rows="20" required></textarea>
+                                        <textarea name="ReviewContents" id="ReviewContents" class="Contents" rows="20" required></textarea>
                                     </div>
                                 </table>
                             </div>

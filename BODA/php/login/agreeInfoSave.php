@@ -62,8 +62,8 @@
     </main>
     <!-- //main -->
 
-<?php include "../include/footer.php" ?>
-<!-- //footer -->
+    <?php include "../include/footer.php" ?>
+    <!-- //footer -->
 
 <?php include "../include/script.php" ?>
 </body>

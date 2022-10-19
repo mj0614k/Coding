@@ -329,7 +329,7 @@
                                 <col style="width: 32%" />
                                 <col style="width: 12%" />
                                 <col style="width: 12%" />
-                                <col style="width: 12%" />
+                                <!-- <col style="width: 12%" /> -->
                                 <col style="width: 12%" />
                             </colgroup>
                             <thead>
@@ -338,7 +338,7 @@
                                     <th>제목</th>
                                     <th>작성자</th>
                                     <th>날짜</th>
-                                    <th>추천수</th>
+                                    <!-- <th>추천수</th> -->
                                     <th>조회수</th>
                                 </tr>
                             </thead>
@@ -368,12 +368,12 @@
                 echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
                 echo "<td>".$info['youNickName']."</td>";
                 echo "<td>".date('Y-m-d', $info['ReviewregTime'])."</td>";
-                echo "<td>".$info['ReviewLike']."</td>";
+                // echo "<td>".$info['ReviewLike']."</td>";
                 echo "<td>".$info['ReviewView']."</td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='6'>게시글이 없습니다.</td></tr>";
+            echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
         }
     }
 ?>
@@ -404,70 +404,48 @@
                                     <th>번호</th>
                                     <th>제목</th>
                                     <th>작성자</th>
-                                    <th>추천 / 조회</th>
+                                    <th>조회</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>10</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 이 시대 최고의 전시</a></td>
-                                    <td>둘리</td>
-                                    <td>2.4K / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고 저쩌고 울랄라랄라라</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
-                                <tr>
+<?php
+    if(isset($_GET['page'])){
+        $page = (int)$_GET['page'];
+    } else {
+        $page = 1;
+    } 
+
+    $viewNum = 10;
+    $viewLimit = ($viewNum * $page) - $viewNum;
+
+    // 두 개의 테이블 join
+    $sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewLike, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
+    $result = $connect -> query($sql);
+
+    if($result){
+        $count = $result -> num_rows;
+
+        if($count > 0){
+            for($i=1; $i <= $count; $i++){
+                $info = $result -> fetch_array(MYSQLI_ASSOC);
+                echo "<tr>";
+                echo "<td>".$info['myReviewID']."</td>";
+                echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
+                echo "<td>".$info['youNickName']."</td>";
+                echo "<td>".$info['ReviewView']."</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
+        }
+    }
+?>
+                                <!-- <tr>
                                     <td>1</td>
                                     <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
-                                    <td>123 / 1.1K</td>
-                                </tr>
+                                    <td>1.1K</td>
+                                </tr> -->
                             </tbody>
                         </table>
                         <div class="board__btn">
@@ -484,7 +462,7 @@
                         <a href="ReviewWrite.php">글쓰기</a>
                     </div>
                     <fieldset>
-                        <legend></legend>
+                        <legend class="blind">게시글 검색 영역</legend>
                         <select name="searchOption" id="searchOption">
                             <option value="title">제목</option>
                             <option value="content">내용</option>
@@ -599,6 +577,6 @@
         <?php include "../include/footer.php" ?>
         <!-- //footer -->
 
-        <?php include "../include/script.php" ?>
+        <?php include "../html/assets/include/script.php" ?>
     </body>
 </html>

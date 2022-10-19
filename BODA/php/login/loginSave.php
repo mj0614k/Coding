@@ -30,8 +30,8 @@
                 <div class="modalBox">
                     <h2>LOGIN</h2>
 <?php    
-    $youID = $_POST['youID'];
-    $youPass = $_POST['youPass'];
+    $youID = $_POST['userID'];
+    $youPass = $_POST['userPass'];
 
     function msg($alert){
         echo "<p>{$alert}</p>";
