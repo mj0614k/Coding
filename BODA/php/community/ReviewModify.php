@@ -20,7 +20,7 @@
         <!-- //header -->
 
         <main id="main">
-        <h2 class="blind">리뷰 게시판 글쓰기 페이지입니다.</h2>
+        <h2 class="blind">리뷰 게시글 수정 페이지입니다.</h2>
             <div class="main__header top__container">
                 <h2>TODAY's</h2>
                 <h2>Review</h2>
@@ -38,7 +38,7 @@
             <section class="mid__container">
                 <form action="ReviewWriteSave.php" name="ReviewWrite" method="post" enctype="multipart/form-data">
                     <fieldset>
-                        <legend class="blind">리뷰 게시글 작성 영역</legend>
+                        <legend class="blind">리뷰 게시글 수정 영역</legend>
                         <div class="mid__ikon">
                             <div class="Photo">
                                 <label for="reviewFile">

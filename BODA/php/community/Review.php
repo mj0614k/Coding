@@ -9,7 +9,7 @@
     <head>
         <!-- CSS -->
         <?php include "../include/link.php" ?>
-        <title>ALL REVIEW</title>
+        <title>REVIEW</title>
     </head>
     <body>
         <div id="skip">
@@ -36,6 +36,289 @@
                     <li><a href="Talk.php">Talk</a></li>
                 </div>
             </div>
+            <!-- cardType -->
+            <section class="cardType">
+                <div class="card__container">
+                    <div class="card">
+                        <figure>
+                            <img src="../assets/img/review_card_bg01.jpg" alt="review01" />
+                        </figure>
+                        <div class="card__desc">
+                            <h3><a href="bestReviewView.html">포토존 죽여주는 전시회 다녀왔습니다.</a></h3>
+                            <p>토매토</p>
+                            <div class="icon">
+                                <div>
+                                    <svg
+                                        width="22"
+                                        height="15"
+                                        viewBox="0 0 22 15"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M11 0C6 0 1.73 3.11 0 7.5C1.73 11.89 6 15 11 15C16 15 20.27 11.89 22 7.5C20.27 3.11 16 0 11 0ZM11 12.5C8.24 12.5 6 10.26 6 7.5C6 4.74 8.24 2.5 11 2.5C13.76 2.5 16 4.74 16 7.5C16 10.26 13.76 12.5 11 12.5ZM11 4.5C9.34 4.5 8 5.84 8 7.5C8 9.16 9.34 10.5 11 10.5C12.66 10.5 14 9.16 14 7.5C14 5.84 12.66 4.5 11 4.5Z"
+                                            fill="#323232"
+                                        />
+                                    </svg>
+                                    <span>10.4K</span>
+                                    <span class="ir">조회수</span>
+                                </div>
+                                <div>
+                                    <svg
+                                        width="18"
+                                        height="17"
+                                        viewBox="0 0 18 17"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M9 16.515L7.695 15.327C3.06 11.124 0 8.352 0 4.95C0 2.178 2.178 0 4.95 0C6.516 0 8.019 0.729 9 1.881C9.981 0.729 11.484 0 13.05 0C15.822 0 18 2.178 18 4.95C18 8.352 14.94 11.124 10.305 15.336L9 16.515Z"
+                                            fill="#323232"
+                                        />
+                                    </svg>
+                                    <span>1.5K</span>
+                                    <span class="ir">추천수</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <figure>
+                            <img src="../assets/img/review_card_bg02.jpg" alt="review02" />
+                        </figure>
+                        <div class="card__desc">
+                            <h3><a href="bestReviewView.html">오랜만에 행복한 주말 보내기</a></h3>
+                            <p>동동이</p>
+                            <div class="icon">
+                                <div>
+                                    <svg
+                                        width="22"
+                                        height="15"
+                                        viewBox="0 0 22 15"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M11 0C6 0 1.73 3.11 0 7.5C1.73 11.89 6 15 11 15C16 15 20.27 11.89 22 7.5C20.27 3.11 16 0 11 0ZM11 12.5C8.24 12.5 6 10.26 6 7.5C6 4.74 8.24 2.5 11 2.5C13.76 2.5 16 4.74 16 7.5C16 10.26 13.76 12.5 11 12.5ZM11 4.5C9.34 4.5 8 5.84 8 7.5C8 9.16 9.34 10.5 11 10.5C12.66 10.5 14 9.16 14 7.5C14 5.84 12.66 4.5 11 4.5Z"
+                                            fill="#323232"
+                                        />
+                                    </svg>
+                                    <span>2.4K</span>
+                                    <span class="ir">조회수</span>
+                                </div>
+                                <div>
+                                    <svg
+                                        width="18"
+                                        height="17"
+                                        viewBox="0 0 18 17"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M9 16.515L7.695 15.327C3.06 11.124 0 8.352 0 4.95C0 2.178 2.178 0 4.95 0C6.516 0 8.019 0.729 9 1.881C9.981 0.729 11.484 0 13.05 0C15.822 0 18 2.178 18 4.95C18 8.352 14.94 11.124 10.305 15.336L9 16.515Z"
+                                            fill="#323232"
+                                        />
+                                    </svg>
+                                    <span>1.2K</span>
+                                    <span class="ir">추천수</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <figure>
+                            <img src="../assets/img/review_card_bg03.jpg" alt="review03" />
+                        </figure>
+                        <div class="card__desc">
+                            <h3><a href="bestReviewView.html">요즘 유행하는 전시회들 추천!</a></h3>
+                            <p>전시 맛집</p>
+                            <div class="icon">
+                                <div>
+                                    <svg
+                                        width="22"
+                                        height="15"
+                                        viewBox="0 0 22 15"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M11 0C6 0 1.73 3.11 0 7.5C1.73 11.89 6 15 11 15C16 15 20.27 11.89 22 7.5C20.27 3.11 16 0 11 0ZM11 12.5C8.24 12.5 6 10.26 6 7.5C6 4.74 8.24 2.5 11 2.5C13.76 2.5 16 4.74 16 7.5C16 10.26 13.76 12.5 11 12.5ZM11 4.5C9.34 4.5 8 5.84 8 7.5C8 9.16 9.34 10.5 11 10.5C12.66 10.5 14 9.16 14 7.5C14 5.84 12.66 4.5 11 4.5Z"
+                                            fill="#323232"
+                                        />
+                                    </svg>
+                                    <span>1.4K</span>
+                                    <span class="ir">조회수</span>
+                                </div>
+                                <div>
+                                    <svg
+                                        width="18"
+                                        height="17"
+                                        viewBox="0 0 18 17"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M9 16.515L7.695 15.327C3.06 11.124 0 8.352 0 4.95C0 2.178 2.178 0 4.95 0C6.516 0 8.019 0.729 9 1.881C9.981 0.729 11.484 0 13.05 0C15.822 0 18 2.178 18 4.95C18 8.352 14.94 11.124 10.305 15.336L9 16.515Z"
+                                            fill="#323232"
+                                        />
+                                    </svg>
+                                    <span>1.6K</span>
+                                    <span class="ir">추천수</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="cardType mobile">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <figure>
+                                    <img src="../assets/img/review_card_bg01.jpg" alt="review01" />
+                                </figure>
+                                <div class="card__desc">
+                                    <h3><a href="bestReviewView.html">포토존 죽여주는 전시회 다녀왔습니다.</a></h3>
+                                    <p>토매토</p>
+                                    <div class="icon">
+                                        <div>
+                                            <svg
+                                                width="22"
+                                                height="15"
+                                                viewBox="0 0 22 15"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M11 0C6 0 1.73 3.11 0 7.5C1.73 11.89 6 15 11 15C16 15 20.27 11.89 22 7.5C20.27 3.11 16 0 11 0ZM11 12.5C8.24 12.5 6 10.26 6 7.5C6 4.74 8.24 2.5 11 2.5C13.76 2.5 16 4.74 16 7.5C16 10.26 13.76 12.5 11 12.5ZM11 4.5C9.34 4.5 8 5.84 8 7.5C8 9.16 9.34 10.5 11 10.5C12.66 10.5 14 9.16 14 7.5C14 5.84 12.66 4.5 11 4.5Z"
+                                                    fill="#323232"
+                                                />
+                                            </svg>
+                                            <span>10.4K</span>
+                                            <span class="ir">조회수</span>
+                                        </div>
+                                        <div>
+                                            <svg
+                                                width="18"
+                                                height="17"
+                                                viewBox="0 0 18 17"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M9 16.515L7.695 15.327C3.06 11.124 0 8.352 0 4.95C0 2.178 2.178 0 4.95 0C6.516 0 8.019 0.729 9 1.881C9.981 0.729 11.484 0 13.05 0C15.822 0 18 2.178 18 4.95C18 8.352 14.94 11.124 10.305 15.336L9 16.515Z"
+                                                    fill="#323232"
+                                                />
+                                            </svg>
+                                            <span>1.5K</span>
+                                            <span class="ir">추천수</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <figure>
+                                    <img src="../assets/img/review_card_bg02.jpg" alt="review02" />
+                                </figure>
+                                <div class="card__desc">
+                                    <h3><a href="bestReviewView.html">오랜만에 행복한 주말 보내기</a></h3>
+                                    <p>동동이</p>
+                                    <div class="icon">
+                                        <div>
+                                            <svg
+                                                width="22"
+                                                height="15"
+                                                viewBox="0 0 22 15"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M11 0C6 0 1.73 3.11 0 7.5C1.73 11.89 6 15 11 15C16 15 20.27 11.89 22 7.5C20.27 3.11 16 0 11 0ZM11 12.5C8.24 12.5 6 10.26 6 7.5C6 4.74 8.24 2.5 11 2.5C13.76 2.5 16 4.74 16 7.5C16 10.26 13.76 12.5 11 12.5ZM11 4.5C9.34 4.5 8 5.84 8 7.5C8 9.16 9.34 10.5 11 10.5C12.66 10.5 14 9.16 14 7.5C14 5.84 12.66 4.5 11 4.5Z"
+                                                    fill="#323232"
+                                                />
+                                            </svg>
+                                            <span>2.4K</span>
+                                            <span class="ir">조회수</span>
+                                        </div>
+                                        <div>
+                                            <svg
+                                                width="18"
+                                                height="17"
+                                                viewBox="0 0 18 17"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M9 16.515L7.695 15.327C3.06 11.124 0 8.352 0 4.95C0 2.178 2.178 0 4.95 0C6.516 0 8.019 0.729 9 1.881C9.981 0.729 11.484 0 13.05 0C15.822 0 18 2.178 18 4.95C18 8.352 14.94 11.124 10.305 15.336L9 16.515Z"
+                                                    fill="#323232"
+                                                />
+                                            </svg>
+                                            <span>1.2K</span>
+                                            <span class="ir">추천수</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <figure>
+                                    <img src="../assets/img/review_card_bg03.jpg" alt="review03" />
+                                </figure>
+                                <div class="card__desc">
+                                    <h3><a href="bestReviewView.html">요즘 유행하는 전시회들 추천!</a></h3>
+                                    <p>전시 맛집</p>
+                                    <div class="icon">
+                                        <div>
+                                            <svg
+                                                width="22"
+                                                height="15"
+                                                viewBox="0 0 22 15"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M11 0C6 0 1.73 3.11 0 7.5C1.73 11.89 6 15 11 15C16 15 20.27 11.89 22 7.5C20.27 3.11 16 0 11 0ZM11 12.5C8.24 12.5 6 10.26 6 7.5C6 4.74 8.24 2.5 11 2.5C13.76 2.5 16 4.74 16 7.5C16 10.26 13.76 12.5 11 12.5ZM11 4.5C9.34 4.5 8 5.84 8 7.5C8 9.16 9.34 10.5 11 10.5C12.66 10.5 14 9.16 14 7.5C14 5.84 12.66 4.5 11 4.5Z"
+                                                    fill="#323232"
+                                                />
+                                            </svg>
+                                            <span>1.4K</span>
+                                            <span class="ir">조회수</span>
+                                        </div>
+                                        <div>
+                                            <svg
+                                                width="18"
+                                                height="17"
+                                                viewBox="0 0 18 17"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M9 16.515L7.695 15.327C3.06 11.124 0 8.352 0 4.95C0 2.178 2.178 0 4.95 0C6.516 0 8.019 0.729 9 1.881C9.981 0.729 11.484 0 13.05 0C15.822 0 18 2.178 18 4.95C18 8.352 14.94 11.124 10.305 15.336L9 16.515Z"
+                                                    fill="#323232"
+                                                />
+                                            </svg>
+                                            <span>1.6K</span>
+                                            <span class="ir">추천수</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button">
+                        <div class="swiper-button-play"><span class="ir">play</span></div>
+                        <div class="swiper-button-stop"><span class="ir">stop</span></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </section>
+            <!-- //cardType -->
             <section class="mid__container">
                 <div class="board">
                     <div class="review__table">
@@ -70,7 +353,7 @@
     $viewLimit = ($viewNum * $page) - $viewNum;
 
     // 두 개의 테이블 join
-    $sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.regTime, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = r.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
+    $sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewLike, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
     $result = $connect -> query($sql);
 
     if($result){
@@ -83,7 +366,8 @@
                 echo "<td>".$info['myReviewID']."</td>";
                 echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
                 echo "<td>".$info['youNickName']."</td>";
-                echo "<td>".date('Y-m-d', $info['regTime'])."</td>";
+                echo "<td>".date('Y-m-d', $info['ReviewregTime'])."</td>";
+                echo "<td>".$info['ReviewLike']."</td>";
                 echo "<td>".$info['ReviewView']."</td>";
                 echo "</tr>";
             }
@@ -95,78 +379,6 @@
 
                                 <!-- <tr>
                                     <td>10</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>2022-10-05</td>
-                                    <td>123</td>
-                                    <td>1.1K</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
                                     <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
                                     <td>둘리</td>
                                     <td>2022-10-05</td>
@@ -305,7 +517,57 @@
 
                 <div class="board__pages">
                     <ul>
-                        <li><a href="#">
+<?php
+    $sql = "SELECT count(myReviewID) FROM myReview";
+    $result = $connect -> query($sql);
+
+    $ReviewCount = $result -> fetch_array(MYSQLI_ASSOC);
+    $ReviewCount = $ReviewCount['count(myReviewID)'];
+
+    $ReviewCount = ceil($ReviewCount / $viewNum);
+
+    $pageCurrent = 5;
+    $startPage = $page - $pageCurrent;
+    $endPage = $page + $pageCurrent;
+
+    // 처음 페이지 초기화
+    if($startPage < 1) $startPage = 1;
+
+    // 마지막 페이지 초기화
+    if($endPage >= $ReviewCount) $endPage = $ReviewCount;
+
+    // 이전 페이지, 처음 페이지 이동
+    if($page != 1){
+        $prevPage = $page - 1;
+        echo "<li><a href='Review.php?page=1'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M17.2498 18L11.2498 12L17.2498 6' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        <path d='M11.25 18L5.25 12L11.25 6' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+        echo "<li><a href='Review.php?page={$prevPage}'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M14.25 6L8.25 12L14.25 18' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+    }
+    
+    // 페이지 넘버 표시
+    for($i=$startPage; $i<=$endPage; $i++){
+        $active = "";
+        if($i == $page) $active = "active";
+        echo "<li ><a class='{$active}' href='Review.php?page={$i}'>{$i}</a></li>";
+    }
+    
+    // 다음 페이지, 마지막 페이지 이동
+    if($page != $endPage){
+        $nextPage = $page + 1;
+        echo "<li><a href='Review.php?page={$nextPage}'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M9 18L15 12L9 6' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+        echo "<li><a href='Review.php?page={$ReviewCount}'><svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M6.75024 6L12.7502 12L6.75024 18' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        <path d='M12.75 6L18.75 12L12.75 18' stroke='#323232' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg></a></li>";
+    }
+?>
+                        <!-- <li><a href="#">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.2498 18L11.2498 12L17.2498 6" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M11.25 18L5.25 12L11.25 6" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -328,7 +590,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.75024 6L12.7502 12L6.75024 18" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M12.75 6L18.75 12L12.75 18" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg></a></li>
+                            </svg></a></li> -->
                     </ul>
                 </div>
             </section>
@@ -337,7 +599,6 @@
         <?php include "../include/footer.php" ?>
         <!-- //footer -->
 
-        <script src="../../html/assets/js/headermenu.js"></script>
-        <script src="../../html/assets/js/loginpopup.js"></script>
+        <?php include "../include/script.php" ?>
     </body>
 </html>
