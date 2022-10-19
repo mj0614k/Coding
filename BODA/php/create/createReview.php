@@ -7,7 +7,11 @@
     $sql .= "ReviewTitle varchar(50) NOT NULL,";
     $sql .= "ReviewContents longtext NOT NULL,";
     $sql .= "ReviewView int(10) NOT NULL,";
-    $sql .= "regTime int(20) NOT NULL,";
+    $sql .= "ReviewLike int(10) NOT NULL,";
+    $sql .= "ReviewImgFile varchar(100) DEFAULT NULL,";
+    $sql .= "ReviewImgSize varchar(100) DEFAULT Null,";
+    $sql .= "ReviewDelete int(10) DEFAULT Null,";
+    $sql .= "ReviewregTime int(20) NOT NULL,";
     $sql .= "PRIMARY KEY (myReviewID)";
     $sql .= ")charset=utf8;";
 

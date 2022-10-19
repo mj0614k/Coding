@@ -284,12 +284,12 @@ input[id="check4"]:checked + label::after {
     color: #d9d9d9;
 }
 
-#youPass {
+#infoType #youPass {
     border-radius: 10px;
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
 }
-#youPassC {
+#infoType #youPassC {
     border-radius: 10px;
     border: 1px solid #d9d9d9;
     box-sizing: border-box;
