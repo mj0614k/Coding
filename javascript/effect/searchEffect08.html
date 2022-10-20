@@ -423,7 +423,7 @@
                             <div class="active">
 <pre><code class="language-js">const cssProperty = [
     { num: 1, name: "accent-color", desc: " 요소의 강조 색상을 지정합니다. " },
-    { num: 2, name: "align-content", desc: " 콘텐츠 사이와 콘텐츠 주위 빈 공간을 플렉스 박스'의 교차축 또는 그리드의 블록 축을 따라 배치하는 방식을 결정합니다." },
+    { num: 2, name: "align-content", desc: " 콘텐츠 사이와 콘텐츠 주위 빈 공간을 플렉스 박스의 교차축 또는 그리드의 블록 축을 따라 배치하는 방식을 결정합니다." },
     { num: 3, name: "align-items", desc: " 교차축에서 아이템 정렬 하는 속성입니다. 주로 flex에서 item들을 정렬할 때 사용됩니다." },
     { num: 4, name: "align-self", desc: " 특정 item의 정렬을 따로 하고 싶을 때 사용합니다." },
     { num: 5, name: "all", desc: " CSS 사용자 지정 속성을 제외한 모든 속성을 초기화합니다. 초깃값, 상속값, 아니면 다른 스타일시트 출처의 값로 설정할 수 있습니다." },
@@ -436,108 +436,243 @@
     { num: 12, name: "animation-name", desc: " 애니메이션 keyframe 이름을 설정합니다." },
     { num: 13, name: "animation-play-state", desc: " 애니메이션 진행상태를 설정합니다." },
     { num: 14, name: "animation-timeline", desc: " 애니메이션의 타임라인을 설정합니다." },
-    { num: 15, name: "animation-timing-function", desc: " 애니메이션 움직임의 속도를 설정합니다." }
-    // 생략
-]
+    { num: 15, name: "animation-timing-function", desc: " 애니메이션 움직임의 속도를 설정합니다." },
+    { num: 16, name: "appearance", desc: " 운영체제 및 브라우저에 기본적로 설정되어 있는 테마를 기반로 요소를 표현한다." },
+    { num: 17, name: "aspect-ratio", desc: " 요소의 크기를 비율대로 조정할 수 있게 한다." },
+    { num: 18, name: "backdrop-filter", desc: " 요소 뒤 영역에 흐림이나 색상 시프트 등 그래픽 효과를 적용할 수 있는 속성입니다." },
+    { num: 19, name: "backface-visibility", desc: " 요소의 뒷쪽에서 앞면이 보이게 할지 정하는 속성입니다." },
+    { num: 20, name: "background", desc: " 백그라운드 속성을 일괄적로 설정합니다. " }
+    &lt;-- 생략 --&gt;
+];
+document.querySelector(".search__info span").innerHTML = cssProperty.length;
 
-document.querySelector(".search__info .num").innerHTML = cssProperty.length;
+const searchTime = document.querySelector(".time span");
+const searchList = document.querySelector(".search__list");
+const searchAnswers = document.querySelector(".search__answers");
+const searchMissAnswers = document.querySelector(".search__missAnswers");
+const searchStart = document.querySelector(".search__box .start");
+const searchInput = document.querySelector("#search");
+const searchAudio = document.querySelector("#audio");
+const musicPlay = document.querySelector(".search__audio .play");
+const musicStop = document.querySelector(".search__audio .stop");
+const searchScoreNow = document.querySelector(".search__info .now");
+const searchResult = document.querySelector(".search__result .result");
+const searchResultWrap = document.querySelector(".search__result");
+const searchRestart = document.querySelector(".search__result .restart");
 
-const cssList = document.querySelector(".search__list .line");
-// 데이터 출력하기
-const updateList = () => {
-    let listCSS = "";
-    cssProperty.forEach((data, index) => {
-        listCSS += `<li>${data.num}. ${data.name} : ${data.desc}</li>`;
-    });
-    cssList.innerHTML = listCSS;
+let timeReamining = 120,  // 남은 시간
+    timeInterval = "",
+    score = 0,      // 점수
+    answers = {};   // 새로운 정답
+    
+
+function updateList(){
+    cssProperty.forEach(data => {
+        searchList.innerHTML += `&lt;span&gt;${data.name}&lt;/span&gt;`;
+    })
 }
 updateList();
-// 반대로 정렬 클릭
-document.querySelector(".btn1").addEventListener("click", (e) => {
-    e.preventDefault();
-    cssProperty.reverse();
-    updateList();
-});
-// 내림차순 정렬 클릭
-document.querySelector(".btn2").addEventListener("click", (e) => {
-    e.preventDefault();
-    cssProperty.sort((a,b) => {
-        return a.num - b.num;
-    });
-    updateList();
-});
-// 오름차순 정렬 클릭
-document.querySelector(".btn3").addEventListener("click", (e) => {
-    e.preventDefault();
-    cssProperty.sort((a,b) => {
-        return b.num - a.num;
-    });
-    updateList();
-});
-// 알파벳 정렬(a~z) 클릭
-document.querySelector(".btn4").addEventListener("click", (e) => {
-    e.preventDefault();
-    cssProperty.sort((a, b) => {
-        let x = a.name;
-        let y = b.name;
-        return x.localeCompare(y);
-    });
-    updateList();
-});
-// 알파벳 정렬(z~a) 클릭
-document.querySelector(".btn5").addEventListener("click", (e) => {
-    e.preventDefault();
-    cssProperty.sort((a, b) => {
-        let x = a.name;
-        let y = b.name;
-        return y.localeCompare(x);
-    });
-    updateList();
-});
-// 랜덤 정렬
-document.querySelector(".btn6").addEventListener("click", (e) => {
-    e.preventDefault();
-    for(let i=cssProperty.length-1; i>=0; i--){
-        const randomIndex = Math.floor(Math.random() * (i+1));
-        // console.log(randomIndex); 여기까지 하면 중복발생
-        // [1,2,3] = [3,2,1]; // 객체구조분해할당
-        [cssProperty[i], cssProperty[randomIndex]] = [cssProperty[randomIndex], cssProperty[i]]; // 중복 제거... 모르면 걍 외워...
-        cssProperty.innerHTML += cssProperty[i]
+
+// 게임 시작하기
+function startQuiz(){
+    // 시작 버튼 숨기기
+    searchStart.style.display = "none";
+    searchList.style.display = "none";
+
+    // 다시 시작할 때 기존 데이터 초기화
+    searchAnswers.innerHTML = "";
+    searchMissAnswers.innerHTML = "";
+
+    // 시간 설정(1초에 한번씩 줄어듦)
+    timeInterval = setInterval(reduceTime, 1000);
+
+    // 속성 리스트 없애기
+
+    // 음악 추가
+    music();
+
+    // 점수 계산
+    let score = 0;
+
+    // 정답 체크
+    checkAnswers();
+}
+
+// 음악 재생
+function music(){
+    musicStop.addEventListener("click", () => {
+        musicStop.style.display = "none";
+        musicPlay.style.display = "block";
+        searchAudio.pause();
+    })
+    musicPlay.addEventListener("click", () => {
+        musicPlay.style.display = "none";
+        musicStop.style.display = "block";
+        searchAudio.play();
+    })
+    searchAudio.play();
+}
+
+// 인풋 체크하기
+function checkInput(){
+    let input = event.currentTarget.value.trim().toLowerCase();  // 사용자가 입력한 값 가져오기
+
+    if(answers.hasOwnProperty(input) && !answers[input]){
+        answers[input] = true;
+
+        // 정답 표시
+        searchAnswers.style.display = "block";
+        searchAnswers.innerHTML += `&lt;span&gt;${input}&lt;/span&gt;`;
+
+        // 점수 반영
+        score++;
+        searchScoreNow.innerText = score;
+
+        // 정답 초기화
+        searchInput.value = "";
     }
-    updateList();
-});
+}
+
+// 정답 체크하기 : 정답을 객체 파일로 만들기
+function checkAnswers() {
+    cssProperty.forEach(item => {
+        let answer = item.name.trim().toLocaleLowerCase();
+        answers[answer] = false;
+    });
+}
+    
+// 오답 보여주기
+function missAnswers(){
+    searchMissAnswers.style.display = "block";
+
+    cssProperty.forEach(item => {
+        let answer = item.name.trim().toLocaleLowerCase();
+        if(answers[answer] == false){
+            searchMissAnswers.innerHTML += `&lt;span&gt;${item.name}&lt;/span&gt;`
+        }
+    })
+}
+
+// 시간 설정하기 0:00
+function reduceTime(){
+    timeReamining--;
+
+    if(timeReamining == 0) endQuiz();
+
+    searchTime.innerText = displayTime();
+}
+
+// 시간 표시하기
+function displayTime(){
+    if(timeReamining &lt;= 0){
+        return "0:00";
+    } else {
+        let minutes = Math.floor(timeReamining / 60);
+        let seconds = timeReamining % 60;
+
+        // 초 단위가 한자리수일 때 0 추가
+        if(seconds &lt; 10) seconds = "0" + seconds;
+        return minutes + ":" + seconds;
+    }
+}
+
+// 게임이 끝났을 때
+function endQuiz(){
+    
+    // 시작 버튼 만들기
+    searchStart.style.display = "block";
+    searchStart.style.pointerEvents = "none";
+
+    // 오답 보여주기
+    missAnswers();
+
+    // 음악 끄기
+    searchAudio.pause();
+
+    // 시간 정지
+    clearInterval(timeInterval);
+
+    // 메시지 출력
+    searchResultWrap.classList.add("show");
+    let point = Math.round(score / cssProperty.length * 100);
+    searchResult.innerHTML = `게임이 종료되었습니다.&lt;br&gt;${cssProperty.length}개 중 ${score}개를 맞혔습니다.&lt;br&gt;점수는 ${point}점입니다.`;
+}
+
+// 다시 시작하기
+function restart(){
+    searchResultWrap.classList.remove("show");
+    searchAudio.play();
+
+    startQuiz();
+    timeReamining = 120;  // 시간
+    score = 0;
+    searchScoreNow.innerText = 0;
+}
+
+// 버튼 이벤트
+searchStart.addEventListener("click", startQuiz); // 게임 시작
+searchInput.addEventListener("input", checkInput);
+searchRestart.addEventListener("click", restart); 
+
+$(searchResultWrap).draggable();
 </code></pre>
                             </div>
                             <div>
-<pre><code class="language-html">&lt;main id="main"&gt;
-    &lt;div class="search__wrap"&gt;
-        &lt;span&gt;sort(), reverse()를 이용하여 정렬하기&lt;/span&gt;
-        &lt;h1&gt;CSS 속성 검색하기&lt;/h1&gt;
-        &lt;div class="search__click"&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href="#" class="btn1"&gt;반대로 정렬하기&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#" class="btn2"&gt;오름차순 정렬하기&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#" class="btn3"&gt;내림차순 정렬하기&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#" class="btn4"&gt;알파벳순(a-z) 정렬하기&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#" class="btn5"&gt;알파벳순(z-a) 정렬하기&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#" class="btn6"&gt;랜덤 정렬하기&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-        &lt;div class="search__info"&gt;
-            &lt;div&gt;전체 속성 갯수 : &lt;span class="num"&gt;0&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="search__list"&gt;
-            &lt;ul class="line"&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/main&gt;
+<pre><code class="language-html">&lt;main id="main"d&gt;
+    &lt;div class="search__wrap"d&gt;
+        &lt;div class="search__audio"d&gt;
+            &lt;span class="play"d&gt;
+                &lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"d&gt;
+                    &lt;path d="M15 6.3706C15 4.65827 12.9884 3.73774 11.6926 4.85712L8.36317 7.73321C7.99989 8.04704 7.53583 8.21972 7.05576 8.21973L5.49998 8.21974C4.11928 8.21975 3 9.33903 3 10.7197V14.0127C3 15.3934 4.11929 16.5127 5.5 16.5127H7.0558C7.53587 16.5127 7.99993 16.6854 8.36322 16.9992L11.6926 19.8753C12.9884 20.9947 15 20.0741 15 18.3618V12.3662V6.3706Z" fill="#223547" stroke="#223547" stroke-width="1.5"/d&gt;
+                    &lt;path d="M18 15.3667C18.6279 14.531 19 13.4923 19 12.3667C19 11.2411 18.6279 10.2024 18 9.3667" stroke="#223547" stroke-width="1.5" stroke-linecap="round"/d&gt;
+                    &lt;path d="M20 18.3667C21.2558 16.6954 22 14.6179 22 12.3667C22 10.1155 21.2558 8.03802 20 6.3667" stroke="#223547" stroke-width="1.5" stroke-linecap="round"/d&gt;
+                &lt;/svgd&gt;
+            &lt;/spand&gt;
+            &lt;span class="stop"d&gt;
+                &lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"d&gt;
+                    &lt;path d="M14 6.3706C14 4.65827 11.9884 3.73774 10.6926 4.85712L7.36317 7.73321C6.99989 8.04704 6.53583 8.21972 6.05576 8.21973L4.49998 8.21974C3.11928 8.21975 2 9.33903 2 10.7197V14.0127C2 15.3934 3.11929 16.5127 4.5 16.5127H6.0558C6.53587 16.5127 6.99993 16.6854 7.36322 16.9992L10.6926 19.8753C11.9884 20.9947 14 20.0741 14 18.3618V12.3662V6.3706Z" fill="#223547" stroke="#223547" stroke-width="1.5"/d&gt;
+                    &lt;path d="M18 14.1215L22.2427 9.87891" stroke="#223547" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/d&gt;
+                    &lt;path d="M18 9.87894L22.2427 14.1216" stroke="#223547" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/d&gt;
+                &lt;/svgd&gt;
+            &lt;/spand&gt;
+            &lt;audio id="audio" src="../assets/audio/music_audio10.mp3" loop="loop"d&gt;&lt;/audiod&gt;
+        &lt;/divd&gt;
+        &lt;spand&gt;CSS 속성 검색 이벤트&lt;/spand&gt;
+        &lt;h1d&gt;&lt;a href="searchEffect.html"d&gt;2분 동안 CSS 속성 검색하기&lt;/ad&gt;&lt;/h1d&gt;
+        &lt;p class="desc"d&gt;
+            2분 동안 CSS 속성을 많이 검색하면 점수가 올라갑니다.&lt;brd&gt;
+            속성이 기억나지 않으면, 힌트 보기를 1회 이용할 수 있습니다.
+        &lt;/pd&gt;
+        &lt;div class="time"d&gt;
+            &lt;spand&gt;2:00&lt;/spand&gt;
+        &lt;/divd&gt;
+        &lt;div class="search__box"d&gt;
+            &lt;label for="search"d&gt;검색하기&lt;/labeld&gt;
+            &lt;input type="text" id="search" placeholder="CSS 속성을 입력해 주세요" /d&gt;
+            &lt;div class="start"d&gt;버튼을 누르면 게임이 시작됩니다.&lt;/divd&gt;
+        &lt;/divd&gt;
+        &lt;div class="search__info center"d&gt;
+            &lt;divd&gt;전체 속성 개수 : &lt;span class="num"d&gt;0&lt;/spand&gt;&lt;/divd&gt;
+            &lt;divd&gt;맞힌 개수 : &lt;span class="now"d&gt;0&lt;/spand&gt;&lt;/divd&gt;
+        &lt;/divd&gt;
+        &lt;div class="search__answers"d&gt;&lt;/divd&gt;
+        &lt;div class="search__missAnswers"d&gt;&lt;/divd&gt;
+        &lt;div class="search__list"d&gt;&lt;/divd&gt;
+        &lt;div class="search__result"d&gt;
+            &lt;div class="svg__wrap"d&gt;
+                &lt;-- 애니메이션 svg 생략 --&gt;
+                &lt;div class="result"d&gt;&lt;/divd&gt;
+                &lt;button class="restart"d&gt;다시 도전하기&lt;/buttond&gt;
+            &lt;/divd&gt;
+        &lt;/divd&gt;
+    &lt;/divd&gt;
+&lt;/maind&gt;
 </code></pre>
                             </div>
                             <div>
                                 <pre><code class="language-css">#main {
     margin: 50px 10px;
 }
-
 .search__wrap {
     max-width: 1400px;
     margin: 0 auto;
@@ -547,25 +682,42 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     padding: 30px;
     text-align: center;
 }
-
 .search__wrap > span {
     font-size: 20px;
     margin-bottom: 20px;
     display: inline-block;
     color: var(--htmlColor);
 }
-
 .search__wrap > h1 {
     font-family: "Tmon";
     color: var(--htmlColor);
-    font-size: 6vw;
+    font-size: 5vw;
     margin-bottom: 10px;
 }
-
+.search__wrap > h1 a {
+    font-family: "Tmon";
+    color: var(--htmlColor);
+    font-size: 5vw;
+    margin-bottom: 10px;
+}
+.search__wrap .time {
+    width: 140px;
+    height: 140px;
+    line-height: 140px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 20px auto 0px auto;
+    background: var(--htmlColor);
+}
+.search__wrap .time span {
+    color: #fff;
+    font-size: 34px;
+    font-weight: 100;
+}
 .search__box {
     margin-bottom: 20px;
+    position: relative;
 }
-
 .search__box label {
     position: absolute;
     clip: rect(0 0 0 0);
@@ -574,28 +726,37 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     margin: -1px;
     overflow: hidden;
 }
-
 .search__box input {
     border: 2px solid var(--htmlColor);
     padding: 15px 40px;
-    width: 70%;
+    width: 30%;
     border-radius: 50px;
     font-size: 20px;
+    margin-top: 20px;
 }
-
+.search__box .start {
+    position: absolute;
+    left: 50%; bottom: 0;
+    transform: translateX(-50%);
+    background: #223547;
+    width: 30%;
+    border-radius: 50px;
+    font-size: 20px;
+    border: 2px solid var(--htmlColor);
+    padding: 15px 40px;
+    color: #fff;
+    cursor: pointer;
+  }
 .search__list li {
     text-align: left;
     line-height: 1.7;
 }
-
 .search__list li.hide {
     display: none;
 }
-
 .search__list li.show {
     display: block;
 }
-
 .search__list span {
     display: inline-block;
     padding: 10px 20px;
@@ -605,18 +766,15 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     text-align: left;
     cursor: pointer;
 }
-
 .search__list span:hover {
     background-color: var(--htmlColor);
     color: #fff;
     transition: all 0.3s;
 }
-
 .search__list em {
     float: right;
     font-style: normal;
 }
-
 .search__list .line {
     margin-top: 70px;
     margin-bottom: 50px;
@@ -631,7 +789,6 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     background: #c2d5f5;
     cursor: pointer;
 }
-
 .search__info {
     text-align: right;
     margin-bottom: 20px;
@@ -639,17 +796,20 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     border-bottom: 2px dashed var(--htmlColor);
     color: var(--htmlColor);
 }
-
+.search__info.center {
+    display: flex;
+    justify-content: center;
+    grid-gap: 10px;
+    padding-bottom: 20px;
+}
 .search__info .type {
     margin-bottom: 10px;
     text-align: center;
 }
-
 .search__info .all {
     display: inline;
     margin-bottom: 10px;
 }
-
 .search__info .all span {
     border-bottom: 2px solid var(--htmlColor);
     border-radius: 5px;
@@ -658,7 +818,6 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     margin-bottom: 4px;
     font-weight: 500;
 }
-
 .search__info .all span:hover {
     background-color: var(--htmlColor);
     color: #fff;
@@ -668,7 +827,6 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     display: inline;
     margin-bottom: 10px;
 }
-
 .search__info .keyword span {
     border-bottom: 2px solid var(--htmlColor);
     border-radius: 5px;
@@ -677,13 +835,11 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     margin-bottom: 4px;
     font-weight: 500;
 }
-
 .search__info .keyword span:hover {
     background-color: var(--htmlColor);
     color: #fff;
     cursor: pointer;
 }
-
 .search__info div:nth-child(3) {
     text-align: right;
 }
@@ -693,7 +849,32 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
 .search__info .searchResult.hide {
     display: none;
 }
-
+.search__answers {
+    border-bottom: 2px dashed var(--htmlColor);
+    padding-bottom: 40px;
+    padding-top: 10px;
+}
+.search__answers span {
+    display: inline-block;
+    background: var(--htmlColor);
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 30px;
+    margin: 3px;
+}
+.search__missAnswers {
+    border-bottom: 2px dashed var(--htmlColor);
+    padding: 40px 0;
+    margin-bottom: 30px;
+}
+.search__missAnswers span {
+    display: inline-block;
+    border: 1px solid var(--htmlColor);
+    color: var(--htmlColor);
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 3px;
+}
 .search__desc {
     padding: 20px 40px 20px 60px;
     margin-bottom: 30px;
@@ -705,7 +886,6 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     background-repeat: no-repeat;
     background-position: 24px 18px;
 }
-
 .search__click {
     margin-top: 10px;
     margin-bottom: 30px;
@@ -724,22 +904,105 @@ document.querySelector(".btn6").addEventListener("click", (e) => {
     background-color: var(--htmlColor);
     color: #fff;
 }
-
+.search__audio {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.search__audio .play {
+    display: none;
+}
+.search__result {
+    position: fixed;
+    left: 1vw;
+    top: 1vw;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: white;
+    border: 5px solid #223547;
+    transform: scale3d(0, 0, 0);
+    z-index: 1;
+    align-items: center;
+    color: #223547;
+    font-weight: 300;
+    justify-content: center;
+    display: none;
+}
+.search__result.show {
+    display: flex;
+    animation: rubberBand 1s 0.6s ease forwards;
+}
+.search__result .result {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+.search__result .restart {
+  background: #223547;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 5px 20px;
+  display: inline-block;
+  margin-top: 10px;
+  cursor: pointer;
+}
+@keyframes rubberBand {
+    from {
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    to {
+      transform: scale3d(1, 1, 1);
+    }
+}
+@media (max-width: 1360px) {
+    .search__box .start {
+        width: 60%;
+    }
+    .search__box input {
+        width: 60%;
+    }
+}
+@media (max-width: 730px){
+    .search__box .start {
+        width: 80%;
+    }
+    .search__box input {
+        width: 80%;
+    }
+}
 @media (max-width: 600px) {
     .search__wrap {
         padding: 20px;
     }
-
     .search__wrap > h1 {
         font-size: 44px;
     }
-
     .search__wrap > span {
         font-size: 16px;
         margin-bottom: 10px;
     }
-
     .search__box input {
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+    .search__box .start {
         font-size: 16px;
         padding: 12px 30px;
     }

@@ -384,7 +384,7 @@
             const sliderInner = document.querySelector(".slider__inner"); // 움직이는 영역
             const slider = document.querySelectorAll(".slider"); // 개별적 이미지
             const sliderDot = document.querySelector(".slider__dot"); // dot
-            const sliderBtn = document.querySelectorAll(".slider__btn"); // 버튼
+            const sliderBtn = document.querySelector(".slider__btn"); // 버튼
             const sliderBtnPrev = document.querySelector(".slider__btn .prev"); // 왼쪽 버튼
             const sliderBtnNext = document.querySelector(".slider__btn .next"); // 오른쪽 버튼
 
@@ -413,8 +413,7 @@
 
             function gotoSlider(direction){
                 sliderInner.classList.add("transition");
-                sliderBtnPrev.classList.add("disable");
-                sliderBtnNext.classList.add("disable");
+                sliderBtn.classList.add("disable");
                 
                 posInitial = sliderInner.offsetLeft;
                 // offsetLeft : 부모 박스를 기준으로 상대적인 위치를 구함
@@ -426,8 +425,8 @@
                     sliderInner.style.left = (posInitial - sliderWidth) + "px";
                     currentIndex++;
                 }
-                dotActive.forEach(el => el.classList.remove("active"));
-                dotActive[currentIndex].classList.add("active");
+                // dotActive.forEach(el => el.classList.remove("active"));
+                // dotActive[currentIndex].classList.add("active");
                 // if(currentIndex == 0)
             }
             
@@ -453,24 +452,25 @@
             }
             dotActive.forEach((dot, index) => {
                 dot.addEventListener("click", () => {
-                    sliderInner.style.left = -(sliderWidth) * (index+1)+ "px";
-                    currentIndex == index;
                     gotoSlider(index);
                     dotActive.forEach(el => el.classList.remove("active"));
                     dotActive[index].classList.add("active");
+                    sliderInner.style.left = -(sliderWidth) * (index+1)+ "px";
+                    currentIndex == index;
+                    sliderBtn.classList.remove("disable");
                 })
             })
 
             sliderBtnPrev.addEventListener("click", () => {
                 gotoSlider(-1);
                 setTimeout(() => {
-                    sliderBtnPrev.classList.remove("disable")
+                    sliderBtn.classList.remove("disable")
                 }, 300)
             })
             sliderBtnNext.addEventListener("click", () => {
                 gotoSlider(1);
                 setTimeout(() => {
-                    sliderBtnNext.classList.remove("disable")
+                    sliderBtn.classList.remove("disable")
                 }, 300)
             })
             // transition이 끝났을 때를 감지하는 이벤트
