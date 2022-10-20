@@ -13,7 +13,7 @@
         <title>REVIEW WRITE</title>
 
         <!-- CSS -->
-        <?php include "../include/link.php" ?>
+        <?php include "../include/linkreviewwrite.php" ?>
     </head>
     <body>
         <div id="skip">
@@ -46,8 +46,8 @@
                 <form action="ReviewModifySave.php" name="ReviewModify" method="post" enctype="multipart/form-data">
                     <fieldset>
                         <legend class="blind">리뷰 게시글 수정 영역</legend>
-                        <div class="mid__ikon">
-                            <div class="Photo">
+                        <div class="mid__icon">
+                            <div class="link">
                                 <label for="reviewFile">
                                     <svg width="20" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -56,13 +56,6 @@
                                     </svg>
                                 </label>
                                 <input class="blind" type="file" name="reviewFile" id="reviewFile" accept=".jpg, .jpeg, .png, .gif" placeholder="jpg(jpeg), png, gif 파일만 첨부 가능합니다.">
-                            </div>
-                            <div class="link">
-                                <svg width="24" height="24 " viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M1.9 5C1.9 3.29 3.29 1.9 5 1.9H9V0H5C2.24 0 0 2.24 0 5C0 7.76 2.24 10 5 10H9V8.1H5C3.29 8.1 1.9 6.71 1.9 5ZM6 6H14V4H6V6ZM15 0H11V1.9H15C16.71 1.9 18.1 3.29 18.1 5C18.1 6.71 16.71 8.1 15 8.1H11V10H15C17.76 10 20 7.76 20 5C20 2.24 17.76 0 15 0Z"
-                                        fill="#323232" />
-                                </svg>
                             </div>
                             <div class="center">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +96,7 @@
                                     </defs>
                                 </svg>
                             </div>
-                            <div class="ikon_U">
+                            <div class="icon_U">
                                 <svg width="22" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_632_4673)">
                                         <path
@@ -117,7 +110,7 @@
                                     </defs>
                                 </svg>
                             </div>
-                            <div class="ikon_B">
+                            <div class="icon_B">
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_632_4667)">
                                         <path
@@ -134,12 +127,7 @@
                         </div>
                         <div class="board">
                             <div class="board__table">
-                                <table>
-                                    <colgroup>
-                                        <col style="width: 30%" />
-                                        <col style="width: 60%" />
-                                        <col style="width: 16%" />
-                                    </colgroup>
+                                <div>
                                     <div>
 <?php
     $myReviewID = $_GET['myReviewID'];
@@ -156,7 +144,7 @@
         echo "<label for='youPass'>비밀번호</label><input type='password' name='youPass' id='youPass'placeholder='로그인 비밀번호를 입력해 주세요.' autocomplete='off' required></input></div></div>";
     }
 ?>
-                                </table>
+                                </div>
                             </div>
                             <div class="table__bottom">
                                 <div class="btn">

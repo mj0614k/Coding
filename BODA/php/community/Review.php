@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
-        <?php include "../include/link.php" ?>
+        <?php include "../include/linkreview.php" ?>
         <title>REVIEW</title>
     </head>
     <body>
@@ -192,13 +192,47 @@
             <!-- //cardType -->
             <section class="mid__container">
                 <div class="review">
+                    <div class="review__search">
+                        <form action="ReviewSearch.php" name="ReviewSearch" method="get">
+                            <fieldset>
+                                <legend class="blind">게시글 검색 영역</legend>
+                                <select name="searchOption" id="searchOption">
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                    <option value="name">등록자</option>
+                                </select>
+                                <input
+                                    type="search"
+                                    name="searchKeyword"
+                                    id="searchKeyword"
+                                    placeholder="검색어를 입력하세요."
+                                    aria-label="search"
+                                    required
+                                />
+                                <button type="submit" class="searchBtn">
+                                    <svg
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 29 29"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M20.7261 18.239H19.4162L18.952 17.7913C20.5769 15.9011 21.5552 13.4471 21.5552 10.7776C21.5552 4.82504 16.7301 0 10.7776 0C4.82504 0 0 4.82504 0 10.7776C0 16.7301 4.82504 21.5552 10.7776 21.5552C13.4471 21.5552 15.9011 20.5769 17.7913 18.952L18.239 19.4162V20.7261L25.391 27.8638C25.7937 28.2658 25.9951 28.4667 26.2279 28.5402C26.424 28.602 26.6345 28.6019 26.8306 28.5399C27.0633 28.4662 27.2644 28.265 27.6667 27.8627L27.8627 27.6667C28.265 27.2644 28.4662 27.0633 28.5399 26.8306C28.6019 26.6345 28.602 26.424 28.5402 26.2279C28.4667 25.9951 28.2658 25.7937 27.8638 25.391L20.7261 18.239ZM10.7776 18.239C6.64894 18.239 3.31618 14.9062 3.31618 10.7776C3.31618 6.64894 6.64894 3.31618 10.7776 3.31618C14.9062 3.31618 18.239 6.64894 18.239 10.7776C18.239 14.9062 14.9062 18.239 10.7776 18.239Z"
+                                            fill="#323232"
+                                        />
+                                    </svg>
+                                </button>
+                            </fieldset>
+                        </form>
+                    </div>
                     <div class="review__board">
                         <table class="review__table">
                             <colgroup>
                                 <col style="width: 12%" />
                                 <col style="width: 32%" />
                                 <col style="width: 12%" />
-                                <col style="width: 12%" />
+                                <col class="mobile__table" style="width: 12%" />
                                 <!-- <col style="width: 12%" /> -->
                                 <col style="width: 12%" />
                             </colgroup>
@@ -207,45 +241,45 @@
                                     <th>번호</th>
                                     <th>제목</th>
                                     <th>작성자</th>
-                                    <th>날짜</th>
+                                    <th class="mobile__table">날짜</th>
                                     <!-- <th>추천수</th> -->
                                     <th>조회수</th>
                                 </tr>
                             </thead>
                             <tbody>
 <?php
-    if(isset($_GET['page'])){
-        $page = (int)$_GET['page'];
-    } else {
-        $page = 1;
-    } 
+if(isset($_GET['page'])){
+    $page = (int)$_GET['page'];
+} else {
+    $page = 1;
+} 
 
-    $viewNum = 10;
-    $viewLimit = ($viewNum * $page) - $viewNum;
+$viewNum = 10;
+$viewLimit = ($viewNum * $page) - $viewNum;
 
-    // 두 개의 테이블 join
-    $sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewLike, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
-    $result = $connect -> query($sql);
+// 두 개의 테이블 join
+$sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewLike, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
+$result = $connect -> query($sql);
 
-    if($result){
-        $count = $result -> num_rows;
+if($result){
+    $count = $result -> num_rows;
 
-        if($count > 0){
-            for($i=1; $i <= $count; $i++){
-                $info = $result -> fetch_array(MYSQLI_ASSOC);
-                echo "<tr>";
-                echo "<td>".$info['myReviewID']."</td>";
-                echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
-                echo "<td>".$info['youNickName']."</td>";
-                echo "<td>".date('Y-m-d', $info['ReviewregTime'])."</td>";
-                // echo "<td>".$info['ReviewLike']."</td>";
-                echo "<td>".$info['ReviewView']."</td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
+    if($count > 0){
+        for($i=1; $i <= $count; $i++){
+            $info = $result -> fetch_array(MYSQLI_ASSOC);
+            echo "<tr>";
+            echo "<td>".$info['myReviewID']."</td>";
+            echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
+            echo "<td>".$info['youNickName']."</td>";
+            echo "<td class='mobile__table'>".date('Y-m-d', $info['ReviewregTime'])."</td>";
+            // echo "<td>".$info['ReviewLike']."</td>";
+            echo "<td>".$info['ReviewView']."</td>";
+            echo "</tr>";
         }
+    } else {
+        echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
     }
+}
 ?>
 
                                 <!-- <tr>
@@ -258,147 +292,11 @@
                                 </tr> -->
                             </tbody>
                         </table>
-                        
                     </div>
-
-                    <div class="review__board subReview__board">
-                        <div class="review__subSearch">
-                            <form action="ReviewSearch.php" name="ReviewSearch" method="get">
-                                <fieldset>
-                                    <legend class="blind">게시글 검색 영역</legend>
-                                    <select name="searchOption" id="searchOption">
-                                        <option value="title">제목</option>
-                                        <option value="content">내용</option>
-                                        <option value="name">등록자</option>
-                                    </select>
-                                    <input
-                                        type="search"
-                                        name="searchKeyword"
-                                        id="searchKeyword"
-                                        placeholder="검색어를 입력하세요."
-                                        aria-label="search"
-                                        required
-                                    />
-                                    <button type="submit" class="searchBtn">
-                                        <svg
-                                            width="18"
-                                            height="18"
-                                            viewBox="0 0 29 29"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M20.7261 18.239H19.4162L18.952 17.7913C20.5769 15.9011 21.5552 13.4471 21.5552 10.7776C21.5552 4.82504 16.7301 0 10.7776 0C4.82504 0 0 4.82504 0 10.7776C0 16.7301 4.82504 21.5552 10.7776 21.5552C13.4471 21.5552 15.9011 20.5769 17.7913 18.952L18.239 19.4162V20.7261L25.391 27.8638C25.7937 28.2658 25.9951 28.4667 26.2279 28.5402C26.424 28.602 26.6345 28.6019 26.8306 28.5399C27.0633 28.4662 27.2644 28.265 27.6667 27.8627L27.8627 27.6667C28.265 27.2644 28.4662 27.0633 28.5399 26.8306C28.6019 26.6345 28.602 26.424 28.5402 26.2279C28.4667 25.9951 28.2658 25.7937 27.8638 25.391L20.7261 18.239ZM10.7776 18.239C6.64894 18.239 3.31618 14.9062 3.31618 10.7776C3.31618 6.64894 6.64894 3.31618 10.7776 3.31618C14.9062 3.31618 18.239 6.64894 18.239 10.7776C18.239 14.9062 14.9062 18.239 10.7776 18.239Z"
-                                                fill="#323232"
-                                            />
-                                        </svg>
-                                    </button>
-                                </fieldset>
-                            </form>
-                        </div>
-                    <div class="review__table">
-                        <table>
-                            <colgroup>
-                                <col style="width: 15%" />
-                                <col style="width: 30%" />
-                                <col style="width: 15%" />
-                                <col style="width: 15%" />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>번호</th>
-                                    <th>제목</th>
-                                    <th>작성자</th>
-                                    <th>조회</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-<?php
-    if(isset($_GET['page'])){
-        $page = (int)$_GET['page'];
-    } else {
-        $page = 1;
-    } 
-
-    $viewNum = 10;
-    $viewLimit = ($viewNum * $page) - $viewNum;
-
-    // 두 개의 테이블 join
-    $sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewLike, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
-    $result = $connect -> query($sql);
-
-    if($result){
-        $count = $result -> num_rows;
-
-        if($count > 0){
-            for($i=1; $i <= $count; $i++){
-                $info = $result -> fetch_array(MYSQLI_ASSOC);
-                echo "<tr>";
-                echo "<td>".$info['myReviewID']."</td>";
-                echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
-                echo "<td>".$info['youNickName']."</td>";
-                echo "<td>".$info['ReviewView']."</td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='4'>게시글이 없습니다.</td></tr>";
-        }
-    }
-?>
-                                <!-- <tr>
-                                    <td>1</td>
-                                    <td><a href="ReviewView.html">진짜 멋진 포토존 어쩌고</a></td>
-                                    <td>둘리</td>
-                                    <td>1.1K</td>
-                                </tr> -->
-                            </tbody>
-                        </table>
-                        <div class="board__btn">
-                            <a href="ReviewWrite.php">
-                                글쓰기
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="review__search">
                     <div class="board__btn">
                         <a href="ReviewWrite.php">글쓰기</a>
                     </div>
-                    <form action="ReviewSearch.php" name="ReviewSearch" method="get">
-                        <fieldset>
-                            <legend class="blind">게시글 검색 영역</legend>
-                            <select name="searchOption" id="searchOption">
-                                <option value="title">제목</option>
-                                <option value="content">내용</option>
-                                <option value="name">등록자</option>
-                            </select>
-                            <input
-                                type="search"
-                                name="searchKeyword"
-                                id="searchKeyword"
-                                placeholder="검색어를 입력하세요."
-                                aria-label="search"
-                                required
-                            />
-                            <button type="submit" class="searchBtn">
-                                <svg
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 29 29"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M20.7261 18.239H19.4162L18.952 17.7913C20.5769 15.9011 21.5552 13.4471 21.5552 10.7776C21.5552 4.82504 16.7301 0 10.7776 0C4.82504 0 0 4.82504 0 10.7776C0 16.7301 4.82504 21.5552 10.7776 21.5552C13.4471 21.5552 15.9011 20.5769 17.7913 18.952L18.239 19.4162V20.7261L25.391 27.8638C25.7937 28.2658 25.9951 28.4667 26.2279 28.5402C26.424 28.602 26.6345 28.6019 26.8306 28.5399C27.0633 28.4662 27.2644 28.265 27.6667 27.8627L27.8627 27.6667C28.265 27.2644 28.4662 27.0633 28.5399 26.8306C28.6019 26.6345 28.602 26.424 28.5402 26.2279C28.4667 25.9951 28.2658 25.7937 27.8638 25.391L20.7261 18.239ZM10.7776 18.239C6.64894 18.239 3.31618 14.9062 3.31618 10.7776C3.31618 6.64894 6.64894 3.31618 10.7776 3.31618C14.9062 3.31618 18.239 6.64894 18.239 10.7776C18.239 14.9062 14.9062 18.239 10.7776 18.239Z"
-                                        fill="#323232"
-                                    />
-                                </svg>
-                            </button>
-                        </fieldset>
-                    </form>
                 </div>
-
                 <div class="board__pages">
                     <ul>
 <?php

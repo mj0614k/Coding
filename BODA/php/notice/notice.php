@@ -12,7 +12,7 @@
     <title>NOTICE</title>
 
     <!-- CSS -->
-    <?php include "../include/link.php" ?>
+    <?php include "../include/linknotice.php" ?>
 </head>
 <body>
     <div id="skip">
@@ -78,14 +78,14 @@
                     <colgroup>
                         <col style="width: 20%" />
                         <col style="width: 50%"/>
-                        <col style="width: 20%" />
+                        <col class="mobile__table" style="width: 20%" />
                         <col style="width: 10%" />
                     </colgroup>
                     <thead>
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
-                            <th>날짜</th>
+                            <th class="mobile__table">날짜</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -93,7 +93,7 @@
                         <tr>
                             <td>10</td>
                             <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
+                            <td class="mobile__table">2022-10-21</td>
                             <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
@@ -103,7 +103,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="5" class="content blind">
+                            <td colspan="3" class="content blind">
                                 BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
                                 <p class="box">
                                     [기존 약관]<br>
@@ -122,7 +122,7 @@
                                 </p>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>9</td>
                             <td>BODA 이용약관 개정 안내 (10/21) BODA 이용약관 개정 안내 (10/21)</td>
                             <td>2022-10-21</td>
@@ -153,269 +153,13 @@
                                     제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
                                 </p>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>BODA 이용약관 개정 안내 (10/21)</td>
-                            <td>2022-10-21</td>
-                            <td><svg class="open" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L8 8L15 1" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                                <svg class="close blind" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 8L8 0.999999L1 8" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="content blind">
-                                BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
-                                <p class="box">
-                                    [기존 약관]<br>
-                                    제 1조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 1 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-
-                                    [기존 약관]<br>
-                                    제 2조 목적 어쩌고 저쩌고...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...<br><br>
-                                    [수정된 약관]<br>
-                                    제 2 조 목적 어쩌고 저쩌고... 순댓국 먹고 싶네요...
-                                </p>
-                            </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
             
                 <!-- 반응형용 표 -->
-            <div class="board__table2">
+            <!-- <div class="board__table2">
                 <table>
                     <colgroup>
                         <col style="width: 20%;">
@@ -752,7 +496,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
         </div>
         <div class="board__pages">
             <ul>

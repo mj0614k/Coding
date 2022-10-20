@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOTICE</title>
     <!-- CSS -->
-    <?php include "../include/link.php" ?>
+    <?php include "../include/linknotice.php" ?>
 </head>
 <body>
     <div id="skip">

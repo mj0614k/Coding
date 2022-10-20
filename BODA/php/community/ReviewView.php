@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
-        <?php include "../include/link.php" ?>
+        <?php include "../include/linkreviewview.php" ?>
         <title>REVIEW VIEW</title>
     </head>
     <body>
@@ -56,7 +56,7 @@
     $sql = "UPDATE myReview set ReviewView = ReviewView + 1 WHERE myReviewID = {$myReviewID}";
     $connect -> query($sql);
     
-    $sql = "SELECT r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewView, r.ReviewContents, r.ReviewLike FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) WHERE r.myReviewID = {$myReviewID}";
+    $sql = "SELECT r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewView, r.ReviewImgFile, r.ReviewContents, r.ReviewLike FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) WHERE r.myReviewID = {$myReviewID}";
     $result = $connect -> query($sql);
 
     if($result){
@@ -65,7 +65,8 @@
         echo "<thead><tr><th>".$info['youNickName']."</th>";
         echo "<th>".$info['ReviewTitle']."</th>";
         echo "<th>".date('Y-m-d H:i', $info['ReviewregTime'])."</th></tr></thead>";
-        echo "<tbody><tr><td colspan='3'><div class='height'>".$info['ReviewContents']."</td></tr></tr></tbody>";
+        echo "<tbody><tr><td colspan='3'><div class='height'><img src=".$info['ReviewImgFile'].">";
+        echo $info['ReviewContents']."</td></tr></tr></tbody>";
     }
 ?>
                         </table>

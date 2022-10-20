@@ -433,9 +433,12 @@ input::-webkit-search-results-decoration{
     .main__header .menu li:nth-child(1) a {
         max-width: 160px;
     }
-    .review__board {
+    .mobile__table {
         display: none;
     }
+    /* .review__board {
+        display: none;
+    } */
     .review__board.subReview__board {
         display: block;
     }
@@ -460,60 +463,10 @@ input::-webkit-search-results-decoration{
     .main__header .menu li:nth-child(1) a {
         max-width: 120px;
     }
-    .review__search {
-        display: none;
-    }
-    .review__subSearch {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 40px;
-    }
     .review__board {
         margin-bottom: 30px;
     }
     /* write btn */
-    .review__subSearch .board__btn {
-        margin-left: 20px;
-    }
-    .review__subSearch .board__btn a {
-        width: 107px;
-        height: 50px;
-        color: white;
-        background-color: #323232;
-        display: inline-block;
-        border-radius: 10px;
-        text-align: center;
-        line-height: 50px;
-        font-weight: 200;
-        font-size: 16px;
-    }
-    .review__subSearch fieldset {
-        position: relative;
-        width: fit-content;
-    }
-    .review__subSearch fieldset select {
-        width: 90px;
-        height: 45px;
-        margin-right: 10px;
-        font-weight: 400;
-        font-size: 16px;
-    }
-    .review__subSearch fieldset select option {
-        font-size: 16px;
-        font-weight: 400;
-    }
-    .review__subSearch fieldset select:focus{
-        outline: none;
-    }
-    .review__subSearch fieldset input {
-        width: 200px;
-        height: 45px;
-        border: none;
-        border-bottom: 1px solid #b0b0b0;
-        font-size: 16px;
-        font-weight: 400;
-        padding-left: 5px;
-    }
     input::-webkit-search-decoration,
     input::-webkit-search-cancel-button,
     input::-webkit-search-results-button,

@@ -236,9 +236,6 @@ input::-webkit-search-results-decoration{
 }
 
 @media (max-width: 600px) {
-    .board__table {
-        display: none;
-    }
     .board__table2 {
         display: block;
     }
@@ -259,6 +256,12 @@ input::-webkit-search-results-decoration{
         padding: 40px 20px;
     }
     colgroup col:nth-child(3){
+        display: none;
+    }
+}
+
+@media (max-width:600px) {
+    .mobile__table {
         display: none;
     }
 }
