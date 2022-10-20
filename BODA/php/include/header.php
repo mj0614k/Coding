@@ -96,7 +96,7 @@
                     </ul>
                 </li>
                 <ul class="small">
-                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="../login/loginmobile.php">LOGIN</a></li>
                     <li><a href="../login/agree.php">SIGN UP</a></li>
                     <li><a href="#">MYPAGE</a></li>
                     <li><a href="../notice/notice.php">NOTICE</a></li>

@@ -236,6 +236,9 @@ input::-webkit-search-results-decoration{
 }
 
 @media (max-width: 600px) {
+    .board__table table tbody tr:nth-child(2n) td {
+        
+    }
     .board__table2 {
         display: block;
     }

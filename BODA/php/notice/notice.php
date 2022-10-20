@@ -103,7 +103,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="content blind">
+                            <td colspan="4" class="content blind ">
                                 BODA 홈페이지 내 이용약관 내용을 개정하여 다음과 같이 안내드립니다.
                                 <p class="box">
                                     [기존 약관]<br>

@@ -65,7 +65,7 @@
         echo "<thead><tr><th>".$info['youNickName']."</th>";
         echo "<th>".$info['ReviewTitle']."</th>";
         echo "<th>".date('Y-m-d H:i', $info['ReviewregTime'])."</th></tr></thead>";
-        echo "<tbody><tr><td colspan='3'><div class='height'><img src=".$info['ReviewImgFile'].">";
+        echo "<tbody><tr><td colspan='3'><div class='height'><img src=../assets/img/Review/".$info['ReviewImgFile'].">";
         echo $info['ReviewContents']."</td></tr></tr></tbody>";
     }
 ?>
