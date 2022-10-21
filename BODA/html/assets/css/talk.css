@@ -110,16 +110,17 @@ table.talk {
     color: #b0b0b0;
     padding: 0 5px;
 }
-.comment .contents .contents__top .modify {
+.comment .contents .contents__top .Talkmodify {
     font-weight: 300;
     font-size: 16px;
     color: #b0b0b0;
     padding: 0 5px 0 0;
 }
-.comment .contents .contents__top .remove {
+.comment .contents .contents__top .Talkdelete {
     font-weight: 300;
     font-size: 16px;
     color: #b0b0b0;
+    
 }
 .comment .contents .contents__bottom {
     font-weight: 300;
@@ -184,6 +185,126 @@ table.talk {
 .board__table table tbody tr td a {
     color: #323232;
 }
+
+/* Talk Modify & Delete */
+.talk__modify__modal {
+    width: 60%;
+    max-width: 600px;
+    height: 400px;
+    background-color: #fff;
+    border: 2px solid #323232;
+    border-radius: 20px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.talk__modify__modal label {
+    display: none;
+}
+.talk__modify__modal h2 {
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.talk__modify__modal input {
+    width: 60%;
+    height: 70px;
+    font-weight: 400;
+    border-radius: 10px;
+    line-height: 1;
+    padding-left: 30px;
+    color: #323232;
+    border: 1px solid #b0b0b0;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: 'SCoreDream';
+}
+.TalkModifyBtn {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+.talk__modify__modal button {
+    width: 120px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    background-color: black;
+    border-radius: 10px;
+    margin-top: 30px;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    cursor: pointer;
+}
+.talk__modify__modal button:nth-child(1) {
+    margin-right: 20px;
+}
+
+.talk__delete__modal {
+    width: 60%;
+    max-width: 600px;
+    height: 400px;
+    position: fixed;
+    transform: translate(-50%, 0);
+    background-color: #fff;
+    border: 2px solid #323232;
+    border-radius: 20px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.talk__delete__modal label {
+    display: none;
+}
+.talk__delete__modal h2 {
+    margin-top: 90px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.talk__delete__modal input {
+    width: 60%;
+    height: 70px;
+    font-weight: 400;
+    border-radius: 10px;
+    line-height: 1;
+    padding-left: 30px;
+    color: #323232;
+    border: 1px solid #b0b0b0;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: 'SCoreDream';
+}
+.TalkDeleteBtn {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+.talk__delete__modal button {
+    width: 120px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    background-color: black;
+    border-radius: 10px;
+    margin-top: 30px;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    cursor: pointer;
+}
+.talk__delete__modal button:nth-child(1) {
+    margin-right: 20px;
+}
+
 .board__pages ul {
     display: flex;
     justify-content: center;

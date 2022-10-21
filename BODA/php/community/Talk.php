@@ -79,10 +79,10 @@
         if($count > 0){
             for($i=1; $i <= $count; $i++){
                 $info = $result -> fetch_array(MYSQLI_ASSOC);
-                echo "<tr><td class='comment comment_1'><div class='profile'></div><div class='contents'><div class='contents__top'>";
+                echo "<tr id='".$info['myTalkID']."'><td class='comment comment_1'><div class='profile'></div><div class='contents'><div class='contents__top'>";
                 echo "<p class='name'><span class='ir'>작성자</span><span>".$info['youNickName']."</span></p>";
                 echo "<p class='date'><span class='ir'>작성일</span><span>| ".date('Y-m-d H:i', $info['TalkregTime'])."</span></p>";
-                echo "<a href='#' class='remove'>| 삭제</a></div>";
+                echo "<a href='#' class='Talkmodify'>| 수정</a><a href='#' class='Talkdelete'>| 삭제</a></div>";
                 echo "<div class='contents__bottom'><span>".$info['TalkContents']."</span></div></div>";
                 echo "</td></tr>";
             }
@@ -91,6 +91,22 @@
 ?>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="talk__modify__modal" style='display: none;'>
+                <h2>Talk 수정하기</h2>
+                <label for="TalkModifyMsg">수정 내용</label>
+                <input type="text" id="TalkModifyMsg" name="TalkModifyMsg" placeholder="수정 내용">
+                <div class="TalkModifyBtn">
+                    <button id="TalkModifyCancel">취소</button>
+                    <button id="TalkModifyButton">수정</button>
+                </div>
+            </div>
+            <div class="talk__delete__modal" style="display: none;">
+                <h2>Talk 삭제하기</h2>
+                <div class="TalkDeleteBtn">
+                    <button id="TalkDeleteCancel">취소</button>
+                    <button id="TalkDeleteButton">삭제</button>
                 </div>
             </div>
 
@@ -155,5 +171,67 @@
     <!-- //footer -->
 
     <?php include "../include/script.php" ?>
+    <script>
+        let commentID = "";
+
+        // 수정 클릭하면 모달창
+        $(".Talkmodify").click(function(e) {
+            e.preventDefault();
+            $(".talk__modify__modal").fadeIn(500);
+
+            commentID = $(this).parent().parent().parent().parent().attr("id");
+        });
+        // 수정 클릭하고 취소
+        $("#TalkModifyCancel").click(function(e) {
+            e.preventDefault();
+            $(".talk__modify__modal").fadeOut(500);
+        });
+        // 수정 클릭하고 수정
+        $("#TalkModifyButton").click(function(e) {
+            e.preventDefault();
+            if($("#TalkModifyMsg").val() == ''){
+                alert("수정 내용을 입력해 주세요.");
+                $("#TalkModifyMsg").focus();
+            }
+            location.href = "TalkModify.php";
+
+            $.ajax({
+                url: "TalkModify.php",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    "TalkModifyMsg": $("#TalkModifyMsg").val(),
+                    "commentID": commentID
+                }
+            })
+        });
+
+        // 삭제 클릭하면 모달창
+        $(".Talkdelete").click(function(e) {
+            e.preventDefault();
+            $(".talk__delete__modal").fadeIn(500);
+
+            commentID = $(this).parent().parent().parent().parent().attr("id");
+        });
+        // 삭제 클릭하고 취소
+        $("#TalkDeleteCancel").click(function(e) {
+            e.preventDefault();
+            $(".talk__delete__modal").fadeOut(500);
+        });
+        // 삭제 클릭하고 삭제
+        $("#TalkDeleteButton").click(function(e) {
+            e.preventDefault();
+            location.href = "TalkDelete.php";
+
+            $.ajax({
+                url: "TalkDelete.php",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    "commentID": commentID
+                }
+            })
+        });
+    </script>
 </body>
 </html>
