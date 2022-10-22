@@ -23,9 +23,7 @@ table {
     font-weight: 300;
     font-size: 16px;
     color: #888888;
-    text-align: left;
     box-sizing: border-box;
-    padding-left: 80px;
 }
 .board__table table thead tr th:nth-child(2){
     font-weight: 500;

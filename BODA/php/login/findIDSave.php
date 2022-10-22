@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 완료 페이지</title>
+    <title>아이디 찾기 페이지</title>
     
     <!-- CSS -->
     <?php include "../include/link.php" ?>
@@ -59,7 +59,7 @@
             echo "<script>location.href='../main/main.php'</script>";
         }
     } else {
-        msg("에러발생01 - 관리자에게 문의하세요.");
+        msg("에러발생02 - 관리자에게 문의하세요.");
     }
 ?>
                 </div>
