@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
-        <?php include "../include/linkreview.php" ?>
+        <?php include "../include/link.php" ?>
         <title>REVIEW</title>
     </head>
     <body>
@@ -42,7 +42,7 @@
                 <div class="review">
                     <div class="review__search">
                         <form action="ReviewSearch.php" name="ReviewSearch" method="get">
-                            <fieldset>
+                            <fieldset class="reviewSearchBox">
                                 <legend class="blind">게시글 검색 영역</legend>
                                 <select name="searchOption" id="searchOption">
                                     <option value="title">제목</option>
@@ -169,12 +169,11 @@
                                     <td>1.1K</td>
                                 </tr> -->
                             </tbody>
-                        </table>
-                        
+                        </table>    
                     </div>
-                </div>
-                <div class="board__btn">
-                    <a href="ReviewWrite.php">글쓰기</a>
+                    <div class="review__btn">
+                        <a href="ReviewWrite.php">글쓰기</a>
+                    </div>
                 </div>
                 <div class="board__pages">
                     <ul>

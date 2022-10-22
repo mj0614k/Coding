@@ -228,7 +228,14 @@
                     </div>
                     <div class="review__board">
                         <p class="board__total">
-                            총 <em></em>건
+                            총 <em>
+<?php
+    $sql = "SELECT myReviewID FROM myReview";
+    $result = $connect -> query($sql);
+    $count = $result -> num_rows;
+    echo $count;
+?>
+                            </em>건
                         </p>
                         <table class="review__table">
                             <colgroup>

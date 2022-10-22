@@ -74,6 +74,14 @@
     <section class="mid__container">
         <div class="board">
             <div class="board__table">
+                <p>총 <em>
+<?php
+    $sql = "SELECT myNoticeID FROM myNotice";
+    $result = $connect -> query($sql);
+    $count = $result -> num_rows;
+    echo $count;
+?>
+                </em>건</p>
                 <table class="notice__table">
                     <colgroup>
                         <col style="width: 20%" />
@@ -586,6 +594,13 @@
     //     MobileTableTr.forEach((e) => {e.innerHTML = "";});
     //     MobileTableTd.forEach((e) => {e.innerHTML = "";});
     // }
+
+    let NoticeImg = document.querySelectorAll(".board__table .notice__table tbody .content img");
+    NoticeImg.forEach(e => {
+        if(e.getAttribute("src") == "../assets/img/Notice/Img_default.jpg"){
+            e.style.display = "none";
+        }
+    });
 </script>
 </body>
 </html>

@@ -65,8 +65,8 @@
         echo "<thead><tr><th>".$info['youNickName']."</th>";
         echo "<th>".$info['ReviewTitle']."</th>";
         echo "<th>".date('Y-m-d H:i', $info['ReviewregTime'])."</th></tr></thead>";
-        echo "<tbody><tr><td colspan='3'><div class='height'><img src=../assets/img/Review/".$info['ReviewImgFile'].">";
-        echo $info['ReviewContents']."</td></tr></tr></tbody>";
+        echo "<tbody><tr><td colspan='3'><div class='height'><figure class='viewImg'><img src=../assets/img/Review/".$info['ReviewImgFile']."></figure>";
+        echo "<div class='view__desc'><p>".$info['ReviewContents']."</p></div></td></tr></tr></tbody>";
     }
 ?>
                         </table>
@@ -158,5 +158,12 @@
         <!-- //footer -->
 
         <?php include "../include/script.php" ?>
+        <script>
+            let ViewImg = document.querySelector(".viewBoard .board__table table tbody .height img");
+            let ViewImgsrc = ViewImg.getAttribute("src");
+            if(ViewImgsrc == "../assets/img/Review/Img_default.jpg"){
+                ViewImg.style.display = "none";
+            }
+        </script>
     </body>
 </html>
