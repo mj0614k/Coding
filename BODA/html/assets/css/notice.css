@@ -274,3 +274,160 @@ input::-webkit-search-results-decoration{
         width: 90px;
     }
 }
+
+/* noticeWrite */
+/* 아이콘 */
+.mid__icon {
+	text-align: right;
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+/* 아이콘 사진, 링크 */
+.mid__icon .Photo,
+.link {
+	margin-right: 30px;
+}
+
+.mid__icon .link {
+	border-right: 2px solid #d0d0d0;
+	padding-right: 30px;
+}
+
+/* 아이콘 중앙, 왼쪽, 오른쪽 */
+.mid__icon .center,
+.left,
+.right {
+	margin-right: 10px;
+}
+
+.mid__icon .right {
+	border-right: 2px solid #d0d0d0;
+	padding-right: 30px;
+}
+
+/* 아이콘 u,b */
+.mid__icon .icon_U {
+	padding-left: 15px;
+}
+
+.icon_U,
+.icon_B {
+	padding-right: 15px;
+}
+
+/* board */
+.board {
+	margin-bottom: 95px;
+}
+
+table {
+	width: 100%;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	font-family: 'scoredream';
+	font-weight: 300;
+	font-style: normal;
+	margin-bottom: 15px;
+	color: #323232;
+}
+
+.Title {
+	border-left: 0;
+	border-right: 0;
+	border-top: 1px solid #d0d0d0;
+	border-bottom: 1px solid #d0d0d0;
+	width: 100%;
+	padding: 30px 80px;
+	font-size: 24px;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.Contents {
+	min-height: 530px;
+	box-sizing: border-box;
+	padding: 80px 80px 120px 80px;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #d0d0d0;
+	box-sizing: border-box;
+	outline: none;
+	resize: none;
+}
+
+.board__table table tbody tr td {
+	color: black;
+}
+
+.board__table table tbody tr td img {
+	width: 100%;
+}
+
+.table__bottom {
+	display: flex;
+}
+
+.table__bottom .icon {
+	display: flex;
+	font-weight: 300;
+	font-size: 14px;
+	color: #888888;
+}
+
+.table__bottom .icon .eye {
+	margin-left: 80px;
+}
+
+.table__bottom .icon .heart {
+	margin-left: 50px;
+}
+
+.table__bottom .btn {
+	margin-right: 30px;
+}
+
+.table__bottom .btn a {
+	width: 107px;
+	height: 50px;
+	color: white;
+	background-color: #323232;
+	display: inline-block;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 50px;
+	margin-left: 15px;
+	margin-top: 40px;
+	font-weight: 200;
+	font-size: 16px;
+}
+
+.table__bottom .btn button {
+	width: 107px;
+	height: 50px;
+	color: white;
+	background-color: #323232;
+	display: inline-block;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 50px;
+	margin-left: 15px;
+	cursor: pointer;
+	margin-top: 40px;
+	font-weight: 200;
+	font-size: 16px;
+}
+
+@media (max-width: 480px) {
+
+	.main__header h2,
+	.home {
+		display: none;
+		transition: all 3s cubic-bezier(0.4, 0, 1, 1);
+	}
+
+	.table__bottom {
+		justify-content: center;
+	}
+}

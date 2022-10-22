@@ -56,7 +56,7 @@
     $sql = "UPDATE myReview set ReviewView = ReviewView + 1 WHERE myReviewID = {$myReviewID}";
     $connect -> query($sql);
     
-    $sql = "SELECT r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewView, r.ReviewImgFile, r.ReviewContents, r.ReviewLike FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) WHERE r.myReviewID = {$myReviewID}";
+    $sql = "SELECT r.ReviewTitle, m.myMemberID, m.youNickName, r.ReviewregTime, r.ReviewView, r.ReviewImgFile, r.ReviewContents, r.ReviewLike FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) WHERE r.myReviewID = {$myReviewID}";
     $result = $connect -> query($sql);
 
     if($result){
@@ -92,9 +92,14 @@
                                 </div>
                             </div>
                             <div class="btn">
-                                <a href="ReviewModify.php?myReviewID=<?=$myReviewID?>">수정</a>
-                                <a href="ReviewRemove.php?myReviewID=<?=$myReviewID?>" onclick="alert('정말로 삭제할까요?')">삭제</a>
-                                <a href="Review.php">목록</a>
+                        <?php if($_SESSION['myMemberID'] == $info['myMemberID']){ ?>
+                                <a href='ReviewModify.php?myReviewID=<?=$myReviewID?>'>수정</a>
+                                <a href='ReviewRemove.php?myReviewID=<?=$myReviewID?>' onclick="alert('정말로 삭제할까요?')">삭제</a>
+                                <a href='Review.php'>목록</a>
+                            <? } else { ?>
+                                <a href='Review.php'>목록</a>
+                        <?    }
+                        ?>
                             </div>
                         </div>
                     </div>

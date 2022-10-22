@@ -1,5 +1,5 @@
 const login = document.querySelector(".login__popup")
-            const loginBtn = document.querySelector(".smallmenu li a:nth-child(1)");
+            const loginBtn = document.querySelector("#login__btn");
             const loginClose = document.querySelector(".popup__close");
 
             loginBtn.addEventListener("click", () => {

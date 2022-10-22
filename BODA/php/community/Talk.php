@@ -38,7 +38,7 @@
         </div>
         <section class="mid__container">
             <div class="talk__write">
-                <form action="talkWriteSave.php" name="TalkWrite" method="post">
+                <form action="TalkWriteSave.php" name="TalkWrite" method="post">
                     <fieldset>
                         <legend class="blind">전시 토크 게시판 작성 영역</legend>
                         <button type="submit" class="btn">글쓰기</button>
@@ -70,7 +70,7 @@
     $viewLimit = ($viewNum * $page) - $viewNum;
 
     // 두 개의 테이블 join
-    $sql = "SELECT t.myTalkID, m.youNickName, t.TalkContents, t.TalkregTime FROM myTalk t JOIN myMember m ON(t.myMemberID = m.myMemberID) ORDER BY myTalkID DESC LIMIT ${viewLimit}, ${viewNum}";
+    $sql = "SELECT t.myTalkID, m.myMemberID, m.youNickName, t.TalkContents, t.TalkregTime FROM myTalk t JOIN myMember m ON(t.myMemberID = m.myMemberID) ORDER BY myTalkID DESC LIMIT ${viewLimit}, ${viewNum}";
     $result = $connect -> query($sql);
 
     if($result){
@@ -82,7 +82,9 @@
                 echo "<tr id='".$info['myTalkID']."'><td class='comment comment_1'><div class='profile'></div><div class='contents'><div class='contents__top'>";
                 echo "<p class='name'><span class='ir'>작성자</span><span>".$info['youNickName']."</span></p>";
                 echo "<p class='date'><span class='ir'>작성일</span><span>| ".date('Y-m-d H:i', $info['TalkregTime'])."</span></p>";
-                echo "<a href='#' class='Talkmodify'>| 수정</a><a href='#' class='Talkdelete'>| 삭제</a></div>";
+                if($_SESSION['myMemberID'] == $info['myMemberID']){
+                    echo "<a href='#' class='Talkmodify'>| 수정</a><a href='#' class='Talkdelete'>| 삭제</a></div>";
+                }
                 echo "<div class='contents__bottom'><span>".$info['TalkContents']."</span></div></div>";
                 echo "</td></tr>";
             }

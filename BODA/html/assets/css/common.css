@@ -17,6 +17,11 @@
     margin: 0 auto;
 }
 
+.board__total {
+    font-size: 14px;
+    padding: 0 0 10px 5px;
+}
+
 /* 스킵 메뉴 */
 #skip {
     position: relative;

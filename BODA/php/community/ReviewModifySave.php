@@ -29,12 +29,8 @@
 
     $memberInfo = $result -> fetch_array(MYSQLI_ASSOC);
 
-    if($memberInfo['youPass'] === $youPass && $memberInfo['myMemberID'] === $myMemberID){
-        $sql = "UPDATE myReview SET ReviewTitle = '{$ReviewTitle}', ReviewContents = '{$ReviewContents}' WHERE myReviewID = '{$myReviewID}'";
-        $connect -> query($sql);
-    } else {
-        echo "<script>alert('비밀번호가 일치하지 않습니다.')</script>";
-    }
+    $sql = "UPDATE myReview SET ReviewTitle = '{$ReviewTitle}', ReviewContents = '{$ReviewContents}' WHERE myReviewID = '{$myReviewID}'";
+    $connect -> query($sql);
 ?>
 <script>
     location.href = "Review.php";

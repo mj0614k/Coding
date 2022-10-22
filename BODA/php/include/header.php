@@ -62,10 +62,17 @@
                 <path d="M1 31L27.9483 1M27.9483 31L1 1" stroke="#323232" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             <div class="smallmenu blind">
-                <li><a href="#">LOGIN</a></li>
+            <?php if(isset($_SESSION['myMemberID'])){ ?>
+                <li><a href="../login/logout.php">LOGOUT</a></li>
                 <li><a href="../login/agree.php">SIGN UP</a></li>
                 <li><a href="#">MYPAGE</a></li>
                 <li><a href="../notice/notice.php">NOTICE</a></li>
+            <?php } else { ?>
+                <li><a href="#" id="login__btn">LOGIN</a></li>
+                <li><a href="../login/agree.php">SIGN UP</a></li>
+                <li><a href="#">MYPAGE</a></li>
+                <li><a href="../notice/notice.php">NOTICE</a></li>
+            <?php } ?>
             </div>
             <div class="mobilemenu">
                 <li>
@@ -96,10 +103,17 @@
                     </ul>
                 </li>
                 <ul class="small">
+                <?php if(isset($_SESSION['myMemberID'])){ ?>
+                    <li><a href="../login/logout.php">LOGOUT</a></li>
+                    <li><a href="../login/agree.php">SIGN UP</a></li>
+                    <li><a href="#">MYPAGE</a></li>
+                    <li><a href="../notice/notice.php">NOTICE</a></li>
+                <?php } else { ?>
                     <li><a href="../login/loginmobile.php">LOGIN</a></li>
                     <li><a href="../login/agree.php">SIGN UP</a></li>
                     <li><a href="#">MYPAGE</a></li>
                     <li><a href="../notice/notice.php">NOTICE</a></li>
+                <?php } ?>
                 </ul>
             </div>
         </div>

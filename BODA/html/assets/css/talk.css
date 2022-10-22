@@ -97,6 +97,7 @@ table.talk {
 }
 .comment .contents .contents__top {
     display: flex;
+    width: 100%;
     margin: 5px 0;
 }
 .comment .contents .contents__top .name{
@@ -120,7 +121,6 @@ table.talk {
     font-weight: 300;
     font-size: 16px;
     color: #b0b0b0;
-    
 }
 .comment .contents .contents__bottom {
     font-weight: 300;

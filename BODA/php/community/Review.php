@@ -1,7 +1,6 @@
 <?php
     include "../connect/connect.php";
     include "../connect/session.php";
-    include "../connect/sessionCheck.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
-        <?php include "../include/linkreview.php" ?>
+        <?php include "../include/link.php" ?>
         <title>REVIEW</title>
     </head>
     <body>
@@ -194,7 +193,7 @@
                 <div class="review">
                     <div class="review__search">
                         <form action="ReviewSearch.php" name="ReviewSearch" method="get">
-                            <fieldset>
+                            <fieldset class="reviewSearchBox">
                                 <legend class="blind">게시글 검색 영역</legend>
                                 <select name="searchOption" id="searchOption">
                                     <option value="title">제목</option>
@@ -207,6 +206,7 @@
                                     id="searchKeyword"
                                     placeholder="검색어를 입력하세요."
                                     aria-label="search"
+                                    class="reviewInput"
                                     required
                                 />
                                 <button type="submit" class="searchBtn">
@@ -227,6 +227,9 @@
                         </form>
                     </div>
                     <div class="review__board">
+                        <p class="board__total">
+                            총 <em></em>건
+                        </p>
                         <table class="review__table">
                             <colgroup>
                                 <col style="width: 12%" />
@@ -248,38 +251,38 @@
                             </thead>
                             <tbody>
 <?php
-if(isset($_GET['page'])){
-    $page = (int)$_GET['page'];
-} else {
-    $page = 1;
-} 
-
-$viewNum = 10;
-$viewLimit = ($viewNum * $page) - $viewNum;
-
-// 두 개의 테이블 join
-$sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewLike, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
-$result = $connect -> query($sql);
-
-if($result){
-    $count = $result -> num_rows;
-
-    if($count > 0){
-        for($i=1; $i <= $count; $i++){
-            $info = $result -> fetch_array(MYSQLI_ASSOC);
-            echo "<tr>";
-            echo "<td>".$info['myReviewID']."</td>";
-            echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
-            echo "<td>".$info['youNickName']."</td>";
-            echo "<td class='mobile__table'>".date('Y-m-d', $info['ReviewregTime'])."</td>";
-            // echo "<td>".$info['ReviewLike']."</td>";
-            echo "<td>".$info['ReviewView']."</td>";
-            echo "</tr>";
-        }
+    if(isset($_GET['page'])){
+        $page = (int)$_GET['page'];
     } else {
-        echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
+        $page = 1;
+    } 
+
+    $viewNum = 10;
+    $viewLimit = ($viewNum * $page) - $viewNum;
+
+    // 두 개의 테이블 join
+    $sql = "SELECT r.myReviewID, r.ReviewTitle, m.youNickName, r.ReviewregTime, r.ReviewLike, r.ReviewView FROM myReview r JOIN myMember m ON(r.myMemberID = m.myMemberID) ORDER BY myReviewID DESC LIMIT ${viewLimit}, ${viewNum}";
+    $result = $connect -> query($sql);
+
+    if($result){
+        $count = $result -> num_rows;
+
+        if($count > 0){
+            for($i=1; $i <= $count; $i++){
+                $info = $result -> fetch_array(MYSQLI_ASSOC);
+                echo "<tr>";
+                echo "<td>".$info['myReviewID']."</td>";
+                echo "<td><a href='ReviewView.php?myReviewID={$info['myReviewID']}'>".$info['ReviewTitle']."</a></td>";
+                echo "<td>".$info['youNickName']."</td>";
+                echo "<td class='mobile__table'>".date('Y-m-d', $info['ReviewregTime'])."</td>";
+                // echo "<td>".$info['ReviewLike']."</td>";
+                echo "<td>".$info['ReviewView']."</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
+        }
     }
-}
 ?>
 
                                 <!-- <tr>
@@ -293,7 +296,7 @@ if($result){
                             </tbody>
                         </table>
                     </div>
-                    <div class="board__btn">
+                    <div class="review__btn">
                         <a href="ReviewWrite.php">글쓰기</a>
                     </div>
                 </div>
